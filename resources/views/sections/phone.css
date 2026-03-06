@@ -1,0 +1,150 @@
+<!-- Include Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+
+<!-- Carousel -->
+<div class="mobile-carousel">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <img src="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/wp-content/uploads/2025/10/Tower-03-scaled.jpg" />
+        <h3>Wind Tower Manufacturing</h3>
+        <p>Designed for durability and efficiency, our setup supports plate rolling, welding, surface treatment, and assembly—built for both onshore and offshore wind energy project</p>
+        <a href="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/windmill-towers/" class="view-more">View More</a>
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <img src="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/wp-content/uploads/2025/09/pipe-spooling.jpg" />
+        <h3>Pipe Spooling Setup</h3>
+        <p> Includes advanced cutting, beveling, welding, and NDT systems to ensure accuracy. Delivers ready-to-install spools reducing on-site fabrication time..</p>
+        <a href="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/pipe-rotators/" class="view-more">View More</a>
+      </div>
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <img src="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/wp-content/uploads/2025/09/L-saw-1-1.jpg"/>
+        <h3>L-SAW Pipe Setup</h3>
+        <p> Enables accurate cutting, beveling, and shaping of pipes and profiles — ideal for heavy fabrication and construction projects.</p>
+        <a href="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/stand-rotators/" class="view-more">View More</a>
+      </div>
+      
+       <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <img src="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/wp-content/uploads/2025/09/PILE-RACK-MANUFACTURING-SETUP.jpg"/>
+        <h3>Pile Rack Manufacturing</h3>
+        <p>Facility includes cutting, welding, and assembly stations to produce strong structural racks supporting heavy loads.</p>
+        <a href="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/head-stock-and-tail-stock-setup/" class="view-more">View More</a>
+      </div>
+      
+       <!-- Slide 5 -->
+      <div class="swiper-slide">
+        <img src="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/wp-content/uploads/2025/09/IMG_54781.webp"/>
+        <h3>Vessel & Reactor Manufacturing</h3>
+        <p>Advanced forming, welding & testing systems delivering high-quality vessels and reactors for extreme industrial conditions.</p>
+        <a href="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/self-centering-type-welding-rotators-2/" class="view-more">View More</a>
+      </div>
+      
+       <!-- Slide 6 -->
+      <div class="swiper-slide">
+        <img src="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/wp-content/uploads/2025/10/PHOTO-2023-11-08-15-07-26-2.jpg"/>
+        <h3>Beam Line Manufacturing</h3>
+        <p>CNC drilling, cutting, and marking machines ensure precise fabrication with high productivity and strict quality control.</p>
+        <a href="https://lightgrey-lemur-360436.hostingersite.com/cubuilt/heavy-structural-fabrication" class="view-more">View More</a>
+      </div>
+    </div>
+    <!-- Navigation arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<!-- Include Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+  // Initialize Swiper for mobile only
+  if (window.innerWidth <= 768) {
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }
+</script>
+
+<style>
+  /* Mobile-only display */
+  .mobile-carousel {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .mobile-carousel {
+      display: block;
+      padding: 1px;
+    }
+    .swiper-slide {
+     
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .swiper-slide img {
+      width: 100%;
+      min-height:250px;
+      display: cover;
+      border-radius: 10px;
+    }
+    .swiper-slide h3 {
+      margin: 10px 0 5px;
+      font-size: 16px;
+      color: #fff;
+    }
+    .swiper-slide p {
+      font-size: 14px;
+      margin-top:20px;
+      color: #555;
+      color: #fff;
+    }
+    .view-more {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 12px;
+      
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+     
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #007bff;
+      width: 10px;
+      height: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-size: 10px 10px;
+    }
+
+    .swiper-button-next {
+      right: 0;
+    }
+
+    .swiper-button-prev {
+      left: 0;
+      margin-left:20px;
+      margin-right: 20px;
+    }
+  }
+</style>

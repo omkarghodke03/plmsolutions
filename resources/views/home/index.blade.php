@@ -1,0 +1,17 @@
+@extends('layouts.app')
+
+@section('title', 'Home - Milestone')
+{{--  Load sections.css only on home page --}}
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
+@endpush
+@section('content')
+
+    @include('sections.hero')
+    @include('sections.brand-slider')
+    @include('sections.cards')
+    @include('sections.testimonials')
+    <!-- @include('sections.location') -->
+    @include('sections.cta')
+
+@endsection
