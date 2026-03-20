@@ -1,0 +1,496 @@
+/* ============================================================
+   MILESTONE PLM — Cookie Consent Banner + Modal
+   File   : resources/css/cookie-consent.css
+   Prefix : plm-ck-  → zero Bootstrap/custom.css conflicts
+   Primary: #EC6502  Secondary: #6F6F6F
+   Fonts  : Arial (primary) | Anklepants (headings)
+   ============================================================ */
+
+/* ── Variables scoped to cookie elements only ──────────────── */
+.plm-ck-banner,
+.plm-ck-modal,
+.plm-ck-overlay {
+    --ck-orange     : #EC6502;
+    --ck-orange-dk  : #c95400;
+    --ck-grey       : #6F6F6F;
+    --ck-white      : #ffffff;
+    --ck-border     : #e5e5e5;
+    --ck-bg         : #ffffff;
+    --ck-text       : #1e1e1e;
+    --ck-muted      : #6F6F6F;
+    --ck-tab-hover  : #f7f7f7;
+    --ck-tab-active : #fff5ef;
+    --ck-radius     : 8px;
+    --ck-shadow-ban : 0 -4px 24px rgba(0,0,0,0.10);
+    --ck-shadow-mod : 0 12px 56px rgba(0,0,0,0.20);
+    --ck-font       : Arial, sans-serif;
+    --ck-font-head  : 'Anklepants', Arial, sans-serif;
+
+    /*
+    |----------------------------------------------------------
+    | ANIMATION SPEED CONTROL
+    | --ck-speed → transition duration for slide/fade
+    |   Fast   → 0.25s
+    |   Normal → 0.38s  ← default
+    |   Slow   → 0.6s
+    |----------------------------------------------------------
+    */
+    --ck-speed : 0.38s;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   BANNER — fixed bottom bar
+   ════════════════════════════════════════════════════════════ */
+
+.plm-ck-banner {
+    position    : fixed;
+    bottom      : 0;
+    left        : 0;
+    right       : 0;
+    z-index     : 99990;
+    background  : var(--ck-white);
+    border-top  : 2px solid var(--ck-orange);
+    box-shadow  : var(--ck-shadow-ban);
+    font-family : var(--ck-font);
+
+    /* Starts off-screen — JS adds .plm-ck-banner--show after delay */
+    transform   : translateY(100%);
+    transition  : transform var(--ck-speed) cubic-bezier(0.22,1,0.36,1);
+}
+
+.plm-ck-banner.plm-ck-banner--show {
+    transform : translateY(0);
+}
+
+.plm-ck-banner__inner {
+    display         : flex;
+    align-items     : center;
+    flex-wrap       : wrap;
+    gap             : 1rem;
+    padding         : 2rem 1.5rem;
+    max-width       : 1400px;
+    margin          : 0 auto;
+}
+
+
+.plm-ck-banner__text {
+    flex        : 1 1 260px;
+    font-family : var(--ck-font);
+    font-size   : 0.83rem;
+    color       : var(--ck-muted);
+    line-height : 1.6;
+    margin      : 0;
+}
+
+.plm-ck-banner__actions {
+    display     : flex;
+    gap         : 0.5rem;
+    flex-wrap   : wrap;
+    flex-shrink : 0;
+    align-items : center;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   BUTTONS — shared across banner + modal
+   ════════════════════════════════════════════════════════════ */
+
+.plm-ck-btn {
+    display         : inline-flex;
+    align-items     : center;
+    gap             : 6px;
+    padding         : 9px 16px;
+    font-family     : var(--ck-font);
+    font-size       : 0.78rem;
+    font-weight     : 500;
+    letter-spacing  : 0.02em;
+    border-radius   : 0px;
+    border          : 1.5px solid transparent;
+    cursor          : pointer;
+    white-space     : nowrap;
+    text-decoration : none;
+    transition      : all 0.2s ease;
+    line-height     : 1.2;
+}
+.plm-ck-btn:focus-visible {
+    outline        : 3px solid var(--ck-orange);
+    outline-offset : 2px;
+}
+
+/* Primary — orange fill */
+.plm-ck-btn--primary {
+    background   : var(--ck-orange);
+    color        : var(--ck-white);
+    border-color : var(--ck-orange);
+}
+.plm-ck-btn--primary:hover {
+    background   : var(--ck-orange-dk);
+    border-color : var(--ck-orange-dk);
+    color        : var(--ck-white);
+}
+
+/* Secondary — grey fill */
+.plm-ck-btn--secondary {
+    background   : var(--ck-grey);
+    color        : var(--ck-white);
+    border-color : var(--ck-grey);
+}
+.plm-ck-btn--secondary:hover {
+    background   : #555;
+    border-color : #555;
+    color        : var(--ck-white);
+}
+
+/* Ghost — outlined */
+.plm-ck-btn--ghost {
+    background   : transparent;
+    color        : var(--ck-orange);
+    border-color : var(--ck-orange);
+}
+.plm-ck-btn--ghost:hover {
+    border-color : var(--ck-orange);
+    color        : var(--ck-grey);
+    background   : rgba(236,101,2,0.05);
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   OVERLAY
+   ════════════════════════════════════════════════════════════ */
+
+.plm-ck-overlay {
+    position        : fixed;
+    inset           : 0;
+    z-index         : 99993;
+    background      : rgba(0,0,0,0.50);
+    backdrop-filter : blur(2px);
+    opacity         : 0;
+    pointer-events  : none;
+    transition      : opacity var(--ck-speed) ease;
+    display         : none;
+}
+.plm-ck-overlay.plm-ck-overlay--show {
+    opacity        : 1;
+    pointer-events : all;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   MODAL
+   ════════════════════════════════════════════════════════════ */
+
+.plm-ck-modal {
+    position        : fixed;
+    inset           : 0;
+    z-index         : 99995;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    padding         : 1rem;
+    pointer-events  : none;
+    opacity         : 0;
+    transform       : translateY(14px) scale(0.98);
+    transition      : opacity var(--ck-speed) ease,
+                      transform var(--ck-speed) ease;
+}
+.plm-ck-modal.plm-ck-modal--show {
+    opacity        : 1;
+    transform      : translateY(0) scale(1);
+    pointer-events : all;
+}
+
+/* Modal box */
+.plm-ck-modal__box {
+    background     : var(--ck-white);
+    border-radius  : var(--ck-radius);
+    box-shadow     : var(--ck-shadow-mod);
+    width          : 100%;
+    max-width      : 620px;
+    max-height     : 88vh;
+    display        : flex;
+    flex-direction : column;
+    overflow       : hidden;
+    font-family    : var(--ck-font);
+}
+
+/* ── Modal Header ──────────────────────────────────────────── */
+.plm-ck-modal__header {
+    display         : flex;
+    align-items     : center;
+    gap             : 0.75rem;
+    padding         : 1rem 1.2rem;
+    border-bottom   : 1px solid var(--ck-border);
+    flex-shrink     : 0;
+}
+
+.plm-ck-modal__logo  { height: 28px; width: auto; flex-shrink: 0; }
+
+.plm-ck-modal__title {
+    font-family  : var(--ck-font-head);
+    font-size    : 0.95rem;
+    font-weight  : 500;
+    color        : var(--ck-text);
+    margin       : 0;
+    flex         : 1;
+    text-align   : center;
+}
+
+.plm-ck-modal__close {
+    background    : none;
+    border        : none;
+    cursor        : pointer;
+    padding       : 5px;
+    color         : var(--ck-muted);
+    border-radius : 5px;
+    display       : flex;
+    align-items   : center;
+    transition    : color 0.2s, background 0.2s;
+    flex-shrink   : 0;
+}
+.plm-ck-modal__close:hover       { color: var(--ck-text); background: var(--ck-tab-hover); }
+.plm-ck-modal__close:focus-visible{ outline: 2px solid var(--ck-orange); outline-offset: 2px; }
+
+/* ── Modal Body ────────────────────────────────────────────── */
+.plm-ck-modal__body {
+    display    : flex;
+    flex       : 1;
+    overflow   : hidden;
+    min-height : 0;
+}
+
+/* Left tabs */
+.plm-ck-modal__tabs {
+    width          : 180px;
+    flex-shrink    : 0;
+    border-right   : 1px solid var(--ck-border);
+    overflow-y     : auto;
+    display        : flex;
+    flex-direction : column;
+    padding        : 0.4rem 0;
+}
+
+.plm-ck-tab {
+    display      : block;
+    width        : 100%;
+    text-align   : left;
+    padding      : 10px 14px;
+    font-family  : var(--ck-font);
+    font-size    : 0.80rem;
+    font-weight  : 500;
+    color        : var(--ck-muted);
+    background   : none;
+    border       : none;
+    border-left  : 3px solid transparent;
+    cursor       : pointer;
+    transition   : all 0.18s ease;
+    line-height  : 1.4;
+}
+.plm-ck-tab:hover {
+    color      : var(--ck-text);
+    background : var(--ck-tab-hover);
+}
+.plm-ck-tab--active {
+    color        : var(--ck-orange);
+    background   : var(--ck-tab-active);
+    border-left  : 3px solid var(--ck-orange);
+    font-weight  : 500;
+}
+.plm-ck-tab:focus-visible { outline: 2px solid var(--ck-orange); outline-offset: -2px; }
+
+/* Right panels */
+.plm-ck-modal__panels {
+    flex       : 1;
+    overflow-y : auto;
+    padding    : 1.3rem 1.4rem;
+}
+
+.plm-ck-panel              { display: none; }
+.plm-ck-panel.plm-ck-panel--active { display: block; }
+
+.plm-ck-panel__head {
+    display         : flex;
+    align-items     : center;
+    justify-content : space-between;
+    gap             : 0.75rem;
+    margin-bottom   : 0.9rem;
+}
+
+.plm-ck-panel__title {
+    font-family : var(--ck-font-head);
+    font-size   : 0.98rem;
+    font-weight : 500;
+    color       : var(--ck-text);
+    margin      : 0;
+}
+
+.plm-ck-panel__text {
+    font-family  : var(--ck-font);
+    font-size    : 0.81rem;
+    color        : var(--ck-muted);
+    line-height  : 1.7;
+    margin-bottom: 0.7rem;
+}
+
+.plm-ck-panel__link {
+    font-family     : var(--ck-font);
+    font-size       : 0.81rem;
+    color           : var(--ck-orange);
+    text-decoration : none;
+    font-weight     : 500;
+    display         : inline-block;
+    margin-top      : 0.4rem;
+}
+.plm-ck-panel__link:hover { text-decoration: underline; }
+
+/* Always active badge */
+.plm-ck-always-on {
+    font-family   : var(--ck-font);
+    font-size     : 0.70rem;
+    font-weight   : 500;
+    color         : var(--ck-orange);
+    background    : var(--ck-tab-active);
+    border        : 1px solid var(--ck-orange);
+    border-radius : 99px;
+    padding       : 3px 10px;
+    white-space   : nowrap;
+    flex-shrink   : 0;
+}
+
+/* ── Toggle Switch ─────────────────────────────────────────── */
+.plm-ck-toggle {
+    display     : inline-flex;
+    align-items : center;
+    gap         : 8px;
+    cursor      : pointer;
+    flex-shrink : 0;
+}
+
+.plm-ck-toggle__chk {
+    position : absolute;
+    opacity  : 0;
+    width    : 0;
+    height   : 0;
+}
+
+.plm-ck-toggle__track {
+    position      : relative;
+    width         : 40px;
+    height        : 22px;
+    background    : #cccccc;
+    border-radius : 99px;
+    transition    : background 0.25s ease;
+    flex-shrink   : 0;
+}
+
+.plm-ck-toggle__thumb {
+    position      : absolute;
+    top           : 3px;
+    left          : 3px;
+    width         : 16px;
+    height        : 16px;
+    background    : var(--ck-white);
+    border-radius : 50%;
+    box-shadow    : 0 1px 4px rgba(0,0,0,0.2);
+    transition    : transform 0.25s ease;
+}
+
+.plm-ck-toggle__chk:checked + .plm-ck-toggle__track {
+    background : var(--ck-orange);
+}
+.plm-ck-toggle__chk:checked + .plm-ck-toggle__track .plm-ck-toggle__thumb {
+    transform : translateX(18px);
+}
+
+.plm-ck-toggle__lbl {
+    font-family : var(--ck-font);
+    font-size   : 0.72rem;
+    color       : var(--ck-muted);
+    min-width   : 42px;
+    transition  : color 0.2s;
+}
+.plm-ck-toggle__chk:checked ~ .plm-ck-toggle__lbl {
+    color : var(--ck-orange);
+}
+.plm-ck-toggle:focus-within .plm-ck-toggle__track {
+    outline        : 2px solid var(--ck-orange);
+    outline-offset : 2px;
+}
+
+/* ── Modal Footer ──────────────────────────────────────────── */
+.plm-ck-modal__footer {
+    display         : flex;
+    align-items     : center;
+    justify-content : flex-end;
+    gap             : 0.5rem;
+    padding         : 0.9rem 1.2rem;
+    border-top      : 1px solid var(--ck-border);
+    flex-wrap       : wrap;
+    flex-shrink     : 0;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — Bootstrap 5 breakpoints
+   ════════════════════════════════════════════════════════════ */
+
+/* Mobile < 576px */
+@media (max-width: 575.98px) {
+
+    /* Banner stacks vertically */
+    .plm-ck-banner__inner   { flex-direction: column; align-items: flex-start; padding: 1rem; }
+    .plm-ck-banner__actions { width: 100%; flex-direction: column; }
+    .plm-ck-banner__actions .plm-ck-btn { width: 100%; justify-content: center; }
+
+    /* Modal: tabs become horizontal scrollable row on top */
+    .plm-ck-modal__body     { flex-direction: column; }
+    .plm-ck-modal__tabs     {
+        width          : 100%;
+        border-right   : none;
+        border-bottom  : 1px solid var(--ck-border);
+        flex-direction : row;
+        overflow-x     : auto;
+        overflow-y     : hidden;
+        padding        : 0;
+    }
+    .plm-ck-tab {
+        white-space  : nowrap;
+        border-left  : none;
+        border-bottom: 3px solid transparent;
+        padding      : 10px 12px;
+        flex-shrink  : 0;
+    }
+    .plm-ck-tab--active {
+        border-left   : none;
+        border-bottom : 3px solid var(--ck-orange);
+    }
+
+    /* Modal footer stacks */
+    .plm-ck-modal__footer { flex-direction: column; }
+    .plm-ck-modal__footer .plm-ck-btn { width: 100%; justify-content: center; }
+
+    /* Smaller title */
+    .plm-ck-modal__title { font-size: 0.85rem; }
+    .plm-ck-modal__panels{ padding: 1rem; }
+}
+
+/* Tablet 576–991px */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .plm-ck-modal__tabs     { width: 155px; }
+    .plm-ck-banner__actions { flex-wrap: nowrap; }
+}
+
+/* Large desktop ≥ 1400px */
+@media (min-width: 1400px) {
+    .plm-ck-modal__box { max-width: 680px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .plm-ck-banner,
+    .plm-ck-overlay,
+    .plm-ck-modal,
+    .plm-ck-toggle__track,
+    .plm-ck-toggle__thumb,
+    .plm-ck-btn { transition: none; }
+}
