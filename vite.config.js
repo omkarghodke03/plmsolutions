@@ -7,8 +7,11 @@ export default defineConfig({
             input: [
                 'resources/css/custom.css',
                 'resources/js/cookies.js',
-                'resources/css/sections.css',   
+                'resources/css/sections.css', 
+                'resources/js/cookie-consent.css',
                 'resources/js/custom.js',
+                'resources/js/cookie-consent.js',
+                'resources/css/contact.css'
             ],
             refresh: true,
         }),

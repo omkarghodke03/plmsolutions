@@ -11,21 +11,23 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+          
 
     <!--  Your CSS from resources/css/ -->
-    @vite(['resources/css/custom.css','resources/css/sections.css', 'resources/js/custom.js ','resources/js/cookies.js'])
-
+    <!--  Your js from resources/css/ -->
+    @vite(['resources/css/custom.css','resources/css/sections.css', 'resources/css/cookie-consent.css','resources/css/contact.css'])
+    @vite(['resources/js/custom.js ','resources/js/cookies.js','resources/js/cookie-consent.js'])
     @stack('styles')
+    
 </head>
 <body>
-
     @include('partials.preloader')<!--Preloader-->
     @include('partials.header')   <!--header-->
 
     <main>
         @yield('content')
     </main>
-
+    @include('partials.cookie-consent') <!--cookies-->
     @include('partials.footer')  <!--footer-->
 
     <!-- Bootstrap JS CDN -->
