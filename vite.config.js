@@ -11,7 +11,8 @@ export default defineConfig({
                 'resources/js/cookie-consent.css',
                 'resources/js/custom.js',
                 'resources/js/cookie-consent.js',
-                'resources/css/contact.css'
+                'resources/css/contact.css',
+                'resources/css/aboutus.css'
             ],
             refresh: true,
         }),
