@@ -4,6 +4,7 @@
 {{--  Load sections.css only on home page --}}
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 @endpush
 @section('content')
 

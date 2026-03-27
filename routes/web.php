@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,7 @@ Route::get('/why-milestone', [PageController::class, 'whyMilestone'])->name('why
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 // Contact
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+// Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 
 
@@ -64,3 +65,9 @@ Route::prefix('cookie')->name('cookie.')->group(function () {
     Route::get('/status',            [CookieConsentController::class, 'status'])
          ->name('status');
 });
+
+
+
+
+// ✅ CORRECT - only the store method
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

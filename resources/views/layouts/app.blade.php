@@ -15,7 +15,7 @@
 
     <!--  Your CSS from resources/css/ -->
     <!--  Your js from resources/css/ -->
-    @vite(['resources/css/custom.css','resources/css/sections.css', 'resources/css/cookie-consent.css','resources/css/contact.css'])
+    @vite(['resources/css/custom.css','resources/css/sections.css', 'resources/css/cookie-consent.css','resources/css/contact.css','resources/css/aboutus.css'])
     @vite(['resources/js/custom.js ','resources/js/cookies.js','resources/js/cookie-consent.js'])
     @stack('styles')
     
@@ -27,7 +27,7 @@
     <main>
         @yield('content')
     </main>
-    @include('partials.cookie-consent') <!--cookies-->
+    @include('partials.cookie-consent')<!-- cookies-->
     @include('partials.footer')  <!--footer-->
 
     <!-- Bootstrap JS CDN -->

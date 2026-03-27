@@ -1,0 +1,1035 @@
+:root {
+    --plm-primary: #EC6502;
+    --plm-secondary: #6F6F6F;
+
+    --plm-heading: 'Arial', sans-serif;
+    --plm-subheading: 'Anklepants', sans-serif;
+}
+
+/* HERO SECTION */
+.aboutplm-hero {
+    min-height: 100vh;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.2)
+    ),
+    url("{{ asset('public/images/Meeting-Spaces-Hero.jpg') }}") ;
+    
+    color: #fff;
+    padding: 80px 0;
+}
+
+/* TAG */
+.aboutplm-tag {
+    color: var(--plm-primary);
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* HEADING (ANIMATION APPLIED) */
+.our-delivery-model-heading {
+    font-family: var(--plm-heading);
+    font-size: clamp(30px, 3.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+
+    color: var(--plm-primary);
+
+    background-image: url('https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop');
+    background-size: 200%;
+    background-position: 0 50%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: aboutplm-animate-bg 6s infinite alternate linear;
+}
+
+.our-delivery-model-heading .odm-highlight {
+    color: var(--plm-primary);
+    -webkit-text-fill-color: var(--plm-primary);
+}
+
+/* DESCRIPTION */
+.aboutplm-desc {
+    color: #ddd;
+    max-width: 550px;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* BUTTONS */
+.aboutplm-btns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.aboutplm-btn-primary {
+    background-color: var(--plm-primary);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+}
+
+.aboutplm-btn-secondary {
+    padding: 12px 25px;
+    border-radius: 4px;
+}
+
+/* ANIMATION */
+@keyframes aboutplm-animate-bg {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media (max-width: 991px) {
+    .aboutplm-hero {
+        text-align: center;
+    }
+
+    .aboutplm-desc {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .aboutplm-btns {
+        justify-content: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .aboutplm-hero {
+        padding: 60px 20px;
+    }
+
+    .our-delivery-model-heading {
+        font-size: 28px;
+    }
+
+    .aboutplm-desc {
+        font-size: 14px;
+    }
+}
+
+/* =========================================
+    Who We Are start css section S02
+============================================*/
+/* SECTION */
+
+.whoare-section {
+    background: #f8f8f8;
+}
+
+/* TAG */
+.whoare-tag {
+    color: var(--plm-primary);
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* HEADING */
+.whoare-heading {
+    font-family: var(--plm-heading);
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+/* TEXT */
+.whoare-text {
+    font-size: 600;
+    color: var(--plm-secondary);
+    margin-bottom: 15px;
+}
+
+/* LIST */
+.whoare-list {
+    list-style: none;
+    padding: 0;
+}
+
+.whoare-list li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.whoare-list li::before {
+    content: ">";
+    color: var(--plm-primary);
+    position: absolute;
+    left: 0;
+}
+
+/* FOOTER */
+.whoare-footer{
+    border-left:4px solid #EC6502 ;
+    padding-left: 15px;
+}
+.whoare-link {
+    color: var(--plm-primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* IMAGE CARD */
+.whoare-image-card {
+    height: 430px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* YOUR HOVER EFFECT */
+.locations-four-cards-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 30%,
+        rgba(0,255,255,0.3)
+    );
+    transform: rotate(-45deg);
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.locations-four-cards-card:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(100%);
+}
+
+/* IMAGE */
+.whoare-image-card img {
+    width: 100%;
+    display: block;
+}
+
+/* OVERLAY BOX */
+.whoare-overlay-box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: #111;
+    color: #fff;
+    padding: 20px;
+}
+
+.whoare-overlay-box h3 {
+    color: var(--plm-primary);
+    font-size: 28px;
+}
+
+/* FADE DOWN ANIMATION */
+.fade-down {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeDown 1s ease forwards;
+}
+
+@keyframes fadeDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+    .whoare-section {
+        text-align: center;
+    }
+
+    .whoare-overlay-box {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 576px) {
+    .whoare-heading {
+        font-size: 26px;
+    }
+
+    .whoare-overlay-box {
+        padding: 15px;
+    }
+}
+
+/*=================================
+who we are section code start s03
+===================================*/
+/* SECTION */
+.purposeplm-section {
+    background: #f8f8f8;
+}
+
+/* TAG */
+.purposeplm-tag {
+    color: var(--plm-primary);
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+/* HEADING */
+.purposeplm-heading {
+    font-family: var(--plm-heading);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+}
+
+/* DESC */
+.purposeplm-desc {
+    color: var(--plm-secondary);
+}
+
+/* CARD */
+.purposeplm-card {
+    padding: 40px;
+    position: relative;
+    transition: 0.4s ease;
+}
+
+/* DARK CARD */
+.purposeplm-dark {
+    background: #111;
+    color: #fff;
+}
+
+/* LIGHT CARD */
+.purposeplm-light {
+    background: #fff;
+    color: #111;
+    border-top: 3px solid var(--plm-primary);
+}
+
+/* ICON */
+.purposeplm-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(236,101,2,0.1);
+    color: var(--plm-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.purposeplm-icon.light {
+    background: #f2f2f2;
+}
+
+/* SUB TAG */
+.purposeplm-subtag {
+    color: var(--plm-primary);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* TEXT */
+.purposeplm-card p {
+    color: var(--plm-secondary);
+}
+
+/* LINE */
+.purposeplm-line {
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* SMALL TEXT */
+.purposeplm-small {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--plm-primary);
+}
+
+/* 🔥 HOVER EFFECT (YOUR REQUIREMENT) */
+.purposeplm-card:hover {
+    background: var(--plm-primary);
+    color: #000;
+}
+
+.purposeplm-card:hover h4,
+.purposeplm-card:hover p,
+.purposeplm-card:hover .purposeplm-subtag {
+    color: #000;
+}
+
+/* ANIMATION */
+.fade-down {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeDown 1s ease forwards;
+}
+
+@keyframes fadeDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+    .purposeplm-section {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .purposeplm-card {
+        padding: 25px;
+    }
+}
+
+/*==========================================
+      Built for Complex Industries = s03
+============================================*/
+/* SECTION */
+.industryplm-section {
+    background: #f8f8f8;
+}
+
+/* HEADER */
+.industryplm-tag {
+    color: var(--plm-primary);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.industryplm-heading {
+    font-family: var(--plm-heading);
+    font-size: 50px;
+    font-weight: 800;
+}
+/* TYPEWRITER EFFECT (SAFE ADD) */
+.industryplm-heading.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--plm-primary);
+}
+
+/* ANIMATION */
+.industryplm-heading.typewriter.animate {
+    animation: 
+        industryType 3s steps(40) 1s forwards,
+        industryCursor 500ms infinite;
+}
+
+/* TYPE */
+@keyframes industryType {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* CURSOR */
+@keyframes industryCursor {
+    0% { border-color: var(--plm-primary); }
+    50% { border-color: transparent; }
+    100% { border-color: var(--plm-primary); }
+}   
+
+.industryplm-desc {
+    color: var(--plm-secondary);
+}
+
+/* CARD */
+.industryplm-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* IMAGE */
+.industryplm-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+/* ZOOM EFFECT */
+.industryplm-card:hover img {
+    transform: scale(1.1);
+}
+
+/* OVERLAY */
+.industryplm-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.2),
+        transparent
+    );
+
+    transition: 0.3s;
+}
+
+/* HOVER EXTRA OVERLAY */
+.industryplm-card:hover .industryplm-overlay {
+    background: rgba(0,0,0,0.85);
+}
+
+/* TEXT */
+.industryplm-cat {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #ccc;
+}
+
+.industryplm-view {
+    display: block;
+    margin-top: 10px;
+    color: var(--plm-primary);
+}
+
+/* MODAL */
+.modal-content {
+    border-radius: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .industryplm-card img {
+        height: 220px;
+    }
+}
+/*==========================================
+          WHAT WE DO  S04
+          aboutus.css — What We Do Section
+          Section ID : #What-We-Do
+          Layout     : Sticky left + Scrollable right cards
+          Breakpoints: Desktop ≥992px | Tablet 768–991px | Mobile <768px
+============================================*/
+
+/* ── CSS Custom Properties (brand tokens) ─────────────────── */
+:root {
+    --plm-primary:     #EC6502;         /* Orange accent            */
+    --plm-secondary:   #6F6F6F;         /* Muted body text          */
+    --plm-heading:     'Arial', sans-serif;
+    --plm-subheading:  'Anklepants', sans-serif;
+
+    /* Section-local tokens */
+    --wwd-bg:          #ffffff;
+    --wwd-border:      #e0e0e0;
+    --wwd-text-dark:   #1a1a1a;
+    --wwd-card-hover:  #fafafa;
+    --wwd-transition:  0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    --wwd-img-radius:  4px;
+}
+
+
+/* ── Section Wrapper ───────────────────────────────────────── */
+.wwd-section {
+    background-color: var(--wwd-bg);
+    padding: 20px 0 50px;
+    overflow: hidden;       /* prevent horizontal scroll on mobile */
+}
+
+
+/* ── Eyebrow Label ─────────────────────────────────────────── */
+.wwd-header-wrap {
+    margin-bottom: 48px;
+}
+
+.wwd-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--plm-heading);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--plm-primary);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.wwd-eyebrow-line {
+    display: inline-block;
+    width: 36px;
+    height: 2px;
+    background-color: var(--plm-primary);
+    flex-shrink: 0;
+}
+
+
+/* ── Split Row ─────────────────────────────────────────────── */
+.wwd-split-row {
+    align-items: flex-start;   /* critical: allows sticky to work */
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   LEFT COLUMN — Sticky Panel
+   ════════════════════════════════════════════════════════════ */
+.wwd-left-col {
+    padding-right: 48px;
+}
+
+/* The sticky container: sticks while right side scrolls */
+.wwd-sticky-panel {
+    position: sticky;
+    top: 100px;               /* offset from viewport top (adjust for navbar) */
+}
+
+/* Heading */
+.wwd-heading {
+    font-family: var(--plm-heading);
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--wwd-text-dark);
+    margin-bottom: 20px;
+}
+
+/* Sub-description text */
+.wwd-subtext {
+    font-family: var(--plm-heading);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--plm-secondary);
+    margin-bottom: 32px;
+    max-width: 420px;
+}
+
+/* Image container — fixed height, images swap inside */
+.wwd-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    border-radius: var(--wwd-img-radius);
+    overflow: hidden;
+    background-color: #e8e8e8;  /* placeholder while image loads */
+}
+
+/* All service images stacked; only .active is visible */
+.wwd-service-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transform: scale(1.04);
+    transition:
+        opacity var(--wwd-transition),
+        transform var(--wwd-transition);
+    will-change: opacity, transform;
+}
+
+/* Active / visible image */
+.wwd-service-img.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Subtle warm overlay on image */
+.wwd-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(236, 101, 2, 0.06) 0%,
+        rgba(0, 0, 0, 0.18) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   RIGHT COLUMN — Scrollable Cards
+   ════════════════════════════════════════════════════════════ */
+.wwd-right-col {
+    padding-left: 16px;
+}
+
+.wwd-cards-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Individual Card ── */
+.wwd-card {
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+/* Top divider line */
+.wwd-card-divider {
+    height: 1px;
+    background-color: var(--wwd-border);
+    transition: background-color 0.3s ease;
+}
+
+/* Highlight divider on active card */
+.wwd-card.is-active > .wwd-card-divider:first-child {
+    background-color: var(--plm-primary);
+}
+
+/* Inner flex layout: number | icon | content | arrow */
+.wwd-card-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 16px;
+    transition: background-color 0.2s ease;
+}
+
+.wwd-card:hover .wwd-card-inner,
+.wwd-card:focus .wwd-card-inner {
+    background-color: var(--wwd-card-hover);
+}
+
+/* Card number */
+.wwd-card-number {
+    font-family: var(--plm-heading);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--plm-primary);
+    letter-spacing: 0.05em;
+    min-width: 28px;
+    padding-top: 4px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.wwd-card.is-active .wwd-card-number {
+    opacity: 1;
+}
+
+/* Icon wrapper */
+.wwd-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: rgba(236, 101, 2, 0.08);
+    flex-shrink: 0;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.wwd-card-icon svg {
+    color: var(--plm-primary);
+    stroke: var(--plm-primary);
+}
+
+.wwd-card.is-active .wwd-card-icon {
+    background-color: rgba(236, 101, 2, 0.15);
+    transform: scale(1.08);
+}
+
+/* Text content */
+.wwd-card-content {
+    flex: 1;
+    min-width: 0;            /* prevent overflow in flex */
+}
+
+.wwd-card-title {
+    font-family: var(--plm-heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--wwd-text-dark);
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.wwd-card.is-active .wwd-card-title {
+    color: var(--plm-primary);
+}
+
+.wwd-card-desc {
+    font-family: var(--plm-heading);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--plm-secondary);
+    margin: 0;
+}
+
+/* Arrow — hidden by default, shown on active */
+.wwd-card-arrow {
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+    color: var(--plm-primary);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.wwd-card.is-active .wwd-card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablet (768px – 991px)
+   Left image stacks above cards; sticky is disabled.
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 991px) {
+
+    .wwd-section {
+        padding: 60px 0 80px;
+    }
+
+    .wwd-left-col {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    /* Disable sticky on tablet/mobile */
+    .wwd-sticky-panel {
+        position: static;
+    }
+
+    .wwd-img-wrap {
+        height: 280px;
+    }
+
+    .wwd-right-col {
+        padding-left: 0;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile (< 768px)
+   Compact spacing; slightly smaller image.
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+    .wwd-section {
+        padding: 48px 0 64px;
+    }
+
+    .wwd-header-wrap {
+        margin-bottom: 32px;
+    }
+
+    .wwd-img-wrap {
+        height: 220px;
+    }
+
+    .wwd-card-inner {
+        gap: 14px;
+        padding: 22px 8px;
+    }
+
+    .wwd-card-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .wwd-card-title {
+        font-size: 15px;
+    }
+
+    .wwd-card-desc {
+        font-size: 13px;
+    }
+
+    /* Hide arrow on very small screens to save space */
+    .wwd-card-arrow {
+        display: none;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — Extra small (< 480px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 479px) {
+
+    .wwd-img-wrap {
+        height: 190px;
+    }
+
+    .wwd-card-number {
+        display: none;   /* simplify layout on tiny screens */
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   ACCESSIBILITY — Reduced Motion
+   Respect users who prefer no animations.
+   ════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    .wwd-service-img,
+    .wwd-card-icon,
+    .wwd-card-arrow {
+        transition: none;
+    }
+
+    .wwd-service-img {
+        transform: none;
+    }
+}
+
+/*========================================================
+WHY MILESTONE  Why Global Clients Choose Milestone S05
+==========================================================*/
+/* SECTION */
+.why-milestone-section {
+    background: #f8f8f8;
+    padding: 80px 20px;
+}
+
+/* CONTAINER */
+.why-milestone-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* HEADER */
+.why-milestone-header {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.why-milestone-tag {
+    color: var(--plm-primary);
+    font-size: 12px;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.why-milestone-title {
+    font-family: var(--plm-heading);
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.why-milestone-desc {
+    color: var(--plm-secondary);
+    max-width: 600px;
+}
+
+/* GRID */
+.why-milestone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CARD */
+.why-milestone-card {
+    background: #fff;
+    padding: 30px;
+    position: relative;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    
+}
+
+/* TOP BORDER ANIMATION */
+.why-milestone-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--plm-primary);
+    transition: width 0.4s ease;
+}
+
+.why-milestone-card:hover::before {
+    width: 100%;
+}
+
+/* HOVER EFFECT */
+.why-milestone-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #ec63025d;
+}
+s
+/* ICON */
+.why-milestone-icon {
+    font-size: 24px;
+    padding-bottom:  30px;
+  
+}
+
+/* TEXT */
+.why-milestone-card h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-family: var(--plm-heading);
+}
+
+.why-milestone-card p {
+    color: var(--plm-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .why-milestone-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .why-milestone-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-milestone-title {
+        font-size: 28px;
+    }
+
+    .why-milestone-section {
+        padding: 50px 15px;
+    }
+}
+/*===================================================
+      Delivery Model S07
+====================================================*/

@@ -1,0 +1,117 @@
+:root {
+    --plm-primary: #EC6502;
+    --plm-secondary: #6F6F6F;
+
+    --plm-heading: 'Arial', sans-serif;
+    --plm-subheading: 'Anklepants', sans-serif;
+}
+
+/* SECTION */
+.ready-scale {
+    background: #0d0d0d;
+    color: #fff;
+    padding: 100px 0;
+}
+
+/* LEFT */
+.ready-scale .tag {
+    color: var(--plm-primary);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.ready-scale .heading {
+    font-family: var(--plm-heading);
+    font-size: 52px;
+    font-weight: 800;
+    margin: 20px 0;
+}
+
+.ready-scale .heading span {
+    color: var(--plm-primary);
+}
+
+.ready-scale .description {
+    color: var(--plm-secondary);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contact-info .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact-info .icon {
+    margin-right: 10px;
+    color: var(--plm-primary);
+}
+
+/* FORM CARD */
+.form-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+
+.form-card h5 {
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+/* INPUTS */
+.form-card input,
+.form-card select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: transparent;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 5px;
+}
+.form-card select{
+    background-color: #0d0d0d;
+}
+
+.form-card input::placeholder {
+    color: #aaa;
+}
+
+/* BUTTON */
+.form-card button {
+    width: 100%;
+    padding: 14px;
+    background: var(--plm-primary);
+    border: none;
+    color: hwb(0 100% 0%);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.form-card button:hover {
+    background: #c94f00;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .ready-scale {
+        padding: 60px 20px;
+    }
+
+    .ready-scale .heading {
+        font-size: 36px;
+    }
+
+    .form-card {
+        margin-top: 30px;
+    }
+}
+.align-items-center{
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
