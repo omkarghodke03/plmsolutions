@@ -9,7 +9,7 @@
 <style>
   body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
   .wrap { max-width: 560px; margin: 40px auto; background: #fff; border-radius: 8px; overflow: hidden; }
-  .header { background: #1a1a1a; padding: 28px 32px; }
+  .header { background: #1a1a1ada; padding: 28px 32px; }
   .header h1 { color: #EC6502; font-size: 20px; margin: 0; }
   .header p  { color: #9a9a9a; font-size: 13px; margin: 4px 0 0; }
   .body { padding: 28px 32px; }

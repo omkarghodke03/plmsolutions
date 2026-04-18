@@ -51,17 +51,18 @@
 
         <nav class="plm-nav" id="plm-nav" role="navigation" aria-label="Main navigation">
             <ul class="plm-nav__list" role="menubar">
-
                 {{-- Services Mega --}}
-                <li class="plm-nav__item plm-nav__item--mega" role="none">
-                    <button class="plm-nav__link plm-nav__link--toggle"
-                            aria-haspopup="true" aria-expanded="false"
-                            data-plm-mega="services" type="button">
-                        Services
-                        <svg class="plm-nav__chevron" width="11" height="11" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                        </svg>
-                    </button>
+            <li class="plm-nav__item plm-nav__item--mega" role="none">
+            <button class="plm-nav__link plm-nav__link--toggle"
+                aria-haspopup="true" aria-expanded="false"
+                data-plm-mega="services"
+                type="button"
+                onclick="window.location='{{ url('/services/as-built-documentation') }}'">
+                Services
+                <svg class="plm-nav__chevron" width="11" height="11" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </svg>
+            </button>
                     <div class="plm-mega" id="mega-services" role="region" aria-label="Services menu" hidden>
                         <div class="plm-mega__layout">
                             <div class="plm-mega__tags">
