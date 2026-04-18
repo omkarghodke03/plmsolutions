@@ -19,7 +19,7 @@ class ContactAdminMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '📩 New Consultation Request — ' . $this->contact->name,
+            subject: 'New Consultation Request — ' . $this->contact->name,
         );
     }
 

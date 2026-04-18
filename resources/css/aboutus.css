@@ -431,24 +431,7 @@ who we are section code start s03
 }
 
 /* ANIMATION */
-.industryplm-heading.typewriter.animate {
-    animation: 
-        industryType 3s steps(40) 1s forwards,
-        industryCursor 500ms infinite;
-}
 
-/* TYPE */
-@keyframes industryType {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-/* CURSOR */
-@keyframes industryCursor {
-    0% { border-color: var(--plm-primary); }
-    50% { border-color: transparent; }
-    100% { border-color: var(--plm-primary); }
-}   
 
 .industryplm-desc {
     color: var(--plm-secondary);

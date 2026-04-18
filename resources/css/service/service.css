@@ -1,0 +1,814 @@
+/* ============================================================
+   resources/css/service/service.css
+   Scope    : .bim-*  |  BIM Services detail page
+   Bootstrap : 5  compatible
+   Updated  : brand tokens + font families + equal sidebar/content
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   1. BRAND TOKENS  (matches your :root design system)
+══════════════════════════════════════════════════════════════ */
+:root {
+    /* ── Brand colours (your spec) ─────── */
+    --plm-primary      : #EC6502;
+    --plm-secondary    : #6F6F6F;
+
+    /* ── Typography families (your spec) ── */
+    --plm-heading      : 'Arial', sans-serif;
+     
+
+    /* ── Page colours ───────────────────── */
+    --bim-dark         : #111111;
+    --bim-text         : #1a1a1a;
+    --bim-muted        : var(--plm-secondary);       /* #6F6F6F */
+    --bim-border       : #e5e7eb;
+    --bim-bg-card      : #ffffff;
+    --bim-bg-page      : #f9f9f8;
+
+    /* ── Sidebar dimensions ─────────────── */
+    --bim-sidebar-w    : 330px;                      /* sidebar fixed width */
+    --bim-sidebar-top  : 80px;                       /* offset from top (navbar height) */
+
+    /* ── Animation easing ───────────────── */
+    --bim-ease         : cubic-bezier(.25, .46, .45, .94);
+}
+
+/* ── Anklepants fallback (if not loaded via @font-face elsewhere) */
+@font-face {
+    font-family : 'Anklepants';
+    src         : local('Anklepants'),
+                  local('Arial Black');              /* safe fallback */
+    font-display: swap;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. PAGE SHELL
+══════════════════════════════════════════════════════════════ */
+.bim-page {
+    background : var(--bim-bg-page);
+    min-height : 100vh;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. LAYOUT  — sidebar + content equal-height, scroll spy aligned
+   Key: both columns START at the same vertical point and the
+   sidebar sticks at the same top offset as the content scrolls.
+══════════════════════════════════════════════════════════════ */
+.bim-layout {
+    display        : flex;
+    align-items    : flex-start;   /* both start at same top */
+    gap            : 0;
+    position       : relative;
+    /* visually draw the divider line full height */
+    background     : linear-gradient(
+                         to right,
+                         var(--bim-bg-page) var(--bim-sidebar-w),
+                         var(--bim-border)  var(--bim-sidebar-w),
+                         var(--bim-border)  calc(var(--bim-sidebar-w) + 1px),
+                         var(--bim-bg-page) calc(var(--bim-sidebar-w) + 1px)
+                     );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. SIDEBAR
+   — Fixed width, sticky from same top as content sections
+   — Scrolls independently when nav list is long
+══════════════════════════════════════════════════════════════ */
+.bim-sidebar {
+    width          : var(--bim-sidebar-w);
+    flex-shrink    : 0;
+
+    /* sticky — top must match the offset used in JS scroll spy */
+    position       : sticky;
+    top            : var(--bim-sidebar-top);
+    align-self     : flex-start;
+
+    max-height     : calc(100vh - var(--bim-sidebar-top) - 20px);
+    overflow-y     : auto;
+    overflow-x     : hidden;
+
+    flex-direction : column;
+    justify-content: space-between;
+
+    /* right border is rendered via .bim-layout background above */
+    padding        : 1.75rem 0 1.5rem;
+    scrollbar-width: none;
+}
+.bim-sidebar::-webkit-scrollbar { display: none; }
+
+/* ── Nav list ───────────────────────────────────────────────── */
+.bim-sidebar__list {
+    list-style : none;
+    padding    : 0;
+    margin     : 0;
+}
+
+.bim-sidebar__item {
+    border-bottom: 1px solid var(--bim-border);
+}
+.bim-sidebar__item:first-child {
+    border-top: 1px solid var(--bim-border);
+}
+
+.bim-sidebar__link {
+    display        : flex;
+    align-items    : center;
+    gap            : .65rem;
+    padding        : .9rem 1.2rem;
+    color          : var(--bim-muted);
+    text-decoration: none;
+
+    /* font: body / secondary */
+    font-family    : var(--plm-heading);
+    font-size      : .8rem;
+    font-weight    : 400;
+    letter-spacing : .01em;
+
+    transition     : color .2s ease, background .2s ease, border-color .2s ease;
+    border-left    : 3px solid transparent;
+    line-height    : 1.3;
+}
+
+.bim-sidebar__link:hover {
+    color      : var(--plm-primary);
+    background : rgba(236, 101, 2, .04);
+}
+
+.bim-sidebar__link.active {
+    color        : var(--plm-primary);
+    font-weight  : 500;
+    border-color : var(--plm-primary);
+    background   : rgba(236, 101, 2, .06);
+}
+
+/* icon */
+.bim-sidebar__icon {
+    width      : 17px;
+    height     : 17px;
+    flex-shrink: 0;
+    display    : flex;
+    color      : inherit;
+}
+.bim-sidebar__icon svg { width: 100%; height: 100%; }
+
+/* label */
+.bim-sidebar__label { flex: 1; }
+
+/* arrow — slides in on hover/active */
+.bim-sidebar__arrow {
+    font-size  : .7rem;
+    opacity    : 0;
+    transform  : translateX(-5px);
+    transition : opacity .2s, transform .2s;
+    color      : var(--plm-primary);
+}
+.bim-sidebar__link:hover .bim-sidebar__arrow,
+.bim-sidebar__link.active .bim-sidebar__arrow {
+    opacity  : 1;
+    transform: translateX(0);
+}
+
+/* ── Sidebar CTA block ──────────────────────────────────────── */
+.bim-sidebar__cta {
+    padding        : 1.25rem 1.2rem;
+    display        : flex;
+    flex-direction : column;
+    gap            : .55rem;
+    border-top     : 1px solid var(--bim-border);
+    margin-top     : .5rem;
+}
+
+.bim-sidebar__cta-btn {
+    display        : block;
+    background     : var(--plm-primary);
+    color          : #fff;
+    text-align     : center;
+    padding        : .7rem .5rem;
+    font-family    : var(--plm-heading);
+    font-size      : .7rem;
+    font-weight    : 600;
+    letter-spacing : .14em;
+    text-transform : uppercase;
+    text-decoration: none;
+    transition     : background .2s;
+}
+.bim-sidebar__cta-btn:hover { background: #c94f10; color: #fff; }
+
+.bim-sidebar__cta-contact {
+    display        : flex;
+    align-items    : center;
+    gap            : .4rem;
+    color          : var(--bim-muted);
+    font-family    : var(--plm-heading);
+    font-size      : .7rem;
+    text-decoration: none;
+    transition     : color .2s;
+    word-break     : break-all;
+}
+.bim-sidebar__cta-contact:hover { color: var(--plm-primary); }
+
+/* ══════════════════════════════════════════════════════════════
+   5. MOBILE HORIZONTAL NAV  (< lg)
+══════════════════════════════════════════════════════════════ */
+.bim-mnav {
+    position     : sticky;
+    top          : 0;
+    z-index      : 200;
+    background   : #fff;
+    border-bottom: 1px solid var(--bim-border);
+    box-shadow   : 0 2px 8px rgba(0,0,0,.06);
+}
+
+.bim-mnav__track {
+    display        : flex;
+    overflow-x     : auto;
+    scrollbar-width: none;
+    padding        : 0 .5rem;
+    gap            : 0;
+}
+.bim-mnav__track::-webkit-scrollbar { display: none; }
+
+.bim-mnav__tab {
+    flex-shrink    : 0;
+    padding        : .85rem .9rem;
+    font-family    : var(--plm-heading);
+    font-size      : .76rem;
+    font-weight    : 400;
+    color          : var(--bim-muted);
+    text-decoration: none;
+    border-bottom  : 2px solid transparent;
+    white-space    : nowrap;
+    transition     : color .2s, border-color .2s;
+}
+.bim-mnav__tab.active,
+.bim-mnav__tab:hover {
+    color       : var(--plm-primary);
+    border-color: var(--plm-primary);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. CONTENT AREA
+   — flex: 1, starts flush with sidebar top
+   — Sections have consistent padding so scroll spy fires cleanly
+══════════════════════════════════════════════════════════════ */
+.bim-content {
+    flex     : 1;
+    min-width: 0;
+    padding  : 0 0 4rem 2.5rem;
+}
+
+/* ── Sections ───────────────────────────────────────────────── */
+.bim-sec {
+    padding       : 3rem 0;
+    scroll-margin-top: calc(var(--bim-sidebar-top) + 20px); /* aligns with sidebar sticky top */
+}
+
+.bim-hr {
+    border    : none;
+    border-top: 1px solid var(--bim-border);
+    margin    : 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. TYPOGRAPHY  — mapped to brand tokens
+══════════════════════════════════════════════════════════════ */
+
+/* H2 — primary headings use --plm-heading (Arial) */
+.bim-h2 {
+    font-family: var(--plm-heading);
+    font-size  : clamp(1.75rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    color      : var(--bim-dark);
+    line-height: 1.12;
+    font-style : normal;
+}
+
+/* H3 — subheadings use --plm-subheading (Anklepants) */
+.bim-h3 {
+    font-family: var(--plm-subheading);
+    font-size  : clamp(1.05rem, 2vw, 1.3rem);
+    font-weight: 500;
+    color      : var(--bim-dark);
+}
+
+/* Body copy */
+.bim-body {
+    font-family: var(--plm-heading);   /* Arial for readability */
+    font-size  : .9rem;
+    color      : #4b5563;
+    line-height: 1.75;
+    margin     : 0;
+}
+
+/* Orange accent */
+.bim-orange {
+    color     : var(--plm-primary);
+    font-style: normal;
+}
+
+/* ── Tag / eyebrow label ────────────────────────────────────── */
+.bim-tag {
+    display       : inline-flex;
+    align-items   : center;
+    gap           : .55rem;
+    font-family   : var(--plm-heading);
+    font-size     : .67rem;
+    font-weight   : 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color         : var(--plm-primary);
+}
+.bim-tag__bar {
+    display   : block;
+    width     : 1.75rem;
+    height    : 2px;
+    background: var(--plm-primary);
+    flex-shrink: 0;
+}
+
+/* ── Badge chip ─────────────────────────────────────────────── */
+.bim-badge {
+    display       : inline-block;
+    background    : var(--plm-primary);
+    color         : #fff;
+    font-family   : var(--plm-heading);
+    font-size      : .62rem;
+    font-weight    : 500;
+    letter-spacing : .13em;
+    text-transform : uppercase;
+    padding        : .28rem .7rem;
+}
+
+/* ── Check item ─────────────────────────────────────────────── */
+.bim-check {
+    display    : flex;
+    align-items: flex-start;
+    gap        : .5rem;
+    font-family: var(--plm-heading);
+    font-size  : .84rem;
+    color      : #374151;
+}
+.bim-check__icon {
+    width     : 17px;
+    height    : 17px;
+    flex-shrink: 0;
+    color     : var(--plm-primary);
+    margin-top: 2px;
+}
+.bim-check__icon svg { width: 100%; height: 100%; }
+
+/* ══════════════════════════════════════════════════════════════
+   8. OVERVIEW — image frame + stats + sub-block
+══════════════════════════════════════════════════════════════ */
+.bim-img-frame {
+    position: relative;
+    border  : 3px solid var(--plm-primary);
+}
+.bim-img-frame img {
+    display   : block;
+    width     : 100%;
+    height    : 225px;
+    object-fit: cover;
+}
+.bim-img-frame__badge {
+    position       : absolute;
+    bottom         : -.55rem;
+    right          : -.55rem;
+    background     : var(--bim-dark);
+    color          : #fff;
+    padding        : .5rem .9rem;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+}
+.bim-img-frame__badge span  { font-family: var(--plm-subheading); font-size: .9rem; font-weight: 700; color: var(--plm-primary); }
+.bim-img-frame__badge small { font-family: var(--plm-heading); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; }
+
+/* Stats strip */
+.bim-stats {
+    display   : flex;
+    flex-wrap : wrap;
+    gap       : 1rem;
+    padding   : 1.4rem 1.5rem;
+    background: #fff;
+    border    : 1px solid var(--bim-border);
+}
+.bim-stats__item {
+    display   : flex;
+    flex-direction: column;
+    gap       : .2rem;
+    flex      : 1;
+    min-width : 100px;
+}
+.bim-stats__item strong {
+    font-family: var(--plm-subheading);
+    font-size  : 1.05rem;
+    color      : var(--bim-dark);
+}
+.bim-stats__item span {
+    font-family   : var(--plm-heading);
+    font-size     : .68rem;
+    color         : var(--bim-muted);
+    letter-spacing: .04em;
+}
+.bim-stats__div { width: 1px; background: var(--bim-border); align-self: stretch; }
+
+/* Sub-block */
+.bim-sub-block {
+    padding   : 1.75rem;
+    background: #fff;
+    border    : 1px solid var(--bim-border);
+}
+.bim-sub-block__line { height: 2px; background: var(--bim-border); }
+
+/* ══════════════════════════════════════════════════════════════
+   9. CAPABILITIES CARDS
+══════════════════════════════════════════════════════════════ */
+.bim-cap-card {
+    background: var(--bim-bg-card);
+    border    : 1px solid var(--bim-border);
+    padding   : 1.5rem;
+    height    : 100%;
+    transition: box-shadow .25s, transform .25s;
+}
+.bim-cap-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,.08);
+    transform : translateY(-3px);
+}
+
+.bim-cap-card__top {
+    display    : flex;
+    align-items: center;
+    gap        : .75rem;
+    margin-bottom: .9rem;
+}
+.bim-cap-card__num {
+    width          : 34px;
+    height         : 34px;
+    background     : var(--plm-primary);
+    color          : #fff;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    font-family    : var(--plm-subheading);
+    font-size      : .78rem;
+    font-weight    : 500;
+    flex-shrink    : 0;
+}
+.bim-cap-card__line { flex: 1; height: 1px; background: var(--bim-border); }
+
+.bim-cap-card__title {
+    font-family  : var(--plm-subheading);
+    font-size    : 1rem;
+    font-weight  : 700;
+    color        : var(--bim-dark);
+    margin-bottom: .45rem;
+}
+.bim-cap-card__desc {
+    font-family  : var(--plm-heading);
+    font-size    : .82rem;
+    color        : var(--bim-muted);
+    line-height  : 1.65;
+    margin-bottom: .85rem;
+}
+.bim-cap-card__list {
+    list-style: none;
+    padding   : 0;
+    margin    : 0;
+    display   : flex;
+    flex-direction: column;
+    gap       : .4rem;
+}
+.bim-cap-card__list li {
+    display    : flex;
+    align-items: flex-start;
+    gap        : .4rem;
+    font-family: var(--plm-heading);
+    font-size  : .81rem;
+    color      : #374151;
+}
+.bim-cap-card__dot {
+    width        : 7px;
+    height       : 7px;
+    border-radius: 50%;
+    background   : var(--plm-primary);
+    flex-shrink  : 0;
+    margin-top   : .35rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. TECHNOLOGIES
+══════════════════════════════════════════════════════════════ */
+.bim-tech-meta {
+    display    : flex;
+    flex-wrap  : wrap;
+    align-items: center;
+    gap        : 1rem 1.5rem;
+    padding    : 1rem 1.25rem;
+    background : #fff;
+    border     : 1px solid var(--bim-border);
+}
+.bim-tech-meta__stat {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+.bim-tech-meta__stat strong {
+    font-family: var(--plm-subheading);
+    font-size  : 1.55rem;
+    color      : var(--plm-primary);
+    line-height: 1;
+}
+.bim-tech-meta__stat span {
+    font-family   : var(--plm-heading);
+    font-size     : .62rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color         : var(--bim-muted);
+}
+.bim-tech-meta__sep  { width: 1px; height: 40px; background: var(--bim-border); }
+.bim-tech-meta__tags {
+    font-family: var(--plm-heading);
+    font-size  : .76rem;
+    color      : var(--bim-muted);
+    flex       : 1;
+}
+
+.bim-tech-card {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    gap            : .6rem;
+    padding        : 1.25rem .75rem;
+    background     : #fff;
+    border         : 1px solid var(--bim-border);
+    transition     : box-shadow .22s, transform .22s;
+    text-align     : center;
+    cursor         : default;
+}
+.bim-tech-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    transform : translateY(-3px);
+}
+.bim-tech-card__icon {
+    width          : 52px;
+    height         : 52px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    font-family    : var(--plm-subheading);
+    font-size      : .76rem;
+    font-weight    : 700;
+    color          : #fff;
+    letter-spacing : .04em;
+}
+.bim-tech-card__label {
+    font-family: var(--plm-heading);
+    font-size  : .7rem;
+    color      : var(--bim-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   11. INDUSTRY CARDS
+══════════════════════════════════════════════════════════════ */
+.bim-ind-card {
+    background: #fff;
+    border    : 1px solid var(--bim-border);
+    overflow  : hidden;
+    transition: box-shadow .25s, transform .25s;
+}
+.bim-ind-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,.1);
+    transform : translateY(-3px);
+}
+.bim-ind-card__img { position: relative; height: 162px; overflow: hidden; }
+.bim-ind-card__img img {
+    width     : 100%;
+    height    : 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+    display   : block;
+}
+.bim-ind-card:hover .bim-ind-card__img img { transform: scale(1.04); }
+
+.bim-ind-card__overlay {
+    position  : absolute;
+    inset     : 0;
+    background: linear-gradient(to top, rgba(0,0,0,.4), transparent 60%);
+}
+.bim-ind-card__badges {
+    position: absolute;
+    top     : .75rem;
+    left    : .75rem;
+    display : flex;
+    align-items: center;
+    gap     : .5rem;
+}
+.bim-ind-card__sq {
+    width          : 28px;
+    height         : 28px;
+    background     : var(--plm-primary);
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+.bim-ind-card__sq svg { width: 14px; height: 14px; }
+.bim-ind-card__num {
+    background : rgba(0,0,0,.55);
+    color      : #fff;
+    font-family: var(--plm-subheading);
+    font-size  : .68rem;
+    font-weight: 700;
+    padding    : .2rem .45rem;
+}
+.bim-ind-card__body  { padding: 1rem 1.1rem 1.2rem; }
+.bim-ind-card__title {
+    font-family  : var(--plm-subheading);
+    font-size    : .94rem;
+    font-weight  : 700;
+    color        : var(--plm-primary);
+    margin-bottom: .35rem;
+}
+.bim-ind-card__desc {
+    font-family: var(--plm-heading);
+    font-size  : .81rem;
+    color      : var(--bim-muted);
+    line-height: 1.6;
+    margin     : 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   12. PROCESS TIMELINE
+══════════════════════════════════════════════════════════════ */
+.bim-process { display: flex; flex-direction: column; }
+
+.bim-process__row {
+    display      : flex;
+    align-items  : flex-start;
+    gap          : 1.25rem;
+    padding      : 1.25rem 0;
+    border-bottom: 1px solid var(--bim-border);
+}
+.bim-process__row:last-child { border-bottom: none; }
+
+.bim-process__left {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    flex-shrink    : 0;
+    width          : 44px;
+}
+.bim-process__num {
+    width          : 44px;
+    height         : 44px;
+    background     : var(--bim-dark);
+    color          : #fff;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    font-family    : var(--plm-subheading);
+    font-size      : .78rem;
+    font-weight    : 700;
+    flex-shrink    : 0;
+}
+.bim-process__line {
+    width     : 2px;
+    flex      : 1;
+    min-height: 24px;
+    background: var(--bim-border);
+    margin-top: .3rem;
+}
+.bim-process__body  { padding-top: .5rem; flex: 1; }
+.bim-process__title {
+    font-family  : var(--plm-subheading);
+    font-size    : 15px;
+    font-weight  : 400;
+    color        : var(--bim-dark);
+    margin-bottom: .35rem;
+}
+.bim-process__desc {
+    font-family: var(--plm-heading);
+    font-size  : .84rem;
+    color      : var(--bim-muted);
+    line-height: 1.65;
+    margin     : 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   13. FAQ ACCORDION
+══════════════════════════════════════════════════════════════ */
+.bim-faq { display: flex; flex-direction: column; }
+
+.bim-faq__item {
+    border       : 1px solid var(--bim-border);
+    margin-bottom: .45rem;
+    background   : #fff;
+}
+.bim-faq__q {
+    width          : 100%;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    gap            : 1rem;
+    padding        : 1.1rem 1.25rem;
+    background     : transparent;
+    border         : none;
+    text-align     : left;
+    font-family    : var(--plm-heading);
+    font-size      : .87rem;
+    font-weight    : 600;
+    color          : var(--bim-dark);
+    cursor         : pointer;
+    transition     : color .2s;
+}
+.bim-faq__q:hover,
+.bim-faq__q:not(.collapsed) { color: var(--plm-primary); }
+
+.bim-faq__icon {
+    position   : relative;
+    width      : 22px;
+    height     : 22px;
+    background : var(--plm-primary);
+    flex-shrink: 0;
+    transition : background .2s;
+}
+.bim-faq__icon::before,
+.bim-faq__icon::after {
+    content   : '';
+    position  : absolute;
+    top       : 50%;
+    left      : 50%;
+    width     : 10px;
+    height    : 2px;
+    background: #fff;
+    transform : translate(-50%, -50%);
+    transition: transform .25s, opacity .25s;
+}
+.bim-faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+.bim-faq__q:not(.collapsed) .bim-faq__icon { background: var(--bim-dark); }
+.bim-faq__q:not(.collapsed) .bim-faq__icon::after {
+    opacity  : 0;
+    transform: translate(-50%, -50%) rotate(0);
+}
+.bim-faq__a {
+    padding    : 0 1.25rem 1.1rem;
+    font-family: var(--plm-heading);
+    font-size  : .85rem;
+    color      : var(--bim-muted);
+    line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   14. SCROLL-REVEAL ANIMATIONS
+══════════════════════════════════════════════════════════════ */
+.bim-anim {
+    opacity   : 0;
+    will-change: opacity, transform;
+    transition : opacity .6s var(--bim-ease),
+                 transform .6s var(--bim-ease);
+}
+.bim-anim--down  { transform: translateY(-22px); }
+.bim-anim--up    { transform: translateY(22px);  }
+.bim-anim--left  { transform: translateX(-26px); }
+.bim-anim--right { transform: translateX(26px);  }
+
+.bim-anim--in {
+    opacity  : 1;
+    transform: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   15. RESPONSIVE
+══════════════════════════════════════════════════════════════ */
+
+/* ── tablet ─────────────────────────────────────────────────── */
+@media (max-width: 991.98px) {
+    .bim-layout  {
+        flex-direction: column;
+        background    : none; /* remove gradient rule on mobile */
+    }
+    .bim-content { padding: 0; }
+    .bim-sec     { padding: 2rem 1rem; }
+}
+
+/* ── mobile ─────────────────────────────────────────────────── */
+@media (max-width: 575.98px) {
+    .bim-stats          { flex-direction: column; }
+    .bim-stats__div     { width: 100%; height: 1px; }
+    .bim-tech-meta      { flex-direction: column; align-items: flex-start; }
+    .bim-tech-meta__sep { width: 100%; height: 1px; }
+    .bim-img-frame img  { height: 185px; }
+    .bim-sec            { padding: 1.75rem .75rem; }
+}
+
+/* ── wide desktop ───────────────────────────────────────────── */
+@media (min-width: 1200px) {
+    :root            { --bim-sidebar-w: 245px; }
+    .bim-content     { padding-left: 3.5rem; }
+}
+
+@media (min-width: 1400px) {
+    :root        { --bim-sidebar-w: 260px; }
+    .bim-content { padding-left: 4rem; }
+}

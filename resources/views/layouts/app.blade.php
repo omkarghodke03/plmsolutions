@@ -15,10 +15,22 @@
 
     <!--  Your CSS from resources/css/ -->
     <!--  Your js from resources/css/ -->
-    @vite(['resources/css/custom.css','resources/css/sections.css', 'resources/css/cookie-consent.css','resources/css/contact.css','resources/css/aboutus.css'])
-    @vite(['resources/js/custom.js ','resources/js/cookies.js','resources/js/cookie-consent.js'])
-    @stack('styles')
+    @vite([
+    'resources/css/custom.css',
+    'resources/css/sections.css',
+    'resources/css/cookie-consent.css',
+    'resources/css/contact.css',
+    'resources/css/aboutus.css'
+    ])
+
+  @vite([
+    'resources/js/custom.js',
+    'resources/js/cookies.js',
+    'resources/js/cookie-consent.js'
+    ])
     
+    @stack('styles')
+    @vite(['resources/css/service/service.css']) 
 </head>
 <body>
     @include('partials.preloader')<!--Preloader-->

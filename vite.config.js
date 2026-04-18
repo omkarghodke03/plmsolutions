@@ -12,7 +12,8 @@ export default defineConfig({
                 'resources/js/custom.js',
                 'resources/js/cookie-consent.js',
                 'resources/css/contact.css',
-                'resources/css/aboutus.css'
+                'resources/css/aboutus.css',
+                'resources/css/service/service.css'
             ],
             refresh: true,
         }),

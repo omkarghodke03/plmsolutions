@@ -193,7 +193,7 @@
         <div class="row mb-4 align-items-center">
             <div class="col-lg-8">
                 <p class="industryplm-tag">INDUSTRIES WE SERVE</p>
-               <h2 class="industryplm-heading typewriter animate">
+               <h2 class="industryplm-heading ">
                 Built for Complex Industries
                </h2>
             </div>
@@ -710,7 +710,7 @@ CPU (Solutions):
 
 /* ── Tokens ── */
 :root {
-    --dm-primary      : #EC6502;
+    --dm-primary      : #ec6502;
     --dm-bg           : #1e1e1e;
     --dm-text         : #ffffff;
     --dm-muted        : #9a9a9a;
@@ -854,8 +854,8 @@ CPU (Solutions):
 /* Title */
 .delivery-model-step-title {
     font-family: var(--dm-font-heading);
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 500;
     color: var(--dm-secondary);
     margin: 0 0 8px;
     transition: color 0.4s var(--dm-ease);
