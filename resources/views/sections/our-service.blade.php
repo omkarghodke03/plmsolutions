@@ -36,9 +36,8 @@
 
 /* ── Header Area ───────────────────────────────────────────── */
 .our-service-eyebrow {
-    font-family : var(--plm-subheading);
     font-size   : 12px;
-    font-weight : 600;
+    font-weight : 500;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color       : var(--plm-primary);
@@ -48,8 +47,8 @@
 .our-service-heading {
     font-family : var(--plm-heading);
     font-size   : clamp(28px, 4vw, 40px);
-    font-weight : 500;
-    color       : #1a1a1a;
+    font-weight : 600;
+    color       : #000000;
     line-height : 1.15;
     margin-bottom: 0;
 }
@@ -216,7 +215,7 @@
 
 .our-service-card__title {
     font-family  : var(--plm-heading);
-    font-size    : 22px;
+    font-size    : 33px;
     font-weight  : 700;
     color        : #fff;
     line-height  : 1.2;
@@ -226,7 +225,7 @@
 
 .our-service-card__text {
     font-family  : var(--plm-heading);
-    font-size    : 13px;
+    font-size    : 16px;
     color        : rgba(255,255,255,0.8);
     line-height  : 1.55;
     margin-bottom: 14px;
@@ -272,7 +271,7 @@
     color       : #fff;
     background  : var(--plm-primary);
     border      : 2px solid var(--plm-primary);
-    border-radius: 0;
+    border-radius: 15px;
     position    : relative;
     overflow    : hidden;
     cursor      : pointer;
@@ -409,9 +408,7 @@
             {{-- Right: Description --}}
             <div class="col-lg-6">
                 <p class="our-service-desc mb-0">
-                    Milestone PLM provides a comprehensive range of engineering,
-                    BIM, and digital design services that help global companies
-                    scale project delivery.
+                    Milestone PLM Solutions offers end-to-end AEC Services and Engineering Design Services that enable global companies to streamline project execution, enhance collaboration, and achieve exceptional project outcomes.
                 </p>
             </div>
         </div>
@@ -438,45 +435,45 @@
             $services = [
                 [
                     'title'  => 'BIM Services',
-                    'desc'   => 'Full-spectrum BIM services from modeling to coordination, clash detection, and 4D/5D scheduling across all project phases.',
-                    'image'  => 'images/home-about-images1.jpg',   // → public/images/home-about-images1.jpg
+                    'desc'   => 'Our BIM services deliver coordinated, construction-ready models that improve collaboration, reduce rework, and enhance project delivery through modeling, coordination, clash detection, Scan to BIM, and 4D/5D planning.',
+                    'image'  => 'images/BIM-Services-plm-solution.jpg',   // → public/images/home-about-images1.jpg
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
                 ],
                 [
                     'title'  => 'Architectural Services',
-                    'desc'   => 'End-to-end architectural design, documentation, and visualization for residential and commercial projects.',
-                    'image'  => 'images/home-about-images2.png',   // → public/images/home-about-images2.png
+                    'desc'   => 'Our architectural services deliver precise, design-ready solutions that improve coordination, enhance visualization, and streamline project execution through 3D Rendering, 3D Modeling, BIM Modeling, Revit BIM, Modular BIM, 2D Drafting, and Construction Documentation.',
+                    'image'  => 'images/Architectural-Services.jpg',   // → public/images/home-about-images2.png
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
                 ],
                 [
                     'title'  => 'Millwork Design',
-                    'desc'   => 'Custom millwork drafting and shop drawing production for interior cabinetry and joinery.',
-                    'image'  => 'images/home-about-images1.jpg',   // → public/images/home-about-images3.jpg
+                    'desc'   => 'Our millwork services provide coordinated, fabrication-ready solutions through detailed shop drawings, 3D modeling, custom cabinetry detailing, joinery detailing, and production documentation, helping reduce errors, improve accuracy, and streamline manufacturing and installation processes.',
+                    'image'  => 'images/Millwork-Design.jpg',   // → public/images/home-about-images3.jpg
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
                 ],
                 [
                     'title'  => 'Structural Services',
-                    'desc'   => 'Structural engineering design, analysis, and detailing for diverse construction typologies.',
-                    'image'  => 'images/home-about-images1.jpg',   // → public/images/home-about-images4.jpg
+                    'desc'   => 'Our structural services provide coordinated, fabrication-ready solutions through steel detailing, precast detailing, rebar detailing, shop drawings, and 3D modeling, helping reduce errors and streamline construction delivery.',
+                    'image'  => 'images/structural-design-services.jpg',   // → public/images/home-about-images4.jpg
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
                 ],
                 [
                     'title'  => 'MEP Services',
-                    'desc'   => 'Mechanical, electrical, and plumbing design, coordination, and clash-free BIM modeling.',
-                    'image'  => 'images/home-about-images2.png',   // → public/images/home-about-images5.jpg
+                    'desc'   => 'Our MEP services enhance project coordination and constructability through accurate drafting, modeling, shop drawings, and as-built documentation, helping teams reduce rework and improve project delivery.',
+                    'image'  => 'images/mep-services.jpg',   // → public/images/home-about-images5.jpg
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>',
                 ],
                 [
                     'title'  => 'Engineering Solutions',
-                    'desc'   => 'Integrated engineering consulting and digital solutions for complex infrastructure challenges.',
-                    'image'  => 'images/home-about-images2.png',   // → public/images/home-about-images6.jpg
+                    'desc'   => 'Our engineering solutions provide coordinated, production-ready support through product design and development, CAD detailing, automotive design, CFD and FEA analysis, manufacturing support, engineering documentation, value engineering, and rapid prototyping, helping reduce development risks and streamline product realization.',
+                    'image'  => 'images/engineering-solutions.jpg',   // → public/images/home-about-images6.jpg
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
                 ],
                 [
-                    'title'  => 'Contract Staffing',
-                    'desc'   => 'On-demand BIM, CAD, and engineering professionals to augment your project teams.',
-                    'image'  => 'images/home-about-images2.png',   // → public/images/home-about-images7.jpg
-                    'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+                    'title'  => 'IT Services',
+                    'desc'   => 'Our IT services help organizations accelerate digital transformation through intelligent technology solutions, digital twin implementation, process optimization, data-driven insights, and innovation strategies that improve efficiency, collaboration, and operational performance.',
+                    'image'  => 'images/IT-Services.jpg',   // → public/images/home-about-images7.jpg
+                    'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
                 ],
             ];
         @endphp
@@ -544,7 +541,7 @@
         {{-- ── CTA Button ───────────────────────────────────────── --}}
         <div class="text-center mt-5">
             <a  class="our-service-btn our-service-btc">
-                View All Services
+                 VIEW ALL SERVICES  
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                      fill="none" stroke="currentColor" stroke-width="2"
                      viewBox="0 0 24 24">

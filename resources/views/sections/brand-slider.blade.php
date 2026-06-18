@@ -12,43 +12,55 @@
 
                 {{-- ========== Original Set ========== --}}
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/aws.svg') }}" alt="Dropbox" />
+                    <img src="{{ asset('images/brand-1.png') }}" alt="Dropbox" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/google.svg') }}" alt="Oracle NetSuite" />
+                    <img src="{{ asset('images/brand-2.png') }}" alt="Oracle NetSuite" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/azure.svg') }}" alt="Microsoft Outlook" />
+                    <img src="{{ asset('images/brand-3.png') }}" alt="Microsoft Outlook" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/salesforce.svg') }}" alt="Salesforce" />
+                    <img src="{{ asset('images/brand-4.png') }}" alt="Salesforce" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/zoho.svg') }}" alt="Zoho People" />
+                    <img src="{{ asset('images/brand-5.png') }}" alt="Zoho People" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/aws.svg') }}" alt="Partner Logo" />
+                    <img src="{{ asset('images/brand-6.jpg') }}" alt="Partner Logo" />
+                </div>
+                 <div class="brand-slider-item">
+                    <img src="{{ asset('images/brand-7.png') }}" alt="Partner Logo" />
+                </div>
+                 <div class="brand-slider-item">
+                    <img src="{{ asset('images/brand-8.png') }}" alt="Partner Logo" />
+                </div>
+                 <div class="brand-slider-item">
+                    <img src="{{ asset('images/brand-9.png') }}" alt="Partner Logo" />
+                </div>
+                 <div class="brand-slider-item">
+                    <img src="{{ asset('images/brand-10.png') }}" alt="Partner Logo" />
                 </div>
                 {{-- Add more logos here as needed --}}
 
                 {{-- ========== Duplicate Set (for seamless loop) ========== --}}
                <div class="brand-slider-item">
-                    <img src="{{ asset('images/aws.svg') }}" alt="Dropbox" />
+                    <img src="{{ asset('images/brand-1.png') }}" alt="Dropbox" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/google.svg') }}" alt="Oracle NetSuite" />
+                    <img src="{{ asset('images/brand-2.png') }}" alt="Oracle NetSuite" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/azure.svg') }}" alt="Microsoft Outlook" />
+                    <img src="{{ asset('images/brand-3.png') }}" alt="Microsoft Outlook" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/salesforce.svg') }}" alt="Salesforce" />
+                    <img src="{{ asset('images/brand-4.png') }}" alt="Salesforce" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/zoho.svg') }}" alt="Zoho People" />
+                    <img src="{{ asset('images/brand-5.png') }}" alt="Zoho People" />
                 </div>
                 <div class="brand-slider-item">
-                    <img src="{{ asset('images/aws.svg') }}" alt="Partner Logo" />
+                    <img src="{{ asset('images/brand-6.png') }}" alt="Partner Logo" />
                 </div>
 
             </div>{{-- /.brand-slider-track --}}

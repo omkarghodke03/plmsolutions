@@ -97,8 +97,8 @@
 .brand-slider-item img {
   max-width: 130px;
   max-height: 52px;
-  width: auto;
-  height: auto;
+  width: 150px;
+  height: 250px;
   object-fit: contain;
 
   /* Desaturate by default; colour on hover for a polished feel */
@@ -200,12 +200,12 @@
     --plm-subheading-font: 'Anklepants', sans-serif;
 
     /* Section-specific tokens — easy to tweak */
-    --odm-bg             : #1a1a1a;        /* Section background          */
-    --odm-card-bg        : #242424;        /* Left info card background   */
-    --odm-card-border    : rgba(255,255,255,0.07);
+    --odm-bg             : #FFFFFF;        /* Section background          */
+    --odm-card-bg        : #ffffff;        /* Left info card background   */
+    --odm-card-border    : rgba(0, 0, 0, 0.07);
     --odm-tag-bg         : transparent;
-    --odm-tag-border     : rgba(255,255,255,0.2);
-    --odm-tag-color      : rgba(255,255,255,0.65);
+    --odm-tag-border     : #EC6502;
+    --odm-tag-color      : #Ec6502;
     --odm-grid-line      : rgba(255,255,255,0.04);
     --odm-transition     : 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     --odm-radius         : 14px;
@@ -261,7 +261,7 @@
    ════════════════════════════════════════════════════════════ */
 
 .our-delivery-model-left {
-    flex       : 0 0 340px;          /* fixed width on desktop */
+    flex       : 0 0 470px;          /* fixed width on desktop */
     min-width  : 0;
 }
 
@@ -291,10 +291,10 @@
 
 /* ── Eyebrow ──── */
 .our-delivery-model-eyebrow {
-    font-family   : var(--plm-subheading-font);
-    font-size     : 11px;
-    font-weight   : 600;
-    letter-spacing: 3px;
+  
+    font-size     : 12px;
+    font-weight   : 500;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color         : var(--plm-primary);
     margin-bottom : 16px;
@@ -303,30 +303,21 @@
 /* ── Heading ──── */
 .our-delivery-model-heading {
     font-family: var(--plm-heading-font);
-    font-size: clamp(30px, 3.5vw, 46px);
+    font-size: clamp(40px, 2.5vw, 44px);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 20px;
 }
 .our-delivery-model-heading {
     /* Fallback color (VERY IMPORTANT) */
-    color: var(--plm-primary);
+    color: black;
 
    
-    font-size: clamp(30px, 3.5vw, 46px);
+    font-size: clamp(32px, 3.5vw, 46px);
     font-weight: 800;
     line-height: 1.1;
-
-    /* Background animation */
-    background-image: url('https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop');
-    background-size: 200%;
-    background-position: 0 50%;
-
-    /* Apply mask ONLY if supported */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: odm-animate-bg 6s infinite alternate linear;
+  
+  
 }
 
 /* Highlighted word in heading */
@@ -344,21 +335,22 @@
 /* ── Description ──── */
 .our-delivery-model-desc {
     font-family  : var(--plm-heading-font);
-    font-size    : 14px;
+    font-size    : 17px;
+     font-weight: 500;
     line-height  : 1.7;
-    color        : rgba(255,255,255,0.55);
+    color        : rgba(0, 0, 0, 0.55);
     margin-bottom: 24px;
 }
 
 .our-delivery-model-desc strong {
-    color      : rgba(255,255,255,0.85);
+    color      : rgba(0, 0, 0, 0.85);
     font-weight: 600;
 }
 
 /* ── Tag Pills ──── */
 .our-delivery-model-tags {
-    display    : flex;
-    flex-wrap  : wrap;
+    display              : grid;
+    grid-template-columns: 1fr 1fr; 
     gap        : 8px;
     margin-bottom: 32px;
 }
@@ -397,7 +389,7 @@
     letter-spacing: 1.5px;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: 0;
+    border-radius:15px;
     position     : relative;
     overflow     : hidden;
     cursor       : pointer;
@@ -463,10 +455,10 @@
 /* ── Engineering Stack ──── */
 .our-delivery-model-stack-label {
     font-family   : var(--plm-heading-font);
-    font-size     : 10px;
+    font-size     : 12px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color         : rgba(255,255,255,0.3);
+    color         : #6e6e6e;
     margin-bottom : 10px;
     margin-top    : 28px;
 }
@@ -480,19 +472,19 @@
 .our-delivery-model-stack-tag {
     display      : inline-block;
     padding      : 5px 12px;
-    border       : 1px solid rgba(255,255,255,0.1);
-    border-radius: 6px;
+    border       : 1px solid #e0e0e0;
+    border-radius: 0px;
     font-family  : var(--plm-heading-font);
-    font-size    : 11px;
-    color        : rgba(255,255,255,0.4);
-    background   : rgba(255,255,255,0.03);
+    font-size    : 15px;
+    color        : #313131;
+    background   : #ffffff;
     transition   : border-color 0.2s, color 0.2s;
     cursor       : default;
 }
 
 .our-delivery-model-stack-tag:hover {
-    border-color: rgba(255,255,255,0.25);
-    color       : rgba(255,255,255,0.7);
+    border-color: #d05800;
+    color       :#d05800;
 }
 
 
@@ -510,7 +502,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows   : 1fr 1fr;
     gap                  : 12px;
-    height               : 100%;
+    height               : 80%;
     min-height           : 520px;
 }
 
@@ -605,23 +597,23 @@
     right         : 18px;
     z-index       : 3;
     font-family   : var(--plm-heading-font);
-    font-size     : 10px;
+    font-size     : 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color         : rgba(255,255,255,0.5);
+    color         : rgb(255, 255, 255);
 }
 
 /* ── Card Body (always visible) ──── */
 .our-delivery-model-card__body {
     position: relative;
     z-index : 3;
-    padding : 0 20px 20px;
+    padding : 0 20px 15px;
 }
 
 /* Card title — always visible */
 .our-delivery-model-card__title {
     font-family  : var(--plm-heading-font);
-    font-size    : clamp(20px, 2vw, 26px);
+    font-size    : clamp(23px, 2vw, 29px);
     font-weight  : 700;
     color        : #ffffff;
     margin-bottom: 0;
@@ -638,7 +630,7 @@
     font-family : var(--plm-heading-font);
     font-size   : 13px;
     line-height : 1.6;
-    color       : rgba(255,255,255,0.72);
+    color       : #ffffffb8;
     margin-bottom: 14px;
 
     /* Hidden state */
@@ -811,162 +803,186 @@
 
 
 /* ── Section background & padding ─────────────────────────── */
-.locations-four-cards-section {
-    border-top : 1px solid #999999 ;
-    background: #1c1c1c;          /* dark background — change freely */
-    padding   : 60px 0;
+/* ============================================================
+   locations.css  →  public/css/locations.css
+   <link rel="stylesheet" href="{{ asset('css/locations.css') }}">
+   ============================================================ */
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+    --loc-accent      : #EC6601;
+    --loc-heading-font: 'Arial', sans-serif; /* --plm-heading */
+    --loc-text        : #525252;
+    --loc-city-color  : #1a1a1a;
+    --loc-addr-color  : #6b6b6b;
+    --loc-img-size    : 80px;
+    --loc-ease        : 0.25s ease;
 }
 
-
-/* ── Eyebrow label (OUR GLOBAL LOCATIONS) ─────────────────── */
-.locations-four-cards-eyebrow {
-    text-align    : center;
-    font-size     : 11px;
-    font-weight   : 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color         : var(--plm-primary);   /* #EC6502 orange */
-    margin-bottom : 32px;
+/* ── Section ─────────────────────────────────────────────── */
+.loc-section {
+    padding         : 50px 0 60px;
+    background-color: #F5F5F5;
 }
 
+/* ── Section heading ─────────────────────────────────────── */
+.loc-heading {
+    font-family  : var(--loc-heading-font);
+    font-size    : clamp(15px, 1.6vw, 18px);
+    font-weight  : 500;
+    color        : var(--loc-text);
+    text-align   : center;
+    margin-bottom: 40px;
+    letter-spacing: 0.01em;
+}
 
-/* ── Card wrapper ──────────────────────────────────────────── */
-.locations-four-cards-card {
-    position     : relative;
-    border-radius: 14px;
+/* ── Card ────────────────────────────────────────────────── */
+.loc-card {
+    display    : flex;
+    align-items: flex-start;
+    gap        : 18px;
+}
+
+/* ── Circle image ────────────────────────────────────────── */
+.loc-card__img-wrap {
+    flex-shrink  : 0;
+    width        : var(--loc-img-size);
+    height       : var(--loc-img-size);
+    border-radius: 50%;
     overflow     : hidden;
-    height       : 160px;          /* card height — adjust freely */
-    cursor       : pointer;
+    border       : 3px solid #ebebeb;
+    transition   : border-color var(--loc-ease), transform var(--loc-ease);
 }
 
+.loc-card:hover .loc-card__img-wrap {
+    border-color: var(--loc-accent);
+    transform   : scale(1.05);
+}
 
-/* ── Background image ──────────────────────────────────────── */
-.locations-four-cards-img {
-    position  : absolute;
-    inset     : 0;
+.loc-card__img {
     width     : 100%;
     height    : 100%;
     object-fit: cover;
-
-    /* zoom-in on hover — starts at normal size */
-    transform : scale(1);
-    transition: transform 0.5s ease;
+    display   : block;
+    transition: transform 0.4s ease;
 }
-
-/* Zoom in when card is hovered */
-.locations-four-cards-card:hover .locations-four-cards-img {
+.loc-card:hover .loc-card__img {
     transform: scale(1.08);
 }
 
+/* ── Text body ───────────────────────────────────────────── */
+.loc-card__body {
+    display       : flex;
+    flex-direction: column;
+    gap           : 2px;
+    padding-top   : 4px;
+}
 
-/* ── Dark base tint (always visible) ──────────────────────── */
-.locations-four-cards-card::before {
+/* Country label */
+.loc-card__country {
+/* font-family: 'Arial', sans-serif; */
+    font-size    : 16px;
+    font-weight  : 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color        : var(--loc-accent);
+    line-height  : 1;
+    margin-bottom: 5px;
+    display      : block;
+}
+
+/* City name */
+.loc-card__city {
+    /* font-family  : var(--loc-heading-font); */
+    font-size    : 15px;
+    font-weight  : 500;
+    color        : var(--loc-city-color);
+    line-height  : 1.2;
+    margin       : 0 0 7px 0;
+    transition   : color var(--loc-ease);
+}
+.loc-card:hover .loc-card__city {
+    color: var(--loc-accent);
+}
+
+/* Address */
+.loc-card__address {
+    /* font-family : var(--loc-heading-font); */
+    font-size   : 12px;
+    line-height : 1.65;
+    color       : var(--loc-addr-color);
+    font-style  : normal;
+    margin      : 0;
+}
+
+/* ── Divider between cards (desktop only) ────────────────── */
+.loc-row > .col-lg-3:not(:last-child) .loc-card {
+    position: relative;
+}
+.loc-row > .col-lg-3:not(:last-child) .loc-card::after {
     content   : '';
     position  : absolute;
-    inset     : 0;
-    background: rgba(0, 0, 0, 0.40);   /* base darkness — change opacity freely */
-    z-index   : 1;
+    right     : -12px;
+    top       : 10px;
+    bottom    : 10px;
+    width     : 1px;
+    background: #ebebeb;
 }
 
+/* ── Responsive ──────────────────────────────────────────── */
 
-/* ── Bottom gradient overlay ───────────────────────────────── */
-.locations-four-cards-gradient {
-    position  : absolute;
-    bottom    : 0;
-    left      : 0;
-    right     : 0;
-    height    : 55%;                    /* gradient height — change freely */
-    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-    z-index   : 2;
+/* Tablet 2-col */
+@media (max-width: 991.98px) {
+    .loc-section { padding: 56px 0 64px; }
 
-    /* Grows taller on hover */
-    transition: height 0.4s ease;
-}
+    /* Hide vertical dividers on tablet/mobile */
+    .loc-row > .col-lg-3:not(:last-child) .loc-card::after {
+        display: none;
+    }
 
-.locations-four-cards-card:hover .locations-four-cards-gradient {
-    height: 75%;
-}
-
-
-/* ── Text body (sits above gradient) ──────────────────────── */
-.locations-four-cards-body {
-    position: absolute;
-    bottom  : 0;
-    left    : 0;
-    right   : 0;
-    z-index : 3;
-    padding : 16px 18px;
-}
-
-
-/* ── Country label ─────────────────────────────────────────── */
-.locations-four-cards-country {
-    display       : block;
-    font-size     : 10px;
-    font-weight   : 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color         : var(--plm-primary);   /* orange — change freely */
-    margin-bottom : 4px;
-}
-
-
-/* ── City heading ──────────────────────────────────────────── */
-.locations-four-cards-city {
-    font-size    : 22px;
-    font-weight  : 500;
-    color        : #ffffff;
-    margin-bottom: 0;
-    line-height  : 1.2;
-}
-
-
-/* ── Address — hidden by default, shown on hover ───────────── */
-.locations-four-cards-address {
-    font-size  : 13px;
-    color      : rgba(255, 255, 255, 0.70);
-    margin-top : 6px;
-    margin-bottom: 0;
-    line-height: 1.5;
-
-    /* Hidden state */
-    opacity  : 0;
-    transform: translateY(6px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-/* Reveal on hover */
-.locations-four-cards-card:hover .locations-four-cards-address {
-    opacity  : 1;
-    transform: translateY(0);
-}
-
-
-/* ── Responsive tweaks ─────────────────────────────────────── */
-
-/* Tablet — slightly shorter cards */
-@media (max-width: 991px) {
-    .locations-four-cards-card {
-        height: 200px;
+    /* Add bottom border between rows instead */
+    .loc-row > [class*="col-"]:not(:nth-last-child(-n+2)) .loc-card {
+        padding-bottom: 28px;
+        border-bottom : 1px solid #ebebeb;
     }
 }
 
-/* Mobile — full width, taller for readability */
-@media (max-width: 575px) {
-    .locations-four-cards-card {
-        height: 190px;
+/* Mobile single col */
+@media (max-width: 575.98px) {
+    .loc-section  { padding: 44px 0 52px; };
+     :root {
+        --loc-img-size: 68px; 
     }
 
-    /* Always show address on mobile (no hover) */
-    .locations-four-cards-address {
-        opacity  : 1;
-        transform: translateY(0);
+    .loc-card { gap: 14px; }
+
+    .loc-card__img-wrap {
+        width : 68px;
+        height: 68px;
     }
 
-    .locations-four-cards-gradient {
-        height: 70%;
+    /* Every card gets a bottom border except last */
+    .loc-row > [class*="col-"]:not(:last-child) .loc-card {
+        padding-bottom: 24px;
+        border-bottom : 1px solid #ebebeb;
+    }
+    .loc-row > [class*="col-"]:nth-last-child(2) .loc-card {
+        border-bottom: 1px solid #ebebeb;
     }
 }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .loc-card__img-wrap,
+    .loc-card__img,
+    .loc-card__city { transition: none !important; }
+    .loc-card:hover .loc-card__img-wrap { transform: none; }
+    .loc-card:hover .loc-card__img      { transform: none; }
+}
+
+
+
+
 /*global-expertise  start code in this section */
 /* ============================================================
    Section  : Global Expertise · Local Execution
@@ -974,215 +990,226 @@
    File     : resources/css/section.css
    NOTE     : Append this block to your section.css file
    ============================================================ */
+/* ============================================================
+   about-section.css  →  public/css/about-section.css
+   Load: <link rel="stylesheet" href="{{ asset('css/about-section.css') }}">
+   ============================================================ */
 
-
-/* ── CSS Variables ─────────────────────────────────────────── */
+/* ── Tokens ─────────────────────────────────────────────── */
 :root {
-    --plm-primaryglobal  : #EC6502;     /* orange  — change here */
-    --plm-secondaryglobl : #6F6F6F;     /* grey    — change here */
-    --plm-heading        : 'Arial', sans-serif;
-    --plm-subheading     : 'Anklepants', sans-serif;
+    --as-accent      : #EC6601;           /* ← updated brand orange */
+    --as-accent-dark : #cc5500;           /* ← hover: slightly darker */
+    --as-bg          : #181818;
+    --as-card-bg     : rgba(255,255,255,.06);
+    --as-border      : rgba(255,255,255,.11);
+    --as-white       : #ffffff;
+    --as-muted       : rgba(255,255,255,.68);
+    --as-label       : rgba(255,255,255,.50);
+    --as-ease        : .25s ease;
+
+    /* Heading font — matches your project-wide --plm-heading token */
+    --plm-heading    : 'Arial', sans-serif;
 }
 
-
-/* ── Section wrapper ───────────────────────────────────────── */
-.ge-section {
-    position           : relative;
-    background-size    : cover;
+/* ── Section shell ──────────────────────────────────────── */
+.as-section {
+    position         : relative;
+    background-color : var(--as-bg);
+    /* ↓ Replace with your real image path using asset() in blade */
+    background-image : url('../images/about-bg.jpg');
+    background-size  : cover;
     background-position: center;
-    background-repeat  : no-repeat;
-    padding            : 90px 0 70px;   /* top/bottom spacing — change freely */
-    text-align         : center;
+    background-attachment: fixed; /* subtle parallax feel */
+    padding          : 90px 0;
+    overflow         : hidden;
 }
 
-
-/* ── Dark overlay ──────────────────────────────────────────── */
-.ge-overlay {
+.as-overlay {
     position  : absolute;
     inset     : 0;
-    background: rgba(0, 0, 0, 0.62);   /* darkness — raise/lower the 0.62 */
+    background: rgba(0, 0, 0, 0.856); /* ← was .75 — lighter so image shows */
     z-index   : 0;
 }
 
-
-/* ── Container sits above overlay ─────────────────────────── */
-.ge-container {
-    position: relative;
-    z-index : 1;
+.as-inner {
+    position : relative;
+    z-index  : 1;
 }
 
+/* ── LEFT column ────────────────────────────────────────── */
+.as-left {
+    padding-right : 15px;
+    padding-bottom: 48px;   /* gap when stacked on tablet/mobile */
+}
 
-/* ── Eyebrow label ─────────────────────────────────────────── */
-.ge-eyebrow {
-    font-family   : var(--plm-subheading);
-    font-size     : 11px;
-    font-weight   : 600;
-    letter-spacing: 3px;
+/* Eyebrow */
+.as-eyebrow {
+    display      : flex;
+    align-items  : center;
+    gap          : 12px;
+    font-size    : 11px;
+    font-weight  : 700;
+    letter-spacing: .14em;
     text-transform: uppercase;
-    color         : var(--plm-primaryglobal);
-    margin-bottom : 16px;
+    color        : var(--as-accent);
+    margin-bottom: 20px;
+}
+.as-eyebrow__line {
+    display    : inline-block;
+    width      : 32px;
+    height     : 2px;
+    background : var(--as-accent);
+    flex-shrink: 0;
+}
+
+/* Heading */
+.as-heading {
+    font-family : var(--plm-heading);  /* ← 'Arial', sans-serif */
+    font-size   : clamp(28px, 3.8vw, 46px);
+    font-weight : 800;
+    line-height : 1.15;
+    color       : var(--as-white);
+    margin-bottom: 22px;
+}
+.as-heading__accent {
+    font-family : var(--plm-heading);  /* ← inherit same family */
+    color       : var(--as-accent);    /* #EC6601 */
+    display     : block;
+}
+
+/* Body copy */
+.as-body {
+    font-size   : clamp(14px, 1.4vw, 16px);
+    line-height : 1.8;
+    color       : var(--as-muted);
+    margin-bottom: 38px;
+    max-width   : 420px;
 }
 
 
-/* ── Main heading ──────────────────────────────────────────── */
-.ge-heading {
-    font-family  : var(--plm-heading);
-    font-size    : clamp(28px, 4.5vw, 52px);   /* fluid size */
-    font-weight  : 800;
-    color        : #ffffff;
-    line-height  : 1.15;
-    margin-bottom: 24px;
+
+/* ── RIGHT column — stats grid ──────────────────────────── */
+.as-right { padding-left: 0; }
+
+.as-grid {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    border               : 1px solid var(--as-border);
+    border-radius        : 4px;
+    overflow             : hidden;
 }
 
-/* Orange second line */
-.ge-heading-highlight {
-    color: var(--plm-primaryglobal);
+/* ── Stat card ──────────────────────────────────────────── */
+.as-card {
+    padding          : clamp(28px, 4vw, 44px) clamp(22px, 3vw, 38px);
+    background-color : var(--as-card-bg);
+    border-right     : 1px solid var(--as-border);
+    border-bottom    : 1px solid var(--as-border);
+    transition       : background var(--as-ease);
+
+    /* scroll-reveal: hidden until JS fires */
+    opacity          : 0;
+    transform        : translateY(24px);
+    transition       : opacity .55s ease, transform .55s ease,
+                       background-color var(--as-ease);
+}
+.as-card.as-card--visible {
+    opacity   : 1;
+    transform : translateY(0);
 }
 
+/* Stagger each card */
+.as-card:nth-child(1) { transition-delay: .05s; }
+.as-card:nth-child(2) { transition-delay: .15s; }
+.as-card:nth-child(3) { transition-delay: .25s; }
+.as-card:nth-child(4) { transition-delay: .35s; }
 
-/* ── Description text ──────────────────────────────────────── */
-.ge-desc {
-    font-family  : var(--plm-heading);
-    font-size    : 15px;
-    color        : rgba(255, 255, 255, 0.72);
-    line-height  : 1.75;
-    max-width    : 620px;           /* keeps text readable — change freely */
-    margin       : 0 auto 36px;
+/* Remove right border on 2nd column */
+.as-card:nth-child(2n) { border-right: none; }
+/* Remove bottom border on last row */
+.as-card:nth-last-child(-n+2) { border-bottom: none; }
+
+.as-card:hover { background-color: rgba(232,119,34,.10); }
+
+/* Icon row */
+.as-card__icon-row {
+    display     : flex;
+    align-items : center;
+    gap         : 12px;
+    color       : var(--as-accent);
+    margin-bottom: 16px;
+    width: 70px;
+}
+.as-icon {
+ 
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    background: #be510063;
+    flex-shrink: 0;
+}
+.as-card__divider {
+    flex       : 1;
+    height     : 1px;
+    background : #EC6502;
+    display    : block;
 }
 
-.ge-desc strong {
-    color: rgba(255, 255, 255, 0.92);
+/* Big animated number */
+.as-card__value {
+    font-size   : clamp(34px, 4vw, 54px);
+    font-weight : 700;
+    line-height : 1;
+    color       : var(--as-white);
+    margin-bottom: 10px;
+    letter-spacing: -.01em;
 }
 
-
-/* ── CTA Button wrapper ────────────────────────────────────── */
-.ge-btn-wrap {
-    margin-bottom: 60px;
+/* Label */
+.as-card__label {
+    font-size    : 11px;
+    font-weight  : 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color        : var(--as-label);
+    margin-bottom: 0;
+    line-height  : 1.6;
 }
 
+/* ── Responsive ─────────────────────────────────────────── */
 
-/* ── CTA Button ────────────────────────────────────────────── */
-.ge-btn {
-    display        : inline-flex;
-    align-items    : center;
-    gap            : 10px;
-    padding        : 14px 30px;
-    background     : var(--plm-primaryglobal);
-    border         : 2px solid var(--plm-primaryglobal);
-    color          : #ffffff;
-    font-family    : var(--plm-heading);
-    font-size      : 13px;
-    font-weight    : 700;
-    letter-spacing : 1.5px;
-    text-transform : uppercase;
-    text-decoration: none;
-    border-radius  : 0;
-    transition     : transform 0.25s ease,
-                     box-shadow 0.25s ease,
-                     background 0.25s ease;
-}
-
-/* Hover — moves slightly DOWN as requested */
-.ge-btn:hover {
-    background : #d05800;
-    color      : #ffffff;
-    transform  : translateY(3px);        /* moves down on hover */
-    box-shadow : 0 6px 18px rgba(236, 101, 2, 0.40);
-    text-decoration: none;
-}
-
-/* Arrow slides right on hover */
-.ge-btn:hover svg {
-    transform : translateX(3px);
-    transition: transform 0.25s ease;
-}
-
-.ge-btn:active {
-    transform: translateY(1px);
-}
-
-
-/* ── Stats row spacing ─────────────────────────────────────── */
-.ge-stats-row {
-    max-width: 960px;
-    margin   : 0 auto;
-}
-
-
-/* ── Stat card ─────────────────────────────────────────────── */
-.ge-stat-card {
-    background   : rgba(255, 255, 255, 0.08);   /* glass card — change opacity freely */
-    border       : 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 14px;
-    padding      : 28px 16px 22px;
-    transition   : background 0.3s ease, transform 0.3s ease;
-}
-
-.ge-stat-card:hover {
-    background: rgba(255, 255, 255, 0.13);
-    transform : translateY(-4px);
-}
-
-
-/* ── Stat icon ─────────────────────────────────────────────── */
-.ge-stat-icon {
-    color        : var(--plm-primaryglobal);
-    margin-bottom: 12px;
-    line-height  : 1;
-}
-
-
-/* ── Counter number ────────────────────────────────────────── */
-.ge-stat-number {
-    font-family  : var(--plm-heading);
-    font-size    : clamp(32px, 4vw, 46px);
-    font-weight  : 800;
-    color        : #ffffff;
-    line-height  : 1;
-    margin-bottom: 8px;
-}
-
-
-/* ── Stat label ────────────────────────────────────────────── */
-.ge-stat-label {
-    font-family: var(--plm-heading);
-    font-size  : 12px;
-    color      : rgba(255, 255, 255, 0.55);
-    line-height: 1.4;
-    margin     : 0;
-}
-
-
-/* ── Responsive: tablet ────────────────────────────────────── */
-@media (max-width: 991px) {
-    .ge-section {
-        padding: 70px 0 55px;
+/* Tablet: stack cols, keep 2×2 grid */
+@media (max-width: 991.98px) {
+    .as-section { padding: 64px 0; }
+    .as-left {
+        padding-right : 0;
+        text-align    : center;
+        padding-bottom: 48px;
     }
-
-    .ge-stat-card {
-        padding: 22px 12px 18px;
-    }
+    .as-eyebrow  { justify-content: center; }
+    .as-body     { max-width: 100%; margin-left: auto; margin-right: auto; }
 }
 
+/* Mobile: 1-col stats */
+@media (max-width: 575.98px) {
+    .as-section  { padding: 48px 0; }
+    .as-grid     { grid-template-columns: 1fr; }
 
-/* ── Responsive: mobile ────────────────────────────────────── */
-@media (max-width: 575px) {
-    .ge-section {
-        padding: 55px 0 45px;
-    }
-
-    /* col-6 in blade already gives 2×2 grid on mobile */
-    /* just reduce card padding for small screens */
-    .ge-stat-card {
-        padding: 18px 10px 16px;
-    }
-
-    .ge-desc {
-        font-size: 14px;
-    }
+    /* reset borders for single column */
+    .as-card              { border-right: none; border-bottom: 1px solid var(--as-border); }
+    .as-card:last-child   { border-bottom: none; }
+    .as-card:nth-child(2n){ border-right: none; }
+    .as-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--as-border); }
+    .as-card:last-child   { border-bottom: none; }
 }
 
-
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .as-card,
+    .as-btn,
+    .as-btn__arrow { transition: none !important; }
+    .as-card { opacity: 1; transform: none; }
+}
 
 /*testimantional section start css code ?*/
 /* ============================================================
@@ -1216,8 +1243,8 @@
 }
 
 .client-testimonials-heading {
-    font-family  : var(--plm-heading);
-    font-size    : clamp(28px, 4vw, 44px);
+    font-family: Arial, sans-serif;
+    font-size    : 45px;
     font-weight  : 800;
     color        : #1a1a1a;
     margin-bottom: 14px;
@@ -1230,9 +1257,9 @@
 
 .client-testimonials-subtext {
     font-family: var(--plm-heading);
-    font-size  : 15px;
+    font-size  : 18px;
     color      : var(--plm-secondary);
-    max-width  : 580px;
+    /* max-width  : 100%; */
     margin     : 0 auto;
     line-height: 1.65;
 }
@@ -1245,10 +1272,14 @@
 
 /* ── Track — flex row holding all slides ───────────────────── */
 .client-testimonials-track {
-    display   : flex;
-    gap       : 24px;              /* MUST match CONFIG.gap in JS  */
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    gap: 24px;
     will-change: transform;
+
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
 }
 
 /* ── Single slide — 1/3 width on desktop ───────────────────── */
@@ -1262,19 +1293,12 @@
 .client-testimonials-card {
     background   : #ffffff;
     border       : 1px solid #e8e8e8;
-    border-radius: 16px 16px 90px 16px;;
+    border-radius: 16px 16px 16px 16px;;
     padding      : 32px 28px 26px;
     height       : 100%;
     display      : flex;
     flex-direction: column;
 }
-
-/* ── Card — dark (featured first card) ─────────────────────── */
-.client-testimonials-card--dark {
-    background  : #1a1a1a;
-    border-color: #1a1a1a;
-}
-
 
 /* ── Quote SVG icon ─────────────────────────────────────────── */
 .client-testimonials-quote-icon {
@@ -1285,18 +1309,13 @@
 
 /* ── Quote text ─────────────────────────────────────────────── */
 .client-testimonials-text {
-    font-family  : var(--plm-heading);
-    font-size    : 15px;
+    /* font-family: Arial, sans-serif; */
+    font-size    : 17px;
     line-height  : 1.7;
     color        : #333333;
     flex         : 1;              /* pushes author row to bottom  */
     margin-bottom: 24px;
 }
-
-.client-testimonials-card--dark .client-testimonials-text {
-    color: #ffffff;
-}
-
 
 /* ── Horizontal rule ────────────────────────────────────────── */
 .client-testimonials-divider {
@@ -1304,11 +1323,6 @@
     border-top: 1px solid #e8e8e8;
     margin    : 0 0 20px;
 }
-
-.client-testimonials-card--dark .client-testimonials-divider {
-    border-color: rgba(255,255,255,0.12);
-}
-
 
 /* ── Author row ─────────────────────────────────────────────── */
 .client-testimonials-author {
@@ -1333,21 +1347,12 @@
     margin-bottom: 2px;
 }
 
-.client-testimonials-card--dark .client-testimonials-name {
-    color: #ffffff;
-}
-
 .client-testimonials-role {
     font-family  : var(--plm-heading);
     font-size    : 12px;
     color        : var(--plm-secondary);
     margin-bottom: 0;
 }
-
-.client-testimonials-card--dark .client-testimonials-role {
-    color: rgba(255,255,255,0.5);
-}
-
 
 /* ── Footer row: label / dots / buttons ─────────────────────── */
 .client-testimonials-footer {
@@ -1373,7 +1378,68 @@
     color      : #1a1a1a;
     font-weight: 700;
 }
+/* ===========================
+   Dynamic Card Colors
+=========================== */
 
+/* 1st Visible Card */
+.client-testimonials-card--pos1{
+    background:#000000;
+    border-color:#000000;
+}
+
+.client-testimonials-card--pos1 .client-testimonials-text,
+.client-testimonials-card--pos1 .client-testimonials-name{
+    color:#ffffff;
+}
+
+.client-testimonials-card--pos1 .client-testimonials-role{
+    color:rgba(255,255,255,.6);
+}
+
+.client-testimonials-card--pos1 .client-testimonials-divider{
+    border-color:rgb(211, 211, 211);
+}
+
+
+/* 2nd Visible Card */
+.client-testimonials-card--pos2{
+    background:#525252;
+    border-color:#525252;
+}
+
+.client-testimonials-card--pos2 .client-testimonials-text,
+.client-testimonials-card--pos2 .client-testimonials-name{
+    color:#ffffff;
+}
+
+.client-testimonials-card--pos2 .client-testimonials-role{
+    color:rgba(255,255,255,.6);
+}
+
+.client-testimonials-card--pos2 .client-testimonials-divider{
+    border-color:rgba(255,255,255,.12);
+}
+
+
+/* 3rd Visible Card */
+.client-testimonials-card--pos3{
+    background:#EEEEEE;
+    border-color:#EEEEEE;
+}
+
+.client-testimonials-card--pos3 .client-testimonials-text,
+.client-testimonials-card--pos3 .client-testimonials-name{
+    color:#1a1a1a;
+}
+
+.client-testimonials-card--pos3 .client-testimonials-role{
+    color:#666666;
+}
+
+.client-testimonials-card--pos3 .client-testimonials-divider{
+    border-color:#d9d9d9;
+}
 
 /* ── Dot / line indicators ──────────────────────────────────── */
 .client-testimonials-dots {
