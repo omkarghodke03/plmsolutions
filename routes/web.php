@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CookieConsentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\HomeController;
@@ -76,22 +76,9 @@ Route::prefix('services')->name('service.')->group(function () {
 // ADD THESE ROUTES to your routes/web.php cookies route code 
 // ============================================================
 Route::prefix('cookie')->name('cookie.')->group(function () {
-
-    // POST /cookie/accept          → accept all cookies
-    Route::post('/accept',           [CookieConsentController::class, 'accept'])
-         ->name('accept');
-
-    // POST /cookie/decline         → decline non-essential
-    Route::post('/decline',          [CookieConsentController::class, 'decline'])
-         ->name('decline');
-
-    // POST /cookie/save-preferences → save custom choices from modal
-    Route::post('/save-preferences', [CookieConsentController::class, 'savePreferences'])
-         ->name('save-preferences');
-
-    // GET  /cookie/status          → check current consent status
-    Route::get('/status',            [CookieConsentController::class, 'status'])
-         ->name('status');
+    Route::post('/accept',           [CookieConsentController::class, 'accept'])->name('accept');
+    Route::post('/decline',          [CookieConsentController::class, 'decline'])->name('decline');
+    Route::post('/save-preferences', [CookieConsentController::class, 'savePreferences'])->name('save-preferences');
 });
 
 

@@ -31,25 +31,22 @@
                     <p class="our-delivery-model-eyebrow">Our Delivery Model</p>
 
                     {{-- Main Heading --}}
-                    <h2 class="our-delivery-model-heading">
-                        <span class="odm-highlight">Scale</span> your<br>
-                        Engineering<br>
-                        Team Easily
+                    <h2 class="our-delivery-model-heading">Scale Smarter with
+                        <span class="odm-highlight">Expert AEC  & </span> <br>
+                       Engineering Teams
                     </h2>
 
                     {{-- Description --}}
                     <p class="our-delivery-model-desc">
-                        Leverage our proven approach to
-                        <strong>expand your BIM, CAD, and engineering capacity</strong>
-                        and deliver at speed.
+                    Strengthen your project delivery capabilities with expert AEC Services and Engineering Design Services, backed by dedicated teams that seamlessly integrate with your operations.
                     </p>
 
                     {{-- Feature Tags --}}
                     <div class="our-delivery-model-tags">
-                        <span class="our-delivery-model-tag">Dedicated Teams</span>
-                        <span class="our-delivery-model-tag">Project-Based</span>
-                        <span class="our-delivery-model-tag">Offshore Centers</span>
-                        <span class="our-delivery-model-tag">Quality Assurance</span>
+                        <span class="our-delivery-model-tag">Time & Material</span>
+                        <span class="our-delivery-model-tag">Full-Time Equivalent (FTE)</span>
+                        <span class="our-delivery-model-tag">Offshore Engineering Centers</span>
+                        <span class="our-delivery-model-tag">Virtual Design Center [VDC]</span>
                     </div>
 
                     {{-- CTA Button --}}
@@ -72,7 +69,10 @@
                         <span class="our-delivery-model-stack-tag">Revit</span>
                         <span class="our-delivery-model-stack-tag">BIM 360</span>
                         <span class="our-delivery-model-stack-tag">Navisworks</span>
-                        <span class="our-delivery-model-stack-tag">Civil 3D</span>
+                        <span class="our-delivery-model-stack-tag">Solidworks</span>
+                        <span class="our-delivery-model-stack-tag">Creo</span>
+                        <span class="our-delivery-model-stack-tag">NX</span>
+                        <span class="our-delivery-model-stack-tag">Digital Twin</span>
                     </div>
 
                 </div>{{-- /info-card --}}
@@ -97,39 +97,39 @@
                 @php
                     $steps = [
                         [
-                            'image' => 'images/home-about-images1.jpg',   // → public/images/delivery-step-01.jpg
-                            'step'  => 'Step 01',
-                            'title' => 'Discover',
-                            'desc'  => 'We assess your project requirements, workflows, and capacity gaps to design a tailored engagement model.',
+                            'image' => 'images/discuss-trial-one.jpeg',   // → public/images/delivery-step-01.jpg
+                            'step'  => 'Step 1',
+                            'title' => 'Discuss Trial Projects',
+                            'desc'  => 'We understand your project scope, objectives, and technical requirements to define a clear trial engagement approach.',
                             'link'  => '#',
-                            'meta'  => 'LCD 100 · REQ ANALYSIS',        // optional bottom meta text
+                            'meta'  => 'Scope Alignment · Requirement Mapping',        // optional bottom meta text
                             'icon'  => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
                         ],
                         [
-                            'image' => 'images/home-about-images2.png',   // → public/images/delivery-step-02.jpg
+                            'image' => 'images/review-the-project-two.jpeg',   // → public/images/delivery-step-02.jpg
                             'step'  => 'Step 02',
-                            'title' => 'Assemble',
-                            'desc'  => 'We handpick and onboard the right engineers, BIM modelers, and specialists for your project.',
+                            'title' => 'Execute the Project',
+                            'desc'  => 'Our dedicated AEC and Engineering experts begin execution with structured workflows and industry-standard practices.',
                             'link'  => '#',
-                            'meta'  => '',
+                            'meta'  => 'Production Start · Dedicated Team Setup',
                             'icon'  => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
                         ],
                         [
-                            'image' => 'images/home-about-images1.jpg',   // → public/images/delivery-step-03.jpg
+                            'image' => 'images/execute-the-project-three.jpeg',   // → public/images/delivery-step-03.jpg
                             'step'  => 'Step 03',
-                            'title' => 'Deliver',
-                            'desc'  => 'Your extended team integrates seamlessly, hitting milestones with full quality oversight and daily reporting.',
+                            'title' => 'Review the Project ver',
+                            'desc'  => 'We conduct detailed quality checks and collaborate with you for feedback, revisions, and approval cycles.',
                             'link'  => '#',
-                            'meta'  => '',
+                            'meta'  => 'QA Review · Client Feedback Loop',
                             'icon'  => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
                         ],
                         [
-                            'image' => 'images/home-about-images2.png',   // → public/images/delivery-step-04.jpg
+                            'image' => 'images/final-job-delivered-four.jpeg',   // → public/images/delivery-step-04.jpg
                             'step'  => 'Step 04',
-                            'title' => 'Scale',
-                            'desc'  => 'Ramp capacity up or down in days — not months — as your project pipeline evolves.',
+                            'title' => 'Final Job Delivered',
+                            'desc'  => 'Final outputs are delivered in production-ready formats, ensuring accuracy, compliance, and on-time completion.',
                             'link'  => '#',
-                            'meta'  => '',
+                            'meta'  => 'Handover · Approved Deliverables',
                             'icon'  => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
                         ],
                     ];

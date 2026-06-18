@@ -21,7 +21,9 @@
                 {{-- Heading with animated text --}}
                 <h1 class="plm-hero__heading">
                     Helping companies,<br>
-                    Navigate <span class="plm-hero__heading">change</span>
+                    Navigate <span class="plm-hero__heading" style="color: #EC6601;">
+    change
+</span>
                 </h1>
 
                 {{-- CTAs --}}
@@ -44,19 +46,19 @@
                 </div>
                 <div class="col-6 col-sm-3">
                     <div class="plm-hero__stat">
-                        <span class="plm-hero__stat-num">100+</span>
+                        <span class="plm-hero__stat-num">185+</span>
                         <span class="plm-hero__stat-label">Experts</span>
                     </div>
                 </div>
                 <div class="col-6 col-sm-3">
                     <div class="plm-hero__stat">
-                        <span class="plm-hero__stat-num">60+</span>
+                        <span class="plm-hero__stat-num">110+</span>
                         <span class="plm-hero__stat-label">Clients</span>
                     </div>
                 </div>
                 <div class="col-6 col-sm-3">
                     <div class="plm-hero__stat">
-                        <span class="plm-hero__stat-num">19+</span>
+                        <span class="plm-hero__stat-num">21+</span>
                         <span class="plm-hero__stat-label">Years</span>
                     </div>
                 </div>

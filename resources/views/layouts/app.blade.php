@@ -20,7 +20,9 @@
     'resources/css/sections.css',
     'resources/css/cookie-consent.css',
     'resources/css/contact.css',
-    'resources/css/aboutus.css'
+    'resources/css/aboutus.css',
+    'resources/css/service/list-service.css',
+    'resources/css/service/service.css'
     ])
 
   @vite([

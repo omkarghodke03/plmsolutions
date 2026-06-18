@@ -2,9 +2,1276 @@
 
 @section('title', 'Architectural BIM Services')
 
+@extends('layouts.app')
+
+@push('styles')
+    @vite(['resources/css/service/service.css']) 
+    @vite(['resources/css/aboutus.css']) 
+@endpush
 @section('content')
-    <section class="service-hero">
-        <h1>Architectural BIM</h1>
-        <p>Your page content here...</p>
-    </section>
+        <section class="abouthero-section" style="background:linear-gradient(90deg,rgba(16,16,16,0.95) 0%,rgba(16,16,16,0.88) 35%,rgba(16,16,16,0.55) 60%,rgba(16,16,16,0.15) 100%),url('{{ asset('images/Architectural-Services.jpg') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-7 col-md-10">
+                <div class="abouthero-breadcrumb">
+                    <a href="#">Home</a>
+                    <span>›</span>
+                    <a href="#">Services</a>
+                    <span>›</span>
+                    <span class="active">Architectural BIM</span>
+                </div>
+                <div class="abouthero-tag">
+                    BUILDING INFORMATION MODELING
+                </div>
+                <h1 class="abouthero-title">
+                    Architectural BIM
+                </h1>
+                <p class="abouthero-desc">
+                    End-to-end BIM delivery across every project phase and LOD
+                    level inside your tools, to your standards, from day one.
+                </p>
+                <div class="abouthero-buttons">
+                    <a href="#" class="abouthero-btn-primary">
+                        GET A QUOTE
+                        <span>→</span>
+                    </a>
+                    <a href="#" class="abouthero-btn-outline">
+                        DOWNLOAD BROCHURE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- the Building Information Modeling s02-->
+
+{{-- ── PAGE WRAPPER ──────────────────────────────────────── --}}
+<div class="bim-page" id="bim-page">
+
+    {{-- ── MOBILE HORIZONTAL NAV (visible < lg) ──────────── --}}
+    <nav class="bim-mnav d-lg-none" id="bim-mnav" aria-label="Jump to section">
+        <div class="bim-mnav__track">
+            <a class="bim-mnav__tab active" href="#bim-overview"      data-target="bim-overview">Overview</a>
+            <a class="bim-mnav__tab"        href="#bim-capabilities"  data-target="bim-capabilities">Capabilities</a>
+            <a class="bim-mnav__tab"        href="#bim-technologies"  data-target="bim-technologies">Technologies</a>
+            <a class="bim-mnav__tab"        href="#bim-technologies"  data-target="bim-technologies">Technologies</a>
+            <a class="bim-mnav__tab"        href="#bim-industries"    data-target="bim-industries">Industries</a>
+            <a class="bim-mnav__tab"        href="#bim-process"       data-target="bim-process">Our Process</a>
+            <a class="bim-mnav__tab"        href="#bim-faq"           data-target="bim-faq">FAQ</a>
+        </div>
+    </nav>
+
+    <div class="container-xxl">
+        <div class="bim-layout">
+
+            {{-- ══════════════════════════════════════════
+                 SIDEBAR  (hidden on mobile)
+            ══════════════════════════════════════════ --}}
+            <aside class="bim-sidebar d-none d-lg-flex" aria-label="Section navigation">
+                <nav class="bim-sidebar__nav">
+                    <ul class="bim-sidebar__list" role="list">
+
+                        @php
+                        $navItems = [
+                            ['id'=>'bim-overview',      'label'=>'Overview',     'icon'=>'grid'],
+                            ['id'=>'bim-capabilities',  'label'=>'Capabilities', 'icon'=>'list'],
+                            ['id'=>'bim-technologies',  'label'=>'Technologies', 'icon'=>'gear'],
+                            ['id'=>'bim-case-studies',  'label'=>'Case Studies', 'icon'=>'book'],
+                            ['id'=>'bim-industries',    'label'=>'Industries',   'icon'=>'building'],
+                            ['id'=>'bim-process',       'label'=>'Our Process',  'icon'=>'flow'],
+                            ['id'=>'bim-faq',           'label'=>'FAQ',          'icon'=>'help'],
+                        ];
+                        @endphp
+
+                        @foreach ($navItems as $nav)
+                        <li class="bim-sidebar__item">
+                            <a class="bim-sidebar__link {{ $loop->first ? 'active' : '' }}"
+                               href="#{{ $nav['id'] }}"
+                               data-target="{{ $nav['id'] }}">
+                                <span class="bim-sidebar__icon" aria-hidden="true">
+                                    @if($nav['icon'] === 'grid')
+                                        <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+                                    @elseif($nav['icon'] === 'list')
+                                        <svg viewBox="0 0 20 20" fill="none"><path d="M4 6h12M4 10h8M4 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                    @elseif($nav['icon'] === 'gear')
+                                        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                    @elseif($nav['icon'] === 'book')
+                                        <svg viewBox="0 0 20 20" fill="none"><path d="M3 3.5C3 3 3.5 2.5 4.5 2.5H10V17H4.5C3.5 17 3 16.5 3 16V3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M17 3.5C17 3 16.5 2.5 15.5 2.5H10V17H15.5C16.5 17 17 16.5 17 16V3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2.5V17" stroke="currentColor" stroke-width="1.5"/></svg>
+                                    @elseif($nav['icon'] === 'building')
+                                        <svg viewBox="0 0 20 20" fill="none"><path d="M3 17V8l7-5 7 5v9M8 17v-5h4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    @elseif($nav['icon'] === 'flow')
+                                        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="4"  r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                    @else
+                                        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 14v-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 11c0-2 3-2 3-4a3 3 0 0 0-6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                    @endif
+                                </span>
+                                <span class="bim-sidebar__label">{{ $nav['label'] }}</span>
+                                <span class="bim-sidebar__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </li>
+                        @endforeach
+
+                    </ul>
+                </nav>
+
+                <div class="bim-sidebar__cta">
+                    <a class="bim-sidebar__cta-btn">GET A QUOTE</a>
+                    <a href="tel:+19192388044" class="bim-sidebar__cta-contact">
+                        <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 12l5 2v4a1 1 0 0 1-1 1C6 19 1 14 1 4a1 1 0 0 1 1-1h1z" stroke="currentColor" stroke-width="1.5"/></svg>
+                        +1-919-238-8044
+                    </a>
+                    <a href="mailto:info@milestoneplm.com" class="bim-sidebar__cta-contact">
+                        <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M2 4l8 7 8-7" stroke="currentColor" stroke-width="1.5"/></svg>
+                        info@milestoneplm.com
+                    </a>
+                </div>
+            </aside>
+
+            {{-- ══════════════════════════════════════════
+                 CONTENT AREA
+            ══════════════════════════════════════════ --}}
+            <main class="bim-content" role="main">
+
+                {{-- ─────────────────────────────────────
+                     §1 OVERVIEW
+                ───────────────────────────────────────── --}}
+                <section class="bim-sec" id="bim-overview" aria-label="Overview">
+
+                    <div class="bim-tag bim-anim bim-anim--down">
+                        <span class="bim-tag__bar" aria-hidden="true"></span>
+                        Building Information Modeling
+                    </div>
+
+                    <div class="row g-4 align-items-center mt-1">
+                        <div class="col-12 col-md-7 bim-anim bim-anim--left">
+                            <h2 class="bim-h2">
+                                <em class="bim-orange">SMART </em> BIM Models for<br>
+                                <em class="bim-orange">SMART </em>  Building Projects
+                            </h2>
+                            <p class="bim-body mt-3">
+                               With over 2 decades of experience, MILESTONE provides end-to-end Product Design & Development Services for complex sheet metal components, machinery, Static equipments and other engineered products. Our team supports every stage of development, from concept design to prototyping, testing, and validation. Serving 
+                            </p>
+                            <p class="bim-body mt-2">
+                               industries such as automotive, aerospace, medical, transportation, and industrial equipment, we deliver innovative, cost-effective, and production-ready solutions that accelerate time-to-market and enhance product performance.
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-5 bim-anim bim-anim--right">
+                            <div class="bim-img-frame">
+                                <img src="{{ asset('images/infrostrucre-bakcground.png') }}"
+                                     alt="Architectural BIM blueprint"
+                                     class="img-fluid"
+                                     loading="lazy" decoding="async">
+                                <div class="bim-img-frame__badge" aria-hidden="true">
+                                    <span>LOD 500</span>
+                                    <small>Ready</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Stats --}}
+                    <div class="bim-stats bim-anim bim-anim--up mt-5">
+                        <div class="bim-stats__item"><strong>LOD 100–500</strong><span>All Disciplines</span></div>
+                        <div class="bim-stats__div" aria-hidden="true"></div>
+                        <div class="bim-stats__item"><strong>3 Disciplines</strong><span>Arch · Structural · MEP</span></div>
+                        <div class="bim-stats__div" aria-hidden="true"></div>
+                        <div class="bim-stats__item"><strong>COBie</strong><span>FM Handover Ready</span></div>
+                        <div class="bim-stats__div" aria-hidden="true"></div>
+                        <div class="bim-stats__item"><strong>BEP</strong><span>Compliant Delivery</span></div>
+                    </div>
+
+                    {{-- Sub block --}}
+                    <div class="bim-sub-block bim-anim bim-anim--up mt-5">
+                        <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+                            <h3 class="bim-h3 mb-0">Mechanical Engineering Services at Milestone PLM</h3>
+                            <span class="bim-badge">Architectural, Structural &amp; MEP</span>
+                        </div>
+                        <div class="bim-sub-block__line" aria-hidden="true"></div>
+                        <p class="bim-body mt-3">
+                           Complete mechanical design engineering support—from product design and CAD development to detailed engineering, prototyping, and manufacturing documentation—coordinated for efficiency, accuracy, and production readiness.
+                        </p>
+                        <div class="row g-2 mt-2">
+                            @foreach ([
+                                'Product design and mechanical system development',
+                                '3D CAD modeling, assemblies, and engineering drawings',
+                                'Sheet metal, fabrication, and machinery design',
+                                'Detailed engineering and manufacturing documentation',
+                                'Reverse engineering and design optimization services',
+                                'Prototype development, FEA testing, and validation support'
+                            ] as $pt)
+                            <div class="col-12 col-sm-6">
+                                <div class="bim-check">
+                                    <span class="bim-check__icon" aria-hidden="true">
+                                        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6 10l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                    {{ $pt }}
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                </section>
+
+                <hr class="bim-hr" aria-hidden="true">
+
+                {{-- ─────────────────────────────────────
+                     §2 CAPABILITIES
+                ───────────────────────────────────────── --}}
+                <section class="bim-sec" id="bim-capabilities" aria-label="Capabilities">
+
+                    <div class="bim-tag bim-anim bim-anim--down">
+                        <span class="bim-tag__bar" aria-hidden="true"></span>
+                        What We Deliver
+                    </div>
+                    <h2 class="bim-h2 mt-2 bim-anim bim-anim--down" style="--bim-delay:80ms">
+                       Engineering Services - <em class="bim-orange">Key Capabilities</em>
+                    </h2>
+                    <p class="bim-body mt-2 bim-anim bim-anim--down" style="--bim-delay:140ms">
+                        Covering every discipline and coordination need from concept to handover.
+                    </p>
+
+                    @php
+                    $caps = [
+                        ['num'=>'01','title'=>'Fixture Design','desc'=>'Custom fixtures and production tooling engineered for accuracy, repeatability, and efficient manufacturing operations.','items'=>['Welding Fixtures','Pressure Testing Fixtures','Assembly Fixtures','Machining Fixtures','Inspection & Checking Fixtures','Leak Testing Fixtures']],
+                        ['num'=>'02','title'=>'Special Purpose Machine (SPM) Design','desc'=>'Custom machines and automation systems designed to meet specific production, assembly, and testing requirements.','items'=>['Assembly Automation Machines ','Testing & Inspection Machines ','Material Handling Systems ','Packaging & Conveying Equipment ','Robotic Integration Solutions','Process Automation Equipment ']],
+                        ['num'=>'03','title'=>'Sheet Metal Design & Fabrication','desc'=>'Fabrication-ready sheet metal designs with detailed part development, assemblies, and manufacturing documentation.','items'=>['Sheet Metal Part Design ','Enclosure & Cabinet Design , Welded Sheet Metal Assemblies ','Plumbing: pipework, drainage, soil stacks','Laser Cutting & Bending Development ','Manufacturing Drawings & Flat Patterns ','Prototype & Production Support']],
+                        ['num'=>'04','title'=>'Plastic Product Design','desc'=>'Plastic components and products engineered for functionality, durability, manufacturability, and cost-effective production.','items'=>['Injection Molded Part Design ','Plastic Enclosure Design ','Consumer Product Development ','Structural Plastic Component Design','Moldability & Tooling Optimization','Prototype & Production Support ']],
+                    ];
+                    @endphp
+
+                    <div class="row g-3 mt-2">
+                        @foreach ($caps as $cap)
+                        <div class="col-12 col-md-6 bim-anim bim-anim--up" style="--bim-delay:{{ $loop->index * 80 }}ms">
+                            <div class="bim-cap-card">
+                                <div class="bim-cap-card__top">
+                                    <span class="bim-cap-card__num">{{ $cap['num'] }}</span>
+                                    <span class="bim-cap-card__line" aria-hidden="true"></span>
+                                </div>
+                                <h3 class="bim-cap-card__title">{{ $cap['title'] }}</h3>
+                                <p class="bim-cap-card__desc">{{ $cap['desc'] }}</p>
+                                <ul class="bim-cap-card__list" role="list">
+                                    @foreach($cap['items'] as $item)
+                                    <li>
+                                        <span class="bim-cap-card__dot" aria-hidden="true"></span>
+                                        {{ $item }}
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+                </section>
+
+                <hr class="bim-hr" aria-hidden="true">
+
+                {{-- ─────────────────────────────────────
+                     §3 TECHNOLOGIES
+                ───────────────────────────────────────── --}}
+                <section class="bim-sec" id="bim-technologies" aria-label="Technologies">
+
+                    <div class="bim-tag bim-anim bim-anim--down">
+                        <span class="bim-tag__bar" aria-hidden="true"></span>
+                        Tools &amp; Software
+                    </div>
+                    <h2 class="bim-h2 mt-2 bim-anim bim-anim--down" style="--bim-delay:80ms">
+                        Technologies We <em class="bim-orange">Work With</em>
+                    </h2>
+                    <p class="bim-body mt-2 bim-anim bim-anim--down" style="--bim-delay:140ms">
+                        We embed inside your existing stack — no forced migrations, no new tools to learn.
+                    </p>
+
+                    <div class="bim-tech-meta bim-anim bim-anim--up mt-4">
+                        <div class="bim-tech-meta__stat">
+                            <strong>8</strong><span>Platforms</span>
+                        </div>
+                        <div class="bim-tech-meta__sep" aria-hidden="true"></div>
+                        <div class="bim-tech-meta__stat">
+                            <strong>8</strong><span>Disciplines</span>
+                        </div>
+                        <div class="bim-tech-meta__sep" aria-hidden="true"></div>
+                        <p class="bim-tech-meta__tags">
+                            Modeling · Coordination · Collaboration · Documentation · Automation · Scan to BIM · Review · QA
+                        </p>
+                    </div>
+
+                   @php
+                        $techs = [
+                                 ['label'=>'Autodesk Revit', 'image'=>'service-img/revit.png'],
+                                 ['label'=>'Navisworks', 'image'=>'service-img/navisworks.png'],
+                                 ['label'=>'3DS MAX', 'image'=>'service-img/3DS max.png'],
+                                 ['label'=>'AutoCAD', 'image'=>'service-img/autocad.png'],
+                                 ['label'=>'DIALUX', 'image'=>'service-img/DIALUX.png'],
+                                 ['label'=>'Autodesk Inventor', 'image'=>'service-img/Autodesk Inventor.png'],
+                                 ['label'=>'Sketchup', 'image'=>'service-img/Sketchup.png'],
+                                 ['label'=>'V ray', 'image'=>'service-img/V.ray.png'],
+                                 ];
+                    @endphp
+
+                    <div class="row g-3 mt-2">
+                        @foreach ($techs as $t)
+                       <div class="col-6 col-sm-4 col-md-3 bim-anim bim-anim--up" style="--bim-delay:{{ $loop->index * 55 }}ms">
+                    <div class="bim-tech-card">
+                         <div class="bim-tech-card__icon">
+                            <img src="{{ asset($t['image']) }}" alt="{{ $t['label'] }}" class="bim-tech-card__img"></div>
+                            <span class="bim-tech-card__label">{{ $t['label'] }} </span>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </section>
+
+                <hr class="bim-hr" aria-hidden="true">
+
+                 {{-- ─────────────────────────────────────
+                     §4 case study 
+                ───────────────────────────────────────── --}}
+
+                <section class="bim-sec bim-case-studies" id="bim-case-studies">
+                 @php
+                    $caseStudies = [
+                                [
+                                    'slug'    => 'mumbai-metro-station',
+                                    'tag'     => 'Infrastructure',
+                                    'title'   => 'Mumbai Metro Station — BIM Coordination',
+                                    'excerpt' => 'Full LOD 400 MEP & structural clash detection for a 3-level underground station, resolving 1,200+ clashes before...',
+                                    'image'   => asset('images/California-Residential-Building-Design-BIMModeling.jpg'),
+                                ],
+                                [
+                                     'slug'    => 'hospital-campus-lod400',
+                                     'tag'     => 'Healthcare',
+                                     'title'   => 'Hospital Campus — LOD 400 As-Built BIM Package',
+                                     'excerpt' => 'Multi-discipline LOD 400 as-built model across a 12-building healthcare campus, structured for COBie-compliant FM...',
+                                     'image'   => asset('service-img/hospital-service.jpg'),
+                                ],
+                                [
+                                     'slug'    => 'hyperscale-data-centre',
+                                     'tag'     => 'Data Centre',
+                                     'title'   => 'Hyperscale Data Centre — Federated BIM Model',
+                                     'excerpt' => '48 MW hyperscale data centre: full MEP, structural, and architectural disciplines federated in a single Revit...',
+                                     'image'   => asset('images/Manufacturing-Ready-Assembly-Engineering-UG-NX-Documentation.jpg'),
+                                ],
+                            ];
+                        @endphp
+
+                    <div class="container">
+                        <div class="bim-cs__header">
+                            <div class="bim-cs__heading">
+                            <div class="bim-cs__eyebrow">
+                                <span class="bim-cs__eyebrow-line"></span>
+                                         CASE STUDIES
+                            </div>
+                            <h2 class="bim-cs__title">BIM Services <span class="text-accent">in Action</span></h2>
+                            <p class="bim-cs__desc">Real projects, measurable outcomes — see how we deliver BIM services for the world's most demanding builds.</p>
+                        </div>
+                            <a href="#" class="bim-cs__viewall">
+                                VIEW ALL <span aria-hidden="true">→</span>
+                            </a>
+                    </div>
+
+                    <div class="bim-cs__grid">
+                        @foreach ($caseStudies as $cs)
+                        <a href="#" class="bim-cs__card" style="background-image:url('{{ $cs['image'] }}')">
+                            <div class="bim-cs__overlay"></div>
+                            <span class="bim-cs__tag">{{ $cs['tag'] }}</span>
+                            <div class="bim-cs__content">
+                            <h3 class="bim-cs__card-title">{{ $cs['title'] }}</h3>
+                            <p class="bim-cs__card-desc">{{ $cs['excerpt'] }}</p>
+                            </div>
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+
+                <hr class="bim-hr" aria-hidden="true">
+                {{-- ─────────────────────────────────────
+                     §4 INDUSTRIES
+                ───────────────────────────────────────── --}}
+                <section class="bim-sec" id="bim-industries" aria-label="Industries">
+
+                    <div class="bim-tag bim-anim bim-anim--down">
+                        <span class="bim-tag__bar" aria-hidden="true"></span>
+                        Sectors We Serve
+                    </div>
+                    <h2 class="bim-h2 mt-2 bim-anim bim-anim--down" style="--bim-delay:80ms">
+                        Industries We <em class="bim-orange">Work In</em>
+                    </h2>
+                    <p class="bim-body mt-2 bim-anim bim-anim--down" style="--bim-delay:140ms">
+                        Our BIM teams have delivered projects across a wide range of building types and sectors.
+                    </p>
+
+                    @php
+                $industries = [
+                    [
+                        'num'=>'01',
+                        'title'=>'Healthcare & Hospitals',
+                        'desc'=>'Complex MEP coordination for medical facilities, clean rooms, and surgical suites.',
+                        'image'=>'service-img/hospitality.jpg'
+                    ],
+                    [
+                        'num'=>'02',
+                        'title'=>'Commercial Office',
+                        'desc'=>'Tenant fit-out and base build BIM packages from RIBA Stage 2 through handover.',
+                        'image'=>'service-img/commercial.jpg'
+                    ],
+                    [
+                        'num'=>'03',
+                        'title'=>'Industrial & Manufacturing',
+                        'desc'=>'Factory, warehouse, and process plant facility modeling to fabrication standard.',
+                        'image'=>'service-img/industrial.jpg'
+                    ],
+                    [
+                        'num'=>'04',
+                        'title'=>'Residential & Mixed-Use',
+                        'desc'=>'Multi-storey residential schemes with full MEP and structural coordination.',
+                        'image'=>'service-img/residential.jpg'
+                    ],
+                    [
+                        'num'=>'05',
+                        'title'=>'Data Centres',
+                        'desc'=>'High-precision MEP and structural coordination for mission-critical environments.',
+                        'image'=>'service-img/data-centers.jpg'
+                    ],
+                   
+                    ];
+                 @endphp
+
+                    <div class="row g-3 mt-2">
+                        @foreach ($industries as $ind)
+                        <div class="col-12 col-sm-6 col-lg-4 bim-anim bim-anim--up" style="--bim-delay:{{ $loop->index * 80 }}ms">
+                            <div class="bim-ind-card">
+                                <div class="bim-ind-card__img">
+                                    <img src="{{ asset($ind['image']) }}" alt="{{ $ind['title'] }}" loading="lazy" decoding="async">
+                                    <div class="bim-ind-card__overlay" aria-hidden="true"></div>
+                                    <div class="bim-ind-card__badges">
+                                        <span class="bim-ind-card__sq" aria-hidden="true">
+                                            <svg viewBox="0 0 20 20" fill="none"><path d="M3 17V8l7-5 7 5v9M8 17v-5h4v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                        <span class="bim-ind-card__num">{{ $ind['num'] }}</span>
+                                    </div>
+                                </div>
+                                <div class="bim-ind-card__body">
+                                    <h3 class="bim-ind-card__title">{{ $ind['title'] }}</h3>
+                                    <p class="bim-ind-card__desc">{{ $ind['desc'] }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+                </section>
+
+                <hr class="bim-hr" aria-hidden="true">
+
+                {{-- ─────────────────────────────────────
+                     §5 OUR PROCESS
+                ───────────────────────────────────────── --}}
+                <section class="bim-sec" id="bim-process" aria-label="Our Process">
+
+                    <div class="bim-tag bim-anim bim-anim--down">
+                        <span class="bim-tag__bar" aria-hidden="true"></span>
+                        How We Work
+                    </div>
+                    <h2 class="bim-h2 mt-2 bim-anim bim-anim--down" style="--bim-delay:80ms">
+                        Our <em class="bim-orange">Delivery Process</em>
+                    </h2>
+                    <p class="bim-body mt-2 bim-anim bim-anim--down" style="--bim-delay:140ms">
+                        A consistent, documented process on every BIM engagement —
+                        so you always know where your project stands.
+                    </p>
+
+                    @php
+                   $steps = [
+
+[
+    'num'   => '01',
+    'title' => 'Project Assessment',
+    'desc'  => 'Review specifications, performance criteria, standards, and project objectives.',
+    'icon'  => 'clipboard'
+],
+
+[
+    'num'   => '02',
+    'title' => 'Concept Design',
+    'desc'  => 'Develop and evaluate design concepts to identify the most effective engineering solution.',
+    'icon'  => 'lightbulb'
+],
+
+[
+    'num'   => '03',
+    'title' => 'CAD Modeling & Analysis',
+    'desc'  => 'Create detailed 3D models and perform engineering analysis to optimise the product.',
+    'icon'  => 'cube'
+],
+
+[
+    'num'   => '04',
+    'title' => 'Engineering Documentation',
+    'desc'  => 'Prepare manufacturing drawings, BOMs, assembly details, and technical documentation.',
+    'icon'  => 'file'
+],
+
+[
+    'num'   => '05',
+    'title' => 'Delivery & Support',
+    'desc'  => 'Issue final design packages and provide technical assistance through manufacturing and implementation.',
+    'icon'  => 'rocket'
+]
+
+];
+                    @endphp
+
+                   <div class="bim-process mt-5">
+
+    <div class="bim-process__line"></div>
+
+    @foreach ($steps as $step)
+
+    <div class="bim-process__item bim-anim bim-anim--up"
+         style="--bim-delay:{{ $loop->index * 100 }}ms">
+
+        <div class="bim-process__number">
+            {{ $step['num'] }}
+        </div>
+
+       <div class="bim-process__circle">
+
+@if($step['icon'] == 'clipboard')
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M9 3H15V5H18V21H6V5H9V3Z"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+</svg>
+
+@elseif($step['icon'] == 'lightbulb')
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3C8.7 3 6 5.7 6 9C6 11.1 7 13 8.6 14.3V17H15.4V14.3C17 13 18 11.1 18 9C18 5.7 15.3 3 12 3Z"
+          stroke="currentColor"
+          stroke-width="1.8"/>
+</svg>
+
+@elseif($step['icon'] == 'cube')
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12 2L20 6V18L12 22L4 18V6L12 2Z"
+          stroke="currentColor"
+          stroke-width="1.8"/>
+</svg>
+
+@elseif($step['icon'] == 'file')
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M8 3H16L20 7V21H8V3Z"
+          stroke="currentColor"
+          stroke-width="1.8"/>
+</svg>
+
+@elseif($step['icon'] == 'rocket')
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3L18 9L15 12L12 21L9 12L6 9L12 3Z"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linejoin="round"/>
+</svg>
+
+@endif
+
+</div>
+
+        <h3 class="bim-process__title">
+            {{ $step['title'] }}
+        </h3>
+
+        <p class="bim-process__desc">
+            {{ $step['desc'] }}
+        </p>
+
+    </div>
+
+    @endforeach
+
+           </div>
+                </section>
+
+                <hr class="bim-hr" aria-hidden="true">
+
+                {{-- ─────────────────────────────────────
+                     §6 FAQ
+                ───────────────────────────────────────── --}}
+                <section class="bim-sec" id="bim-faq" aria-label="FAQ">
+
+                    <div class="bim-tag bim-anim bim-anim--down">
+                        <span class="bim-tag__bar" aria-hidden="true"></span>
+                        Common Questions
+                    </div>
+                    <h2 class="bim-h2 mt-2 bim-anim bim-anim--down" style="--bim-delay:80ms">
+                        Frequently Asked <em class="bim-orange">Questions</em>
+                    </h2>
+                    <p class="bim-body mt-2 bim-anim bim-anim--down" style="--bim-delay:140ms">
+                        Answers to the questions we hear most often about our BIM Services.
+                    </p>
+
+                    @php
+                    $faqs = [
+                        ['q'=>'Do you work with the Engineer of Records calculations ?',        'a'=>'Yes. We work from the Engineer of Record’s calculations, design specifications, and equipment data, translating engineering requirements into detailed mechanical fabrication, manufacturing, and installation drawings.'],
+                        ['q'=>'What codes do you work to ?',    'a'=>'We work to the applicable mechanical engineering codes and standards required by the project and jurisdiction, including ASME, ISO, BS EN, AS/NZS, and Indian Standards (IS). All applicable codes and project requirements are confirmed at the start of the project.'],
+                        ['q'=>'Can you produce 3D fabrication models ?',         'a'=>'Yes. We develop detailed 3D fabrication models to support manufacturing and installation, including assemblies, components, fabrication details, and associated production documentation in accordance with project requirements.'],
+                        ['q'=>'How do you handle engineering revisions and design changes ?', 'a'=>'We maintain a controlled revision management process, tracking all engineering changes and updating drawings, models, and documentation within the agreed turnaround timeframe. All revisions are clearly identified, documented, and coordinated to ensure compliance with project requirements and approved design specifications.'],
+                    ];
+                    @endphp
+
+                    <div class="bim-faq mt-4" id="bimFaqAcc" role="list">
+                        @foreach ($faqs as $faq)
+                        @php $fId = 'bimFaq' . $loop->index; @endphp
+                        <div class="bim-faq__item bim-anim bim-anim--up" style="--bim-delay:{{ $loop->index * 80 }}ms" role="listitem">
+                            <button class="bim-faq__q {{ $loop->first ? '' : 'collapsed' }}"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#{{ $fId }}"
+                                    aria-expanded="{{ $loop->first ? 'true' : 'false' }}"
+                                    aria-controls="{{ $fId }}">
+                                {{ $faq['q'] }}
+                                <span class="bim-faq__icon" aria-hidden="true"></span>
+                            </button>
+                            <div id="{{ $fId }}" class="collapse {{ $loop->first ? 'show' : '' }}" data-bs-parent="#bimFaqAcc">
+                                <div class="bim-faq__a">{{ $faq['a'] }}</div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+                </section>
+
+            </main>{{-- /bim-content --}}
+
+        </div>{{-- /bim-layout --}}
+    </div>{{-- /container-xl --}}
+</div>{{-- /bim-page --}}
+
+
+<!-- -----------------------------------
+WHY MILESTONE PLM section  start 
+ ---------------------------------------->
+
+<section class="plm-milestone-section">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- Left Content -->
+            <div class="col-lg-5">
+
+                <div class="plm-milestone-content">
+                     <div class="bim-tagwhyplm bim-anim bim-anim--down">
+                        <span class="bim-tag__bar" aria-hidden="true"></span>
+                         WHY MILESTONE PLM
+                    </div>
+                    <h2 class="plm-milestone-title">
+                         Term AEC with
+                        <span>Engineering Services</span>
+                    </h2>
+
+                    <p class="plm-milestone-text">
+                        Built to close the gap between how Western AEC firms run
+                        projects and where the world's best engineering talent
+                        actually sits.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Right Stats -->
+            <div class="col-lg-7">
+
+                <div class="plm-milestone-stats">
+
+                    <div class="plm-stat-card">
+                        <div class="plm-stat-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="8"
+            stroke="currentColor"
+            stroke-width="1.8"/>
+        <path d="M12 8V12L15 14"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"/>
+    </svg>
+</div>
+                        <span class="counter" data-target="60">0</span><span>%</span>   
+                        <small>COST SAVINGS VS IN-HOUSE</small> 
+                    </div>
+
+                    <div class="plm-stat-card">
+                        <div class="plm-stat-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="8"
+            stroke="currentColor"
+            stroke-width="1.8"/>
+        <path d="M12 8V12L15 14"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"/>
+    </svg>
+</div>
+                        <span class="counter" data-target="98">0</span><span>%</span>
+                        <small>ON-TIME DELIVERY RATE</small>
+                    </div>
+
+                    <div class="plm-stat-card">
+                        <div class="plm-stat-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M13 3L5 13H11L10 21L19 10H13L13 3Z"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linejoin="round"/>
+    </svg>
+</div>
+                        <span class="counter" data-target="48">0</span><span>H</span>
+                        <small>TEAM ASSEMBLY TIME</small>
+                    </div>
+
+                    <div class="plm-stat-card">
+                        <div class="plm-stat-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3L18 5V11C18 15 15.5 18 12 20C8.5 18 6 15 6 11V5L12 3Z"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linejoin="round"/>
+    </svg>
+</div>
+                        <span class="counter" data-target="19">0</span><span>+</span>
+                        <small>YEARS OF AEC EXPERTISE</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Features -->
+
+   <div class="row mt-5 g-0">
+
+    <div class="col-lg-4 col-md-6">
+        <div class="plm-feature-box">
+            <div class="plm-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+            </div>
+            <div>
+            <h5>On-Time Delivery</h5>
+            <p>Structured execution process and repeatable delivery.</p></div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="plm-feature-box">
+            <div class="plm-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="1" x2="12" y2="23"/>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+            </div>
+            <div>
+            <h5>Cost Advantage</h5>
+            <p>Up to 60% savings compared to traditional staffing.</p></div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="plm-feature-box">
+            <div class="plm-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+            </div>
+                <div>
+                 <h5>Team Ready</h5>
+                 <p>Dedicated teams assembled quickly.</p>
+                </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="plm-feature-box">
+            <div class="plm-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+            </div>
+            <div>
+            <h5>Elastic Scale</h5>
+            <p>Scale up or down without recruitment delays.</p></div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="plm-feature-box">
+            <div class="plm-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+            <div>
+            <h5>Proven Track Record</h5>
+            <p>Trusted by firms across multiple countries.</p></div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="plm-feature-box">
+            <div class="plm-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                
+            </div>
+            <div>
+            <h5>Certified Quality</h5>
+            <p>Strict quality control and review workflows.</p></div>
+        </div>
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+<!---=------------------------------
+form code 
+---------------------------------->
+
+<section class="ready-scale">
+    <div class="container">
+        <div class="row align-items-center g-0">
+
+            {{-- ── LEFT CONTENT ─────────────────────────────────────── --}}
+            <div class="col-lg-6 left-content">
+
+                <span class="tag">
+                    <span class="tag-line"></span>
+                    READY TO SCALE?
+                </span>
+
+                <h1 class="heading-contactfornhome">
+    Let's accelerate your <span style="color:#EC6502;">next project.</span>
+</h1>
+                </h1>
+
+                <p class="description-contactform-home">
+                    Precision CAD, BIM, and structural detailing —
+                    delivered by a global engineering team, on time, every time.
+                </p>
+
+                {{-- Trust bullets --}}
+                <ul class="trust-list">
+                   <li>
+    <span class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 2"></path>
+        </svg>
+    </span>
+    Response within 1 business day — guaranteed
+</li>
+                    <li>
+                       <span class="trust-icon">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/>
+    </svg>
+</span>
+                        No commitment required · Free initial consultation
+                    </li>
+                    <li>
+                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
+    <circle cx="9" cy="8" r="3"/>
+    <circle cx="17" cy="8" r="2"/>
+    <path d="M4 18c0-3 2-5 5-5s5 2 5 5"/>
+    <path d="M15 18c0-2 1.5-4 4-4"/>
+</svg></span>
+                        Dedicated project lead assigned from day one
+                    </li>
+                    <li>
+                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
+    <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z"/>
+</svg></span>
+                        98% client satisfaction across 500+ projects
+                    </li>
+                </ul>
+
+                <hr class="rs-divider">
+
+                <div class="contact-info">
+                    <div class="item">
+                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
+    <path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6v3.5c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.7c0-.6.4-1 1-1h3.5c0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2.2 2.2z"/>
+</svg></span>
+                        <span>+1-919-238-8044</span>
+                    </div>
+                    <div class="item">
+                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
+    <rect x="3" y="5" width="18" height="14" rx="1"/>
+    <path d="M3 7l9 6 9-6"/>
+</svg></span>
+                        <span>info@milestoneplm.com</span>
+                    </div>
+                </div>
+
+            </div>
+
+            {{-- ── RIGHT FORM ───────────────────────────────────────── --}}
+            <div class="col-lg-6">
+                <div class="form-card">
+
+                    <p class="form-eyebrow">SCHEDULE A CONSULTATION</p>
+                    <h5>Tell us about your project</h5>
+
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    @endif
+
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @foreach($errors->all() as $error)
+                                <p class="mb-0">{{ $error }}</p>
+                            @endforeach
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('contact.store') }}" id="rsForm" novalidate>
+                        @csrf
+
+                        {{-- Full Name --}}
+                        <div class="rs-field">
+                            <label for="rs_name">FULL NAME <span class="req">*</span></label>
+                            <input
+                                type="text"
+                                id="rs_name"
+                                name="name"
+                                placeholder="Jane Smith"
+                                value="{{ old('name') }}"
+                                class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                maxlength="100"
+                                autocomplete="name"
+                                required
+                            >
+                            @error('name')
+                                <span class="rs-error">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Email + Phone --}}
+                        <div class="rs-row">
+                            <div class="rs-field">
+                                <label for="rs_email">WORK EMAIL <span class="req">*</span></label>
+                                <input
+                                    type="email"
+                                    id="rs_email"
+                                    name="email"
+                                    placeholder="jane@company.com"
+                                    value="{{ old('email') }}"
+                                    class="{{ $errors->has('email') ? 'is-invalid' : '' }}"
+                                    maxlength="255"
+                                    autocomplete="email"
+                                    required
+                                >
+                                @error('email')
+                                    <span class="rs-error">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="rs-field">
+                                <label for="rs_phone">PHONE</label>
+                                <input
+                                    type="tel"
+                                    id="rs_phone"
+                                    name="phone"
+                                    placeholder="+1 (555) 000-0000"
+                                    value="{{ old('phone') }}"
+                                    class="{{ $errors->has('phone') ? 'is-invalid' : '' }}"
+                                    maxlength="30"
+                                    autocomplete="tel"
+                                >
+                                @error('phone')
+                                    <span class="rs-error">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- Service --}}
+                        <div class="rs-field">
+                            <label for="rs_service">SERVICE OF INTEREST</label>
+                            <select id="rs_service" name="service" class="{{ $errors->has('service') ? 'is-invalid' : '' }}">
+                                <option value="" disabled {{ old('service') ? '' : 'selected' }}>Select a service…</option>
+                                <option value="CAD Design"              {{ old('service') === 'CAD Design'              ? 'selected' : '' }}>CAD Design</option>
+                                <option value="BIM Services"             {{ old('service') === 'BIM Services'             ? 'selected' : '' }}>BIM Services</option>
+                                <option value="Structural Detailing"     {{ old('service') === 'Structural Detailing'     ? 'selected' : '' }}>Structural Detailing</option>
+                                <option value="Engineering Consultation" {{ old('service') === 'Engineering Consultation' ? 'selected' : '' }}>Engineering Consultation</option>
+                            </select>
+                            @error('service')
+                                <span class="rs-error">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Project Brief --}}
+                        <div class="rs-field">
+                            <label for="rs_brief">PROJECT BRIEF</label>
+                            <textarea
+                                id="rs_brief"
+                                name="project_brief"
+                                placeholder="Briefly describe your project or requirements…"
+                                rows="4"
+                                maxlength="2000"
+                                class="{{ $errors->has('project_brief') ? 'is-invalid' : '' }}"
+                            >{{ old('project_brief') }}</textarea>
+                            @error('project_brief')
+                                <span class="rs-error">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Honeypot anti-spam (hidden from real users) --}}
+                        <div style="display:none" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button type="submit" id="rsSubmit">
+                            <span class="rs-btn-label">SEND REQUEST</span>
+                            <span class="rs-arrow">→</span>
+                            <span class="rs-spinner d-none">⏳</span>
+                        </button>
+
+                        <p class="rs-note">Free consultation · No spam, ever · Confidential</p>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{{--
+    =====================================================
+    LOCATIONS SECTION
+    resources/views/sections/locations.blade.php
+    Usage: @include('sections.locations')
+    =====================================================
+--}}
+
+<section class="loc-section" id="locations-section" aria-labelledby="loc-heading">
+    <div class="container loc-container">
+
+        {{-- Section heading --}}
+        <p class="loc-heading" id="loc-heading">Our locations:</p>
+
+        {{-- Locations row --}}
+        <div class="row g-4 loc-row">
+
+            @php
+                 $locations = [
+                    [
+                        'country' => 'India',
+                        'city'    => 'Thane',
+                        'address' => "202 Siddhashram CHS, Gokhale Road",
+                        'image'   => 'images/plm-home-locations1.jpg',
+                        'alt'     => 'Bangalore city skyline',
+                    ],
+                    [
+                        'country' => 'USA',
+                        'city'    => 'Dover',
+                        'address' => "8 The Green #20190",
+                        'image'   => 'images/plm-home-locations2.jpg',
+                        'alt'     => '8 The Green #20190',
+                    ],
+                    [
+                        'country' => 'UK',
+                        'city'    => 'Reading',
+                        'address' => "Davidson House, Forbury Square",
+                        'image'   => 'images/plm-home-locations3.jpg',
+                        'alt'     => 'London aerial view',
+                    ],
+                   
+                ];
+            @endphp
+
+            @foreach ($locations as $loc)
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="loc-card">
+
+                        {{-- Circle image --}}
+                        <div class="loc-card__img-wrap" aria-hidden="true">
+                            <img
+                                src="{{ asset($loc['image']) }}"
+                                alt="{{ e($loc['alt']) }}"
+                                class="loc-card__img"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        {{-- Text --}}
+                        <div class="loc-card__body">
+                            <span class="loc-card__country">{{ e($loc['country']) }}</span>
+                            <h3 class="loc-card__city">{{ e($loc['city']) }}</h3>
+                            <address class="loc-card__address">
+                                {!! nl2br(e($loc['address'])) !!}
+                            </address>
+                        </div>
+
+                    </div>
+                </div>
+            @endforeach
+
+        </div>{{-- /.row --}}
+
+    </div>{{-- /.container --}}
+</section>  
+
+@push('scripts')
+<script>
+(function () {
+    'use strict';
+
+    /*
+     * OFFSET must equal:
+     *   CSS --bim-sidebar-top (80px) + bim-sec scroll-margin-top buffer (20px) = 100px
+     * This keeps sidebar active state and clicked scroll position perfectly in sync.
+     */
+    var OFFSET = 100;
+
+    /* ── Smooth scroll ──────────────────────────── */
+    document.querySelectorAll('[data-target]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+            var target = document.getElementById(this.dataset.target);
+            if (!target) return;
+            e.preventDefault();
+            window.scrollTo({
+                top     : target.getBoundingClientRect().top + window.scrollY - OFFSET,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    /* ── Scroll spy ─────────────────────────────────────────────
+       rootMargin: top = -OFFSET so active fires when the section
+       top crosses the sticky sidebar top line.
+       bottom = -45% so only the dominant on-screen section wins.
+    ─────────────────────────────────────────────────────────── */
+    var sections  = document.querySelectorAll('.bim-sec[id]');
+    var sideLinks = document.querySelectorAll('.bim-sidebar__link');
+    var mobTabs   = document.querySelectorAll('.bim-mnav__tab');
+
+    function setActive(id) {
+        [sideLinks, mobTabs].forEach(function (col) {
+            col.forEach(function (el) {
+                el.classList.toggle('active', el.dataset.target === id);
+            });
+        });
+        /* keep active mobile tab scrolled into view */
+        var activeTab = document.querySelector('.bim-mnav__tab.active');
+        if (activeTab) activeTab.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
+    }
+
+    var spyObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, {
+        rootMargin: '-' + OFFSET + 'px 0px -45% 0px',
+        threshold : 0
+    });
+
+    sections.forEach(function (s) { spyObs.observe(s); });
+
+    /* ── Scroll-reveal ──────────────────────────── */
+    var revObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var el = e.target;
+            el.style.transitionDelay = el.style.getPropertyValue('--bim-delay') || '0ms';
+            el.classList.add('bim-anim--in');
+            revObs.unobserve(el);
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.bim-anim').forEach(function (el) { revObs.observe(el); });
+
+}());
+
+
+
+
+/*term AEC with Engineering Services srction js code */
+const counters = document.querySelectorAll('.counter');
+
+const startCounter = () => {
+
+    counters.forEach(counter => {
+
+        const target = +counter.getAttribute('data-target');
+
+        let count = 0;
+
+        const update = () => {
+
+            const increment = target / 60;
+
+            if(count < target){
+
+                count += increment;
+
+                counter.innerText = Math.ceil(count);
+
+                requestAnimationFrame(update);
+
+            }else{
+
+                counter.innerText = target;
+            }
+        };
+
+        update();
+    });
+};
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            startCounter();
+            observer.disconnect();
+        }
+    });
+
+},{threshold:0.3});
+
+observer.observe(document.querySelector('.plm-milestone-section'));
+
+</script>
+@endpush
+
+
 @endsection
+

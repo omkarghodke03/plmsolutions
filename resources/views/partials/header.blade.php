@@ -32,7 +32,7 @@
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741z"/>
                 </svg>
-                <span id="plm-topbar-email-text" class="plm-topbar__email-text">&nbsp;</span>
+                <!-- <span id="plm-topbar-email-text" class="plm-topbar__email-text">&nbsp;</span> -->
             </a>
 
         </div>
@@ -82,33 +82,7 @@
                                             <li><a href="{{ url('/services/as-built-documentation') }}" class="plm-mega__item-link">As-Built Documentation</a></li>
                                         </ul>
                                     </div>
-                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">BIM MODELING</h3>
-                                        <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/architectural-bim') }}" class="plm-mega__item-link">Architectural BIM</a></li>
-                                            <li><a href="{{ url('/services/structural-bim') }}" class="plm-mega__item-link">Structural BIM</a></li>
-                                            <li><a href="{{ url('/services/mep-bim') }}" class="plm-mega__item-link">MEP BIM</a></li>
-                                            <li><a href="{{ url('/services/as-built-documentation') }}" class="plm-mega__item-link">As-Built Documentation</a></li>
-                                        </ul>
-                                    </div>
-                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">BIM MODELING</h3>
-                                        <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/architectural-bim') }}" class="plm-mega__item-link">Architectural BIM</a></li>
-                                            <li><a href="{{ url('/services/structural-bim') }}" class="plm-mega__item-link">Structural BIM</a></li>
-                                            <li><a href="{{ url('/services/mep-bim') }}" class="plm-mega__item-link">MEP BIM</a></li>
-                                            <li><a href="{{ url('/services/as-built-documentation') }}" class="plm-mega__item-link">As-Built Documentation</a></li>
-                                        </ul>
-                                    </div>
-                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">BIM MODELING</h3>
-                                        <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/architectural-bim') }}" class="plm-mega__item-link">Architectural BIM</a></li>
-                                            <li><a href="{{ url('/services/structural-bim') }}" class="plm-mega__item-link">Structural BIM</a></li>
-                                            <li><a href="{{ url('/services/mep-bim') }}" class="plm-mega__item-link">MEP BIM</a></li>
-                                            <li><a href="{{ url('/services/as-built-documentation') }}" class="plm-mega__item-link">As-Built Documentation</a></li>
-                                        </ul>
-                                    </div>
+                                     
                                     <div class="plm-mega__group">
                                         <h3 class="plm-mega__heading">BIM COORDINATION</h3>
                                         <ul class="plm-mega__items">
@@ -219,12 +193,15 @@
                         </div>
                     </div>
                 </li>
+                 <li class="plm-nav__item" role="none">
+                    <a href="{{ url('/blog') }}" class="plm-nav__link" role="menuitem">Blog</a>
+                </li>
 
                 <li class="plm-nav__item" role="none">
                     <a href="{{ url('/case-studies') }}" class="plm-nav__link" role="menuitem">Case Studies</a>
                 </li>
                 <li class="plm-nav__item" role="none">
-                    <a href="{{ url('/blog') }}" class="plm-nav__link" role="menuitem">Blog</a>
+                    <a href="{{ url('/#') }}" class="plm-nav__link" role="menuitem">Careers</a>
                 </li>
                 <li class="plm-nav__item" role="none">
                     <a href="{{ url('/about-us') }}" class="plm-nav__link" role="menuitem">About</a>
@@ -234,6 +211,8 @@
         </nav>
 
         <div class="plm-header__actions">
+                        <a href="{{ url('/admin/login') }}" target="_blank" class="plm-header__cta">Get a Quote</a>
+
             <button class="plm-header__search-btn" id="plm-search-toggle"
                     aria-label="Open search" aria-expanded="false"
                     aria-controls="plm-search-bar" type="button">
@@ -241,7 +220,6 @@
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
             </button>
-            <a href="{{ url('/admin/login') }}" target="_blank" class="plm-header__cta">Get a Quote</a>
             <button class="plm-header__hamburger" id="plm-hamburger"
                     aria-label="Open navigation menu" aria-expanded="false"
                     aria-controls="plm-mobile-nav" type="button">

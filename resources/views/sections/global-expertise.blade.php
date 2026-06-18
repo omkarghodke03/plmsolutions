@@ -1,180 +1,125 @@
 {{--
-    ============================================================
-    Section  : Global Expertise
-    File     : resources/views/sections/global-expertise.blade.php
-    CSS      : resources/css/section.css  (ge- prefix)
-    Image    : public/images/Meeting-Spaces-Hero.jpg
-    ============================================================
+    =====================================================
+    ABOUT / STATS SECTION — resources/views/sections/about-section.blade.php
+    Usage in any blade: @include('sections.about-section')
+    =====================================================
 --}}
 
-<section
-    class="ge-section"
-    style="background-image: url('{{ asset('images/Meeting-Spaces-Hero.jpg') }}');"
->
-    {{-- Dark overlay --}}
-    <div class="ge-overlay"></div>
+{{-- Bootstrap 5 CSS (add once in your layout <head>) --}}
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> --}}
+{{-- <link rel="stylesheet" href="{{ asset('css/custom.css') }}"> --}}
 
-    <div class="container ge-container">
+<section class="as-section" id="about-section" aria-labelledby="as-heading"
+         style="background-image: url('{{ asset('images/Meeting-Spaces-Hero1.AVIF') }}')">
 
-        {{-- ── Eyebrow ──────────────────────────────────────── --}}
-        <p class="ge-eyebrow">Global Expertise · Local Execution</p>
+    {{-- Dark overlay sits behind content --}}
+    <div class="as-overlay" aria-hidden="true"></div>
 
-        {{-- ── Main Heading ────────────────────────────────── --}}
-        <h2 class="ge-heading">
-            European precision meets<br>
-            <span class="ge-heading-highlight">Indian engineering excellence</span>
-        </h2>
+    <div class="container-xl as-inner">
+        <div class="row align-items-center g-0">
 
-        {{-- ── Description ─────────────────────────────────── --}}
-        <p class="ge-desc">
-            Our unique management structure combines
-            <strong>European organizational rigor and project governance</strong>
-            with <strong>world-class Indian technical expertise in BIM,
-            CAD, and structural engineering</strong> to deliver sophisticated
-            solutions that meet the highest international standards.
-        </p>
+            {{-- ── LEFT: Text + CTA ─────────────────────────────── --}}
+            <div class="col-12 col-lg-5 as-left">
 
-        {{-- ── CTA Button ───────────────────────────────────── --}}
-        <div class="ge-btn-wrap">
-            <a href="#" class="ge-btn">
-                Learn More About Us
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                     fill="none" stroke="currentColor" stroke-width="2.5"
-                     viewBox="0 0 24 24">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                </svg>
-            </a>
-        </div>
+                <p class="as-eyebrow">
+                    <span class="as-eyebrow__line" aria-hidden="true"></span>
+                    Global Expertise · Local Execution
+                </p>
 
-        {{-- ── Counter Cards ─────────────────────────────────
-             HOW TO EDIT A COUNTER:
-               data-start  = number to count from (e.g. 0)
-               data-end    = number to count to   (e.g. 200)
-               data-speed  = total duration in ms  (e.g. 2000)
-               data-suffix = symbol after number   (e.g. +, %, "yrs")
-        ──────────────────────────────────────────────────── --}}
-        <div class="row g-3 ge-stats-row">
+                <h2 class="as-heading" id="as-heading">
+                   Where Global Standards Meet Industry-Leading Expertise
+                    <span class="as-heading__accent">Indian engineering excellence</span>
+                </h2>
 
-            @php
-                $stats = [
-                    [
-                        'start'  => 0,
-                        'end'    => 15,
-                        'speed'  => 2000,
-                        'suffix' => '+',
-                        'label'  => 'Years of International Leadership',
-                        'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
-                    ],
-                    [
-                        'start'  => 0,
-                        'end'    => 200,
-                        'speed'  => 2000,
-                        'suffix' => '+',
-                        'label'  => 'Certified Engineers Worldwide',
-                        'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/><polyline points="9 11 12 14 22 4"/></svg>',
-                    ],
-                    [
-                        'start'  => 0,
-                        'end'    => 98,
-                        'speed'  => 2000,
-                        'suffix' => '%',
-                        'label'  => 'Client Satisfaction Rate',
-                        'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
-                    ],
-                    [
-                        'start'  => 0,
-                        'end'    => 95,
-                        'speed'  => 2000,
-                        'suffix' => '%',
-                        'label'  => 'On-Time Delivery',
-                        'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 1 18"/><polyline points="16 7 22 7 22 13"/></svg>',
-                    ],
-                ];
-            @endphp
+                <p class="as-body">
+                    Empowering global clients with multidisciplinary AEC Services and Engineering Design Services, including BIM, CAD drafting, 3D modeling, structural engineering, MEP design, detailing, and project coordination. Our teams deliver accurate, scalable, and high-quality solutions that support every stage of the project lifecycle
+                </p>
 
-            @foreach($stats as $stat)
-                {{-- col-6 = 2 columns on mobile, col-lg-3 = 4 columns on desktop --}}
-                <div class="col-6 col-lg-3">
-                    <div
-                        class="ge-stat-card"
-                        data-start="{{ $stat['start'] }}"
-                        data-end="{{ $stat['end'] }}"
-                        data-speed="{{ $stat['speed'] }}"
-                        data-suffix="{{ $stat['suffix'] }}"
-                    >
-                        {{-- Icon --}}
-                        <div class="ge-stat-icon">{!! $stat['icon'] !!}</div>
+                <a  class="our-delivery-model-btn" aria-label="Learn more about us">
+                    Learn More About Us
+                    <span class="our-delivery-model-btn__arrow" aria-hidden="true">→</span>
+                </a>
 
-                        {{-- Counter number --}}
-                        <div class="ge-stat-number">
-                            <span class="ge-counter">{{ $stat['start'] }}</span>{{ $stat['suffix'] }}
+            </div>
+
+            {{-- ── RIGHT: Stats Grid ────────────────────────────── --}}
+            <div class="col-12 col-lg-7 as-right">
+
+                <div class="as-grid" role="list" aria-label="Company statistics">
+
+                    @php
+                        /**
+                         * Stats array — swap these for DB values if needed.
+                         * suffix: appended to the animated number (e.g. "+" or "%")
+                         * target: the final number the counter animates to
+                         */
+                        $stats = [
+                            [
+                                'icon'   => 'globe',
+                                'target' => 57,
+                                'suffix' => '%',
+                                'label'  => 'Cost Reduction',
+                            ],
+                            [
+                                'icon'   => 'users',
+                                'target' => 96.4,
+                                'suffix' => '%',
+                                'label'  => 'Satisfied Clients',
+                            ],
+                            [
+                                'icon'   => 'clock',
+                                'target' => 300,
+                                'suffix' => '+',
+                                'label'  => 'Projects Delivered Every Year',
+                            ],
+                            [
+                                'icon'   => 'chart',
+                                'target' => 99.99,
+                                'suffix' => '+',
+                                'label'  => 'Data Security',
+                            ],
+                        ];
+                    @endphp
+
+                    @foreach ($stats as $stat)
+                        <div
+                            class="as-card"
+                            role="listitem"
+                            data-count="{{ (int) $stat['target'] }}"
+                            data-suffix="{{ e($stat['suffix']) }}"
+                        >
+                            {{-- Icon row --}}
+                            <div class="as-card__icon-row" aria-hidden="true">
+                                @switch($stat['icon'])
+                                    @case('globe')
+                                        <svg class="as-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                    @break
+                                    @case('users')
+                                        <svg class="as-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    @break
+                                    @case('clock')
+                                        <svg class="as-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    @break
+                                    @case('chart')
+                                        <svg class="as-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                    @break
+                                @endswitch
+                                <span class="as-card__divider"></span>
+                            </div>
+
+                            {{-- Animated number --}}
+                            <p class="as-card__value" aria-label="{{ $stat['target'] . $stat['suffix'] }} {{ $stat['label'] }}">
+                                <span class="as-counter">0</span>{{ e($stat['suffix']) }}
+                            </p>
+
+                            <p class="as-card__label">{{ e($stat['label']) }}</p>
                         </div>
+                    @endforeach
 
-                        {{-- Label --}}
-                        <p class="ge-stat-label">{{ $stat['label'] }}</p>
-                    </div>
                 </div>
-            @endforeach
+            </div>
 
-        </div>{{-- /row --}}
-    </div>{{-- /container --}}
+        </div>
+    </div>
+
 </section>
-
-
-{{-- ── Counter Animation Script ───────────────────────────────── --}}
-<script>
-(function () {
-    'use strict';
-
-    /**
-     * Animate a single counter from start → end over `speed` ms.
-     * @param {HTMLElement} el   - The <span class="ge-counter"> element
-     * @param {number} start     - Starting number
-     * @param {number} end       - Ending number
-     * @param {number} speed     - Duration in milliseconds
-     */
-    function animateCounter(el, start, end, speed) {
-        var startTime = null;
-        var range = end - start;
-
-        function step(timestamp) {
-            if (!startTime) startTime = timestamp;
-            var progress = Math.min((timestamp - startTime) / speed, 1);
-            /* easeOutQuad — fast start, slow finish */
-            var eased = 1 - (1 - progress) * (1 - progress);
-            el.textContent = Math.floor(start + range * eased);
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            } else {
-                el.textContent = end;   /* ensure exact end value */
-            }
-        }
-
-        requestAnimationFrame(step);
-    }
-
-    /**
-     * Use IntersectionObserver so counters only fire
-     * when the cards scroll into view.
-     */
-    var cards = document.querySelectorAll('.ge-stat-card');
-
-    var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                var card   = entry.target;
-                var el     = card.querySelector('.ge-counter');
-                var start  = parseInt(card.dataset.start,  10);
-                var end    = parseInt(card.dataset.end,    10);
-                var speed  = parseInt(card.dataset.speed,  10);
-
-                animateCounter(el, start, end, speed);
-                observer.unobserve(card);   /* run only once */
-            }
-        });
-    }, { threshold: 0.3 });
-
-    cards.forEach(function (card) { observer.observe(card); });
-})();
-</script>

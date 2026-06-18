@@ -1,90 +1,75 @@
 {{--
-    ============================================================
-    Section  : Our Global Locations
-    File     : resources/views/sections/locations.blade.php
-    CSS      : resources/css/custom.css  (locations-four-cards- prefix)
-    ============================================================
+    =====================================================
+    LOCATIONS SECTION
+    resources/views/sections/locations.blade.php
+    Usage: @include('sections.locations')
+    =====================================================
 --}}
 
-<section class="locations-four-cards-section">
-    <div class="container">
+<section class="loc-section" id="locations-section" aria-labelledby="loc-heading">
+    <div class="container loc-container">
 
-        {{-- Eyebrow --}}
-        <p class="locations-four-cards-eyebrow">Our Global Locations</p>
+        {{-- Section heading --}}
+        <p class="loc-heading" id="loc-heading">Our locations:</p>
 
-        {{-- Cards Row --}}
-        <div class="row g-3">
+        {{-- Locations row --}}
+        <div class="row g-4 loc-row">
 
             @php
-                /*
-                |----------------------------------------------
-                | HOW TO UPDATE:
-                | 'image'   → public/images/your-file.jpg
-                | 'country' → Country label (top of card)
-                | 'city'    → Main city heading
-                | 'address' → Address shown on hover
-                |----------------------------------------------
-                */
                 $locations = [
                     [
-                        'image'   => 'images/plm-home-locations1.jpg',
                         'country' => 'India',
-                        'city'    => 'Bangalore',
-                        'address' => '123 MG Road, Bangalore',
+                        'city'    => 'Thane',
+                        'address' => "202 Siddhashram CHS, Gokhale Road",
+                        'image'   => 'images/plm-home-locations1.jpg',
+                        'alt'     => 'Bangalore city skyline',
                     ],
                     [
+                        'country' => 'USA',
+                        'city'    => 'Dover',
+                        'address' => "8 The Green #20190",
                         'image'   => 'images/plm-home-locations2.jpg',
-                        'country' => 'Ireland',
-                        'city'    => 'Dublin',
-                        'address' => '17 Adelaide Road, Dublin',
+                        'alt'     => '8 The Green #20190',
                     ],
                     [
-                        'image'   => 'images/plm-home-locations3.jpg',
                         'country' => 'UK',
-                        'city'    => 'London',
-                        'address' => '25 King Street, London',
+                        'city'    => 'Reading',
+                        'address' => "Davidson House, Forbury Square",
+                        'image'   => 'images/plm-home-locations3.jpg',
+                        'alt'     => 'London aerial view',
                     ],
-                    [
-                        'image'   => 'images/plm-home-locations4.jpg',
-                        'country' => 'Australia',
-                        'city'    => 'Sydney',
-                        'address' => '10 Harbour Bridge Rd, Sydney',
-                    ],
+                   
                 ];
             @endphp
 
-            @foreach($locations as $location)
+            @foreach ($locations as $loc)
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="locations-four-cards-card">
+                    <div class="loc-card">
 
-                        {{-- Background Image --}}
-                        <img
-                            src="{{ asset($location['image']) }}"
-                            alt="{{ $location['city'] }}"
-                            class="locations-four-cards-img"
-                            loading="lazy"
-                        >
+                        {{-- Circle image --}}
+                        <div class="loc-card__img-wrap" aria-hidden="true">
+                            <img
+                                src="{{ asset($loc['image']) }}"
+                                alt="{{ e($loc['alt']) }}"
+                                class="loc-card__img"
+                                loading="lazy"
+                            >
+                        </div>
 
-                        {{-- Gradient Overlay --}}
-                        <div class="locations-four-cards-gradient"></div>
-
-                        {{-- Card Content --}}
-                        <div class="locations-four-cards-body">
-                            <span class="locations-four-cards-country">
-                                {{ $location['country'] }}
-                            </span>
-                            <h3 class="locations-four-cards-city">
-                                {{ $location['city'] }}
-                            </h3>
-                            <p class="locations-four-cards-address">
-                                {{ $location['address'] }}
-                            </p>
+                        {{-- Text --}}
+                        <div class="loc-card__body">
+                            <span class="loc-card__country">{{ e($loc['country']) }}</span>
+                            <h3 class="loc-card__city">{{ e($loc['city']) }}</h3>
+                            <address class="loc-card__address">
+                                {!! nl2br(e($loc['address'])) !!}
+                            </address>
                         </div>
 
                     </div>
                 </div>
             @endforeach
 
-        </div>{{-- /row --}}
-    </div>{{-- /container --}}
+        </div>{{-- /.row --}}
+
+    </div>{{-- /.container --}}
 </section>
