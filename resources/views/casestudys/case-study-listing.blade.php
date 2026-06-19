@@ -264,112 +264,46 @@ projects
 
 {{-- ===== GRID ===== --}}
 
+{{-- ===== GRID ===== --}}
 <section class="cs-grid-section">
-
 <div class="container">
 
-<div
+    @php $first = true; @endphp
 
-class="row g-4"
-
-id="csGrid"
-
->
-
-
-@forelse($caseStudies as $cs)
-
-<div
-
-class="col-12 col-md-6 col-lg-4 cs-card-col"
-
-data-cat="{{ $cs->category }}"
-
-data-title="{{ strtolower($cs->title) }}"
-
-data-desc="{{ strtolower($cs->short_description) }}"
-
->
-
-
-<a
-
-href="{{ route('case-studies.show',$cs->slug) }}"
-
-class="cs-card"
-
->
-
-
-<div class="cs-card-img-wrap">
-
-<img
-
-src="{{ asset('casestudy/'.$cs->cover_image) }}"
-
-alt="{{ $cs->image_alt ?? $cs->title }}"
-
-title="{{ $cs->image_title ?? $cs->title }}"
-
-class="cs-card-img"
-
-loading="lazy"
-
->
-
-
-@if($cs->industry_tag)
-
-<span
-
-class="cs-industry-badge"
-
->
-
-{{ strtoupper($cs->industry_tag) }}
-
-</span>
-
-@endif
-
-</div>
-
-
-
-<div class="cs-card-body">
-
-<p class="cs-card-cat">
-
-{{ strtoupper($cs->category) }}
-
-</p>
-
-
-<h3 class="cs-card-title">
-
-{{ $cs->title }}
-
-</h3>
-
-
-<p class="cs-card-desc">
-
-{{ $cs->short_description }}
-
-</p>
-
-</div>
-</a>
-</div>
-@empty
-<div class="col-12 text-center py-5">
-<p>No case studies found</p>
-</div>
-@endforelse
-</div>
-<div class="text-center py-5 d-none" id="csEmptyJs">
-<p>No case studies found.</p>
-</div>
+   {{-- ===== GRID ===== --}}
+<section class="cs-grid-section">
+<div class="container">
+    <div class="row g-4" id="csGrid">
+        @forelse($caseStudies as $cs)
+        <div class="col-12 col-md-6 col-lg-4 cs-card-col"
+             data-cat="{{ $cs->category }}"
+             data-title="{{ strtolower($cs->title) }}"
+             data-desc="{{ strtolower($cs->short_description) }}">
+            <a href="{{ route('case-studies.show', $cs->slug) }}" class="cs-card">
+                <div class="cs-card-img-wrap">
+                    <img src="{{ asset('casestudy/' . $cs->cover_image) }}"
+                         alt="{{ $cs->image_alt ?? $cs->title }}"
+                         class="cs-card-img" loading="lazy">
+                    @if($cs->industry_tag)
+                    <span class="cs-industry-badge">{{ strtoupper($cs->industry_tag) }}</span>
+                    @endif
+                </div>
+                <div class="cs-card-body">
+                    <p class="cs-card-cat">{{ strtoupper($cs->category) }}</p>
+                    <h3 class="cs-card-title">{{ $cs->title }}</h3>
+                    <p class="cs-card-desc">{{ $cs->short_description }}</p>
+                </div>
+            </a>
+        </div>
+        @empty
+        <div class="col-12 text-center py-5">
+            <p>No case studies found</p>
+        </div>
+        @endforelse
+    </div>
+    <div class="text-center py-5 d-none" id="csEmptyJs">
+        <p>No case studies found.</p>
+    </div>
 </div>
 </section>
 @endsection
