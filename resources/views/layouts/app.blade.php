@@ -22,17 +22,20 @@
     'resources/css/contact.css',
     'resources/css/aboutus.css',
     'resources/css/service/list-service.css',
-    'resources/css/service/service.css'
+    'resources/css/service/service.css',
+    'resources/css/case-study/cs-page.css',
+    'resources/css/case-study/cs-listing.css'
+    
     ])
 
   @vite([
     'resources/js/custom.js',
     'resources/js/cookies.js',
-    'resources/js/cookie-consent.js'
+    'resources/js/cookie-consent.js',
+    'resources/js/case-study.js'
     ])
     
     @stack('styles')
-    @vite(['resources/css/service/service.css']) 
 </head>
 <body>
     @include('partials.preloader')<!--Preloader-->

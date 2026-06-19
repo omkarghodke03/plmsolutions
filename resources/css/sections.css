@@ -653,7 +653,7 @@
     .plm-header__cta { display: none; }
 }
 
-
+/*detel css code start to  ending  */
 
 
 /*herosectioncode*/
@@ -734,7 +734,7 @@
 }
 .plm-topbar__phone {
     color: var(--plm-primary);
-    font-weight: 600;
+    font-weight: 500;
 }
 .plm-topbar__email { color: var(--plm-secondary); }
 .plm-topbar__phone:hover,
@@ -1500,7 +1500,7 @@
 }
 .plm-topbar__phone {
     color: var(--plm-primary);
-    font-weight: 600;
+    font-weight: 400;
 }
 .plm-topbar__email { color: var(--plm-secondary); }
 .plm-topbar__phone:hover,
@@ -2501,7 +2501,7 @@
     background  : var(--plm-primary);
     border-color: var(--plm-primary);
     color       : #ffffff;
-    font-weight : 600;
+    font-weight : 500;
 }
 
 .SE-tab-btn--active:hover {
@@ -2636,7 +2636,7 @@
     gap            : 8px;
     font-family    : var(--plm-heading);
     font-size      : 13px;
-    font-weight    : 700;
+    font-weight    : 500;
     letter-spacing : 1px;
     text-transform : uppercase;
     color          : var(--plm-primary);
