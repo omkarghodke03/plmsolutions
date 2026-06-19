@@ -1,0 +1,324 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --orange: #ec6502;
+    --dark:   #1a1a1a;
+    --text:   #333333;
+    --muted:  #666666;
+    --white:  #ffffff;
+    --bg:     #f9f9f9;
+    --font:   'Arimo', Arial, sans-serif;
+    --trans:  0.3s ease;
+}
+
+body { font-family: var(--font); color: var(--text); background: var(--white); }
+
+/* Breadcrumb */
+.cs-breadcrumb {
+    padding: 14px 0;
+    background: #f5f5f5;
+    border-bottom: 1px solid #eee;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.cs-breadcrumb a { color: var(--muted); text-decoration: none; }
+.cs-breadcrumb a:hover { color: var(--orange); }
+.cs-breadcrumb span { margin: 0 8px; }
+.cs-breadcrumb .active { color: var(--dark); }
+
+/* Single Section */
+.cs-single-section { padding: 56px 0 96px; }
+
+/* Cover */
+.cs-cover-wrap {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.cs-cover-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+}
+
+/* Category + Title */
+.cs-single-cat {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.cs-single-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 40px;
+}
+
+/* Section Block */
+.cs-section-block {
+    padding: 36px 0;
+    border-top: 1px solid #eeeeee;
+}
+
+.cs-section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.cs-line {
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: var(--orange);
+}
+
+.cs-section-heading {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.cs-section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+}
+
+/* Challenge List */
+.cs-challenge-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.cs-challenge-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.cs-point-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+/* ===== SIDEBAR ===== */
+.cs-sidebar {
+    position: sticky;
+    top: 80px;
+    background: #fafafa;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    padding: 28px 24px;
+}
+
+.cs-sidebar-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--orange);
+}
+
+.cs-details-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cs-details-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cs-details-list li:last-child { border-bottom: none; }
+
+.cs-detail-icon {
+    font-size: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.cs-detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+}
+
+.cs-detail-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.4;
+}
+
+/* Industry badge reuse */
+.cs-industry-badge {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 5px 14px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+/*----------single page case study herosectin start----------------*/
+/* ===== SINGLE PAGE HERO ===== */
+.cs-single-hero {
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px 0 48px;
+    position: relative;
+    background-color: #1a1a1a;
+}
+
+.cs-hero-breadcrumb {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.cs-hero-breadcrumb a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.cs-hero-breadcrumb a:hover { color: var(--orange); }
+
+.cs-hero-breadcrumb .active { color: var(--orange); }
+
+.cs-hero-breadcrumb span { margin: 0 8px; }
+
+/* Tags */
+.cs-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.cs-hero-tag {
+    background: var(--orange);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 5px 14px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+/* Title */
+.cs-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 700px;
+}
+
+/* Description */
+.cs-hero-desc {
+    font-size: 15px;
+    color: #cccccc;
+    line-height: 1.7;
+    max-width: 580px;
+    margin-bottom: 28px;
+}
+
+/* Meta bar */
+.cs-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-size: 13px;
+    color: #cccccc;
+}
+
+.cs-hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767px) {
+    .cs-single-hero {
+        min-height: 320px;
+        padding: 40px 0 36px;
+    }
+
+    .cs-hero-title {
+        font-size: 1.8rem;
+    }
+
+    .cs-hero-meta {
+        gap: 14px;
+        font-size: 12px;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+    .cs-sidebar { position: static; margin-top: 40px; }
+}
+
+@media (max-width: 767px) {
+    .cs-single-section { padding: 32px 0 64px; }
+}

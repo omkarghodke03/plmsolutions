@@ -7,6 +7,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CaseStudyController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +23,6 @@ use App\Http\Controllers\ServiceController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
 
 
 // Route to show the home page all particals 
@@ -81,8 +82,9 @@ Route::prefix('cookie')->name('cookie.')->group(function () {
     Route::post('/save-preferences', [CookieConsentController::class, 'savePreferences'])->name('save-preferences');
 });
 
-
-
-
 // CORRECT - only the store method
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+
+Route::get('/case-studies', [CaseStudyController::class, 'index'])->name('case-studies.index');
+Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');
