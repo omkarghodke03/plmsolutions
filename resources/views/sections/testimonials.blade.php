@@ -7,6 +7,16 @@
     ============================================================
 --}}
 
+<style>
+    .client-testimonials-nav-btn--next{
+        border-radius: 25PX;
+    }
+    .client-testimonials-nav-btn{
+        border-radius:25px ;
+    }
+    
+</style>
+
 <section class="client-testimonials-section">
     <div class="container">
 
@@ -187,60 +197,49 @@
 (function () {
     'use strict';
 
-    var CONFIG = {
-        slidesPerView   : 3,
-        slidesPerViewMd : 2,
-        slidesPerViewSm : 1,
-        slidesPerClick  : 1,
-        gap             : 24
+    const CONFIG = {
+        slidesPerView: 3,
+        slidesPerViewMd: 2,
+        slidesPerViewSm: 1,
+        slidesPerClick: 1
     };
 
-    var track    = document.getElementById('ctTrack');
-    var prevBtn  = document.getElementById('ctPrev');
-    var nextBtn  = document.getElementById('ctNext');
-    var dotsWrap = document.getElementById('ctDots');
-    var fromEl   = document.getElementById('ctFrom');
-    var toEl     = document.getElementById('ctTo');
+    const track = document.getElementById('ctTrack');
+    const prevBtn = document.getElementById('ctPrev');
+    const nextBtn = document.getElementById('ctNext');
+    const dotsWrap = document.getElementById('ctDots');
+    const fromEl = document.getElementById('ctFrom');
+    const toEl = document.getElementById('ctTo');
 
-    var slides   = track.querySelectorAll('.client-testimonials-slide');
-    var total    = slides.length;
-    var current  = 0;
+    const slides = track.querySelectorAll('.client-testimonials-slide');
+    const total = slides.length;
+
+    let current = 0;
 
     function perView() {
-
-        if (window.innerWidth <= 575) {
-            return CONFIG.slidesPerViewSm;
-        }
-
-        if (window.innerWidth <= 991) {
-            return CONFIG.slidesPerViewMd;
-        }
-
+        if (window.innerWidth <= 575) return CONFIG.slidesPerViewSm;
+        if (window.innerWidth <= 991) return CONFIG.slidesPerViewMd;
         return CONFIG.slidesPerView;
+    }
+
+    function getGap() {
+        return parseFloat(getComputedStyle(track).gap) || 24;
     }
 
     function buildDots() {
 
         dotsWrap.innerHTML = '';
 
-        var pages = Math.ceil(total / perView());
+        const pages = total - perView() + 1;
 
-        for (var i = 0; i < pages; i++) {
+        for (let i = 0; i < pages; i++) {
 
-            var dot = document.createElement('span');
-
+            const dot = document.createElement('span');
             dot.className = 'client-testimonials-dot';
-            dot.dataset.page = i;
 
-            (function(page){
-
-                dot.addEventListener('click', function(){
-
-                    goTo(page * perView());
-
-                });
-
-            })(i);
+            dot.addEventListener('click', function () {
+                goTo(i);
+            });
 
             dotsWrap.appendChild(dot);
         }
@@ -248,132 +247,121 @@
 
     function updateCardColors() {
 
-        document.querySelectorAll('.client-testimonials-card').forEach(function(card){
-
+        document.querySelectorAll('.client-testimonials-card').forEach(card => {
             card.classList.remove(
                 'client-testimonials-card--pos1',
                 'client-testimonials-card--pos2',
                 'client-testimonials-card--pos3'
             );
-
         });
 
-        var pv = perView();
+        const pv = perView();
 
-        for (var i = 0; i < pv; i++) {
+        for (let i = 0; i < pv; i++) {
 
-            var slide = slides[current + i];
+            const slide = slides[current + i];
 
             if (!slide) continue;
 
-            var card = slide.querySelector('.client-testimonials-card');
+            const card = slide.querySelector('.client-testimonials-card');
 
             if (!card) continue;
 
             if (i === 0) {
+                card.classList.add('client-testimonials-card--pos1');
+            }
 
-                card.classList.add(
-                    'client-testimonials-card--pos1'
-                );
+            if (i === 1) {
+                card.classList.add('client-testimonials-card--pos2');
+            }
 
-            } else if (i === 1) {
-
-                card.classList.add(
-                    'client-testimonials-card--pos2'
-                );
-
-            } else if (i === 2) {
-
-                card.classList.add(
-                    'client-testimonials-card--pos3'
-                );
+            if (i === 2) {
+                card.classList.add('client-testimonials-card--pos3');
             }
         }
     }
 
     function goTo(index) {
 
-        var pv = perView();
+        const pv = perView();
 
-        var maxIndex = Math.max(
-            0,
-            total - pv
-        );
+        const maxIndex = Math.max(0, total - pv);
 
-        current = Math.max(
-            0,
-            Math.min(index, maxIndex)
-        );
+        current = Math.max(0, Math.min(index, maxIndex));
 
-        var slideW =
-            slides[0].offsetWidth + CONFIG.gap;
+        const gap = getGap();
+
+        const slideWidth = slides[0].offsetWidth + gap;
 
         track.style.transform =
-            'translateX(-' +
-            (current * slideW) +
-            'px)';
+            `translateX(-${current * slideWidth}px)`;
 
         fromEl.textContent = current + 1;
 
-        toEl.textContent =
-            Math.min(current + pv, total);
+        toEl.textContent = Math.min(current + pv, total);
 
-        var activePage =
-            Math.floor(current / pv);
+        dotsWrap.querySelectorAll('.client-testimonials-dot').forEach(function (dot, i) {
 
-        dotsWrap
-            .querySelectorAll('.client-testimonials-dot')
-            .forEach(function(dot, i){
+            dot.classList.toggle(
+                'client-testimonials-dot--active',
+                i === current
+            );
 
-                dot.classList.toggle(
-                    'client-testimonials-dot--active',
-                    i === activePage
-                );
+        });
 
-            });
-
-        prevBtn.disabled = (current === 0);
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === maxIndex;
 
         prevBtn.classList.toggle(
             'client-testimonials-nav-btn--disabled',
             current === 0
         );
 
+        nextBtn.classList.toggle(
+            'client-testimonials-nav-btn--disabled',
+            current === maxIndex
+        );
+
         updateCardColors();
+
     }
 
-    prevBtn.addEventListener('click', function(){
+    prevBtn.addEventListener('click', function () {
 
-        goTo(
-            current - CONFIG.slidesPerClick
-        );
+        goTo(current - CONFIG.slidesPerClick);
 
     });
 
-    nextBtn.addEventListener('click', function(){
+    nextBtn.addEventListener('click', function () {
 
-        goTo(
-            current + CONFIG.slidesPerClick
-        );
+        goTo(current + CONFIG.slidesPerClick);
 
     });
 
-    var resizeTimer;
+    let resizeTimer;
 
-    window.addEventListener('resize', function(){
+    window.addEventListener('resize', function () {
 
         clearTimeout(resizeTimer);
 
-        resizeTimer = setTimeout(function(){
+        resizeTimer = setTimeout(function () {
 
             buildDots();
+
+            const maxIndex = Math.max(0, total - perView());
+
+            if (current > maxIndex) {
+                current = maxIndex;
+            }
+
             goTo(current);
 
-        }, 150);
+        }, 200);
 
     });
 
     buildDots();
+
     goTo(0);
 
 })();

@@ -4,6 +4,11 @@
    ============================================================ */
 
 /* ---- Section wrapper ---- */
+
+.container {
+    max-width: 1240px !important;
+}
+
 .brand-slider-section {
   width: 100%;
   padding: 40px 0 36px;
@@ -473,7 +478,7 @@
     display      : inline-block;
     padding      : 5px 12px;
     border       : 1px solid #e0e0e0;
-    border-radius: 0px;
+    border-radius: 15px;
     font-family  : var(--plm-heading-font);
     font-size    : 15px;
     color        : #313131;
@@ -1027,7 +1032,7 @@
 .as-overlay {
     position  : absolute;
     inset     : 0;
-    background: rgba(0, 0, 0, 0.856); /* ← was .75 — lighter so image shows */
+    /*background: rgba(0, 0, 0, 0.856); */
     z-index   : 0;
 }
 
@@ -1573,3 +1578,6 @@
   transform: rotate(-45deg) translateY(100%);
   
 }
+
+
+/* ─────────────all page contume code──────────────── */

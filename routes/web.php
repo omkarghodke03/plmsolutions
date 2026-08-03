@@ -6,23 +6,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\IndustriesController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CaseStudyController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\LinkedInOAuthController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\Http\Controllers\JobApplicationController;
+
+use App\Http\Controllers\SearchController;
 
 
 // Route to show the home page all particals 
@@ -32,12 +25,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Pages
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
 Route::get('/leadership', [PageController::class, 'leadership'])->name('leadership');
-Route::get('/careers', [PageController::class, 'careers'])->name('careers');
 Route::get('/work-culture', [PageController::class, 'workCulture'])->name('workculture');
 Route::get('/why-milestone', [PageController::class, 'whyMilestone'])->name('whymilestone');
 
-// Blog
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
 
 //services 
 Route::prefix('services')->name('service.')->group(function () {
@@ -46,7 +37,7 @@ Route::prefix('services')->name('service.')->group(function () {
     Route::get('/architectural-bim',      [ServiceController::class, 'architecturalBim'])->name('architectural-bim');
     Route::get('/structural-bim',         [ServiceController::class, 'structuralBim'])->name('structural-bim');
     Route::get('/mep-bim',                [ServiceController::class, 'mepBim'])->name('mep-bim');
-    Route::get('/as-built-documentation', [ServiceController::class, 'asBuiltDocumentation'])->name('as-built-documentation');
+    Route::get('/bim-services',           [ServiceController::class, 'bimservices'])->name('bim-services');
     Route::get('/clash-detection',        [ServiceController::class, 'clashDetection'])->name('clash-detection');
     Route::get('/4d-5d-scheduling',       [ServiceController::class, 'scheduling4d5d'])->name('4d-5d-scheduling');
     Route::get('/lod-management',         [ServiceController::class, 'lodManagement'])->name('lod-management');
@@ -68,8 +59,19 @@ Route::prefix('services')->name('service.')->group(function () {
 });
 
 
+Route::prefix('industries')->group(function () {
+
+    Route::get('/residential', [IndustriesController::class, 'residential']);
+    Route::get('/commercial', [IndustriesController::class, 'commercial']);
+    Route::get('/industrial', [IndustriesController::class, 'industrial']);
+    Route::get('/healthcare', [IndustriesController::class, 'healthcare']);
+    Route::get('/education', [IndustriesController::class, 'education']);
+    Route::get('/retail', [IndustriesController::class, 'retail']);
+
+});
+
 // Contact
-// Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
 
 
 
@@ -88,3 +90,31 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 Route::get('/case-studies', [CaseStudyController::class, 'index'])->name('case-studies.index');
 Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');
+
+
+// ============================================================
+// Career Page Routes admin panel 
+// ============================================================
+Route::get('/careers', [JobController::class, 'index'])->name('jobs.index');
+Route::get('/careers/{slug}', [JobController::class, 'show'])->name('jobs.show');
+
+// Indeed XML Feed
+Route::get('/jobs-feed.xml', [JobController::class, 'indeedFeed'])->name('jobs.indeed');
+
+// LinkedIn OAuth (For Authorization / Connecting Admin Account)
+Route::get('/linkedin/connect', [LinkedInOAuthController::class, 'connect'])->name('linkedin.connect');
+Route::get('/linkedin/callback', [LinkedInOAuthController::class, 'callback'])->name('linkedin.callback');
+
+
+// ============================================================
+//poppop job apply rout /web.php cookies route code 
+// ============================================================
+Route::post('/job-application/apply', [JobApplicationController::class, 'apply'])
+    ->name('job.application.apply');
+
+
+// ============================================================
+//serach bar code rout  
+// ============================================================
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/search/suggestions', [SearchController::class, 'suggestions'])->name('search.suggestions');

@@ -4,6 +4,141 @@
 
 @section('content')
 
+
+
+<style>
+    
+    /* GALLERY ITEM HOVER */
+.cs-gallery-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.cs-gallery-item img {
+    transition: transform 0.4s ease;
+    width: 100%;
+    display: block;
+}
+
+.cs-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.cs-gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cs-gallery-item:hover .cs-gallery-overlay {
+    opacity: 1;
+}
+
+/* LIGHTBOX */
+.cs-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cs-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* CLOSE BUTTON */
+.cs-lb-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s ease;
+    z-index: 10;
+}
+
+.cs-lb-close:hover {
+    background: rgba(224, 122, 47, 0.7);
+    border-color: #E07A2F;
+}
+
+/* ARROWS */
+.cs-lb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease;
+    z-index: 10;
+}
+
+.cs-lb-arrow:hover {
+    background: #E07A2F;
+    border-color: #E07A2F;
+}
+
+.cs-lb-prev { left: 24px; }
+.cs-lb-next { right: 24px; }
+
+/* IMAGE */
+.cs-lb-content {
+    max-width: 85vw;
+    max-height: 85vh;
+    text-align: center;
+}
+
+.cs-lb-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: opacity 0.25s ease;
+}
+
+/* COUNTER */
+.cs-lb-counter {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+    .cs-lb-prev { left: 10px; }
+    .cs-lb-next { right: 10px; }
+    .cs-lb-arrow { width: 38px; height: 38px; }
+}
+</style>
 {{-- HERO --}}
 <section class="cs-single-hero"
     style="background: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
@@ -14,7 +149,10 @@
             <a href="{{ route('case-studies.index') }}">CASE STUDIES</a><span>›</span>
             <span class="active">{{ strtoupper($caseStudy->industry_tag) }}</span>
         </div>
-        <div class="cs-hero-tags">
+       
+        <h1 class="cs-hero-title">{{ $caseStudy->title }}</h1>
+        <p class="cs-hero-desc">{{ $caseStudy->short_description }}</p>
+         <div class="cs-hero-tags">
             <span class="cs-hero-tag">{{ strtoupper($caseStudy->service) }}</span>
             <span class="cs-hero-tag">{{ strtoupper($caseStudy->industry) }}</span>
             @if($caseStudy->meta_keywords)
@@ -23,8 +161,6 @@
                 @endforeach
             @endif
         </div>
-        <h1 class="cs-hero-title">{{ $caseStudy->title }}</h1>
-        <p class="cs-hero-desc">{{ $caseStudy->short_description }}</p>
         <div class="cs-hero-meta">
             @if($caseStudy->location)<span>📍 {{ $caseStudy->location }}</span>@endif
             @if($caseStudy->timeline)<span>⏱️ {{ $caseStudy->timeline }}</span>@endif
@@ -120,22 +256,55 @@
                 @endif
 
                 {{-- Gallery --}}
-                @if($caseStudy->gallery_images)
-                <div class="cs-section-block">
-                    <p class="cs-section-eyebrow"><span class="cs-line"></span> GLIMPSE OF WORK</p>
-                    <h2 class="cs-section-heading">Project in Pictures</h2>
-                    <div class="cs-gallery-grid">
-                        @foreach($caseStudy->gallery_images as $i => $img)
-                        <div class="cs-gallery-item {{ $i === 0 ? 'cs-gallery-main' : '' }}">
-                            <img src="{{ asset('casestudy/' . $img) }}" alt="{{ $caseStudy->title }} - Image {{ $i+1 }}" loading="lazy">
-                        </div>
-                        @endforeach
-                    </div>
-                    @if($caseStudy->gallery_caption)
-                    <p class="cs-gallery-caption">{{ $caseStudy->gallery_caption }}</p>
-                    @endif
-                </div>
-                @endif
+               {{-- Gallery --}}
+@if($caseStudy->gallery_images)
+<div class="cs-section-block">
+    <p class="cs-section-eyebrow"><span class="cs-line"></span> GLIMPSE OF WORK</p>
+    <h2 class="cs-section-heading">Project in Pictures</h2>
+    <div class="cs-gallery-grid">
+        @foreach($caseStudy->gallery_images as $i => $img)
+        <div class="cs-gallery-item {{ $i === 0 ? 'cs-gallery-main' : '' }}"
+             data-index="{{ $i }}"
+             onclick="openLightbox({{ $i }})">
+            <img src="{{ asset('casestudy/' . $img) }}"
+                 alt="{{ $caseStudy->title }} - Image {{ $i+1 }}"
+                 loading="lazy">
+            <div class="cs-gallery-overlay">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    @if($caseStudy->gallery_caption)
+    <p class="cs-gallery-caption">{{ $caseStudy->gallery_caption }}</p>
+    @endif
+</div>
+@endif
+
+{{-- LIGHTBOX --}}
+<div class="cs-lightbox" id="csLightbox" onclick="closeLightboxOutside(event)">
+    <button class="cs-lb-close" onclick="closeLightbox()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+    </button>
+    <button class="cs-lb-arrow cs-lb-prev" onclick="changeSlide(-1)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+        </svg>
+    </button>
+    <div class="cs-lb-content">
+        <img id="csLbImg" src="" alt="">
+        <p class="cs-lb-counter" id="csLbCounter"></p>
+    </div>
+    <button class="cs-lb-arrow cs-lb-next" onclick="changeSlide(1)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+        </svg>
+    </button>
+</div>
 
                 {{-- Testimonial --}}
                 @if($caseStudy->testimonial_quote)
@@ -163,57 +332,37 @@
                     <ul class="cs-details-list">
                         @if($caseStudy->client)
                         <li>
-                            <span class="cs-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<path d="M3 21h18"/>
-<path d="M5 21V7l7-4 7 4v14"/>
-<path d="M9 9h.01"/>
-<path d="M9 13h.01"/>
-<path d="M9 17h.01"/>
-<path d="M15 9h.01"/>
-<path d="M15 13h.01"/>
-<path d="M15 17h.01"/>
-</svg>
-</span>
+                            <span class="cs-detail-icon"> <img src="{{ asset('images/case-icon1.svg') }}" alt="CLIENT"></span>
                             <div><p class="cs-detail-label">CLIENT</p><p class="cs-detail-val">{{ $caseStudy->client }}</p></div>
                         </li>
                         @endif
                         @if($caseStudy->location)
                         <li>
-                            <span class="cs-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-<path d="M12 21s-6-5.33-6-11a6 6 0 1112 0c0 5.67-6 11-6 11z"/>
-<circle cx="12" cy="10" r="2"/>
-</svg></span>
+                            <span class="cs-detail-icon"> <img src="{{ asset('images/case-icon2.svg') }}" alt="location"></span>
                             <div><p class="cs-detail-label">LOCATION</p><p class="cs-detail-val">{{ $caseStudy->location }}</p></div>
                         </li>
                         @endif
                         @if($caseStudy->service)
                         <li>
-                            <span class="cs-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-<path d="M14.7 6.3a1 1 0 010 1.4l-7 7a1 1 0 01-1.4 0l-2.6-2.6a1 1 0 010-1.4l7-7a4 4 0 015.7 0l1.3 1.3a4 4 0 010 5.7l-7 7"/>
-</svg></span>
+                            <span class="cs-detail-icon"> <img src="{{ asset('images/case-icon3.svg') }}" alt="service"></span>
                             <div><p class="cs-detail-label">SERVICE</p><p class="cs-detail-val">{{ $caseStudy->service }}</p></div>
                         </li>
                         @endif
                         @if($caseStudy->industry)
                         <li>
-                            <span class="cs-detail-icon">#></span>
+                           <span class="cs-detail-icon"> <img src="{{ asset('images/case-icon4.svg') }}" alt="INDUSTRY"></span>
                             <div><p class="cs-detail-label">INDUSTRY</p><p class="cs-detail-val">{{ $caseStudy->industry }}</p></div>
                         </li>
                         @endif
                         @if($caseStudy->timeline)
                         <li>
-                            <span class="cs-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-<circle cx="9" cy="7" r="4"/>
-<path d="M23 21v-2a4 4 0 00-3-3.87"/>
-<path d="M16 3.13a4 4 0 010 7.75"/>
-</svg></span>
+                           <span class="cs-detail-icon"> <img src="{{ asset('images/case-icon5.svg') }}" alt="timeline"></span>
                             <div><p class="cs-detail-label">TIMELINE</p><p class="cs-detail-val">{{ $caseStudy->timeline }}</p></div>
                         </li>
                         @endif
                         @if($caseStudy->team_size)
                         <li>
-                            <span class="cs-detail-icon">👥</span>
+                            <span class="cs-detail-icon"> <img src="{{ asset('images/case-icon6.svg') }}" alt="team size"></span>
                             <div><p class="cs-detail-label">TEAM SIZE</p><p class="cs-detail-val">{{ $caseStudy->team_size }}</p></div>
                         </li>
                         @endif
@@ -299,6 +448,58 @@
     </div>
 </div>
 
+<script>
+    (function () {
+    // Build images array from blade — injected via PHP
+const images = @json($caseStudy->gallery_images ?? []);
+const baseUrl = '{{ asset('casestudy/') }}/';
+
+    let current = 0;
+
+    const lightbox  = document.getElementById('csLightbox');
+    const lbImg     = document.getElementById('csLbImg');
+    const lbCounter = document.getElementById('csLbCounter');
+
+    function updateSlide() {
+        lbImg.style.opacity = '0';
+        setTimeout(() => {
+            lbImg.src        = baseUrl + images[current];
+            lbCounter.textContent = (current + 1) + ' / ' + images.length;
+            lbImg.style.opacity = '1';
+        }, 180);
+    }
+
+    window.openLightbox = function (index) {
+        current = index;
+        updateSlide();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeLightbox = function () {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    window.closeLightboxOutside = function (e) {
+        if (e.target === lightbox) closeLightbox();
+    };
+
+    window.changeSlide = function (dir) {
+        current = (current + dir + images.length) % images.length;
+        updateSlide();
+    };
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'ArrowLeft')  changeSlide(-1);
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'Escape')     closeLightbox();
+    });
+})();
+    
+</script>
 
 
 @include('sections.location')

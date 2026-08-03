@@ -1,5 +1,17 @@
 {{-- resources/views/sections/brand-slider.blade.php --}}
 
+<style>
+
+    @media (max-width: 575.98px) {
+      .brand-slider-item img {
+           max-width: 70px;
+           max-height: 40px;
+        }
+    }
+
+
+</style>
+
 <section class="brand-slider-section">
     <p class="brand-slider-label">TRUSTED BY GLOBAL CLIENTS ACROSS MULTIPLE INDUSTRIES</p>
 

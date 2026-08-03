@@ -6,10 +6,43 @@
     @vite(['resources/css/aboutus.css']) 
 @endpush
 @section('content')
+
+
+<style>
+    @media (max-width: 480px) {
+    .bim-img-frame__badge {
+        right:10px !important;
+    }
+}
+.plm-feature-box {
+    display: flex;
+    /*justify-content: space-between;*/
+    align-items: center;
+    gap:25px;
+}
+
+.bim-sidebar__cta-btn {
+    border-radius:20px ;
+    font-weight: 500 !important;
+}
+@media (max-width: 767px) {
+    .row {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+</style>
         <section class="abouthero-section" style="background:linear-gradient(90deg,rgba(16,16,16,0.95) 0%,rgba(16,16,16,0.88) 35%,rgba(16,16,16,0.55) 60%,rgba(16,16,16,0.15) 100%),url('{{ asset('images/Architectural-Services.jpg') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-xl-6 col-lg-7 col-md-10">
+            <div class="col-xl-6 col-lg-7 ">
                 <div class="abouthero-breadcrumb">
                     <a href="#">Home</a>
                     <span>›</span>
@@ -134,13 +167,13 @@
                 ───────────────────────────────────────── --}}
                 <section class="bim-sec" id="bim-overview" aria-label="Overview">
 
-                    <div class="bim-tag bim-anim bim-anim--down">
+                    <div class="bim-tag bim-anim ">
                         <span class="bim-tag__bar" aria-hidden="true"></span>
                         Building Information Modeling
                     </div>
 
                     <div class="row g-4 align-items-center mt-1">
-                        <div class="col-12 col-md-7 bim-anim bim-anim--left">
+                        <div class="col-12 col-md-7 bim-anim ">
                             <h2 class="bim-h2">
                                 <em class="bim-orange">SMART </em> BIM Models for<br>
                                 <em class="bim-orange">SMART </em>  Building Projects
@@ -152,7 +185,7 @@
                                industries such as automotive, aerospace, medical, transportation, and industrial equipment, we deliver innovative, cost-effective, and production-ready solutions that accelerate time-to-market and enhance product performance.
                             </p>
                         </div>
-                        <div class="col-12 col-md-5 bim-anim bim-anim--right">
+                        <div class="col-12 col-md-5 bim-anim ">
                             <div class="bim-img-frame">
                                 <img src="{{ asset('images/infrostrucre-bakcground.png') }}"
                                      alt="Architectural BIM blueprint"
@@ -296,14 +329,14 @@
 
                    @php
                         $techs = [
-                                 ['label'=>'Autodesk Revit', 'image'=>'service-img/revit.png'],
-                                 ['label'=>'Navisworks', 'image'=>'service-img/navisworks.png'],
-                                 ['label'=>'3DS MAX', 'image'=>'service-img/3DS max.png'],
-                                 ['label'=>'AutoCAD', 'image'=>'service-img/autocad.png'],
-                                 ['label'=>'DIALUX', 'image'=>'service-img/DIALUX.png'],
-                                 ['label'=>'Autodesk Inventor', 'image'=>'service-img/Autodesk Inventor.png'],
+                                 ['label'=>'Autodesk Revit', 'image'=>'service-img/REVIT.jpg'],
+                                 ['label'=>'Navisworks', 'image'=>'service-img/Navisworks.jpg'],
+                                 ['label'=>'3DS MAX', 'image'=>'service-img/3DSmax.jpg'],
+                                 ['label'=>'AutoCAD', 'image'=>'service-img/AutoCAD.jpg'],
+                                 ['label'=>'DIALUX', 'image'=>'service-img/DIALux.jpg'],
+                                 ['label'=>'Autodesk Inventor', 'image'=>'service-img/AutodeskInventor.jpg'],
                                  ['label'=>'Sketchup', 'image'=>'service-img/Sketchup.png'],
-                                 ['label'=>'V ray', 'image'=>'service-img/V.ray.png'],
+                                 ['label'=>'V ray', 'image'=>'service-img/V_ray.png'],
                                  ];
                     @endphp
 
@@ -538,46 +571,23 @@
 
 @if($step['icon'] == 'clipboard')
 
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M9 3H15V5H18V21H6V5H9V3Z"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"/>
-</svg>
+    <img src="{{ asset('images/process-one.svg') }}" alt="Clipboard" width="55" height="55">
 
 @elseif($step['icon'] == 'lightbulb')
 
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M12 3C8.7 3 6 5.7 6 9C6 11.1 7 13 8.6 14.3V17H15.4V14.3C17 13 18 11.1 18 9C18 5.7 15.3 3 12 3Z"
-          stroke="currentColor"
-          stroke-width="1.8"/>
-</svg>
+    <img src="{{ asset('images/process-two.svg') }}" alt="Lightbulb" width="50" height="50">
 
 @elseif($step['icon'] == 'cube')
 
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M12 2L20 6V18L12 22L4 18V6L12 2Z"
-          stroke="currentColor"
-          stroke-width="1.8"/>
-</svg>
+    <img src="{{ asset('images/process-three.svg') }}" alt="Cube" width="50" height="50">
 
 @elseif($step['icon'] == 'file')
 
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M8 3H16L20 7V21H8V3Z"
-          stroke="currentColor"
-          stroke-width="1.8"/>
-</svg>
+    <img src="{{ asset('images/process-fours.svg') }}" alt="File" width="50" height="50">
 
 @elseif($step['icon'] == 'rocket')
 
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M12 3L18 9L15 12L12 21L9 12L6 9L12 3Z"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linejoin="round"/>
-</svg>
+    <img src="{{ asset('images/process-four.svg') }}" alt="Rocket" width="50" height="50">
 
 @endif
 
@@ -762,7 +772,7 @@ WHY MILESTONE PLM section  start
 
     <div class="col-lg-4 col-md-6">
         <div class="plm-feature-box">
-            <div class="plm-icon-wrap">
+            <div class="plm-icon-wrap" style="margin:15px; padding:10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"/>
                     <polyline points="12 6 12 12 16 14"/>
@@ -776,7 +786,7 @@ WHY MILESTONE PLM section  start
 
     <div class="col-lg-4 col-md-6">
         <div class="plm-feature-box">
-            <div class="plm-icon-wrap">
+            <div class="plm-icon-wrap" style="margin:15px; padding:10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="12" y1="1" x2="12" y2="23"/>
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -790,7 +800,7 @@ WHY MILESTONE PLM section  start
 
     <div class="col-lg-4 col-md-6">
         <div class="plm-feature-box">
-            <div class="plm-icon-wrap">
+            <div class="plm-icon-wrap" style="margin:15px; padding:10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                     <circle cx="9" cy="7" r="4"/>
@@ -800,14 +810,14 @@ WHY MILESTONE PLM section  start
             </div>
                 <div>
                  <h5>Team Ready</h5>
-                 <p>Dedicated teams assembled quickly.</p>
+                 <p>Dedicated teams assembled quickly and professionally.</p>
                 </div>
         </div>
     </div>
 
     <div class="col-lg-4 col-md-6">
         <div class="plm-feature-box">
-            <div class="plm-icon-wrap">
+            <div class="plm-icon-wrap" style="margin:15px; padding:10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
                 </svg>
@@ -820,7 +830,7 @@ WHY MILESTONE PLM section  start
 
     <div class="col-lg-4 col-md-6">
         <div class="plm-feature-box">
-            <div class="plm-icon-wrap">
+            <div class="plm-icon-wrap" style="margin:15px; padding:10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"/>
                 </svg>
@@ -833,7 +843,7 @@ WHY MILESTONE PLM section  start
 
     <div class="col-lg-4 col-md-6">
         <div class="plm-feature-box">
-            <div class="plm-icon-wrap">
+            <div class="plm-icon-wrap" style="margin:15px; padding:10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>

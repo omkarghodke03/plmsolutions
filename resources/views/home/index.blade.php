@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 @endpush
 @section('content')
-
     @include('sections.hero')
     @include('sections.brand-slider')
     @include('sections.our-service')
