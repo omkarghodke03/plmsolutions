@@ -1,4 +1,65 @@
 {{-- resources/views/sections/hero.blade.php --}}
+
+<style>
+
+.plm-hero__stat-label {
+    color: #ececec;
+}
+    @media (max-width: 576px) {
+    .plm-hero__btn {
+        width: 220px;
+        text-align: center;
+        justify-content: center;
+    }
+    .plm-hero__heading{
+        font-size: 45px;
+    }
+    .plm-hero__stat-num {
+    font-size: 40px;
+    }
+    .plm-hero__stat-label{
+    font-size: 15px;
+    }
+}
+@media (max-width: 991px) {
+    .plm-hero__content {
+        padding-top: 45px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .plm-hero {
+        min-height: 70vh;
+    }
+    .plm-hero__heading {
+    font-size: 55px;
+        
+    }
+    .plm-hero__stat-num {
+        font-size:45px;
+    }
+    .plm-hero__stat-label {
+    font-size: 15px; 
+    }
+}
+@media (min-width: 835px) and (max-width: 1024px) {
+     .plm-hero {
+        min-height: 70vh;
+    }
+    .plm-hero__heading {
+    font-size:60px;
+        
+    }
+    .plm-hero__stat-num {
+        font-size:50px;
+    }
+    .plm-hero__stat-label {
+    font-size: 20px; 
+    }
+    
+}
+
+</style>
 <section class="plm-hero" aria-label="Hero section">
 
     {{-- Background Video --}}
@@ -28,10 +89,10 @@
 
                 {{-- CTAs --}}
                 <div class="plm-hero__ctas d-flex flex-wrap gap-3">
-                    <a href="{{ url('/get-a-quote') }}" class="plm-hero__btn plm-hero__btn--primary">
+                    <a href="{{ url('/contact-us') }}" class="plm-hero__btn plm-hero__btn--primary">
                         Start Your Project &nbsp;&rarr;
                     </a>
-                    <a href="{{ url('/services') }}" class="plm-hero__btn plm-hero__btn--outline">
+                    <a href="{{ url('/services/bim-services') }}" class="plm-hero__btn plm-hero__btn--outline">
                         View Our Services
                     </a>
                 </div>

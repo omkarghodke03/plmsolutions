@@ -1,4 +1,40 @@
-<section class="ready-scale">
+<style>
+    .form-card {
+        border-radius: 25PX;
+    }
+    
+    .ready-scale .trust-list li {
+        align-items: center;
+    }
+    .ready-scale .form-card button[type=submit] {
+        border-radius: 25px;
+    }
+    .ready-scale .trust-icon {
+     width: 30px;
+     height: 30px;
+    }
+    
+@media (max-width: 480px) {
+    .heading-contactfornhome {
+        font-size: 30px;
+    }
+}
+   
+@media (min-width: 768px) and (max-width: 834px) {
+  .ready-scale {
+     padding: 60px 30px;
+   }
+}
+
+
+ @media (min-width: 835px) and (max-width: 1024px) {
+  .ready-scale  {
+     padding: 50px 30px;
+   }
+}
+</style>
+
+<section class="ready-scale"  style="background-image: url('{{ asset('#') }}');">
     <div class="container">
         <div class="row align-items-center g-0">
 

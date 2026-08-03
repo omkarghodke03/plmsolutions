@@ -7,14 +7,387 @@
 {{-- ===================================================================
      SECTION: ABOUT MILESTONE PLM — S01
 ==================================================================== --}}
-  <section class="abouthero-section" style="background:linear-gradient(90deg,rgba(16,16,16,0.95) 0%,rgba(16,16,16,0.88) 35%,rgba(16,16,16,0.55) 60%,rgba(16,16,16,0.15) 100%),url('{{ asset('images/Architectural-Services.jpg') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
+<style> 
+
+.whoare-image-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.whoare-image-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: left 1.2s ease;
+}
+
+.whoare-image-card:hover::before {
+    left: 150%;
+}
+
+
+
+.whoare-overlay-box {
+    position: absolute;
+    bottom: 20px;
+    border-radius: 20px;
+    left: 20px;
+    background: #111;
+    color: #fff;
+    padding: 20px;
+}.whoare-overlay-box h3 {
+    color: var(--plm-primary);
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.abouthero-btn-primary {
+    width: 230px;
+}
+
+.whoare-image-card img {
+      height:auto;
+      width: auto;
+  }
+
+.whoare-link {
+    background-color: #fff;
+    color: #EC6502;
+    border-radius:20px;
+    font-weight:500;
+    border: 1px solid #EC6502;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.whoare-link:hover {
+    background-color: #EC6502;
+    color: #fff;
+    border-color: #EC6502;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: 260px;
+}
+
+.whoare-image-card {
+    height: 370px;}
+
+
+/* SECTION */
+.purposeplm-section {
+    background: #f8f8f8;
+}
+
+/* TAG */
+.purposeplm-tag {
+    color: var(--plm-primary);
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+/* HEADING */
+.purposeplm-heading {
+    font-family: var(--plm-heading);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+}
+
+/* DESC */
+.purposeplm-desc {
+    color: var(--plm-secondary);
+}
+
+/* CARD — fixed min-height so both stay consistent */
+.purposeplm-card {
+    border-radius: 15px;
+    padding: 50px;
+    position: relative;
+    min-height: 420px;               /* ← fixed size anchor */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    will-change: transform;
+}
+
+/* Push the bottom line + label to the end regardless of content length */
+.purposeplm-line {
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0 20px;
+    margin-top: auto;                /* ← pushes footer to bottom */
+}
+
+/* DARK CARD */
+.purposeplm-dark {
+    background: #111;
+    color: #fff;
+}
+
+/* DARK CARD HOVER */
+.purposeplm-dark:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(236, 101, 2, 0.25);
+}
+
+/* LIGHT CARD */
+.purposeplm-light {
+    background: #fff;
+    color: #111;
+    border-top: 3px solid var(--plm-primary);
+}
+
+/* LIGHT CARD HOVER */
+.purposeplm-light:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    border-top-color: #c05500;
+}
+
+/* ICON */
+.purposeplm-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(236, 101, 2, 0.1);
+    color: var(--plm-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+}
+
+.purposeplm-icon.light {
+    background: #f2f2f2;
+}
+
+.purposeplm-dark:hover .purposeplm-icon {
+    background: rgba(236, 101, 2, 0.25);
+}
+
+.purposeplm-light:hover .purposeplm-icon.light {
+    background: #e8e8e8;
+}
+
+/* SUB TAG */
+.purposeplm-subtag {
+    color: var(--plm-primary);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.purposeplm-subtag h4 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* CARD TEXT — override for dark card */
+.purposeplm-dark p {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.purposeplm-light p {
+    color: var(--plm-secondary);
+}
+
+/* SMALL TEXT */
+.purposeplm-small {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--plm-primary);
+}
+
+
+/* ANIMATION */
+.fade-down {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeDown 1s ease forwards;
+}
+
+@keyframes fadeDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+    .purposeplm-section {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .purposeplm-card {
+        padding: 25px;
+        min-height: 380px;
+    }
+    .whoare-overlay-box {
+            left: 100px;
+           bottom: 10px;
+           padding:10px;
+    }
+    .whoare-overlay-box P {
+        font-size: 15px;
+        
+    }
+    .whoare-overlay-box h3 {
+         font-size: 25px;
+    }
+    .whoare-image-card {
+    height: 290px;
+}
+.whoare-link{
+    font-size: 12px;
+    padding: 13px;
+}
+
+ 
+}
+
+@media (min-width: 768px) and (max-width: 834px) {
+  .whoare-image-card img {
+      height: 100%;
+  }
+  .whoare-overlay-box {
+       left: 130px;
+        bottom: 10px;
+  }
+   .whoare-image-card {
+    height:500px;
+}
+}
+
+
+@media (min-width: 835px) and (max-width: 1024px) {
+ 
+}
+
+
+.st-number {
+    color:#EC6502 !important;
+    font-weight: 700;
+}
+.stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px 28px;
+    border: 1.5px solid transparent;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.3s ease;
+    height: 100%;               /* equal height inside align-items-stretch row */
+}
+
+/* HOVER — border glow + lift */
+.stat-card:hover {
+    border-color: #E07A2F;
+    box-shadow: 0 8px 32px rgba(224, 122, 47, 0.18), 0 2px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
+}
+
+/* ICON */
+.st-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(224, 122, 47, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    transition: background 0.3s ease;
+}
+
+.stat-card:hover .st-icon {
+    background: rgba(224, 122, 47, 0.16);
+}
+
+/* NUMBER */
+.st-number {
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+/* TITLE */
+.st-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+/* DESC */
+.st-desc {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;
+}
+
+.feat-card {
+    border: 1.5px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.3s ease;
+}
+
+.feat-card:hover {
+    border-color: #E07A2F;
+    box-shadow: 0 8px 32px rgba(224, 122, 47, 0.18), 0 2px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
+}
+
+.feat-card:hover .fc-icon {
+    background: rgba(224, 122, 47, 0.16);
+}
+
+/*buttom section border color animation css */
+.val-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.val-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: #E07A2F;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+}
+
+.val-card:hover::before {
+    transform: translateY(0);
+}
+</style>
+
+
+  <section class="abouthero-section" style="background:linear-gradient(90deg,rgba(16,16,16,0.60) 0%,rgba(16,16,16,0.55) 35%,rgba(16,16,16,0.40) 60%,rgba(16,16,16,0.15) 100%),url('{{ asset('service-img/residential.jpg') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
     <div class="container">
         <div class="row align-items-center">
 
-            <div class="col-xl-6 col-lg-7 col-md-10">
+            <div class="col-xl-7 col-lg-7 ">
 
                 <div class="abouthero-breadcrumb">
-                    <a href="#">Home</a>
+                    <a href="/home">Home</a>
                     <span>›</span>
                     <a href="#">About Us</a>
                 </div>
@@ -24,24 +397,24 @@
                 </div>
 
                 <h1 class="abouthero-title">
-                    Engineering Expertise <br>
-                     Powering Global<br>
+                    Engineering Expertise 
+                     Powering Global
                      Innovation
                 </h1>
 
-                <p class="abouthero-desc">
+                <p class="abouthero-desc" style="font-size:16px;">
                     Milestone PLM is a global engineering services partner delivering precision CAD, BIM, and structural solutions that accelerate construction and manufacturing projects worldwide.
                 </p>
 
                 <div class="abouthero-buttons">
 
-                    <a href="#" class="abouthero-btn-primary">
-                        Request a Proposal
+                    <a href="/contact-us" class="abouthero-btn-primary">
+                       REQUEST PROPOSAL
                         <span>→</span>
                     </a>
 
-                    <a href="#" class="abouthero-btn-outline">
-                        Explore Our Services
+                    <a href="/services/bim-services" class="abouthero-btn-outline">
+                        EXPLORE OUR SERVICES
                     </a>
 
                 </div>
@@ -81,14 +454,14 @@
                     <li>Serving AEC & manufacturing clients across 4 continents</li>
                 </ul>
 
-                <div class="whoare-footer d-flex align-items-center gap-4 mt-4">
+                <div class="whoare-footer d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <small>Engineering Solutions Partner Since</small>
                         <h4>2004</h4>
                     </div>
 
-                    <a href="#" class="whoare-link">
-                        Our Services →
+                    <a href="/services/bim-services" class="whoare-link">
+                        OUR SERVICES →
                     </a>
                 </div>
 
@@ -97,10 +470,10 @@
             <!-- RIGHT IMAGE -->
             <div class="col-lg-6 col-md-12 mt-4 mt-lg-0">
 
-                <div class="whoare-image-card locations-four-cards-card">
+                <div class="whoare-image-card ">
 
                     <img src="{{ asset('images/testimonials-image1.jpg') }}" 
-                         class="img-fluid" 
+                         class="img-fluid align-items-end" 
                          alt="who we are">
 
                     <!-- Overlay Box -->
@@ -121,20 +494,14 @@
 ============================================================ --}}
 <section class="purposeplm-section py-5">
     <div class="container">
-
         <!-- TOP HEADER -->
         <div class="row mb-5 align-items-center">
             <div class="col-lg-8">
-                 <div class="abouthero-tag">
-
-               OUR PURPOSE
-
-                </div>
+                <div class="abouthero-tag">OUR PURPOSE</div>
                 <h2 class="purposeplm-heading fade-down typewriter animate">
                     What Drives Milestone Forward
                 </h2>
             </div>
-
             <div class="col-lg-4">
                 <p class="purposeplm-desc">
                     Two defining principles guide every project, every team, and every client relationship we build.
@@ -143,32 +510,27 @@
         </div>
 
         <!-- CARDS -->
-        <div class="row g-4">
-
+        <div class="row g-4 align-items-stretch">
             <!-- LEFT CARD (MISSION) -->
-            <div class="col-lg-6">
-                <div class="purposeplm-card purposeplm-dark">
-
+            <div class="col-lg-6 d-flex">
+                <div class="purposeplm-card purposeplm-dark w-100">
                     <div class="purposeplm-icon">★</div>
-
                     <p class="purposeplm-subtag">OUR MISSION</p>
-
                     <h4>Accelerate Global Engineering Projects</h4>
-
                     <p>
                         To help construction and manufacturing companies worldwide accelerate their engineering projects by providing scalable, cost-efficient, and technically precise offshore engineering services — enabling faster delivery without compromising quality.
                     </p>
-
                     <div class="purposeplm-line"></div>
-
                     <span class="purposeplm-small">SINCE 2004</span>
-
                 </div>
             </div>
+
             <!-- RIGHT CARD (VISION) -->
-            <div class="col-lg-6">
-                <div class="purposeplm-card purposeplm-light">
-                    <div class="purposeplm-icon light">💡</div>
+            <div class="col-lg-6 d-flex">
+                <div class="purposeplm-card purposeplm-light w-100">
+                    <div class="purposeplm-icon light">
+                        <img src="{{ asset('images/about-image3.svg') }}">
+                    </div>
                     <p class="purposeplm-subtag">OUR VISION</p>
                     <h4>Engineering Excellence Through Innovation</h4>
                     <p>
@@ -220,7 +582,7 @@ $teamMembers = [
     <div class="container">
 
         {{-- Section Header --}}
-        <div class="row align-items-start mb-5">
+        <div class="row align-items-end mb-5">
             <div class="col-lg-7">
                  <div class="abouthero-tag">Our Leadership</div>
                 <h2 class="team-heading">The Team Behind Milestone</h2>
@@ -301,9 +663,14 @@ $teamMembers = [
                             <img src="{{ asset('images/about-frame-3.jpg') }}" alt="Working on laptop" loading="lazy">
                         </div>
                         <div class="collage-img collage-img--bottom-right fade-up" style="transition-delay:.3s">
-                            <img src="{{ asset('images/about-frame-4.jpg') }}" alt="Diverse team" loading="lazy">
+                            <img src="{{ asset('images/execute-the-project-three.jpeg') }}" alt="Diverse team" loading="lazy">
                         </div>
                     </div>
+                     <div class="collage-row collage-row--bottom">
+                         <div class="collage-img collage-img--bottom-right fade-up" style="transition-delay:.3s">
+                            <img src="{{ asset('images/about-frame-4.jpg') }}" alt="Diverse team" loading="lazy" >
+                        </div>
+                     </div>
                 </div>
             </div>
 
@@ -339,7 +706,25 @@ $teamMembers = [
                     <div class="col-6 fade-up" style="transition-delay:.25s">
                         <div class="culture-card">
                             <div class="culture-card__icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+     stroke="#E07A2F"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- Light Rays -->
+    <line x1="12" y1="2" x2="12" y2="5"/>
+    <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+    <line x1="19.1" y1="4.9" x2="17" y2="7"/>
+
+    <!-- Bulb -->
+    <path d="M8 11a4 4 0 1 1 8 0c0 1.5-.8 2.5-1.8 3.5-.6.6-1.2 1.3-1.2 2H11c0-.7-.6-1.4-1.2-2C8.8 13.5 8 12.5 8 11Z"/>
+
+    <!-- Bulb Base -->
+    <path d="M10 19h4"/>
+    <path d="M10.5 21h3"/>
+</svg>
+        
                             </div>
                             <h4 class="culture-card__title">Innovation</h4>
                             <p class="culture-card__text">We embrace new technologies and creative problem-solving to push boundaries.</p>
@@ -359,7 +744,17 @@ $teamMembers = [
                     <div class="col-6 fade-up" style="transition-delay:.35s">
                         <div class="culture-card">
                             <div class="culture-card__icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+     stroke="#E07A2F"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <path d="M8 12L5 9L2 12L6 16L9 13"/>
+    <path d="M16 12L19 9L22 12L18 16L15 13"/>
+    <path d="M9 13L11 15C11.6 15.6 12.4 15.6 13 15L15 13"/>
+    <path d="M8 8L10 6C11 5 13 5 14 6L16 8"/>
+</svg>
                             </div>
                             <h4 class="culture-card__title">Integrity</h4>
                             <p class="culture-card__text">We build long-term relationships through trust, transparency, and accountability.</p>
@@ -368,7 +763,28 @@ $teamMembers = [
                     <div class="col-6 fade-up" style="transition-delay:.35s">
                         <div class="culture-card">
                             <div class="culture-card__icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                               <svg xmlns="http://www.w3.org/2000/svg"
+     width="22"
+     height="22"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="#EC6502"
+     stroke-width="1.8"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- Monitor -->
+    <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+    <path d="M8 20h8"></path>
+    <path d="M12 16v4"></path>
+
+    <!-- Small Gear -->
+    <circle cx="17" cy="10" r="2"></circle>
+    <path d="M17 7.5v1"></path>
+    <path d="M17 11.5v1"></path>
+    <path d="M14.5 10h1"></path>
+    <path d="M18.5 10h1"></path>
+</svg>
                             </div>
                             <h4 class="culture-card__title">Engineering Excellence</h4>
                             <p class="culture-card__text">We build long-term relationships through trust, transparency, and accountability.</p>
@@ -377,7 +793,20 @@ $teamMembers = [
 <div class="col-6 fade-up" style="transition-delay:.35s">
                         <div class="culture-card">
                             <div class="culture-card__icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+     width="22"
+     height="22"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="#EC6502"
+     stroke-width="1.8"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <circle cx="12" cy="12" r="9"></circle>
+    <path d="M8 12.5L10.8 15.3L16 10"></path>
+
+</svg>
                             </div>
                             <h4 class="culture-card__title">Client Success</h4>
                             <p class="culture-card__text">We build long-term relationships through trust, transparency, and accountability.</p>
@@ -399,7 +828,7 @@ $teamMembers = [
 
      <section class="ms-engineering-section">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-end">
 
             <!-- Left Content -->
             <div class="col-lg-6 col-md-12">
@@ -422,7 +851,7 @@ $teamMembers = [
             <!-- Right Image -->
             <div class="col-lg-6 col-md-12">
                 <div class="ms-image-box">
-                    <img src="{{ asset('images/about-structure-image.png') }}"
+                    <img src="{{ asset('images/about-image1.png') }}"
                          alt="Engineering Structure"
                          class="img-fluid">
                 </div>
@@ -441,68 +870,67 @@ $teamMembers = [
   <div class="container">
 
     {{-- ROW 1: Big Stat Cards --}}
-    <div class="row g-4 mb-4">
-
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="stat-card">
-          <div class="st-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M6 20v-1a6 6 0 0112 0v1"/>
-              <path d="M9 11l1.5 1.5L15 8"/>
-            </svg>
-          </div>
-          <div class="st-number">20+</div>
-          <div class="st-title">Years Experience</div>
-          <div class="st-desc">Two decades of delivering excellence in engineering and BIM solutions.</div>
-        </div>
+   <div class="row g-4 mb-4">
+  <div class="col-12 col-sm-6 col-lg-3">
+    <div class="stat-card">
+      <div class="st-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24"
+     fill="none"
+     stroke="#E07A2F"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <circle cx="12" cy="10" r="5"/>
+    <path d="M9.5 14L8 20L12 17.5L16 20L14.5 14"/>
+</svg>
       </div>
-
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="stat-card">
-          <div class="st-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M4 6h16M4 10h16M4 14h10M4 18h6"/>
-            </svg>
-          </div>
-          <div class="st-number">500+</div>
-          <div class="st-title">Projects Delivered</div>
-          <div class="st-desc">Successfully executed projects across diverse industries worldwide.</div>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="stat-card">
-          <div class="st-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-          </div>
-          <div class="st-number">100+</div>
-          <div class="st-title">Engineering Experts</div>
-          <div class="st-desc">Skilled professionals driving innovation and precision in every project.</div>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="stat-card">
-          <div class="st-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M12 3a15 15 0 010 18M3 12h18"/>
-            </svg>
-          </div>
-          <div class="st-number">Global</div>
-          <div class="st-title">Delivery Network</div>
-          <div class="st-desc">Strong global presence ensuring seamless delivery across time zones.</div>
-        </div>
-      </div>
-
+      <div class="st-number" data-target="20" data-suffix="+">0</div>
+      <div class="st-title">Years Experience</div>
+      <div class="st-desc">Two decades of delivering excellence in engineering and BIM solutions.</div>
     </div>
-
+  </div>
+  <div class="col-12 col-sm-6 col-lg-3">
+    <div class="stat-card">
+      <div class="st-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M4 6h16M4 10h16M4 14h10M4 18h6"/>
+        </svg>
+      </div>
+      <div class="st-number" data-target="500" data-suffix="+">0</div>
+      <div class="st-title">Projects Delivered</div>
+      <div class="st-desc">Successfully executed projects across diverse industries worldwide.</div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-lg-3">
+    <div class="stat-card">
+      <div class="st-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+      </div>
+      <div class="st-number" data-target="100" data-suffix="+">0</div>
+      <div class="st-title">Engineering Experts</div>
+      <div class="st-desc">Skilled professionals driving innovation and precision in every project.</div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-lg-3">
+    <div class="stat-card">
+      <div class="st-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3a15 15 0 010 18M3 12h18"/>
+        </svg>
+      </div>
+      <!-- No counter for text value — left as-is -->
+      <div class="st-number">Global</div>
+      <div class="st-title">Delivery Network</div>
+      <div class="st-desc">Strong global presence ensuring seamless delivery across time zones.</div>
+    </div>
+  </div>
+</div>
     {{-- ROW 2: Feature Cards --}}
     <div class="row g-4">
 
@@ -524,11 +952,7 @@ $teamMembers = [
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="feat-card">
           <div class="fc-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M6 20v-1a6 6 0 0112 0v1"/>
-              <path d="M9 11l1.5 1.5L15 8"/>
-            </svg>
+           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="3"/> <path d="M12 2V5"/><path d="M12 19V22"/> <path d="M2 12H5"/> <path d="M19 12H22"/> <path d="M5 5L7 7"/> <path d="M17 17L19 19"/><path d="M5 19L7 17"/><path d="M17 7L19 5"/></svg>
           </div>
           <div class="fc-body">
             <div class="fc-title">Multi-Industry Expertise</div>
@@ -540,9 +964,7 @@ $teamMembers = [
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="feat-card">
           <div class="fc-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A2F" stroke-width="1.6">
-              <path d="M12 22s-8-4-8-10V5l8-3 8 3v7c0 6-8 10-8 10z"/>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg"  width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC6502" stroke-width="1.8"  stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="9"></circle><path d="M12 3C9 6 9 18 12 21"></path><path d="M12 3C15 6 15 18 12 21"></path><path d="M3 12H21"></path><path d="M5 7.5C7 8.5 17 8.5 19 7.5"></path><path d="M5 16.5C7 15.5 17 15.5 19 16.5"></path></svg>
           </div>
           <div class="fc-body">
             <div class="fc-title">Global Standards</div>
@@ -593,11 +1015,15 @@ last section start code  -
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="val-card">
           <div class="val-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="#E07A2F" stroke-width="1.6">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02
-                12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
+           <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+     stroke="#E07A2F"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <circle cx="12" cy="13" r="5"/>
+    <path d="M10 3L12 7L14 3"/>
+    <path d="M12 10.5L12.9 12.3L14.9 12.6L13.45 14L13.8 16L12 15L10.2 16L10.55 14L9.1 12.6L11.1 12.3L12 10.5Z"/>
+</svg>
           </div>
           <h3 class="val-title">Quality</h3>
           <p class="val-desc">We uphold the highest standards in every deliverable,
@@ -608,13 +1034,24 @@ last section start code  -
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="val-card">
           <div class="val-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="#E07A2F" stroke-width="1.6">
-              <line x1="12" y1="2" x2="12" y2="6"/>
-              <path d="M12 6a6 6 0 100 12 6 6 0 000-12z"/>
-              <line x1="12" y1="18" x2="12" y2="22"/>
-              <path d="M9 21h6"/>
-            </svg>
+           <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+     stroke="#E07A2F"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- Light Rays -->
+    <line x1="12" y1="2" x2="12" y2="5"/>
+    <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+    <line x1="19.1" y1="4.9" x2="17" y2="7"/>
+
+    <!-- Bulb -->
+    <path d="M8 11a4 4 0 1 1 8 0c0 1.5-.8 2.5-1.8 3.5-.6.6-1.2 1.3-1.2 2H11c0-.7-.6-1.4-1.2-2C8.8 13.5 8 12.5 8 11Z"/>
+
+    <!-- Bulb Base -->
+    <path d="M10 19h4"/>
+    <path d="M10.5 21h3"/>
+</svg>
           </div>
           <h3 class="val-title">Innovation</h3>
           <p class="val-desc">We continuously adopt emerging technologies to deliver
@@ -625,10 +1062,15 @@ last section start code  -
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="val-card">
           <div class="val-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="#E07A2F" stroke-width="1.6">
-              <path d="M12 22s-8-4-8-10V5l8-3 8 3v7c0 6-8 10-8 10z"/>
-            </svg>
+           <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+     stroke="#E07A2F"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <path d="M7 12L10 15L17 8"/>
+    <path d="M4 12L7 15"/>
+</svg>
           </div>
           <h3 class="val-title">Integrity</h3>
           <p class="val-desc">Transparent communication, ethical practices, and
@@ -639,12 +1081,17 @@ last section start code  -
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="val-card">
           <div class="val-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="#E07A2F" stroke-width="1.6">
-              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06
-                a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78
-                1.06-1.06a5.5 5.5 0 000-7.78z"/>
-            </svg>
+         <svg xmlns="http://www.w3.org/2000/svg"
+     width="22"
+     height="22"
+     fill="none"
+     viewBox="0 0 24 24"
+     stroke="#EC6502"
+     stroke-width="1.8">
+    <path stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+</svg>
           </div>
           <h3 class="val-title">Collaboration</h3>
           <p class="val-desc">We work as an extension of your team, aligning with
@@ -656,294 +1103,9 @@ last section start code  -
   </div>
 </section>
 
-<!--------=======================================
-                form code start 
-========================================-------->
-<section class="ready-scale">
-    <div class="container">
-        <div class="row align-items-center g-0">
-
-            {{-- ── LEFT CONTENT ─────────────────────────────────────── --}}
-            <div class="col-lg-6 left-content">
-
-                <span class="tag">
-                    <span class="tag-line"></span>
-                    READY TO SCALE?
-                </span>
-
-                <h1 class="heading-contactfornhome">
-    Let's accelerate your <span style="color:#EC6502;">next project.</span>
-</h1>
-                </h1>
-
-                <p class="description-contactform-home">
-                    Precision CAD, BIM, and structural detailing —
-                    delivered by a global engineering team, on time, every time.
-                </p>
-
-                {{-- Trust bullets --}}
-                <ul class="trust-list">
-                   <li>
-    <span class="trust-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="9"></circle>
-            <path d="M12 7v5l3 2"></path>
-        </svg>
-    </span>
-    Response within 1 business day — guaranteed
-</li>
-                    <li>
-                       <span class="trust-icon">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/>
-    </svg>
-</span>
-                        No commitment required · Free initial consultation
-                    </li>
-                    <li>
-                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
-    <circle cx="9" cy="8" r="3"/>
-    <circle cx="17" cy="8" r="2"/>
-    <path d="M4 18c0-3 2-5 5-5s5 2 5 5"/>
-    <path d="M15 18c0-2 1.5-4 4-4"/>
-</svg></span>
-                        Dedicated project lead assigned from day one
-                    </li>
-                    <li>
-                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
-    <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z"/>
-</svg></span>
-                        98% client satisfaction across 500+ projects
-                    </li>
-                </ul>
-
-                <hr class="rs-divider">
-
-                <div class="contact-info">
-                    <div class="item">
-                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
-    <path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6v3.5c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.7c0-.6.4-1 1-1h3.5c0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2.2 2.2z"/>
-</svg></span>
-                        <span>+1-919-238-8044</span>
-                    </div>
-                    <div class="item">
-                        <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
-    <rect x="3" y="5" width="18" height="14" rx="1"/>
-    <path d="M3 7l9 6 9-6"/>
-</svg></span>
-                        <span>info@milestoneplm.com</span>
-                    </div>
-                </div>
-
-            </div>
-
-            {{-- ── RIGHT FORM ───────────────────────────────────────── --}}
-            <div class="col-lg-6">
-                <div class="form-card">
-
-                    <p class="form-eyebrow">SCHEDULE A CONSULTATION</p>
-                    <h5>Tell us about your project</h5>
-
-                    @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    @endif
-
-                    @if($errors->any())
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            @foreach($errors->all() as $error)
-                                <p class="mb-0">{{ $error }}</p>
-                            @endforeach
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('contact.store') }}" id="rsForm" novalidate>
-                        @csrf
-
-                        {{-- Full Name --}}
-                        <div class="rs-field">
-                            <label for="rs_name">FULL NAME <span class="req">*</span></label>
-                            <input
-                                type="text"
-                                id="rs_name"
-                                name="name"
-                                placeholder="Jane Smith"
-                                value="{{ old('name') }}"
-                                class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                maxlength="100"
-                                autocomplete="name"
-                                required
-                            >
-                            @error('name')
-                                <span class="rs-error">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        {{-- Email + Phone --}}
-                        <div class="rs-row">
-                            <div class="rs-field">
-                                <label for="rs_email">WORK EMAIL <span class="req">*</span></label>
-                                <input
-                                    type="email"
-                                    id="rs_email"
-                                    name="email"
-                                    placeholder="jane@company.com"
-                                    value="{{ old('email') }}"
-                                    class="{{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                    maxlength="255"
-                                    autocomplete="email"
-                                    required
-                                >
-                                @error('email')
-                                    <span class="rs-error">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="rs-field">
-                                <label for="rs_phone">PHONE</label>
-                                <input
-                                    type="tel"
-                                    id="rs_phone"
-                                    name="phone"
-                                    placeholder="+1 (555) 000-0000"
-                                    value="{{ old('phone') }}"
-                                    class="{{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                    maxlength="30"
-                                    autocomplete="tel"
-                                >
-                                @error('phone')
-                                    <span class="rs-error">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- Service --}}
-                        <div class="rs-field">
-                            <label for="rs_service">SERVICE OF INTEREST</label>
-                            <select id="rs_service" name="service" class="{{ $errors->has('service') ? 'is-invalid' : '' }}">
-                                <option value="" disabled {{ old('service') ? '' : 'selected' }}>Select a service…</option>
-                                <option value="CAD Design"              {{ old('service') === 'CAD Design'              ? 'selected' : '' }}>CAD Design</option>
-                                <option value="BIM Services"             {{ old('service') === 'BIM Services'             ? 'selected' : '' }}>BIM Services</option>
-                                <option value="Structural Detailing"     {{ old('service') === 'Structural Detailing'     ? 'selected' : '' }}>Structural Detailing</option>
-                                <option value="Engineering Consultation" {{ old('service') === 'Engineering Consultation' ? 'selected' : '' }}>Engineering Consultation</option>
-                            </select>
-                            @error('service')
-                                <span class="rs-error">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        {{-- Project Brief --}}
-                        <div class="rs-field">
-                            <label for="rs_brief">PROJECT BRIEF</label>
-                            <textarea
-                                id="rs_brief"
-                                name="project_brief"
-                                placeholder="Briefly describe your project or requirements…"
-                                rows="4"
-                                maxlength="2000"
-                                class="{{ $errors->has('project_brief') ? 'is-invalid' : '' }}"
-                            >{{ old('project_brief') }}</textarea>
-                            @error('project_brief')
-                                <span class="rs-error">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        {{-- Honeypot anti-spam (hidden from real users) --}}
-                        <div style="display:none" aria-hidden="true">
-                            <input type="text" name="website" tabindex="-1" autocomplete="off">
-                        </div>
-
-                        <button type="submit" id="rsSubmit">
-                            <span class="rs-btn-label">SEND REQUEST</span>
-                            <span class="rs-arrow">→</span>
-                            <span class="rs-spinner d-none">⏳</span>
-                        </button>
-
-                        <p class="rs-note">Free consultation · No spam, ever · Confidential</p>
-
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section class="loc-section" id="locations-section" aria-labelledby="loc-heading">
-    <div class="container loc-container">
-
-        {{-- Section heading --}}
-        <p class="loc-heading" id="loc-heading">Our locations:</p>
-
-        {{-- Locations row --}}
-        <div class="row g-4 loc-row">
-
-            @php
-                $locations = [
-                    [
-                        'country' => 'India',
-                        'city'    => 'Thane',
-                        'address' => "202 Siddhashram CHS, Gokhale Road",
-                        'image'   => 'images/plm-home-locations1.jpg',
-                        'alt'     => 'Bangalore city skyline',
-                    ],
-                    [
-                        'country' => 'USA',
-                        'city'    => 'Dover',
-                        'address' => "8 The Green #20190",
-                        'image'   => 'images/plm-home-locations2.jpg',
-                        'alt'     => '8 The Green #20190',
-                    ],
-                    [
-                        'country' => 'UK',
-                        'city'    => 'Reading',
-                        'address' => "Davidson House, Forbury Square",
-                        'image'   => 'images/plm-home-locations3.jpg',
-                        'alt'     => 'London aerial view',
-                    ],
-                   
-                ];
-            @endphp
-
-            @foreach ($locations as $loc)
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="loc-card">
-
-                        {{-- Circle image --}}
-                        <div class="loc-card__img-wrap" aria-hidden="true">
-                            <img
-                                src="{{ asset($loc['image']) }}"
-                                alt="{{ e($loc['alt']) }}"
-                                class="loc-card__img"
-                                loading="lazy"
-                            >
-                        </div>
-
-                        {{-- Text --}}
-                        <div class="loc-card__body">
-                            <span class="loc-card__country">{{ e($loc['country']) }}</span>
-                            <h3 class="loc-card__city">{{ e($loc['city']) }}</h3>
-                            <address class="loc-card__address">
-                                {!! nl2br(e($loc['address'])) !!}
-                            </address>
-                        </div>
-
-                    </div>
-                </div>
-            @endforeach
-
-        </div>{{-- /.row --}}
-
-    </div>{{-- /.container --}}
-</section>
+<!-----form-location-sort-code------>
+@include('sections.ready-to-scale')
+@include('sections.location')
 
 @push('scripts')
 @endpush
@@ -978,6 +1140,49 @@ last section start code  -
         observer.observe(el);
     });
 }());
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const counters = document.querySelectorAll('.st-number[data-target]');
+
+    const animateCounter = (el) => {
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
+        const duration = 2500;           // ms
+        const frameRate = 1000 / 60;    // 60fps
+        const totalFrames = Math.round(duration / frameRate);
+        let frame = 0;
+
+        const counter = setInterval(() => {
+            frame++;
+            // easeOutQuart for a natural deceleration
+            const progress = 1 - Math.pow(1 - frame / totalFrames, 4);
+            const current = Math.round(target * progress);
+            el.textContent = current + suffix;
+
+            if (frame === totalFrames) {
+                clearInterval(counter);
+                el.textContent = target + suffix; // ensure exact final value
+            }
+        }, frameRate);
+    };
+
+    // IntersectionObserver — fires counter only when card scrolls into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target); // run once
+            }
+        });
+    }, { threshold: 0.3 });
+
+    counters.forEach(el => observer.observe(el));
+});
+
+
+
 </script>
 </section>
 @endsection

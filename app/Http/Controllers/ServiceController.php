@@ -10,7 +10,7 @@ class ServiceController extends Controller
     public function architecturalBim()   { return view('service.architectural-bim'); }
     public function structuralBim()      { return view('service.structural-bim'); }
     public function mepBim()             { return view('service.mep-bim'); }
-    public function asBuiltDocumentation() { return view('service.as-built-documentation'); }
+    public function bimservices()        { return view('service.bim-services'); }
     public function clashDetection()     { return view('service.clash-detection'); }
     public function scheduling4d5d()     { return view('service.4d-5d-scheduling'); }
     public function lodManagement()      { return view('service.lod-management'); }

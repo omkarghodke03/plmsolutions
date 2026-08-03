@@ -26,16 +26,20 @@
     'resources/css/case-study/cs-page.css',
     'resources/css/case-study/cs-listing.css'
     
+    
     ])
 
   @vite([
     'resources/js/custom.js',
-    'resources/js/cookies.js',
     'resources/js/cookie-consent.js',
     'resources/js/case-study.js'
+    
     ])
     
     @stack('styles')
+  
+  
+
 </head>
 <body>
     @include('partials.preloader')<!--Preloader-->

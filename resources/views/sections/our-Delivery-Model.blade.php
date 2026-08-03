@@ -16,6 +16,110 @@
      <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 ─────────────────────────────────────────────────────────── --}}
 
+<style>
+    .our-delivery-model-stack-tag {
+        border-radius: 15px;
+    }
+    
+    @media screen and (width: 390px) {
+        .our-delivery-model-tag {
+          font-size: 5px;
+          padding: 4px;
+        text-align:center;
+    }
+           
+    }
+    
+    @media (max-width: 480px) {
+    .our-delivery-model-card {
+        min-height: 240px;
+    }
+    .our-delivery-model-tag {
+     font-size: 10px;
+     padding: 8px;
+     align-items: Center;
+    }
+    
+   }
+   
+    @media (max-width: 1024px) {
+    .our-delivery-model-info-card {
+        padding: 10pX;
+    }
+}
+@media (max-width: 768px) {
+    .our-delivery-model-card {
+        min-height: 270px;
+    }
+}
+
+.our-delivery-model-card__title  {
+    font-weight: 500;
+}
+
+.our-delivery-model-card__desc {
+    font-weight: 500;
+}
+
+.our-delivery-model-card__img {
+    transform : scale(1.08);
+    transition: transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+
+.our-delivery-model-card:hover .our-delivery-model-card__img {
+    transform: scale(1);
+}
+
+.our-delivery-model-card::before {
+    transition: background 1s ease;
+}
+
+.our-delivery-model-card__gradient {
+    position  : absolute;
+    bottom    : 0;
+    left      : 0;
+    right     : 0;
+    height    : 65%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.90) 0%,
+        rgba(0, 0, 0, 0.4)  50%,
+        transparent         100%
+    );
+    z-index   : 2;
+    transition: margin-bottom .8s ease;
+}
+
+.our-delivery-model-card__desc {
+    transition:
+    max-height .9s ease,
+    opacity .7s ease .15s,
+    transform .7s ease .15s;
+}
+.our-delivery-model-card__link {
+    transform : translateY(6px);
+    transition:
+        opacity   0.3s ease 0.2s,
+        transform 0.3s ease 0.2s,
+        gap       0.2s ease;
+}
+
+.our-delivery-model-card:hover .our-delivery-model-card__link {
+    opacity  : 1;
+    transform: translateY(0);
+}
+
+
+
+.our-delivery-model-card__meta {
+    opacity    : 0;
+    --odm-transition: 1.2s ease;
+}
+
+</style>
+
 <section class="our-delivery-model-section" id="our-delivery-model">
     <div class="container-our-delivery-model">
 
@@ -51,28 +155,33 @@
 
                     {{-- CTA Button --}}
                     <div>
-                        <a  class="our-delivery-model-btn">
-                            Explore Services
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                 fill="none" stroke="currentColor" stroke-width="2.5"
-                                 viewBox="0 0 24 24">
-                                <line x1="5" y1="12" x2="19" y2="12"/>
-                                <polyline points="12 5 19 12 12 19"/>
-                            </svg>
-                        </a>
-                    </div>
+    <a href="https://coral-pigeon-247564.hostingersite.com/services/bim-services"
+       class="our-delivery-model-btn">
+        Explore Services
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="16"
+             height="16"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2.5"
+             viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+        </svg>
+    </a>
+</div>
 
                     {{-- Engineering Stack --}}
                     <p class="our-delivery-model-stack-label">Engineering Stack</p>
                     <div class="our-delivery-model-stack-tags">
-                        <span class="our-delivery-model-stack-tag">AutoCAD</span>
+                        <span class="our-delivery-model-stack-tag" >AutoCAD</span>
                         <span class="our-delivery-model-stack-tag">Revit</span>
                         <span class="our-delivery-model-stack-tag">BIM 360</span>
+                        <span class="our-delivery-model-stack-tag">Creo</span>
                         <span class="our-delivery-model-stack-tag">Navisworks</span>
                         <span class="our-delivery-model-stack-tag">Solidworks</span>
-                        <span class="our-delivery-model-stack-tag">Creo</span>
-                        <span class="our-delivery-model-stack-tag">NX</span>
                         <span class="our-delivery-model-stack-tag">Digital Twin</span>
+                        <span class="our-delivery-model-stack-tag">NX</span>
                     </div>
 
                 </div>{{-- /info-card --}}

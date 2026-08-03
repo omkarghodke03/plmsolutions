@@ -1,10 +1,20 @@
-{{--
-    =====================================================
-    LOCATIONS SECTION
-    resources/views/sections/locations.blade.php
-    Usage: @include('sections.locations')
-    =====================================================
---}}
+
+
+<style>
+
+@media (min-width: 768px) and (max-width: 834px) {
+  #mi-og-30-22 {
+      width: 30%;
+  }
+}
+
+@media (min-width: 835px) and (max-width: 1024px) {
+#mi-og-30-22 {
+      width: 30%;
+  }
+}
+</style>
+
 
 <section class="loc-section" id="locations-section" aria-labelledby="loc-heading">
     <div class="container loc-container">
@@ -13,29 +23,29 @@
         <p class="loc-heading" id="loc-heading">Our locations:</p>
 
         {{-- Locations row --}}
-        <div class="row g-4 loc-row">
+        <div class="row g-4 loc-row justify-content-center">
 
             @php
                 $locations = [
                     [
                         'country' => 'India',
                         'city'    => 'Thane',
-                        'address' => "202 Siddhashram CHS, Gokhale Road",
-                        'image'   => 'images/plm-home-locations1.jpg',
+                        'address' => "",
+                        'image'   => 'images/plm-home-locationsthane.jpg',
                         'alt'     => 'Bangalore city skyline',
                     ],
                     [
                         'country' => 'USA',
                         'city'    => 'Dover',
-                        'address' => "8 The Green #20190",
-                        'image'   => 'images/plm-home-locations2.jpg',
+                        'address' => "",
+                        'image'   => 'images/plm-home-locationsUsa.jpg',
                         'alt'     => '8 The Green #20190',
                     ],
                     [
                         'country' => 'UK',
                         'city'    => 'Reading',
-                        'address' => "Davidson House, Forbury Square",
-                        'image'   => 'images/plm-home-locations3.jpg',
+                        'address' => "",
+                        'image'   => 'images/plm-home-locationsuk.jpg',
                         'alt'     => 'London aerial view',
                     ],
                    
@@ -43,7 +53,7 @@
             @endphp
 
             @foreach ($locations as $loc)
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-3" id="mi-og-30-22">
                     <div class="loc-card">
 
                         {{-- Circle image --}}

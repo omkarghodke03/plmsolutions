@@ -1,40 +1,26 @@
-{{--
-    ============================================================
-    Section  : Our Services
-    File     : resources/views/sections/our-services.blade.php
-    Notes    :
-      - All custom classes are prefixed with `our-service-`
-      - CSS variables: --plm-primary, --plm-secondary
-      - Bootstrap utility classes are allowed
-      - Images loaded via asset() from public/images/
-      - Hover → expand on desktop | Tap → expand on mobile
-    ============================================================
---}}
 
-{{-- ─── Inline Styles ──────────────────────────────────────────── --}}
 <style>
-/* ── Root / Variables ──────────────────────────────────────── */
+
 :root {
     --plm-primary   : #EC6502;
     --plm-secondary : #6F6F6F;
     --plm-heading   : 'Arial', sans-serif;
     --plm-subheading: 'Anklepants', sans-serif;
 
-    /* Section-specific tokens */
+   
     --os-card-radius     : 12px;
-    --os-transition      : 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    --os-expanded-width  : 600px;   /* desktop expanded card width  */
-    --os-collapsed-width : 72px;    /* desktop collapsed card width */
+    --os-transition      : 1s cubic-bezier(0.4, 0, 0.2, 1);
+    --os-expanded-width  : 620px;   /* desktop expanded card width  */
+    --os-collapsed-width : 90px;    /* desktop collapsed card width */
     --os-card-height     : 500px;   /* card height                  */
 }
 
-/* ── Section Wrapper ───────────────────────────────────────── */
 .our-service-section {
+    
     background: #f4f4f4;
     padding: 50px 0 60px;
 }
 
-/* ── Header Area ───────────────────────────────────────────── */
 .our-service-eyebrow {
     font-size   : 12px;
     font-weight : 500;
@@ -65,7 +51,6 @@
     max-width   : 100%;
 }
 
-/* ── Cards Container ───────────────────────────────────────── */
 .our-service-cards {
     display    : flex;
     gap        : 8px;
@@ -74,7 +59,7 @@
     /* justify-self: center; */
 }
 
-/* ── Individual Card ───────────────────────────────────────── */
+
 .our-service-card {
     position     : relative;
     border-radius: var(--os-card-radius);
@@ -87,12 +72,12 @@
     transition   : width var(--os-transition);
 }
 
-/* Active / hovered card expands */
+
 .our-service-card.is-active {
     width: var(--os-expanded-width);
 }
 
-/* ── Background Image ──────────────────────────────────────── */
+
 .our-service-card__img {
     position  : absolute;
     inset     : 0;
@@ -101,15 +86,14 @@
     object-fit: cover;
 
     /* Start slightly zoomed in; zoom out on active */
-    transform : scale(1.1);
-    transition: transform var(--os-transition);
+     transform: scale(1);
+    transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .our-service-card.is-active .our-service-card__img {
-    transform: scale(1);
+       transform: scale(1.1);
 }
 
-/* ── Dark Overlay (always) ─────────────────────────────────── */
 .our-service-card::before {
     content   : '';
     border-top: 3px solid #ec6502;
@@ -119,7 +103,6 @@
     z-index   : 1;
 }
 
-/* ── Bottom Gradient Overlay ───────────────────────────────── */
 .our-service-card__gradient {
     position  : absolute;
     bottom    : 0;
@@ -130,7 +113,6 @@
     z-index   : 2;
 }
 
-/* ── Icon Badge ────────────────────────────────────────────── */
 .our-service-card__icon {
     position     : absolute;
     top          : 20px;
@@ -148,7 +130,6 @@
     flex-shrink  : 0;
 }
 
-/* ── Vertical Text (collapsed state) ──────────────────────── */
 .our-service-card__vertical-label {
     position     : absolute;
     bottom       : 24px;
@@ -236,7 +217,7 @@
     overflow     : hidden;
 }
 
-/* ── Learn More Link ───────────────────────────────────────── */
+
 .our-service-card__link {
     display    : inline-flex;
     align-items: center;
@@ -256,7 +237,7 @@
     color: var(--plm-primary);
 }
 
-/* ── CTA Button ────────────────────────────────────────────── */
+
 .our-service-btn {
     display     : inline-flex;
     align-items : center;
@@ -279,7 +260,7 @@
                   background 0.25s ease, border-color 0.25s ease;
 }
 
-/* Ripple layer */
+
 .our-service-btn::after {
     content      : '';
     display      : inline-block;
@@ -331,7 +312,6 @@
         padding: 50px 0 40px;
     }
 
-    /* Stack cards vertically as a slider */
     .our-service-cards {
         flex-direction : column;
         height         : auto;
@@ -340,28 +320,27 @@
         gap            : 10px;
     }
 
-    /* Each card becomes a full-width row */
     .our-service-card {
-        width  : 100% !important;  /* override all widths */
-        height : 80px;             /* collapsed height on mobile */
+        width  : 100% !important;  
+        height : 80px;             
         transition: height var(--os-transition);
     }
 
     .our-service-card.is-active {
         width : 100% !important;
-        height: 260px;             /* expanded height on mobile */
+        height: 260px;             
     }
 
-    /* Hide vertical label on mobile (not needed in horizontal layout) */
+    
     .our-service-card__vertical-label {
         writing-mode   : horizontal-tb;
         transform      : none;
-        text-align     : left;
+        text-align     : center;
         left           : 0px;
         bottom         : 50%;
         transform      : translateY(50%);
         font-size      : 14px;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .our-service-card.is-active .our-service-card__vertical-label {
@@ -389,10 +368,17 @@
         align-items: center;
     }
 }
+
+
+@media (min-width: 835px) and (max-width: 1024px) {
+    .our-service-card {
+        width:70px !important;
+    }
+}
 </style>
 
 {{-- ─── Section HTML ────────────────────────────────────────────── --}}
-<section class="our-service-section" id="our-services">
+<section class="our-service-section" id="our-services"   style="background-image: url('{{ asset('images/ourservice.svg') }}'), url('{{ asset('images/ourservice.svg') }}'); background-position:left top,right bottom; background-repeat:no-repeat, no-repeat; "> 
     <div class="container">
 
         {{-- ── Header Row ──────────────────────────────────────── --}}
@@ -417,7 +403,7 @@
         {{-- ── Cards Row ───────────────────────────────────────── --}}
         {{--
             DATA STRUCTURE:
-            Each item = [ 'title', 'description', 'image_filename', 'icon_svg' ]
+            Each item = [ 'title', 'desc', 'image', 'icon', 'url' ]
             Add / remove items freely — the JS auto-handles widths.
         --}}
         @php
@@ -427,53 +413,63 @@
             | Put your images in:  public/images/
             | Then set the path:   'image' => 'images/your-file.jpg'
             |
-            | Example filenames you are using:
-            |   public/images/home-about-images1.jpg  →  'images/home-about-images1.jpg'
-            |   public/images/home-about-images2.png  →  'images/home-about-images2.png'
+            | HOW TO UPDATE "READ MORE" URLs:
+            | Just change the 'url' value below for each service.
+            | Examples:
+            |   'url' => '/services/bim-services'
+            |   'url' => 'https://www.yourdomain.com/services/bim-services'
+            |   'url' => route('services.bim')   // if using named routes
             |----------------------------------------------------------
             */
             $services = [
                 [
                     'title'  => 'BIM Services',
                     'desc'   => 'Our BIM services deliver coordinated, construction-ready models that improve collaboration, reduce rework, and enhance project delivery through modeling, coordination, clash detection, Scan to BIM, and 4D/5D planning.',
-                    'image'  => 'images/BIM-Services-plm-solution.jpg',   // → public/images/home-about-images1.jpg
+                    'image'  => 'images/BIM-Services-plm-solution.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+                    'url'    => '/services/bim-services', 
                 ],
                 [
                     'title'  => 'Architectural Services',
                     'desc'   => 'Our architectural services deliver precise, design-ready solutions that improve coordination, enhance visualization, and streamline project execution through 3D Rendering, 3D Modeling, BIM Modeling, Revit BIM, Modular BIM, 2D Drafting, and Construction Documentation.',
-                    'image'  => 'images/Architectural-Services.jpg',   // → public/images/home-about-images2.png
+                    'image'  => 'images/Architectural-Services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
+                    'url'    => '/services/architectural-bim', 
                 ],
                 [
                     'title'  => 'Millwork Design',
                     'desc'   => 'Our millwork services provide coordinated, fabrication-ready solutions through detailed shop drawings, 3D modeling, custom cabinetry detailing, joinery detailing, and production documentation, helping reduce errors, improve accuracy, and streamline manufacturing and installation processes.',
-                    'image'  => 'images/Millwork-Design.jpg',   // → public/images/home-about-images3.jpg
+                    'image'  => 'images/Millwork-Design.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
+                    'url'    => '#',
                 ],
                 [
                     'title'  => 'Structural Services',
                     'desc'   => 'Our structural services provide coordinated, fabrication-ready solutions through steel detailing, precast detailing, rebar detailing, shop drawings, and 3D modeling, helping reduce errors and streamline construction delivery.',
-                    'image'  => 'images/structural-design-services.jpg',   // → public/images/home-about-images4.jpg
+                    'image'  => 'images/structural-design-services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+                    'url'    => '/services/structural-bim',
                 ],
                 [
                     'title'  => 'MEP Services',
                     'desc'   => 'Our MEP services enhance project coordination and constructability through accurate drafting, modeling, shop drawings, and as-built documentation, helping teams reduce rework and improve project delivery.',
-                    'image'  => 'images/mep-services.jpg',   // → public/images/home-about-images5.jpg
+                    'image'  => 'images/mep-services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>',
+                    'url'    => '/services/mep-bim', 
                 ],
                 [
                     'title'  => 'Engineering Solutions',
                     'desc'   => 'Our engineering solutions provide coordinated, production-ready support through product design and development, CAD detailing, automotive design, CFD and FEA analysis, manufacturing support, engineering documentation, value engineering, and rapid prototyping, helping reduce development risks and streamline product realization.',
-                    'image'  => 'images/engineering-solutions.jpg',   // → public/images/home-about-images6.jpg
+                    'image'  => 'images/engineering-solutions.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+                    'url'    => '/services/plm-implementation', 
                 ],
                 [
                     'title'  => 'IT Services',
                     'desc'   => 'Our IT services help organizations accelerate digital transformation through intelligent technology solutions, digital twin implementation, process optimization, data-driven insights, and innovation strategies that improve efficiency, collaboration, and operational performance.',
-                    'image'  => 'images/IT-Services.jpg',   // → public/images/home-about-images7.jpg
+                    'image'  => 'images/IT-Services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+                    'url'    => '#',
                 ],
             ];
         @endphp
@@ -523,7 +519,7 @@
                         <p class="our-service-card__text">
                             {{ $service['desc'] }}
                         </p>
-                        <a href="#" class="our-service-card__link">
+                        <a href="{{ $service['url'] }}" class="our-service-card__link">
                             Learn More
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                  fill="none" stroke="currentColor" stroke-width="2"
@@ -540,7 +536,7 @@
 
         {{-- ── CTA Button ───────────────────────────────────────── --}}
         <div class="text-center mt-5">
-            <a  class="our-service-btn our-service-btc">
+            <a class="our-service-btn our-service-btc" href="/services/bim-services"> 
                  VIEW ALL SERVICES  
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                      fill="none" stroke="currentColor" stroke-width="2"
@@ -607,4 +603,5 @@
     });
 
 })();
+
 </script>

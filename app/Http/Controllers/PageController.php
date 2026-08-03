@@ -13,12 +13,6 @@ class PageController extends Controller
     {
         return view('pages.leadership');
     }
-
-    public function careers()
-    {
-        return view('pages.careers');
-    }
-
     public function workCulture()
     {
         return view('pages.workculture');
