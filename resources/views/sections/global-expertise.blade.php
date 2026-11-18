@@ -1,9 +1,3 @@
-{{--
-    =====================================================
-    ABOUT / STATS SECTION — resources/views/sections/about-section.blade.php
-    Usage in any blade: @include('sections.about-section')
-    =====================================================
---}}
 
 {{-- Bootstrap 5 CSS (add once in your layout <head>) --}}
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> --}}
@@ -17,7 +11,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr); /* 2 columns */
         grid-template-rows: repeat(2, auto);   /* 2 rows */
-        gap: 10px; /* Optional spacing */
+        gap: 10px;
     }
 }
 
@@ -90,7 +84,6 @@
     <div class="container-xl as-inner">
         <div class="row align-items-center g-0">
 
-            {{-- ── LEFT: Text + CTA ─────────────────────────────── --}}
             <div class="col-12 col-lg-5 as-left">
 
                 <p class="as-eyebrow">
@@ -111,20 +104,11 @@
     Learn More About Us
     <span class="our-delivery-model-btn__arrow" aria-hidden="true">→</span>
 </a>
-
             </div>
-
-            {{-- ── RIGHT: Stats Grid ────────────────────────────── --}}
             <div class="col-12 col-lg-7 as-right">
-
                 <div class="as-grid" role="list" aria-label="Company statistics">
-
                     @php
-                        /**
-                         * Stats array — swap these for DB values if needed.
-                         * suffix: appended to the animated number (e.g. "+" or "%")
-                         * target: the final number the counter animates to
-                         */
+                        
                         $stats = [
                             [
                                 'icon'   => 'globe',
@@ -147,7 +131,7 @@
                             [
                                 'icon'   => 'chart',
                                 'target' => 99.99,
-                                'suffix' => '+',
+                                'suffix' => '%',
                                 'label'  => 'Data Security',
                             ],
                         ];
@@ -160,7 +144,6 @@
                             data-count="{{ (int) $stat['target'] }}"
                             data-suffix="{{ e($stat['suffix']) }}"
                         >
-                            {{-- Icon row --}}
                             <div class="as-card__icon-row" aria-hidden="true">
                                 @switch($stat['icon'])
                                     @case('globe')
@@ -194,20 +177,14 @@
                                 @endswitch
                                 <span class="as-card__divider"></span>
                             </div>
-
-                            {{-- Animated number --}}
                             <p class="as-card__value" aria-label="{{ $stat['target'] . $stat['suffix'] }} {{ $stat['label'] }}">
                                 <span class="as-counter">0</span>{{ e($stat['suffix']) }}
                             </p>
-
                             <p class="as-card__label">{{ e($stat['label']) }}</p>
                         </div>
                     @endforeach
-
                 </div>
             </div>
-
         </div>
     </div>
-
 </section>

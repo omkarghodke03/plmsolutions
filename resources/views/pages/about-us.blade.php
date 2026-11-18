@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title', 'About Us - Milestone')
+@section('meta_description', 'Learn about Milestone Technologies')
+@section('meta_keywords', 'Milestone Technologies, engineering solutions, technology solutions, BIM services, engineering services')
+@section('canonical', 'https://demo.milestonetech.net/about-us')
 @section('content')
 @push('styles')
     @vite(['resources/css/aboutus.css'])
 @endpush
-{{-- ===================================================================
-     SECTION: ABOUT MILESTONE PLM — S01
-==================================================================== --}}
+
 <style> 
 
 .whoare-image-card {
@@ -387,7 +388,7 @@
             <div class="col-xl-7 col-lg-7 ">
 
                 <div class="abouthero-breadcrumb">
-                    <a href="/home">Home</a>
+                    <a href="/">Home</a>
                     <span>›</span>
                     <a href="#">About Us</a>
                 </div>
@@ -408,7 +409,7 @@
 
                 <div class="abouthero-buttons">
 
-                    <a href="/contact-us" class="abouthero-btn-primary">
+                    <a href="/contact" class="abouthero-btn-primary">
                        REQUEST PROPOSAL
                         <span>→</span>
                     </a>
@@ -552,9 +553,9 @@
 @php
 $teamMembers = [
     [
-        'name'   => 'Rajesh Nair',
+        'name'   => 'Amit Gunjal',
         'role'   => 'Founder & Managing Director',
-        'image'  => asset('images/about-1.jpg'),
+        'image'  => asset('images/amit-gunjal-director-of-milestone-plm-solutions.webp'),
         'quote'  => '"We built Milestone to be the most trusted engineering delivery partner in global AEC — precise, accountable, and always on time."',
     ],
     [
@@ -884,7 +885,7 @@ $teamMembers = [
     <path d="M9.5 14L8 20L12 17.5L16 20L14.5 14"/>
 </svg>
       </div>
-      <div class="st-number" data-target="20" data-suffix="+">0</div>
+      <div class="st-number" data-target="22" data-suffix="+">0</div>
       <div class="st-title">Years Experience</div>
       <div class="st-desc">Two decades of delivering excellence in engineering and BIM solutions.</div>
     </div>

@@ -1,11 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
-   READY-TO-SCALE SECTION  —  updated CSS
-   Paste this BELOW your existing CSS to override only what changed.
-   Your :root variables, .ready-scale, .heading, .description,
-   .form-card button etc. are kept exactly as they were.
-   ═══════════════════════════════════════════════════════════════ */
 
-/* ── Tag / eyebrow ──────────────────────────────────────────── */
 .ready-scale{
         background: #000000;
         padding: 80px;

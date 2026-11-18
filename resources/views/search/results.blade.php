@@ -6,7 +6,6 @@
 
     @if($query === '')
         <p>Please enter a search term.</p>
-    @elseif($pageResults === [] && $caseStudyResults->isEmpty())
         <p>No results found for "{{ $query }}".</p>
     @else
         @if(!empty($pageResults))
@@ -20,20 +19,6 @@
             </ul>
         @endif
 
-        @if($caseStudyResults->isNotEmpty())
-            <h4 class="mt-4">Case Studies</h4>
-            <div class="row">
-                @foreach($caseStudyResults as $study)
-                    <div class="col-md-4 mb-3">
-                        <a href="{{ url('/case-studies/'.$study->slug) }}">
-                            <img src="{{ $study->cover_image_url }}" alt="{{ $study->image_alt }}" class="img-fluid mb-2">
-                            <h5>{{ $study->title }}</h5>
-                        </a>
-                        <p>{{ $study->short_description }}</p>
-                    </div>
-                @endforeach
-            </div>
-        @endif
     @endif
 </div>
 @endsection

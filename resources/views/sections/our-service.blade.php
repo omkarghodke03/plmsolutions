@@ -10,9 +10,9 @@
    
     --os-card-radius     : 12px;
     --os-transition      : 1s cubic-bezier(0.4, 0, 0.2, 1);
-    --os-expanded-width  : 620px;   /* desktop expanded card width  */
-    --os-collapsed-width : 90px;    /* desktop collapsed card width */
-    --os-card-height     : 500px;   /* card height                  */
+    --os-expanded-width  : 620px;   
+    --os-collapsed-width : 90px;    
+    --os-card-height     : 500px;  
 }
 
 .our-service-section {
@@ -56,7 +56,6 @@
     gap        : 8px;
     height     : var(--os-card-height);
     overflow   : hidden;
-    /* justify-self: center; */
 }
 
 
@@ -65,8 +64,6 @@
     border-radius: var(--os-card-radius);
     overflow     : hidden;
     cursor       : pointer;
-
-    /* Default = collapsed */
     width        : var(--os-collapsed-width);
     flex-shrink  : 0;
     transition   : width var(--os-transition);
@@ -84,8 +81,6 @@
     width     : 100%;
     height    : 100%;
     object-fit: cover;
-
-    /* Start slightly zoomed in; zoom out on active */
      transform: scale(1);
     transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -398,88 +393,65 @@
                 </p>
             </div>
         </div>
-        {{-- ── End Header Row ──────────────────────────────────── --}}
-
-        {{-- ── Cards Row ───────────────────────────────────────── --}}
-        {{--
-            DATA STRUCTURE:
-            Each item = [ 'title', 'desc', 'image', 'icon', 'url' ]
-            Add / remove items freely — the JS auto-handles widths.
-        --}}
+      
         @php
-            /*
-            |----------------------------------------------------------
-            | HOW TO UPDATE IMAGES:
-            | Put your images in:  public/images/
-            | Then set the path:   'image' => 'images/your-file.jpg'
-            |
-            | HOW TO UPDATE "READ MORE" URLs:
-            | Just change the 'url' value below for each service.
-            | Examples:
-            |   'url' => '/services/bim-services'
-            |   'url' => 'https://www.yourdomain.com/services/bim-services'
-            |   'url' => route('services.bim')   // if using named routes
-            |----------------------------------------------------------
-            */
+            
             $services = [
                 [
                     'title'  => 'BIM Services',
                     'desc'   => 'Our BIM services deliver coordinated, construction-ready models that improve collaboration, reduce rework, and enhance project delivery through modeling, coordination, clash detection, Scan to BIM, and 4D/5D planning.',
                     'image'  => 'images/BIM-Services-plm-solution.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
-                    'url'    => '/services/bim-services', 
+                    'url'    => '/aec-solutions/bim', 
                 ],
                 [
                     'title'  => 'Architectural Services',
                     'desc'   => 'Our architectural services deliver precise, design-ready solutions that improve coordination, enhance visualization, and streamline project execution through 3D Rendering, 3D Modeling, BIM Modeling, Revit BIM, Modular BIM, 2D Drafting, and Construction Documentation.',
                     'image'  => 'images/Architectural-Services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
-                    'url'    => '/services/architectural-bim', 
+                    'url'    => '/aec-solutions/architecture', 
                 ],
                 [
                     'title'  => 'Millwork Design',
                     'desc'   => 'Our millwork services provide coordinated, fabrication-ready solutions through detailed shop drawings, 3D modeling, custom cabinetry detailing, joinery detailing, and production documentation, helping reduce errors, improve accuracy, and streamline manufacturing and installation processes.',
                     'image'  => 'images/Millwork-Design.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
-                    'url'    => '#',
+                    'url'    => '/engineering-solutions/millwork-design',
                 ],
                 [
                     'title'  => 'Structural Services',
                     'desc'   => 'Our structural services provide coordinated, fabrication-ready solutions through steel detailing, precast detailing, rebar detailing, shop drawings, and 3D modeling, helping reduce errors and streamline construction delivery.',
                     'image'  => 'images/structural-design-services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
-                    'url'    => '/services/structural-bim',
+                    'url'    => '/aec-solutions/structural',
                 ],
                 [
                     'title'  => 'MEP Services',
                     'desc'   => 'Our MEP services enhance project coordination and constructability through accurate drafting, modeling, shop drawings, and as-built documentation, helping teams reduce rework and improve project delivery.',
                     'image'  => 'images/mep-services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>',
-                    'url'    => '/services/mep-bim', 
+                    'url'    => '/aec-solutions/mep', 
                 ],
                 [
                     'title'  => 'Engineering Solutions',
                     'desc'   => 'Our engineering solutions provide coordinated, production-ready support through product design and development, CAD detailing, automotive design, CFD and FEA analysis, manufacturing support, engineering documentation, value engineering, and rapid prototyping, helping reduce development risks and streamline product realization.',
                     'image'  => 'images/engineering-solutions.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-                    'url'    => '/services/plm-implementation', 
+                    'url'    => '/engineering-solutions', 
                 ],
                 [
-                    'title'  => 'IT Services',
+                    'title'  => 'Data Analytics Services',
                     'desc'   => 'Our IT services help organizations accelerate digital transformation through intelligent technology solutions, digital twin implementation, process optimization, data-driven insights, and innovation strategies that improve efficiency, collaboration, and operational performance.',
                     'image'  => 'images/IT-Services.jpg',
                     'icon'   => '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
-                    'url'    => '#',
+                    'url'    => '/data-analytics-solutions/data-analytics',
                 ],
             ];
         @endphp
 
         <div class="our-service-cards" id="ourServiceCards">
             @foreach($services as $index => $service)
-                {{--
-                    - First card (index 0) is active by default.
-                    - data-index used by JS for identification.
-                --}}
+                
                 <div
                     class="our-service-card {{ $index === 0 ? 'is-active' : '' }}"
                     data-index="{{ $index }}"
@@ -487,7 +459,7 @@
                     aria-label="View {{ $service['title'] }}"
                     tabindex="0"
                 >
-                    {{-- Background image --}}
+                    
                     <img
                         src="{{ asset($service['image']) }}"
                         alt="{{ $service['title'] }}"
@@ -495,20 +467,15 @@
                         loading="lazy"
                     >
 
-                    {{-- Dark overlay + bottom gradient --}}
                     <div class="our-service-card__gradient"></div>
 
-                    {{-- Icon badge --}}
                     <div class="our-service-card__icon">
                         {!! $service['icon'] !!}
                     </div>
 
-                    {{-- Vertical label (collapsed state only) --}}
                     <span class="our-service-card__vertical-label">
                         {{ $service['title'] }}
                     </span>
-
-                    {{-- Horizontal content (expanded / active state) --}}
                     <div class="our-service-card__content">
                         <p class="our-service-card__counter">
                             0{{ $index + 1 }} / 0{{ count($services) }}
@@ -532,9 +499,6 @@
                 </div>
             @endforeach
         </div>
-        {{-- ── End Cards Row ────────────────────────────────────── --}}
-
-        {{-- ── CTA Button ───────────────────────────────────────── --}}
         <div class="text-center mt-5">
             <a class="our-service-btn our-service-btc" href="/services/bim-services"> 
                  VIEW ALL SERVICES  
@@ -546,12 +510,11 @@
                 </svg>
             </a>
         </div>
-        {{-- ── End CTA Button ───────────────────────────────────── --}}
 
     </div>{{-- /container --}}
 </section>
 
-{{-- ─── JavaScript ──────────────────────────────────────────────── --}}
+
 <script>
 (function () {
     'use strict';
@@ -571,10 +534,7 @@
         });
     }
 
-    /**
-     * Detect if the device is a touch/mobile device.
-     * We use pointer coarse as the most reliable check.
-     */
+ 
     function isTouchDevice() {
         return window.matchMedia('(pointer: coarse)').matches;
     }

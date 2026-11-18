@@ -847,6 +847,12 @@ Case - study css  start
     .bim-cs__viewall{
         margin-top:0;
     }
+    .bim-cap-card__desc {
+        text-align: left;
+    }
+    .bim-cap-card__title {
+        text-align: left;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════

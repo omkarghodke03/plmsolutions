@@ -1,6 +1,3 @@
-{{-- resources/views/components/insights-resources.blade.php --}}
-{{-- STATIC VERSION - 3 hardcoded blog cards --}}
-
 <style>
     .ir-section { background: #fff;  padding-top: 40px;
     padding-bottom: 40px; }
@@ -82,66 +79,66 @@
        margin: 15px;
         }
   }
-        
+       
+ .cs-header__right {
+    display    : flex;
+    align-items: center;
+    gap        : 20px;
+    flex-shrink: 0;
+  }        
 </style>
 
 <section class="ir-section" aria-label="Insights and Resources">
     <div class="container">
-
-        {{-- Header --}}
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="ir-heading">Insights &amp; <span>Resources</span></h2>
-            <a href="/blogs/" class="ir-view-all">View All &rarr;</a>
+            <a href="/blogs/" class="cs-view-more">View All &rarr;</a>
         </div>
 
-        {{-- 3 Static Blog Cards --}}
         <div class="row g-6">
-            {{-- Card 2 --}}
             <div class="col-12 col-sm-6 col-lg-4">
                 <article class="ir-card">
                     <div class="ir-thumb">
                         <img src="{{ asset('images/9-steps-of-the-engineering-design-process.png') }}"
-                             alt="9 Steps of the Engineering Design Process"
+                             alt="9 Steps of the Engineering Design Process" title="9 Steps of the Engineering Design Process"
                              loading="lazy" width="400" height="260">
                     </div>
                     <div class="ir-body">
                         <h3 class="ir-title">
-                            <a href="https://coral-pigeon-247564.hostingersite.com/blogs/nine-steps-of-the-engineering-design-process">
-                                9 Steps of the Engineering Design Process
+                            <a href="/blogs/outsourcing-3d-modeling-services-for-aec-and-engineering-projects/">
+                               Outsourcing 3D Modeling Services for AEC and Engineering Projects
                             </a>
                         </h3>
                     </div>
                 </article>
             </div>
-              {{-- Card 1 --}}
             <div class="col-12 col-sm-6 col-lg-4">
                 <article class="ir-card">
                     <div class="ir-thumb">
                         <img src="{{ asset('images/Essential Symbols on Engineering Drawings.png') }}"
-                             alt="Essential Symbols on Engineering Drawings"
+                             alt="Essential Symbols on Engineering Drawings" title="9 Steps of the Engineering Design Process"
                              loading="lazy" width="400" height="260">
                     </div>
                     <div class="ir-body">
                         <h3 class="ir-title">
-                            <a href="/insights/essential-symbols-on-engineering-drawings">
-                                Essential Symbols on Engineering Drawings
+                            <a href="/blogs/value-engineering-in-construction-key-stages-and-benefits/">
+                              Value Engineering in Construction Key Stages and Benefits
                             </a>
                         </h3>
                     </div>
                 </article>
             </div>
-            {{-- Card 3 --}}
             <div class="col-12 col-sm-6 col-lg-4">
                 <article class="ir-card">
                     <div class="ir-thumb">
                         <img src="{{ asset('images/7-stages-of-construction-a-complete-guide.png') }}"
-                             alt="7 Stages of Construction: A Complete Guide"
+                             alt="7 Stages of Construction: A Complete Guide" title="9 Steps of the Engineering Design Process"
                              loading="lazy" width="400" height="260">
                     </div>
                     <div class="ir-body">
                         <h3 class="ir-title">
-                            <a href="https://coral-pigeon-247564.hostingersite.com/blogs/stages-of-construction-a-complete-guide">
-                                7 Stages of Construction: A Complete Guide
+                            <a href="/blogs/step-by-step-process-for-structural-design-of-buildings-projects/">
+                                Step-by-Step Process for Structural Design of Buildings & Projects
                             </a>
                         </h3>
                     </div>

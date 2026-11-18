@@ -38,7 +38,6 @@
     <div class="container">
         <div class="row align-items-center g-0">
 
-            {{-- ── LEFT CONTENT ─────────────────────────────────────── --}}
             <div class="col-lg-6 left-content">
 
                 <span class="tag">
@@ -46,17 +45,17 @@
                     READY TO SCALE?
                 </span>
 
-                <h1 class="heading-contactfornhome">
+                <h2 class="heading-contactfornhome">
     Let's accelerate your <span style="color:#EC6502;">next project.</span>
 </h1>
-                </h1>
+                </h2>
 
                 <p class="description-contactform-home">
                     Precision CAD, BIM, and structural detailing —
                     delivered by a global engineering team, on time, every time.
                 </p>
 
-                {{-- Trust bullets --}}
+              
                 <ul class="trust-list">
                    <li>
     <span class="trust-icon">
@@ -103,20 +102,24 @@
                         <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
     <path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6v3.5c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.7c0-.6.4-1 1-1h3.5c0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2.2 2.2z"/>
 </svg></span>
-                        <span>+1-919-238-8044</span>
+                       <a href="{{ $geoData['tel'] }}" style="color: #ccc; text-decoration: none;">
+    {{ $geoData['phone'] }}
+</a>
                     </div>
                     <div class="item">
                         <span class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7a00" stroke-width="2">
     <rect x="3" y="5" width="18" height="14" rx="1"/>
     <path d="M3 7l9 6 9-6"/>
 </svg></span>
-                        <span>info@milestoneplm.com</span>
+                       <a href="mailto:info@milestonetech.net" style="text-decoration: none;">
+    <span>info@milestonetech.net</span>
+</a>
                     </div>
                 </div>
 
             </div>
 
-            {{-- ── RIGHT FORM ───────────────────────────────────────── --}}
+            
             <div class="col-lg-6">
                 <div class="form-card">
 
@@ -187,7 +190,7 @@
                                     type="tel"
                                     id="rs_phone"
                                     name="phone"
-                                    placeholder="+1 (555) 000-0000"
+                                    placeholder="+1-302-587-8418"
                                     value="{{ old('phone') }}"
                                     class="{{ $errors->has('phone') ? 'is-invalid' : '' }}"
                                     maxlength="30"
@@ -250,3 +253,28 @@
         </div>
     </div>
 </section>
+
+@if(session('success'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Thank you!',
+        text: @json(session('success')),
+        confirmButtonColor: '#EC6502',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
+
+@if(session('error'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops!',
+        text: @json(session('error')),
+        confirmButtonColor: '#EC6502'
+    });
+</script>
+@endif

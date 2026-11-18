@@ -6,7 +6,7 @@ use App\Filament\Resources\JobPostResource\Pages;
 use App\Models\JobPost;
 use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
@@ -34,22 +34,30 @@ class JobPostResource extends Resource
                 ->unique(ignoreRecord: true)
                 ->columnSpanFull(),
 
-            Textarea::make('description')
-                ->required()
-                ->rows(6)
-                ->columnSpanFull(),
-
-            CheckboxList::make('platforms')
-                ->label('Select job publishing platforms ?')
-                ->options([
-                    'linkedin' => 'LinkedIn',
-                    'indeed'   => 'Indeed',
-                    'naukri'   => 'Naukri',
-                    'website'  => 'Website (career page)',
+           RichEditor::make('description')
+                 ->required()
+                 ->toolbarButtons([
+                    'undo',
+                    'redo',
+                    'h2',
+                    'h3',
+                    'bold',
+                    'italic',
+                    'bulletList',
+                    'orderedList',
+                    'link',
                 ])
-                ->columns(2)
-                ->required()
-                ->columnSpanFull(),
+            ->columnSpanFull(),
+
+                CheckboxList::make('platforms')
+                 ->label('Select job publishing platforms')
+                 ->options([
+                 'linkedin' => 'LinkedIn',
+                 'website'  => 'Website (career page)',
+                  ])
+                 ->columns(2)
+                 ->required()
+                 ->columnSpanFull(),
 
             Toggle::make('is_active')
                 ->label('Active')

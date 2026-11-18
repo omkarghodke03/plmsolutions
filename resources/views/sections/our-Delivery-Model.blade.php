@@ -1,17 +1,3 @@
-{{--
-    ============================================================
-    Section  : Our Delivery Model
-    File     : resources/views/sections/our-delivery-model.blade.php
-    CSS      : resources/css/custom.css  (all our-delivery-model- classes)
-    Notes    :
-      - All custom classes prefixed with `our-delivery-model-`
-      - Images loaded via asset() from public/images/
-      - Bootstrap utility classes used alongside custom classes
-      - On mobile (≤480px): cards show content by default (no hover needed)
-      - Tap on mobile triggers active state via JS
-    ============================================================
---}}
-
 {{-- ── Link your CSS file in <head> if not already included ──
      <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 ─────────────────────────────────────────────────────────── --}}
@@ -122,40 +108,25 @@
 
 <section class="our-delivery-model-section" id="our-delivery-model">
     <div class="container-our-delivery-model">
-
         <div class="our-delivery-model-row">
-
-            {{-- ════════════════════════════════════════════
-                 LEFT — Info Card
-                 ════════════════════════════════════════════ --}}
             <div class="our-delivery-model-left">
                 <div class="our-delivery-model-info-card">
-
-                    {{-- Eyebrow --}}
                     <p class="our-delivery-model-eyebrow">Our Delivery Model</p>
-
-                    {{-- Main Heading --}}
                     <h2 class="our-delivery-model-heading">Scale Smarter with
                         <span class="odm-highlight">Expert AEC  & </span> <br>
                        Engineering Teams
                     </h2>
-
-                    {{-- Description --}}
                     <p class="our-delivery-model-desc">
                     Strengthen your project delivery capabilities with expert AEC Services and Engineering Design Services, backed by dedicated teams that seamlessly integrate with your operations.
                     </p>
-
-                    {{-- Feature Tags --}}
                     <div class="our-delivery-model-tags">
                         <span class="our-delivery-model-tag">Time & Material</span>
                         <span class="our-delivery-model-tag">Full-Time Equivalent (FTE)</span>
                         <span class="our-delivery-model-tag">Offshore Engineering Centers</span>
                         <span class="our-delivery-model-tag">Virtual Design Center [VDC]</span>
                     </div>
-
-                    {{-- CTA Button --}}
                     <div>
-    <a href="https://coral-pigeon-247564.hostingersite.com/services/bim-services"
+    <a href="/services/bim-services"
        class="our-delivery-model-btn">
         Explore Services
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -170,8 +141,6 @@
         </svg>
     </a>
 </div>
-
-                    {{-- Engineering Stack --}}
                     <p class="our-delivery-model-stack-label">Engineering Stack</p>
                     <div class="our-delivery-model-stack-tags">
                         <span class="our-delivery-model-stack-tag" >AutoCAD</span>
@@ -184,25 +153,9 @@
                         <span class="our-delivery-model-stack-tag">NX</span>
                     </div>
 
-                </div>{{-- /info-card --}}
+                </div>
             </div>
-            {{-- /LEFT --}}
-
-
-            {{-- ════════════════════════════════════════════
-                 RIGHT — 2×2 Step Cards
-                 ════════════════════════════════════════════
-
-                 DATA STRUCTURE per card:
-                   image  → path relative to public/ (used with asset())
-                   step   → Step label e.g. "Step 01"
-                   title  → Card heading
-                   desc   → Short description shown on hover
-                   link   → URL for Explore link
-                   icon   → Inline SVG string
-            ─────────────────────────────────────────────── --}}
             <div class="our-delivery-model-right">
-
                 @php
                     $steps = [
                         [
@@ -253,92 +206,66 @@
                             tabindex="0"
                             aria-label="{{ $step['title'] }} — {{ $step['step'] }}"
                         >
-                            {{-- Background image --}}
+                           
                             <img
                                 src="{{ asset($step['image']) }}"
                                 alt="{{ $step['title'] }}"
                                 class="our-delivery-model-card__img"
                                 loading="lazy"
                             >
-
-                            {{-- Bottom gradient overlay --}}
                             <div class="our-delivery-model-card__gradient"></div>
-
-                            {{-- Icon badge (top-left) --}}
                             <div class="our-delivery-model-card__icon">
                                 {!! $step['icon'] !!}
                             </div>
-
-                            {{-- Step label (top-right) --}}
                             <span class="our-delivery-model-card__step">
                                 {{ $step['step'] }}
                             </span>
-
-                            {{-- Card body --}}
                             <div class="our-delivery-model-card__body">
-
-                                {{-- Title — always visible --}}
                                 <h3 class="our-delivery-model-card__title">
                                     {{ $step['title'] }}
                                 </h3>
-
-                                {{-- Description — revealed on hover --}}
                                 <p class="our-delivery-model-card__desc">
                                     {{ $step['desc'] }}
                                 </p>
-
-                                {{-- Optional meta strip --}}
                                 @if(!empty($step['meta']))
                                     <p class="our-delivery-model-card__meta">
                                         {{ $step['meta'] }}
                                     </p>
                                 @endif
-
-                                {{-- Explore link --}}
-                                <a href="{{ $step['link'] }}" class="our-delivery-model-card__link">
-                                    Explore
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                         fill="none" stroke="currentColor" stroke-width="2.5"
-                                         viewBox="0 0 24 24">
-                                        <line x1="5" y1="12" x2="19" y2="12"/>
-                                        <polyline points="12 5 19 12 12 19"/>
-                                    </svg>
-                                </a>
-
-                            </div>{{-- /card-body --}}
-                        </div>{{-- /card --}}
+                                <!--<a href="{{ $step['link'] }}" class="our-delivery-model-card__link">-->
+                                <!--    Explore-->
+                                <!--    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"-->
+                                <!--         fill="none" stroke="currentColor" stroke-width="2.5"-->
+                                <!--         viewBox="0 0 24 24">-->
+                                <!--        <line x1="5" y1="12" x2="19" y2="12"/>-->
+                                <!--        <polyline points="12 5 19 12 12 19"/>-->
+                                <!--    </svg>-->
+                                <!--</a>-->
+                            </div>
+                        </div>
                     @endforeach
-                </div>{{-- /grid --}}
-
+                </div>
             </div>
-            {{-- /RIGHT --}}
-
-        </div>{{-- /row --}}
-    </div>{{-- /container --}}
+        </div>
+    </div>
 </section>
 
-
-{{-- ── JavaScript: tap-to-activate on touch devices ──────────── --}}
 <script>
 (function () {
     'use strict';
 
-    /* Only apply tap behaviour on touch/coarse-pointer devices */
     if (!window.matchMedia('(pointer: coarse)').matches) return;
 
     const cards = document.querySelectorAll('.our-delivery-model-card');
 
     cards.forEach(function (card) {
         card.addEventListener('click', function () {
-            /* Toggle active class — CSS :hover won't fire on mobile */
             const isActive = card.classList.contains('odm-tap-active');
 
-            /* Remove active from all cards first */
             cards.forEach(function (c) {
                 c.classList.remove('odm-tap-active');
             });
 
-            /* If it wasn't active, activate it */
             if (!isActive) {
                 card.classList.add('odm-tap-active');
             }
@@ -347,9 +274,9 @@
 })();
 </script>
 
-{{-- ── Mobile tap-active CSS (mirrors hover styles) ─────────── --}}
+
 <style>
-/* When a card has been tapped on mobile, show the same state as :hover */
+
 .our-delivery-model-card.odm-tap-active .our-delivery-model-card__img     { transform: scale(1); }
 .our-delivery-model-card.odm-tap-active::before                           { background: rgba(0,0,0,0.25); }
 .our-delivery-model-card.odm-tap-active .our-delivery-model-card__gradient{ height: 80%; }

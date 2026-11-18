@@ -1,12 +1,3 @@
-{{--
-    ============================================================
-    Section  : Client Testimonials
-    File     : resources/views/sections/testimonials.blade.php
-    CSS      : resources/css/costome.css  (client-testimonials- prefix)
-    Images   : public/images/testimonials-images1.jpg  etc.
-    ============================================================
---}}
-
 <style>
     .client-testimonials-nav-btn--next{
         border-radius: 25PX;
@@ -19,8 +10,6 @@
 
 <section class="client-testimonials-section">
     <div class="container">
-
-        {{-- ── Heading ──────────────────────────────────────── --}}
         <div class="client-testimonials-header">
             <p class="our-delivery-model-eyebrow">Client Testimonials</p>
             <h2 class="client-testimonials-heading">
@@ -32,29 +21,16 @@
             </p>
         </div>
 
-        {{-- ── Slider Wrapper ───────────────────────────────── --}}
         <div class="client-testimonials-slider-wrap">
-            <div class="client-testimonials-track" id="ctTrack">
-
-               
+            <div class="client-testimonials-track" id="ctTrack">               
 @php
-    /*
-    |--------------------------------------------------
-    | HOW TO ADD / EDIT A TESTIMONIAL:
-    |   'quote'    => testimonial text
-    |   'name'     => client full name
-    |   'role'     => job title, company
-    |   'image'    => path from public/ folder
-    |   'featured' => true = dark card (first card style)
-    |--------------------------------------------------
-    */
 
     $testimonials = [
         [
             'quote'    => '"Milestone consistently delivers high-quality engineering solutions with excellent communication and adherence to project timelines. Their team has become a trusted extension of our engineering department."',
             'name'     => 'Chris Wonder',
             'role'     => 'Engineering Manager, Leading SPM Manufacturer from UK',
-            'image'    => 'images/testimonials-image1.jpg',
+            'image'    => 'images/user-review.jpeg',
             'featured' => true,
         ],
 
@@ -62,7 +38,7 @@
             'quote'    => '"The team at MILESTONE complemented our design team greatly during a large project. Production of working drawings and finalization of the design package played a key part. The support and direction from MILESTONE gave us the confidence to work with them on future projects."',
             'name'     => 'Jeff Falzone',
             'role'     => 'Engineering Director, A leading US company in Sheetmetal domain',
-            'image'    => 'images/testimonials-image2.jpg',
+            'image'    => 'images/user-review.jpeg',
             'featured' => false,
         ],
 
@@ -70,7 +46,7 @@
             'quote'    => '"Outstanding communication and results. Their structural steel detailing delivered 100% shop-ready drawings on first submission. Seamless collaboration."',
             'name'     => 'James Walton',
             'role'     => 'VP Engineering, Bechtel Corp',
-            'image'    => 'images/testimonials-image3.jpg',
+            'image'    => 'images/user-review.jpeg',
             'featured' => false,
         ],
 
@@ -78,7 +54,7 @@
             'quote'    => '"The service to us was swift with tool-paths being completed within the required timescale. The service offered was professional, resulting in us utilising the services of MILESTONE again when required."',
             'name'     => 'Brian S.',
             'role'     => 'Engineering Manager, A leading US company in Precision Manufacturing',
-            'image'    => 'images/testimonials-image1.jpg',
+            'image'    => 'images/user-review.jpeg',
             'featured' => false,
         ],
 
@@ -86,7 +62,7 @@
             'quote'    => '"Milestone PLM\'s MEP coordination was flawless. We eliminated 300+ clashes before breaking ground — the most disciplined offshore team we\'ve ever worked with."',
             'name'     => 'Rajen Parekh',
             'role'     => 'CEO, Valves Industries, India',
-            'image'    => 'images/testimonials-image2.jpg',
+            'image'    => 'images/user-review.jpeg',
             'featured' => false,
         ],
 
@@ -94,7 +70,7 @@
             'quote'    => '"Through our association since 2006, MILESTONE delivered in an accurate and timely manner, helping us manage workload. We see a great partner in Milestone."',
             'name'     => 'Prashant Tillu',
             'role'     => 'Dy. General Manager, Larsen & Toubro Ltd',
-            'image'    => 'images/testimonials-image3.jpg',
+            'image'    => 'images/user-review.jpeg',
             'featured' => false,
         ],
 
@@ -102,14 +78,11 @@
             'quote'    => '"Our firm has used MILESTONE services for well over 12 years. Consistent quality CAD services, quality control, and timely responses have made our clients—and therefore us—very satisfied and continued customers."',
             'name'     => 'Yatin Chinchkar',
             'role'     => 'Design Manager, Leading OEM in Consumer Products, India',
-            'image'    => 'images/testimonials-image3.jpg',
+            'image'    => 'images/user-review.jpeg',
             'featured' => false,
         ],
     ];
 @endphp
-
-
-
                 @foreach($testimonials as $t)
                     <div class="client-testimonials-slide">
                         <div class="client-testimonials-card">
@@ -126,11 +99,8 @@
                                           fill="var(--plm-primary)"/>
                                 </svg>
                             </div>
-
-                            {{-- Quote text --}}
                             <p class="client-testimonials-text">{{ $t['quote'] }}</p>
 
-                            {{-- Divider --}}
                             <hr class="client-testimonials-divider">
 
                             {{-- Author --}}
@@ -151,24 +121,21 @@
                     </div>
                 @endforeach
 
-            </div>{{-- /track --}}
-        </div>{{-- /slider-wrap --}}
+            </div>
+        </div>
 
-
-        {{-- ── Footer: showing label + dots + nav buttons ─────── --}}
         <div class="client-testimonials-footer">
 
-            {{-- Showing X–Y of Z --}}
             <p class="client-testimonials-showing">
                 SHOWING
                 <strong id="ctFrom">1</strong>–<strong id="ctTo">3</strong>
                 OF <strong>{{ count($testimonials) }}</strong>
             </p>
 
-            {{-- Dot / line indicators --}}
+           
             <div class="client-testimonials-dots" id="ctDots"></div>
 
-            {{-- Prev / Next buttons --}}
+           
             <div class="client-testimonials-nav">
                 <button class="client-testimonials-nav-btn" id="ctPrev" aria-label="Previous">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -186,67 +153,50 @@
                 </button>
             </div>
 
-        </div>{{-- /footer --}}
+        </div>
 
-    </div>{{-- /container --}}
+    </div>
 </section>
 
-
-{{-- ── Slider JavaScript ──────────────────────────────────────── --}}
 <script>
 (function () {
     'use strict';
-
     const CONFIG = {
         slidesPerView: 3,
         slidesPerViewMd: 2,
         slidesPerViewSm: 1,
         slidesPerClick: 1
     };
-
     const track = document.getElementById('ctTrack');
     const prevBtn = document.getElementById('ctPrev');
     const nextBtn = document.getElementById('ctNext');
     const dotsWrap = document.getElementById('ctDots');
     const fromEl = document.getElementById('ctFrom');
     const toEl = document.getElementById('ctTo');
-
     const slides = track.querySelectorAll('.client-testimonials-slide');
     const total = slides.length;
-
     let current = 0;
-
     function perView() {
         if (window.innerWidth <= 575) return CONFIG.slidesPerViewSm;
         if (window.innerWidth <= 991) return CONFIG.slidesPerViewMd;
         return CONFIG.slidesPerView;
     }
-
     function getGap() {
         return parseFloat(getComputedStyle(track).gap) || 24;
     }
-
     function buildDots() {
-
         dotsWrap.innerHTML = '';
-
         const pages = total - perView() + 1;
-
         for (let i = 0; i < pages; i++) {
-
             const dot = document.createElement('span');
             dot.className = 'client-testimonials-dot';
-
             dot.addEventListener('click', function () {
                 goTo(i);
             });
-
             dotsWrap.appendChild(dot);
         }
     }
-
     function updateCardColors() {
-
         document.querySelectorAll('.client-testimonials-card').forEach(card => {
             card.classList.remove(
                 'client-testimonials-card--pos1',
@@ -254,115 +204,71 @@
                 'client-testimonials-card--pos3'
             );
         });
-
         const pv = perView();
-
         for (let i = 0; i < pv; i++) {
-
             const slide = slides[current + i];
-
             if (!slide) continue;
-
             const card = slide.querySelector('.client-testimonials-card');
-
             if (!card) continue;
-
             if (i === 0) {
                 card.classList.add('client-testimonials-card--pos1');
             }
-
             if (i === 1) {
                 card.classList.add('client-testimonials-card--pos2');
             }
-
             if (i === 2) {
                 card.classList.add('client-testimonials-card--pos3');
             }
         }
     }
-
     function goTo(index) {
-
         const pv = perView();
-
         const maxIndex = Math.max(0, total - pv);
-
         current = Math.max(0, Math.min(index, maxIndex));
-
         const gap = getGap();
-
         const slideWidth = slides[0].offsetWidth + gap;
-
         track.style.transform =
             `translateX(-${current * slideWidth}px)`;
-
         fromEl.textContent = current + 1;
-
         toEl.textContent = Math.min(current + pv, total);
-
         dotsWrap.querySelectorAll('.client-testimonials-dot').forEach(function (dot, i) {
-
             dot.classList.toggle(
                 'client-testimonials-dot--active',
                 i === current
             );
-
         });
-
         prevBtn.disabled = current === 0;
         nextBtn.disabled = current === maxIndex;
-
         prevBtn.classList.toggle(
             'client-testimonials-nav-btn--disabled',
             current === 0
         );
-
         nextBtn.classList.toggle(
             'client-testimonials-nav-btn--disabled',
             current === maxIndex
         );
-
         updateCardColors();
-
     }
-
     prevBtn.addEventListener('click', function () {
-
         goTo(current - CONFIG.slidesPerClick);
-
     });
-
     nextBtn.addEventListener('click', function () {
-
         goTo(current + CONFIG.slidesPerClick);
-
     });
-
     let resizeTimer;
-
     window.addEventListener('resize', function () {
-
         clearTimeout(resizeTimer);
-
         resizeTimer = setTimeout(function () {
-
             buildDots();
-
             const maxIndex = Math.max(0, total - perView());
 
             if (current > maxIndex) {
                 current = maxIndex;
             }
-
             goTo(current);
-
         }, 200);
-
     });
-
     buildDots();
-
     goTo(0);
-
 })();
 </script>

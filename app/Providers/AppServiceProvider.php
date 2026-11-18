@@ -9,13 +9,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Request $request): void
     {
         $geoMap = [
-            'IN' => ['country'=>'India',          'flag'=>'in', 'phone'=>'+91-80-4737-0000', 'tel'=>'tel:+918047370000',  'email'=>'info@milestoneplm.com'],
-            'GB' => ['country'=>'United Kingdom', 'flag'=>'gb', 'phone'=>'+44-20-3290-3900', 'tel'=>'tel:+442032903900',  'email'=>'info@milestoneplm.com'],
-            'US' => ['country'=>'USA',            'flag'=>'us', 'phone'=>'+1-919-238-8044',  'tel'=>'tel:+19192388044',   'email'=>'info@milestoneplm.com'],
-            'AE' => ['country'=>'UAE',            'flag'=>'ae', 'phone'=>'+971-4-876-0000',  'tel'=>'tel:+97148760000',   'email'=>'info@milestoneplm.com'],
-            'AU' => ['country'=>'Australia',      'flag'=>'au', 'phone'=>'+61-2-8091-0000',  'tel'=>'tel:+61280910000',   'email'=>'info@milestoneplm.com'],
-            'CA' => ['country'=>'Canada',         'flag'=>'ca', 'phone'=>'+1-647-478-0000',  'tel'=>'tel:+16474780000',   'email'=>'info@milestoneplm.com'],
-            'SG' => ['country'=>'Singapore',      'flag'=>'sg', 'phone'=>'+65-6100-0000',    'tel'=>'tel:+6561000000',    'email'=>'info@milestoneplm.com'],
+            'IN' => ['country'=>'India',          'flag'=>'in', 'phone'=>'+91-88-2842-7555', 'tel'=>'tel:+918828427555',  'email'=>'info@milestoneplm.com'],
+            'GB' => ['country'=>'United Kingdom', 'flag'=>'gb', 'phone'=>'+44-746-216-0012', 'tel'=>'tel:+447462160012',  'email'=>'info@milestoneplm.com'],
+            'US' => ['country'=>'USA',            'flag'=>'us', 'phone'=>'+1-302-587-8418',  'tel'=>'tel:+13025878418',   'email'=>'info@milestoneplm.com'],
         ];
 
         $default = $geoMap['IN'];
