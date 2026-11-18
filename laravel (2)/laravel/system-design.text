@@ -1,0 +1,27 @@
+1-career page mail  poppop 
+app/
+ ├── Http/
+ │    └── Controllers/
+ │         └── JobApplicationController.php
+ └── Mail/
+      ├── AdminJobApplicationMail.php
+      └── UserJobApplicationMail.php
+
+resources/
+ └── views/
+      ├── jobs/
+      │    └── show.blade.php <-single job details page  
+      |    ├── index.blade.php <-job listing page 
+      |    ├── apply.blade.php <-job form  page  
+      └── email/
+           └── career/
+                ├── admin.blade.php <-admin mail templated 
+                └── user.blade.php   <-user mail templated
+
+routes/
+ └── web.php <-add route mail .
+
+
+
+
+
