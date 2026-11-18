@@ -4,7 +4,6 @@ namespace App\Filament\Resources\JobPostResource\Pages;
 
 use App\Filament\Resources\JobPostResource;
 use App\Services\LinkedInService;
-use App\Services\NaukriService;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 
@@ -12,47 +11,74 @@ class CreateJobPost extends CreateRecord
 {
     protected static string $resource = JobPostResource::class;
 
-   
+
     protected function afterCreate(): void
     {
         /** @var \App\Models\JobPost $job */
         $job = $this->record;
+
         $platforms = $job->platforms ?? [];
 
-        if (!$job->is_active) {
+
+      
+
+        if (!in_array('linkedin', $platforms)) {
             return;
         }
 
-        // 1. LinkedIn Auto-Post if selected in Filament
-        if (in_array('linkedin', $platforms)) {
-            $linkedInService = app(LinkedInService::class);
-            $success = $linkedInService->postJob($job);
 
-            if ($success) {
-                Notification::make()
-                    ->title('Job successfully posted on LinkedIn!')
-                    ->success()
-                    ->send();
-            } else {
-                Notification::make()
-                    ->title('LinkedIn posting failed')
-                    ->body('Please check if LinkedIn session/token is valid.')
-                    ->warning()
-                    ->send();
-            }
-        }
 
-        // 2. Naukri Auto-Post if selected in Filament
-        if (in_array('naukri', $platforms)) {
-            $naukriService = app(NaukriService::class);
-            $naukriService->postJob($job);
-            
+        $token = session('linkedin_token');
+        $personId = session('linkedin_sub');
+
+
+        if (!$token || !$personId) {
+
             Notification::make()
-                ->title('Naukri integration triggered')
-                ->info()
+                ->title('LinkedIn account is not connected')
+                ->body(
+                    'Please connect your LinkedIn account before publishing this job.'
+                )
+                ->warning()
+                ->actions([
+                    \Filament\Notifications\Actions\Action::make('connect')
+                        ->label('Connect LinkedIn')
+                        ->url(route('linkedin.connect'))
+                        ->openUrlInNewTab(),
+                ])
                 ->send();
+
+            return;
         }
-        
-       
+
+        $linkedInService = app(LinkedInService::class);
+
+        $result = $linkedInService->postJob($job);
+
+        if (!empty($result['success'])) {
+
+            $postId = $result['linkedin_post_id'] ?? null;
+
+            Notification::make()
+                ->title('Job successfully posted on LinkedIn!')
+                ->body(
+                    $postId
+                        ? "LinkedIn Post ID: {$postId}"
+                        : 'LinkedIn post was created successfully.'
+                )
+                ->success()
+                ->send();
+
+            return;
+        }
+
+        Notification::make()
+            ->title('LinkedIn posting failed')
+            ->body(
+                $result['message']
+                    ?? 'LinkedIn API request failed.'
+            )
+            ->danger()
+            ->send();
     }
 }

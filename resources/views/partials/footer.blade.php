@@ -1,4 +1,3 @@
-{{-- resources/views/partials/footer.blade.php --}}
 <style>
     
     .plm-ft__logo-link img {
@@ -11,9 +10,13 @@
 }
 #og_3022 {
     display: flex !important;
-    align-items: center !important;
+    align-items:flex-start !important;
     flex-direction: column !important;
     flex-wrap: nowrap !important;
+}
+.plm-ft__col {
+    align-items:left;
+    
 }
 </style>
 
@@ -21,53 +24,43 @@
     <div class="plm-ft__main">
         <div class="plm-ft__container">
 
-            {{-- Col 1: Brand --}}
             <div class="plm-ft__brand">
-                <a href="{{ url('/home') }}" class="plm-ft__logo-link" aria-label="Milestone PLM Solutions">
+                <a href="{{ url('/') }}" class="plm-ft__logo-link" aria-label="Milestone PLM Solutions">
                     <img src="{{ asset('images/footer-image.png') }}" alt="Milestone PLM Solutions" width="200" height="60" loading="lazy">
                 </a>
-                <p class="plm-ft__desc">Global BIM, CAD, and structural engineering outsourcing services delivering precision and excellence for 15+ years.</p>
-
-                {{-- ISO badges --}}
-               
-
-                {{-- Contact --}}
-                
-
-                {{-- Social --}}
-               
+                <p class="plm-ft__desc">Global BIM, CAD, and structural engineering outsourcing services delivering precision and excellence for 22+ years.</p>       
             </div>
 
-            {{-- Col 2: Services --}}
             <div class="plm-ft__col d-flex align-items-left" id="og_3022">
                 <h3 class="plm-ft__heading">Certificates</h3>
                  <div class="plm-ft__badges">
-                    <span class="plm-ft__badge"><img src="{{ asset('images/footer-two-one.png') }}"  style="width:70px; height:70px;"  ></span>
-                    <span class="plm-ft__badge"><img src="{{ asset('images/footer-two-two2.png') }}"  style="width:70px; height:70px;" alt="Badge 2"></span>
-                    <span class="plm-ft__badge"><img src="{{ asset('images/footer-two-three.jpeg') }}"   style="width:70px; height:70px;" alt="Badge 3"></span>
+                    <span class="plm-ft__badge"><img src="{{ asset('images/footer-two-one.png') }}"  style="width:70px; height:70px;" alt="Badge 1" title="Certificates" ></span>
+                    <span class="plm-ft__badge"><img src="{{ asset('images/footer-two-two2.png') }}"  style="width:70px; height:70px;" alt="Badge 2" title="Certificates"></span>
+                    <span class="plm-ft__badge"><img src="{{ asset('images/footer-two-three.jpeg') }}"   style="width:70px; height:70px;" alt="Badge 3" title="Certificates"></span>
                 </div>
             </div>
-
-            {{-- Col 3: Delivery Models + Industries --}}
             <div class="plm-ft__col" id="og_3022">
                 <h3 class="plm-ft__heading">Contact Us</h3>
                 <ul class="plm-ft__contact">
                     <li>
-                        <svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
-                        <a href="tel:+918047370000">+91-80-4737-0000</a>
+    <svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" style="color:#353535;">
+        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/>
+    </svg>
+
+    <a href="{{ $geoData['tel'] }}">
+        {{ $geoData['phone'] }}
+    </a>
+</li>
+                    <li>
+                        <svg  width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" style="color:#353535;"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741z"/></svg>
+                        <a href="mailto:info@milestonetech.net">info@milestonetech.net</a>
                     </li>
                     <li>
-                        <svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741z"/></svg>
-                        <a href="mailto:info@milestoneplm.com">info@milestoneplm.com</a>
-                    </li>
-                    <li>
-                        <svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                        <svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" style="color:#353535;"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
                         <span>Thane | Dover | Reading</span>
                     </li>
                 </ul>
             </div>
-
-            {{-- Col 4: Company --}}
             <div class="plm-ft__col" id="og_3022">
                 <h3 class="plm-ft__heading">Social Media</h3>
                 <div style="display:flex; gap:15px; ">
@@ -84,16 +77,488 @@
                       </div>
                     </div>
                  </div>
-
-    {{-- Bottom bar --}}
     <div class="plm-ft__bottom">
         <div class="plm-ft__container plm-ft__bottom-inner">
             <p class="plm-ft__copy">&copy; {{ date('Y') }} Milestone PLM Solutions. All rights reserved.</p>
             <nav class="plm-ft__legal" aria-label="Legal links">
-                <a href="{{ url('/privacy-policy') }}">Privacy Policy</a>
-                <a href="{{ url('/terms') }}">Terms of Service</a>
-                <a href="{{ url('/cookie-policy') }}">Cookie Policy</a>
+             <a href="#" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">Privacy Policy</a>
+             <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a>
             </nav>
         </div>
     </div>
 </footer>
+
+
+{{-- =========================================================
+     TERMS & CONDITIONS MODAL
+========================================================= --}}
+
+<div
+    class="modal fade plm-legal-modal"
+    id="termsModal"
+    tabindex="-1"
+    aria-labelledby="termsModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+
+        <div class="modal-content plm-legal-modal-content">
+
+            {{-- Header --}}
+            <div class="modal-header plm-legal-modal-header">
+
+                <div>
+                    <span class="plm-legal-eyebrow">
+                        MILESTONE PLM SOLUTIONS
+                    </span>
+
+                    <h2
+                        class="modal-title plm-legal-modal-title"
+                        id="termsModalLabel"
+                    >
+                        Terms &amp; Conditions
+                    </h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-close plm-legal-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            {{-- Body --}}
+            <div class="modal-body plm-legal-modal-body">
+
+                <p>
+                    Welcome to Milestone PLM Solutions. By accessing or
+                    using our website at
+                    <a
+                        href="http://www.milestonetech.net"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        www.milestonetech.net
+                    </a>,
+                    you agree to these Terms &amp; Conditions.
+                </p>
+
+
+                <h3>1. Use of Website</h3>
+
+                <p>
+                    You agree to use this website only for lawful purposes.
+                    You must not misuse the website, attempt unauthorized
+                    access, interfere with its functionality, or violate
+                    any applicable laws.
+                </p>
+
+
+                <h3>2. Services</h3>
+
+                <p>
+                    Milestone PLM Solutions provides professional services
+                    including BIM Modeling, CAD Drafting, Digital Twin
+                    Services, Engineering Support, Consulting, Automation,
+                    and Data Analytics.
+                </p>
+
+                <p>
+                    Specific services, pricing, deliverables, and payment
+                    terms may be governed by separate quotations, proposals,
+                    or agreements.
+                </p>
+
+
+                <h3>3. Intellectual Property</h3>
+
+                <p>
+                    All content on this website, including text, images,
+                    graphics, logos, documents, designs, and software, is
+                    owned by or licensed to Milestone PLM Solutions unless
+                    otherwise stated.
+                </p>
+
+                <p>
+                    Content may not be copied, modified, distributed,
+                    or commercially used without prior written permission.
+                </p>
+
+
+                <h3>4. Website Availability</h3>
+
+                <p>
+                    The website and its content are provided on an
+                    “as is” and “as available” basis. We do not guarantee
+                    uninterrupted availability, error-free operation,
+                    or specific business results.
+                </p>
+
+
+                <h3>5. Limitation of Liability</h3>
+
+                <p>
+                    To the maximum extent permitted by applicable law,
+                    Milestone PLM Solutions shall not be liable for
+                    indirect, incidental, consequential, or business
+                    losses arising from the use of this website or
+                    our services.
+                </p>
+
+
+                <h3>6. Third-Party Links</h3>
+
+                <p>
+                    Our website may contain links to third-party websites.
+                    We are not responsible for their content, security,
+                    privacy policies, or practices.
+                </p>
+
+
+                <h3>7. Privacy</h3>
+
+                <p>
+                    Your use of this website is also subject to our
+                    Privacy Policy, which explains how we collect and
+                    use information.
+                </p>
+
+
+                <h3>8. SMS Communications</h3>
+
+                <p>
+                    If you provide your phone number and opt in to SMS
+                    communications, you may receive service notifications,
+                    updates, support messages, or promotional communications.
+                    Message frequency may vary and message/data rates may apply.
+                </p>
+
+                <p>
+                    You may opt out at any time by replying
+                    <strong>STOP</strong>,
+                    <strong>CANCEL</strong>, or
+                    <strong>UNSUBSCRIBE</strong>.
+                </p>
+
+                <p>
+                    For assistance, reply <strong>HELP</strong> or contact us at
+                    <a href="mailto:info@milestoneplm.com">
+                        info@milestoneplm.com
+                    </a>.
+                </p>
+
+                <p>
+                    SMS consent information is not shared with third parties
+                    or affiliates for their marketing purposes.
+                </p>
+
+
+                <h3>9. User Responsibilities</h3>
+
+                <p>
+                    You agree to provide accurate information, use our
+                    services lawfully, and not transmit malicious code
+                    or harmful content.
+                </p>
+
+
+                <h3>10. Suspension or Termination</h3>
+
+                <p>
+                    We reserve the right to suspend or terminate access
+                    to our website or services if these Terms are violated,
+                    fraudulent activity is suspected, or required by law.
+                </p>
+
+
+                <h3>11. Governing Law</h3>
+
+                <p>
+                    These Terms shall be governed by the applicable laws
+                    of India. Where applicable, disputes relating to
+                    U.S.-based operations may be subject to relevant
+                    U.S. laws and jurisdiction.
+                </p>
+
+
+                <h3>12. Changes to These Terms</h3>
+
+                <p>
+                    We may update these Terms from time to time.
+                    Updated Terms will be posted on this page with
+                    the revised effective date.
+                </p>
+
+
+                <h3>13. Contact Us</h3>
+
+                <p>
+                    For questions regarding these Terms &amp; Conditions,
+                    please contact Milestone PLM Solutions at
+                    <a href="mailto:info@milestoneplm.com">
+                        info@milestoneplm.com
+                    </a>
+                    or visit
+                    <a
+                        href="http://www.milestonetech.net"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        www.milestonetech.net
+                    </a>.
+                </p>
+
+
+                <div class="plm-legal-updated">
+                    Last Updated: August 2026
+                </div>
+
+            </div>
+
+
+            {{-- Footer --}}
+            <div class="modal-footer plm-legal-modal-footer">
+
+                <button
+                    type="button"
+                    class="plm-legal-action-btn"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{-- =========================================================
+     PRIVACY POLICY MODAL
+========================================================= --}}
+
+<div
+    class="modal fade plm-legal-modal"
+    id="privacyPolicyModal"
+    tabindex="-1"
+    aria-labelledby="privacyPolicyModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+
+        <div class="modal-content plm-legal-modal-content">
+
+            {{-- Header --}}
+            <div class="modal-header plm-legal-modal-header">
+
+                <div>
+                    <span class="plm-legal-eyebrow">
+                        MILESTONE PLM SOLUTIONS
+                    </span>
+
+                    <h2
+                        class="modal-title plm-legal-modal-title"
+                        id="privacyPolicyModalLabel"
+                    >
+                        Privacy Policy
+                    </h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-close plm-legal-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            {{-- Body --}}
+            <div class="modal-body plm-legal-modal-body">
+
+                <p>
+                    Milestone PLM Solutions (“Company,” “we,” “our,”
+                    or “us”) respects your privacy. This Privacy Policy
+                    explains how we collect, use, and protect information
+                    when you visit
+                    <a
+                        href="http://www.milestonetech.net"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        www.milestonetech.net
+                    </a>
+                    or use our services.
+                </p>
+
+
+                <h3>1. Information We Collect</h3>
+
+                <p>
+                    We may collect your name, company name, email address,
+                    phone number, billing details, project information,
+                    IP address, device information, cookies, and website
+                    usage data.
+                </p>
+
+
+                <h3>2. How We Use Information</h3>
+
+                <p>
+                    We use your information to provide services, respond
+                    to inquiries, prepare quotations, improve our services,
+                    send important updates, and comply with applicable laws.
+                </p>
+
+
+                <h3>3. SMS Communications</h3>
+
+                <p>
+                    If you provide your phone number and opt in to SMS
+                    communications, you may receive service updates,
+                    support messages, reminders, or promotional messages.
+                    Message frequency may vary and message/data rates may apply.
+                    You can opt out at any time by replying
+                    <strong>STOP</strong>,
+                    <strong>UNSUBSCRIBE</strong>, or
+                    <strong>CANCEL</strong>.
+                </p>
+
+                <p>
+                    For assistance, reply <strong>HELP</strong> or contact us at
+                    <a href="mailto:info@milestoneplm.com">
+                        info@milestoneplm.com
+                    </a>.
+                </p>
+
+                <p>
+                    SMS opt-in information and consent data will not be sold,
+                    rented, or shared with third parties or affiliates for
+                    their marketing purposes.
+                </p>
+
+
+                <h3>4. Information Sharing</h3>
+
+                <p>
+                    We do not sell or rent your personal information.
+                    We may share information with trusted service providers
+                    or authorities when required by law.
+                </p>
+
+
+                <h3>5. Data Security</h3>
+
+                <p>
+                    We use reasonable security measures to protect your
+                    information. However, no online system can be guaranteed
+                    completely secure.
+                </p>
+
+
+                <h3>6. Cookies</h3>
+
+                <p>
+                    We may use cookies and analytics tools to improve our
+                    website and understand website usage. You can manage
+                    cookies through your browser settings.
+                </p>
+
+
+                <h3>7. Data Retention</h3>
+
+                <p>
+                    We retain information only as long as necessary to
+                    provide services, meet legal requirements, resolve
+                    disputes, or fulfill business obligations.
+                </p>
+
+
+                <h3>8. Your Rights</h3>
+
+                <p>
+                    Depending on applicable law, you may request access,
+                    correction, deletion, or withdrawal of consent regarding
+                    your personal information.
+                </p>
+
+                <p>
+                    Contact us at
+                    <a href="mailto:info@milestoneplm.com">
+                        info@milestoneplm.com
+                    </a>.
+                </p>
+
+
+                <h3>9. Third-Party Links</h3>
+
+                <p>
+                    Our website may contain links to third-party websites.
+                    We are not responsible for their privacy practices
+                    or content.
+                </p>
+
+
+                <h3>10. Changes to This Policy</h3>
+
+                <p>
+                    We may update this Privacy Policy from time to time.
+                    Changes will be posted on this page with the updated
+                    effective date.
+                </p>
+
+
+                <h3>11. Contact Us</h3>
+
+                <div class="plm-legal-contact">
+
+                    <strong>Milestone PLM Solutions</strong>
+
+                    <span>
+                        <strong>Email:</strong>
+                        <a href="mailto:info@milestoneplm.com">
+                            info@milestoneplm.com
+                        </a>
+                    </span>
+
+                    <span>
+                        <strong>Website:</strong>
+                        <a
+                            href="http://www.milestonetech.net"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            www.milestonetech.net
+                        </a>
+                    </span>
+
+                </div>
+
+
+                <div class="plm-legal-updated">
+                    Last Updated: August 2026
+                </div>
+
+            </div>
+
+
+            {{-- Footer --}}
+            <div class="modal-footer plm-legal-modal-footer">
+
+                <button
+                    type="button"
+                    class="plm-legal-action-btn"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</div>

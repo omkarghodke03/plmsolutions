@@ -1,41 +1,322 @@
 
-{{-- resources/views/emails/contact/user.blade.php --}}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<style>
-  body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
-  .wrap { max-width: 560px; margin: 40px auto; background: #fff; border-radius: 8px; overflow: hidden; }
-  .header { background: #1a1a1a; padding: 28px 32px; }
-  .header h1 { color: #EC6502; font-size: 20px; margin: 0; }
-  .header p  { color: #9a9a9a; font-size: 13px; margin: 6px 0 0; }
-  .body { padding: 28px 32px; color: #333; font-size: 15px; line-height: 1.7; }
-  .highlight { background: #fff8f3; border-left: 3px solid #EC6502; padding: 12px 16px; border-radius: 4px; margin: 20px 0; font-size: 14px; }
-  .footer { padding: 16px 32px; background: #f9f9f9; font-size: 12px; color: #aaa; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Thank You for Contacting PLM Solutions</title>
 </head>
-<body>
-<div class="wrap">
-  <div class="header">
-    <h1>We've received your request!</h1>
-    <p>Thank you for reaching out, {{ $contact->name }}.</p>
-  </div>
-  <div class="body">
-    <p>Our team will review your enquiry and get back to you within <strong>1 business day</strong>.</p>
 
-    <div class="highlight">
-      <strong>Service requested:</strong> {{ $contact->service ?? 'General Enquiry' }}<br>
-      <strong>Reply to:</strong> {{ $contact->email }}
-    </div>
+<body style="
+    margin:0;
+    padding:0;
+    background:#f4f6f8;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#1b1b1b;
+">
 
-    <p>In the meantime, feel free to reach us directly at
-      <a href="tel:+19192388044" style="color:#EC6502;">+1-919-238-8044</a>.
-    </p>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"
+       style="background:#f4f6f8;">
 
-    <p style="margin-top:24px;">Warm regards,<br><strong>The MilestonePLM Team</strong></p>
-  </div>
-  <div class="footer">MilestonePLM · info@milestoneplm.com · +1-919-238-8044</div>
-</div>
+    <tr>
+        <td align="center" style="padding:35px 15px;">
+
+            <!-- Main Container -->
+            <table
+                width="100%"
+                cellpadding="0"
+                cellspacing="0"
+                border="0"
+                style="
+                    max-width:620px;
+                    background:#ffffff;
+                    border-radius:10px;
+                    overflow:hidden;
+                    border:1px solid #e6e9ed;
+                "
+            >
+
+                <!-- Header -->
+                <tr>
+                    <td style="
+                        background:#1b1b1b;
+                        padding:30px 32px;
+                        border-bottom:4px solid #EC6502;
+                    ">
+
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+
+                                <td>
+
+                                    <div style="
+                                        font-size:19px;
+                                        line-height:30px;
+                                        font-weight:700;
+                                        color:#ffffff;
+                                    ">
+                                        PLM Solutions  Thank You for Reaching Out!<span style="color:#EC6502;">.</span>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:35px 32px 15px 32px;">
+                        <div style="
+                            margin-top:10px;
+                            font-size:14px;
+                            line-height:22px;
+                            color:#6f767d;
+                        ">
+                            Hi {{ $contact->name }},
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:5px 32px 20px 32px;">
+                        <p style="
+                            margin:0;
+                            font-size:14px;
+                            line-height:24px;
+                            color:#4b5560;
+                        ">
+                            Thank you for contacting
+                            <strong style="color:#1b1b1b;">
+                                PLM Solutions
+                            </strong>.
+                            We have successfully received your enquiry and our
+                            team will review your requirements shortly.
+                        </p>
+                        <p style="
+                            margin:15px 0 0 0;
+                            font-size:14px;
+                            line-height:24px;
+                            color:#4b5560;
+                        ">
+                            We appreciate your interest in our services and look
+                            forward to understanding your project requirements
+                            in more detail.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 32px 10px 32px;">
+                        <div style="
+                            font-size:12px;
+                            font-weight:700;
+                            color:#1b1b1b;
+                            text-transform:uppercase;
+                            letter-spacing:.8px;
+                            margin-bottom:10px;
+                        ">
+                            Your Enquiry
+                        </div>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0"
+                               style="
+                                    background:#fff8f4;
+                                    border:1px solid #f2dfd3;
+                                    border-radius:8px;
+                               ">
+                            <tr>
+                                <td style="padding:15px 17px;">
+                                    <div style="
+                                        font-size:10px;
+                                        font-weight:700;
+                                        color:#9a6a50;
+                                        text-transform:uppercase;
+                                        letter-spacing:.8px;
+                                    ">
+                                        Service Requested
+                                    </div>
+                                    <div style="
+                                        margin-top:5px;
+                                        font-size:14px;
+                                        line-height:21px;
+                                        color:#EC6502;
+                                        font-weight:700;
+                                    ">
+                                        {{ $contact->service ?? 'General Enquiry' }}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0 17px;">
+                                    <div style="
+                                        height:1px;
+                                        background:#f0ddd1;
+                                    "></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:15px 17px;">
+                                    <div style="
+                                        font-size:10px;
+                                        font-weight:700;
+                                        color:#9a6a50;
+                                        text-transform:uppercase;
+                                        letter-spacing:.8px;
+                                    ">
+                                        Reply To
+                                    </div>
+                                    <div style="
+                                        margin-top:5px;
+                                        font-size:14px;
+                                        line-height:21px;
+                                    ">
+                                        <a
+                                            href="mailto:{{ $contact->email }}"
+                                            style="
+                                                color:#1b1b1b;
+                                                text-decoration:none;
+                                                font-weight:600;
+                                            "
+                                        >
+                                            {{ $contact->email }}
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:25px 32px 10px 32px;">
+
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0"
+                               style="
+                                    background:#f8f9fa;
+                                    border-left:4px solid #EC6502;
+                               ">
+                            <tr>
+                                <td style="padding:16px 18px;">
+                                    <div style="
+                                        font-size:13px;
+                                        line-height:21px;
+                                        color:#4b5560;
+                                    ">
+                                        <strong style="color:#1b1b1b;">
+                                            What happens next?
+                                        </strong>
+                                        <br>
+                                        Our team will get in touch with you
+                                        shortly to discuss your requirements
+                                        and answer any questions you may have.
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:20px 32px 10px 32px;">
+                        <p style="
+                            margin:0;
+                            font-size:14px;
+                            line-height:23px;
+                            color:#4b5560;
+                        ">
+                            If you need to reach us before then, feel free to
+                            contact our team directly at:
+                        </p>
+                        <p style="
+                            margin:12px 0 0 0;
+                            font-size:14px;
+                            line-height:22px;">
+                            <a href="tel:+19192388044"
+                                    style="
+                                    color:#EC6502;
+                                    text-decoration:none;
+                                    font-weight:700;">+1-919-238-8044</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:25px 32px 30px 32px;">
+
+                        <p style="
+                            margin:0;
+                            font-size:14px;
+                            line-height:23px;
+                            color:#4b5560;
+                        ">
+                            We look forward to connecting with you and exploring
+                            how PLM Solutions can support your project.
+                        </p>
+
+                        <p style="
+                            margin:22px 0 0 0;
+                            font-size:14px;
+                            line-height:23px;
+                            color:#4b5560;
+                        ">
+                            Warm regards,<br>
+
+                            <strong style="
+                                color:#1b1b1b;
+                                font-size:15px;
+                            ">
+                                The PLM Solutions Team
+                            </strong>
+                        </p>
+
+                    </td>
+                </tr>
+
+
+                <!-- Footer -->
+                <tr>
+                    <td style="
+                        background:#f8f9fa;
+                        border-top:1px solid #eeeeee;
+                        padding:22px 32px;
+                        text-align:center;
+                    ">
+
+                        <div style="
+                            font-size:14px;
+                            font-weight:700;
+                            color:#1b1b1b;
+                        ">
+                            PLM<span style="color:#EC6502;">.</span> Solutions
+                        </div>
+
+                        <div style="
+                            margin-top:6px;
+                            font-size:11px;
+                            line-height:18px;
+                            color:#9aa0a6;
+                        ">
+                            Thank you for choosing PLM Solutions.
+                        </div>
+
+                        <div style="
+                            margin-top:8px;
+                            font-size:11px;
+                            color:#b0b5ba;
+                        ">
+                            © {{ date('Y') }} PLM Solutions. All rights reserved.
+                        </div>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+
+</table>
+
 </body>
 </html>
+

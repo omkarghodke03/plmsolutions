@@ -1,8 +1,4 @@
-/* ==========================================================================
-   PLM Header Styles — resources/css/sections.css
-   Prefix: plm-  (scoped, non-conflicting)
-   Colors: #EC6502 (primary) | #6F6F6F (secondary)
-   ========================================================================== */
+
 
 @font-face { font-family: 'Arial';      src: local('Arial');      font-display: swap; }
 @font-face { font-family: 'Anklepants'; src: local('Anklepants'); font-display: swap; }
@@ -28,9 +24,6 @@
 
 .plm-nav-open { overflow: hidden; }
 
-/* ==========================================================================
-   TOP BAR
-   ========================================================================== */
 .plm-topbar {
     background: var(--plm-topbar-bg);
     border-bottom: 1px solid var(--plm-border);
@@ -92,9 +85,7 @@
     animation: plm-flash 0.7s ease;
 }
 
-/* ==========================================================================
-   COUNTRY SWITCHER
-   ========================================================================== */
+
 .plm-country {
     position: relative;
     font-family: var(--plm-font);
@@ -244,9 +235,7 @@
 .plm-nav__chevron { transition: transform var(--plm-transition); flex-shrink: 0; }
 .plm-nav__link[aria-expanded="true"] .plm-nav__chevron { transform: rotate(180deg); }
 
-/* ==========================================================================
-   MEGA MENU
-   ========================================================================== */
+
 .plm-mega {
     position: sticky;
     top: calc(var(--plm-topbar-h) + var(--plm-header-h));
@@ -318,7 +307,7 @@
 .plm-mega__panels { flex: 1; padding: 28px 32px; }
 
 .plm-mega__panel { display: none; }
-.plm-mega__panel--active { display: flex; gap: 48px; flex-wrap: wrap; }
+.plm-mega__panel--active { display: flex; gap: 48px; flex-wrap: nowrap; }
 
 .plm-mega__group { min-width: 200px; }
 
@@ -358,9 +347,6 @@
     animation: plm-fade-in 0.2s ease;
 }
 
-/* ==========================================================================
-   HEADER ACTIONS
-   ========================================================================== */
 .plm-header__actions {
     display: flex;
     align-items: center;

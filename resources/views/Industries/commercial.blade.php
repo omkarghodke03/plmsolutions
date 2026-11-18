@@ -336,9 +336,7 @@ html {
     flex-shrink: 0;
 }
 
-/* ---------------------------------------------------------------------------
-   7. GET IN TOUCH SECTION
---------------------------------------------------------------------------- */
+
 .auto-contact-section {
     background-color: var(--auto-bg-light);
 }
@@ -705,9 +703,9 @@ Mobile
         <div class="row align-items-center">
             <div class="col-xl-8 col-lg-7 col-md-10">
                 <div class="abouthero-breadcrumb">
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                     <span>›</span>
-                    <a href="/services/Bim-Services">Industries</a>
+                    <a href="#">Industries</a>
                     <span>›</span>
                     <span class="active">Commercial</span>
                 </div>
@@ -721,7 +719,7 @@ Mobile
                     Delivering intelligent BIM, structural engineering, MEP design, and project coordination for modern commercial developments.
                 </p>
                 <div class="abouthero-buttons">
-                    <a href="#" class="abouthero-btn-primary">
+                    <a href="/contact" class="abouthero-btn-primary">
                         GET A QUOTE
                         <span>→</span>
                     </a>
@@ -769,9 +767,7 @@ Mobile
                         <li class="nav-item">
                             <a class="nav-link auto-tab-link auto-scroll-link" data-target="#solutions" href="javascript:void(0);">Solutions</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link auto-tab-link auto-scroll-link" data-target="#get-in-touch" href="javascript:void(0);">Get in touch</a>
-                        </li>
+                        
                     </ul>
                 </div>
 
@@ -795,7 +791,7 @@ Mobile
                         commercial landscape and increasing the complexity of modern developments. These changes
                         bring many challenges to developers, architects, and service providers.
                     </p>
-                    <a href="/contact-us" class="btn auto-btn-primary auto-scroll-link" data-target="#get-in-touch" >Get in touch</a>
+<a href="/contact" class="btn auto-btn-primary">Get in touch</a>
                 </div>
 
                 <div class="col-12 col-lg-7 auto-overview-media">
@@ -859,13 +855,13 @@ Mobile
                 <div class="col-12 col-lg-6 auto-challenges-list-col">
                     <h3 class="auto-subheading">Main challenges</h3>
                     <ul class="auto-chevron-list">
-                        <li><a href="#"><span class="auto-chevron">&rsaquo;</span> Retention of talented workforce</a></li>
-                        <li><a href="#"><span class="auto-chevron">&rsaquo;</span> Rising material and labor costs</a></li>
-                        <li><a href="#"><span class="auto-chevron">&rsaquo;</span> Design-to-construction coordination</a></li>
-                        <li><a href="#"><span class="auto-chevron">&rsaquo;</span> Disrupted supply chain</a></li>
-                        <li><a href="#"><span class="auto-chevron">&rsaquo;</span> Sustainability requirements</a></li>
-                        <li><a href="#"><span class="auto-chevron">&rsaquo;</span> Change in client expectations</a></li>
-                        <li><a href="#"><span class="auto-chevron">&rsaquo;</span> Multi-discipline connectivity</a></li>
+                        <li><a ><span class="auto-chevron">&rsaquo;</span> Retention of talented workforce</a></li>
+                        <li><a ><span class="auto-chevron">&rsaquo;</span> Rising material and labor costs</a></li>
+                        <li><a ><span class="auto-chevron">&rsaquo;</span> Design-to-construction coordination</a></li>
+                        <li><a ><span class="auto-chevron">&rsaquo;</span> Disrupted supply chain</a></li>
+                        <li><a ><span class="auto-chevron">&rsaquo;</span> Sustainability requirements</a></li>
+                        <li><a ><span class="auto-chevron">&rsaquo;</span> Change in client expectations</a></li>
+                        <li><a ><span class="auto-chevron">&rsaquo;</span> Multi-discipline connectivity</a></li>
                     </ul>
                 </div>
 
@@ -887,7 +883,6 @@ Mobile
                             commercial teams can meet today's biggest challenges and set themselves up for
                             tomorrow's long-term success.
                         </p>
-                        <a href="javascript:void(0);" class="btn auto-btn-primary auto-scroll-link" data-target="#solutions">How we can help</a>
                     </div>
                 </div>
 
@@ -913,37 +908,37 @@ Mobile
 
             <div class="row auto-solutions-grid">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="#" class="auto-solution-item">
+                    <a  class="auto-solution-item">
                         <span class="auto-chevron">&rsaquo;</span>
                         <span style="font-family: var(--plm-heading);  font-size: 15px;">Configure and build the digital thread to support end-to-end project delivery from concept to handover</span>
                     </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="#" class="auto-solution-item">
+                    <a  class="auto-solution-item">
                         <span class="auto-chevron">&rsaquo;</span>
                         <span style="font-family: var(--plm-heading);  font-size: 15px;">Configure, enable and integrate architectural, structural and MEP models into a coordinated federated BIM model</span>
                     </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="#" class="auto-solution-item">
+                    <a  class="auto-solution-item">
                         <span class="auto-chevron">&rsaquo;</span>
                         <span style="font-family: var(--plm-heading);  font-size: 15px; ">Define and configure classification hierarchy for effective management of building components and assets</span>
                     </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="#" class="auto-solution-item">
+                    <a  class="auto-solution-item">
                         <span class="auto-chevron">&rsaquo;</span>
                         <span style="font-family: var(--plm-heading); font-size: 15px;">Configure and implement closed loop change and quality management processes across project delivery</span>
                     </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="#" class="auto-solution-item">
+                    <a  class="auto-solution-item">
                         <span class="auto-chevron">&rsaquo;</span>
                         <span style="font-family: var(--plm-heading); font-size: 15px;">Bi-directional integration between BIM and other enterprise systems to publish updates downstream</span>
                     </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="#" class="auto-solution-item">
+                    <a class="auto-solution-item">
                         <span class="auto-chevron">&rsaquo;</span>
                         <span style="font-family: var(--plm-heading); font-size: 15px;">Define and configure real-time collaboration framework between design and construction teams</span>
                     </a>
@@ -953,9 +948,6 @@ Mobile
         </div>
     </div>
 
-    {{-- ============================================================
-         5. GET IN TOUCH SECTION
-    ============================================================ --}}
     
 
         

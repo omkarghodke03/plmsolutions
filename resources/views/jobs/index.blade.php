@@ -55,13 +55,13 @@
     transform:translateY(-10px);
     background:linear-gradient(180deg,#fff,#fff7f2);
     border-color:#EC6502;
-    box-shadow:0 20px 45px rgba(236,101,2,.20);
+    box-shadow:0 20px 45px rgba(0, 0, 0, 0.12);
 }
 .career-badge{
     display:inline-block;
     margin-bottom:20px;
-    background:#FFF3EC;
-    color:#EC6502;
+    background:#FFF;
+    color:#000;
     padding:7px 15px;
     border-radius:30px;
     font-size:12px;
@@ -136,16 +136,16 @@
         <div class="row align-items-center">
             <div class="col-xl-8 col-lg-7 col-md-10">
                 <div class="abouthero-breadcrumb">
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                     <span>›</span>
-                    <a href="/services/Bim-Services">Career</a>
+                    <a href="#">Career</a>
                    
                 </div>
                 <div class="abouthero-tag">
                 Build Your Future
                 </div>
                 <h1 class="abouthero-title">
-                    Build Your Career with Milastone PLM Solution
+                    Build Your Career with Milestone PLM Solution
                 </h1>
                 <p class="abouthero-desc" style="font-size:16px;">
                    We believe great people build great solutions. That's why we invest in our employees through continuous learning, supportive leadership, exciting projects, and opportunities for career growth.

@@ -181,8 +181,8 @@
                 <hr class="jobdetail-divider">
 
                 <div class="jobdetail-desc">
-                    {{ $job->description }}
-                </div>
+    {!! $job->description !!}
+</div>
 
                 <div class="jobdetail-footer">
                     <button type="button" class="career-btn" data-bs-toggle="modal" data-bs-target="#applyJobModal">

@@ -6,7 +6,7 @@ use App\Models\JobPost;
 
 class JobController extends Controller
 {
-    // 1. Website Career Page 
+   
     public function index()
     {
         $jobs = JobPost::where('is_active', true)
@@ -17,7 +17,6 @@ class JobController extends Controller
         return view('jobs.index', compact('jobs'));
     }
 
-    // 2. Single Job Detail Page 
     public function show($slug)
     {
         $job = JobPost::where('slug', $slug)
@@ -25,16 +24,5 @@ class JobController extends Controller
             ->firstOrFail();
 
         return view('jobs.show', compact('job'));
-    }
-
-    // 3. Indeed XML Feed 
-    public function indeedFeed()
-    {
-        $jobs = JobPost::where('is_active', true)
-            ->whereJsonContains('platforms', 'indeed')
-            ->get();
-
-        return response()->view('jobs.indeed-feed', compact('jobs'))
-            ->header('Content-Type', 'text/xml');
     }
 }

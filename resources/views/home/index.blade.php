@@ -1,6 +1,8 @@
 @extends('layouts.app')
-
-@section('title', 'Home - Milestone')
+@php
+    $primaryKeyword = 'BIM Engineering Services';
+@endphp
+@section('title', 'Home - Milestone Plm Solution')
 {{--  Load sections.css only on home page --}}
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/sections.css') }}">

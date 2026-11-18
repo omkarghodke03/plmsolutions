@@ -4,21 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff"> <!--Preloader meta tags one-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--Preloader meta tags two-->
-    <title>@yield('title', 'Milestone')</title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <title>@yield('title', 'Milestone PLM solution')</title>
+<meta name="description"  content="Milestone PLM Solutions offers end-to-end AEC Services and Engineering Design Services that enable global companies to streamline project execution,">
+<meta name="robots" content="index, follow">
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
           
-
-    <!--  Your CSS from resources/css/ -->
-    <!--  Your js from resources/css/ -->
     @vite([
     'resources/css/custom.css',
     'resources/css/sections.css',
-    'resources/css/cookie-consent.css',
     'resources/css/contact.css',
     'resources/css/aboutus.css',
     'resources/css/service/list-service.css',
@@ -26,35 +21,31 @@
     'resources/css/case-study/cs-page.css',
     'resources/css/case-study/cs-listing.css'
     
-    
     ])
 
   @vite([
     'resources/js/custom.js',
-    'resources/js/cookie-consent.js',
     'resources/js/case-study.js'
-    
     ])
     
     @stack('styles')
   
-  
-
 </head>
 <body>
-    @include('partials.preloader')<!--Preloader-->
-    @include('partials.header')   <!--header-->
+  
+    @include('partials.header')   
 
     <main>
         @yield('content')
     </main>
-    @include('partials.cookie-consent')<!-- cookies-->
-    @include('partials.footer')  <!--footer-->
+   
+    @include('partials.footer') 
+    @include('partials.cookie-banner')
 
-    <!-- Bootstrap JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-            defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"  defer></script>
 
     @stack('scripts')
+
+    
 </body>
 </html>

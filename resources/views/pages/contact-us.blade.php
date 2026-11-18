@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Contact Us ')
-
+@section('meta_description', 'Contact Milestone Technologies for expert engineering, BIM, and technology solutions. Get in touch')
+@section('meta_keywords', 'Contact Milestone Technologies, engineering services, BIM services, technology solutions, engineering solutions')
+@section('canonical', 'https://demo.milestonetech.net/contact')
 @section('content')
 <style>
     :root{
@@ -662,9 +664,9 @@
             <div class="col-xl-8">
 
                 <div class="abouthero-breadcrumb">
-                    <a href="/home">Home</a>
+                    <a href="/">Home</a>
                     <span>›</span>
-                    <a href="/contact-us">Contact us</a>
+                    <a href="/contact">Contact us</a>
                 </div>
 
                 <div class="abouthero-tag">
@@ -706,7 +708,16 @@
                                 <i class="bi bi-geo-alt"><svg width="34" height="34" viewBox="0 0 24 24" fill="none"xmlns="http://www.w3.org/2000/svg"><path d="M12 22C12 22 19 15.5 19 10C19 6.13 15.87 3 12 3C8.13 3 5 6.13 5 10C5 15.5 12 22 12 22Z" stroke="#EC6502" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <circle cx="12" cy="10" r="2.5" stroke="#EC6502"  stroke-width="2"/></svg></i>
                             </div>
                             <h6>Head Office</h6>
-                            <p>Thane 202 Siddhashram CHS, Gokhale Road</p>
+                           <p>
+    <a
+        href="https://www.google.com/maps/dir//202,+Milestone+PLM+Solutions+Pvt+Ltd,+Siddhashram+CHS,+Gopal+Krishna+Gokhale+Marg,+opp.+Hanuman+Temple,+next+to+Ishan+Arcade,+Thane+West,+Thane,+Maharashtra+400602/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3be7b920b6428a8b:0xf2495ed1c7bfa39d?sa=X&ved=1t:57443&ictx=111"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color: #6b7280; text-decoration: none;"
+    >
+        Thane 202 Siddhashram CHS, Gokhale Road
+    </a>
+</p>
                         </div>
                     </div>
  
@@ -726,7 +737,14 @@
     </svg></i>
                             </div>
                             <h6>Email Support</h6>
-                            <p>info@milestoneplm.com</p>
+                            <p>
+    <a
+        href="mailto:info@milestoneplm.com"
+        style="text-decoration: none; color :#fff;"
+    >
+        info@milestoneplm.com
+    </a>
+</p>
                         </div>
                     </div>
  
@@ -743,7 +761,9 @@
     </svg></i>
                             </div>
                             <h6>Let&rsquo;s Talk</h6>
-                            <p>Phone : +91-80-4737-0000</p>
+                           <p>
+    Phone :<a href="{{ $geoData['tel'] }}" style="color: #6b7280; text-decoration: none;"> {{ $geoData['phone'] }}</a>
+</p>
                         </div>
                     </div>
  
@@ -836,16 +856,17 @@
  
                             <div class="rs-field">
                                 <label for="rs_phone">PHONE</label>
-                                <input
-                                    type="tel"
-                                    id="rs_phone"
-                                    name="phone"
-                                    placeholder="+1 (555) 000-0000"
-                                    value="{{ old('phone') }}"
-                                    class="{{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                    maxlength="30"
-                                    autocomplete="tel"
-                                >
+                              <input
+    type="tel"
+    id="rs_phone"
+    name="phone"
+    placeholder="+1-302-587-8418"
+    value="{{ old('phone') }}"
+    class="{{ $errors->has('phone') ? 'is-invalid' : '' }}"
+    maxlength="20"
+    autocomplete="tel"
+    inputmode="tel"
+>
                                 @error('phone')
                                     <span class="rs-error">{{ $message }}</span>
                                 @enderror
@@ -978,7 +999,30 @@
         </div>
     </div>
 </section>
+@if(session('success'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Thank you!',
+        text: @json(session('success')),
+        confirmButtonColor: '#EC6502',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
 
+@if(session('error'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops!',
+        text: @json(session('error')),
+        confirmButtonColor: '#EC6502'
+    });
+</script>
+@endif
 @include('sections.location')
 @endsection
  

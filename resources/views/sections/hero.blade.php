@@ -1,5 +1,3 @@
-{{-- resources/views/sections/hero.blade.php --}}
-
 <style>
 
 .plm-hero__stat-label {
@@ -62,34 +60,28 @@
 </style>
 <section class="plm-hero" aria-label="Hero section">
 
-    {{-- Background Video --}}
     <video class="plm-hero__video" autoplay muted loop playsinline preload="none" aria-hidden="true">
-        <source src="{{ asset('videos/herosectionvideo.mp4') }}" type="video/mp4">
+        <source src="{{ asset('videos/plm-herosection.mp4') }}" type="video/mp4">
     </video>
     <div class="plm-hero__overlay" aria-hidden="true"></div>
 
-    {{-- Content --}}
     <div class="container plm-hero__content">
         <div class="row align-items-center min-vh-plm">
             <div class="col-12 col-lg-6">
 
-                {{-- Eyebrow --}}
                 <p class="plm-hero__eyebrow">
                     <span class="plm-hero__eyebrow-line" aria-hidden="true"></span>
                     Engineering Excellence
                 </p>
 
-                {{-- Heading with animated text --}}
                 <h1 class="plm-hero__heading">
                     Helping companies,<br>
                     Navigate <span class="plm-hero__heading" style="color: #EC6601;">
     change
 </span>
                 </h1>
-
-                {{-- CTAs --}}
                 <div class="plm-hero__ctas d-flex flex-wrap gap-3">
-                    <a href="{{ url('/contact-us') }}" class="plm-hero__btn plm-hero__btn--primary">
+                    <a href="{{ url('/contact') }}" class="plm-hero__btn plm-hero__btn--primary">
                         Start Your Project &nbsp;&rarr;
                     </a>
                     <a href="{{ url('/services/bim-services') }}" class="plm-hero__btn plm-hero__btn--outline">
@@ -101,13 +93,13 @@
             <div class="row g-0">
                 <div class="col-6 col-sm-3">
                     <div class="plm-hero__stat">
-                        <span class="plm-hero__stat-num">300+</span>
-                        <span class="plm-hero__stat-label">Projects</span>
+                        <span class="plm-hero__stat-num">240K</span>
+                        <span class="plm-hero__stat-label">Hours Served Every Year</span>
                     </div>
                 </div>
                 <div class="col-6 col-sm-3">
                     <div class="plm-hero__stat">
-                        <span class="plm-hero__stat-num">185+</span>
+                        <span class="plm-hero__stat-num">165+</span>
                         <span class="plm-hero__stat-label">Experts</span>
                     </div>
                 </div>
@@ -119,18 +111,13 @@
                 </div>
                 <div class="col-6 col-sm-3">
                     <div class="plm-hero__stat">
-                        <span class="plm-hero__stat-num">21+</span>
+                        <span class="plm-hero__stat-num">22+</span>
                         <span class="plm-hero__stat-label">Years</span>
                     </div>
                 </div>
             </div>
         </div>
             </div>
-            {{-- Right side: leave space for video to show through --}}
         </div>
-
-        {{-- Stats --}}
-        
-
     </div>
 </section>

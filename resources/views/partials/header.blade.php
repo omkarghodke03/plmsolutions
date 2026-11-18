@@ -1,12 +1,4 @@
-{{-- resources/views/partials/header.blade.php --}}
-
-{{-- ═══════════════════════
-     TOP BAR
-     ═══════════════════════ --}}
-     <style>
-         
-         
-         /* ── Mobile Category Accordion (Services / Industries) ── */
+<style>
 .plm-mobile-cat {
     border-bottom: 1px solid var(--plm-border);
 }
@@ -49,16 +41,30 @@
     color: var(--plm-primary);
     border-top: 1px solid var(--plm-border);
 }
-         
-     </style>
+.plain-link {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+.no-underline {
+    text-decoration: none !important;
+}
+.black {
+    color:black;
+}
+</style>
 <div class="plm-topbar">
+    
     <div class="container-fluid plm-topbar__inner">
-
-        <span class="plm-topbar__label">
-            Discover Independence &mdash; Download our
-            <a href="#" class="plm-topbar__link">Brochure</a>
-        </span>
-
+           <span class="plm-topbar__label">
+      @if(($geoData['country'] ?? '') === 'India')
+          Discover Opportunities &mdash; Explore PLM
+           <a href="/careers" class="plm-topbar__link">Careers</a>
+      @else
+          Discover Independence &mdash; Download our
+           <a href="/brochure/coming-soon.pdf" class="plm-topbar__link"> Brochure </a>
+       @endif
+    </span>
+    
        <div class="plm-topbar__right">
 
     {{-- Flag + Country --}}
@@ -101,7 +107,7 @@
         <nav class="plm-nav" id="plm-nav" role="navigation" aria-label="Main navigation">
             <ul class="plm-nav__list" role="menubar">
                 {{-- Services Mega --}}
-            <li class="plm-nav__item plm-nav__item--mega" role="none">
+            <li class="plm-nav__item plm-nav__item--mega" role="menuitem">
             <button class="plm-nav__link plm-nav__link--toggle"
                 aria-haspopup="true" aria-expanded="false"
                 data-plm-mega="services"
@@ -115,134 +121,143 @@
                     <div class="plm-mega" id="mega-services" role="region" aria-label="Services menu" hidden>
                         <div class="plm-mega__layout">
                             <div class="plm-mega__tags">
-                                <button class="plm-mega__tag plm-mega__tag--active" data-plm-panel="bim" type="button">AEC Solutions</button>
-                                <button class="plm-mega__tag" data-plm-panel="engineering" type="button">Engineering Solutions</button>
-                                <button class="plm-mega__tag" data-plm-panel="staffing" type="button">Data & Analytics Solutions</button>
-                                <a href="{{ url('/services/bim-services') }}" class="plm-mega__view-all">VIEW ALL SERVICES &rarr;</a>
+                                <button class="plm-mega__tag plm-mega__tag--active" data-plm-panel="bim" type="button"><a href="{{ url('/aec-solutions') }}" class="plain-link">AEC Solutions</a></button>
+                                <button class="plm-mega__tag" data-plm-panel="engineering" type="button"><a href="{{ url('/engineering-solutions') }}" class="plain-link">Engineering Solutions</a></button>
+                                <button class="plm-mega__tag" data-plm-panel="staffing" type="button"><a href="{{ url('/data-analytics-solutions') }}" class="plain-link">Data & Analytics Solutions</a></button>
+                                <button class="plm-mega__tag" data-plm-panel="Digital" type="button"><a href="{{ url('/digital-twin-solutions') }}" class="plain-link">Digital Twin</a></button>
+                         <!--   <a href="{{ url('/services/bim-services') }}" class="plm-mega__view-all">VIEW ALL SERVICES &rarr;</a> -->
                             </div>
                             <div class="plm-mega__panels">
                                 <div class="plm-mega__panel plm-mega__panel--active" id="panel-bim">
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">Architecture</h3>
-                                        <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/architectural-bim') }}" class="plm-mega__item-link">Architectural 3d modeling</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Architectural 2d drafting</a></li>
-                                            <li><a href="{{ url('/services/mep-bim') }}" class="plm-mega__item-link">Architectural BIM Modeling</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Revit BIM Services</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Architectural Construction Documents</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Architectural Permit Set</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Modular BIM</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">3D Rendering</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Lighting Design</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">As Built Drawings</a></li>
+                                        <p class="plm-mega__heading"><a href="{{ url('/aec-solutions/architecture') }}" class="black no-underline">Architecture</a></p>
+                                        <ul class="plm-mega__items" >
+                                            <li><a href="{{ url('/aec-solutions/architecture/architectural-3d-modeling-services') }}" class="plm-mega__item-link">Architectural 3d modeling</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/architectural-2d-drafting-services') }}" class="plm-mega__item-link">Architectural 2d drafting</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/architectural-bim-modeling-services') }}" class="plm-mega__item-link">Architectural BIM Modeling</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/revit-bim-services') }}" class="plm-mega__item-link">Revit BIM Services</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/architectural-construction-services') }}" class="plm-mega__item-link">Architectural Construction Documents</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/architectural-permit-services') }}" class="plm-mega__item-link">Architectural Permit Set</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/modular-bim-services') }}" class="plm-mega__item-link">Modular BIM</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/3d-rendering-services') }}" class="plm-mega__item-link">3D Rendering</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/lighting-design-services') }}" class="plm-mega__item-link">Lighting Design</a></li>
+                                            <li><a href="{{ url('/aec-solutions/architecture/as-built-drawing-services') }}" class="plm-mega__item-link">As Built Drawings</a></li>
+                                        
                                         </ul>
                                     </div>
                                      
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">Structure</h3>
+                                        <p class="plm-mega__heading"><a href="{{ url('/aec-solutions/structural') }}" class="black no-underline">Structure</a></p>
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Structural BIM</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Precast Detailing</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Structural 3d modeling</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Structural 2d drafting</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Structural Construction Documents</a></li>
+                                            <li><a href="{{ url('/aec-solutions/structural/structural-bim-services') }}" class="plm-mega__item-link">Structural BIM</a></li>
+                                            <li><a href="{{ url('/aec-solutions/structural/precast-detailing-services') }}" class="plm-mega__item-link">Precast Detailing</a></li>
+                                            <li><a href="{{ url('/aec-solutions/structural/structural-3d-modeling-services') }}" class="plm-mega__item-link">Structural 3d modeling</a></li>
+                                            <li><a href="{{ url('/aec-solutions/structural/structural-2d-drafting-services') }}" class="plm-mega__item-link">Structural 2d drafting</a></li>
+                                            <li><a href="{{ url('/aec-solutions/structural/structural-construction-documentation-services') }}" class="plm-mega__item-link">Structural Construction Documents</a></li>
                                         </ul>
                                     </div>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">MEP</h3>
+                                        <p class="plm-mega__heading"><a href="{{ url('/aec-solutions/mep') }}" class="black no-underline">MEP</a></p>
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">MEP BIM Modeling</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">MEP Drafting</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">MEP Coordination</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">MEP Shop drawings</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">HVAC Drafting</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Electrical Drafting</a></li>
-                                            <li><a href="{{ url('/services/') }}" class="plm-mega__item-link">Fire-fighting Shop Drawings</a></li>
+                                            <li><a href="{{ url('/aec-solutions/mep/mep-bim-modeling-services') }}" class="plm-mega__item-link">MEP BIM Modeling</a></li>
+                                            <li><a href="{{ url('/aec-solutions/mep/mep-drafting-services') }}" class="plm-mega__item-link">MEP Drafting</a></li>
+                                            <li><a href="{{ url('/aec-solutions/mep/mep-coordination-services') }}" class="plm-mega__item-link">MEP Coordination</a></li>
+                                            <li><a href="{{ url('/aec-solutions/mep/mep-shop-drawing-services') }}" class="plm-mega__item-link">MEP Shop drawings</a></li>
+                                            <li><a href="{{ url('/aec-solutions/mep/hvac-drafting-services') }}" class="plm-mega__item-link">HVAC Drafting</a></li>
+                                            <li><a href="{{ url('/aec-solutions/mep/electrical-drafting-services') }}" class="plm-mega__item-link">Electrical Drafting</a></li>
+                                            <li><a href="{{ url('/aec-solutions/mep/fire-fighting-shop-drawing-services') }}" class="plm-mega__item-link">Fire-fighting Shop Drawings</a></li>
                                         </ul>
                                     </div>
-                                    <!--<div class="plm-mega__group">-->
-                                    <!--    <h3 class="plm-mega__heading">BIM</h3>-->
-                                    <!--    <ul class="plm-mega__items">-->
-                                    <!--        <li><a href="{{ url('/services/clash-detection') }}" class="plm-mega__item-link">BIM Modeling</a></li>-->
-                                    <!--        <li><a href="{{ url('/services/4d-5d-scheduling') }}" class="plm-mega__item-link">BIM Coordination</a></li>-->
-                                    <!--        <li><a href="{{ url('/services/lod-management') }}" class="plm-mega__item-link">Revit Family Creation </a></li>-->
-                                    <!--        <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">Shop Drawings</a></li>-->
-                                    <!--        <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">Scan to BIM</a></li>-->
-                                    <!--         <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">4D BIM</a></li>-->
-                                    <!--          <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">5D BIM</a></li>-->
-                                    <!--    </ul>-->
-                                    <!--</div>-->
-                                    <!--<div class="plm-mega__group">-->
-                                    <!--    <h3 class="plm-mega__heading">Digital Twin</h3>-->
-                                    <!--    <ul class="plm-mega__items">-->
-                                    <!--        <li><a href="{{ url('/services/clash-detection') }}" class="plm-mega__item-link">Revit BIM model enhancement</a></li>-->
-                                    <!--        <li><a href="{{ url('/services/4d-5d-scheduling') }}" class="plm-mega__item-link">Asset tagging</a></li>-->
-                                    <!--        <li><a href="{{ url('/services/lod-management') }}" class="plm-mega__item-link">COBie data creation</a></li>-->
-                                    <!--        <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">Equipment metadata integration</a></li>-->
-                                    <!--        <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">QR code integration</a></li>-->
-                                    <!--         <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">Facility database creation</a></li>-->
-                                    <!--          <li><a href="{{ url('/services/scan-to-bim') }}" class="plm-mega__item-link">Custom Dashboard Development </a></li>-->
-                                    <!--    </ul>-->
-                                    <!--</div>-->
+                                    <div class="plm-mega__group">
+                                       <p class="plm-mega__heading"><a href="{{ url('/aec-solutions/bim') }}" class="black no-underline">BIM</a></p>
+                                       <ul class="plm-mega__items">
+                                           <li><a href="{{ url('/aec-solutions/bim/bim-modeling-services') }}" class="plm-mega__item-link">BIM Modeling</a></li>
+                                           <li><a href="{{ url('/aec-solutions/bim/bim-coordination-services') }}" class="plm-mega__item-link">BIM Coordination</a></li>
+                                           <li><a href="{{ url('/aec-solutions/bim/revit-family-creation-services') }}" class="plm-mega__item-link">Revit Family Creation </a></li>
+                                           <li><a href="{{ url('/aec-solutions/bim/shop-drawing-services') }}" class="plm-mega__item-link">Shop Drawings</a></li>
+                                           <li><a href="{{ url('/aec-solutions/bim/scan-to-bim-services') }}" class="plm-mega__item-link">Scan to BIM</a></li>
+                                           <li><a href="{{ url('/aec-solutions/bim/4d-bim-services') }}" class="plm-mega__item-link">4D BIM</a></li>
+                                           <li><a href="{{ url('/aec-solutions/bim/5d-bim-services') }}" class="plm-mega__item-link">5D BIM</a></li>
+                                     </ul>
+                                   </div>
+                                    
                                 </div>
                                 <div class="plm-mega__panel" id="panel-engineering" hidden>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">Mechanical Design</h3>
+                                        <p class="plm-mega__heading"><a href="{{ url('/engineering-solutions/mechanical-design') }}" class="black no-underline">Mechanical Design</a></p>
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/product-design') }}" class="plm-mega__item-link">Product Design & Development</a></li>
-                                            <li><a href="{{ url('/services/3d-modeling') }}" class="plm-mega__item-link">CAD & Detailing</a></li>
-                                            <li><a href="{{ url('/services/product-design') }}" class="plm-mega__item-link">Manufacturing Support</a></li>
-                                            <li><a href="{{ url('/services/2d-drafting') }}" class="plm-mega__item-link">Automotive Design</a></li>
-                                            <li><a href="{{ url('/services/3d-modeling') }}" class="plm-mega__item-link">Finite Element Analysis</a></li>
-                                            <li><a href="{{ url('/services/product-design') }}" class="plm-mega__item-link">Aftermarket / Engineering Documentation</a></li>
-                                            <li><a href="{{ url('/services/2d-drafting') }}" class="plm-mega__item-link">Value Analysis / Value Engineering</a></li>
-                                            <li><a href="{{ url('/services/3d-modeling') }}" class="plm-mega__item-link">Rapid Prototyping</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/product-design-and-development-services') }}" class="plm-mega__item-link">Product Design & Development</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/cad-drafting-and-detailing-services') }}" class="plm-mega__item-link">CAD & Detailing</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/manufacturing-support-services') }}" class="plm-mega__item-link">Manufacturing Support</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/automotive-design-services') }}" class="plm-mega__item-link">Automotive Design</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/finite-element-analysis-services') }}" class="plm-mega__item-link">Finite Element Analysis</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/engineering-documentation-services') }}" class="plm-mega__item-link">Aftermarket / Engineering Documentation</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/value-engineering-value-analysis-services') }}" class="plm-mega__item-link">Value Analysis / Value Engineering</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/mechanical-design/rapid-prototyping-services') }}" class="plm-mega__item-link">Rapid Prototyping</a></li>
                                             
                                         </ul>
                                     </div>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">Electrical Design</h3>
+                                        <p class="plm-mega__heading"><a href="{{ url('/engineering-solutions/electrical-design') }}" class="black no-underline">Electrical Design</a></p>
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">Schematics</a></li>
-                                            <li><a href="{{ url('/services/cfd') }}" class="plm-mega__item-link">3d Routing</a></li>
-                                            <li><a href="{{ url('/services/thermal') }}" class="plm-mega__item-link">HMI Design</a></li>
-                                             <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">PLC Programming</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/electrical-design/electrical-system-design-services') }}" class="plm-mega__item-link">Electrical System Design</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/electrical-design/electrical-panel-design-services') }}" class="plm-mega__item-link">Electrical Panel Design</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/electrical-design/automation-design-services') }}" class="plm-mega__item-link">Automation Design</a></li>
+                                            
+                                            <!--<li><a href="{{ url('/engineering-solutions/electrical-design/schematics-services') }}" class="plm-mega__item-link">Schematics</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/electrical-design/3d-routing-services') }}" class="plm-mega__item-link">3d Routing</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/electrical-design/hmi-design-services') }}" class="plm-mega__item-link">HMI Design</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/electrical-design/plc-programming-services') }}" class="plm-mega__item-link">PLC Programming</a></li>-->
                                         </ul>
                                     </div>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">Millwork Design</h3>
+                                        <p class="plm-mega__heading"><a href="{{ url('/engineering-solutions/millwork-design') }}" class="black no-underline">Millwork Design</a></p>
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">Commercial Millwork</a></li>
-                                            <li><a href="{{ url('/services/cfd') }}" class="plm-mega__item-link">Residential Millwork</a></li>
-                                            <li><a href="{{ url('/services/thermal') }}" class="plm-mega__item-link">Hospitality Millwork</a></li>
-                                             <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">Retail & Store Fixture Millwork</a></li>
-                                              <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">Healthcare & Institutional Millwork</a></li>
-                                            <li><a href="{{ url('/services/cfd') }}" class="plm-mega__item-link">Custom Cabinetry & Casework</a></li>
-                                            <li><a href="{{ url('/services/thermal') }}" class="plm-mega__item-link">Custom Furniture Millwork</a></li>
-                                             <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">Architectural Woodwork</a></li>
-                                             <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">Interior Fit-Out Millwork</a></li>
-                                             <li><a href="{{ url('/services/fea') }}" class="plm-mega__item-link">Specialty & Custom Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/commercial-millwork-services') }}" class="plm-mega__item-link">Commercial Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/residential-millwork-services') }}" class="plm-mega__item-link">Residential Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/hospitality-millwork-services') }}" class="plm-mega__item-link">Hospitality Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/retail-and-store-millwork-services') }}" class="plm-mega__item-link">Retail & Store Fixture Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/healthcare-and-institutional-millwork-services') }}" class="plm-mega__item-link">Healthcare & Institutional Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/custom-cabinetry-and-casework-millwork-services') }}" class="plm-mega__item-link">Custom Cabinetry & Casework</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/custom-furniture-millwork-services') }}" class="plm-mega__item-link">Custom Furniture Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/architectural-millwork-services') }}" class="plm-mega__item-link">Architectural Woodwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/interior-fit-out-millwork-services') }}" class="plm-mega__item-link">Interior Fit-Out Millwork</a></li>
+                                            <li><a href="{{ url('/engineering-solutions/millwork-design/specialty-and-custom-millwork-services') }}" class="plm-mega__item-link">Specialty & Custom Millwork</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="plm-mega__panel" id="panel-staffing" hidden>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">Data Analytics</h3>
+                                        <p class="plm-mega__heading"><a href="{{ url('/data-analytics-solutions/data-analytics') }}" class="black no-underline">Data Analytics</a></p>
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/contract-staffing') }}" class="plm-mega__item-link">Campaign analysis</a></li>
-                                            <li><a href="{{ url('/services/permanent-staffing') }}" class="plm-mega__item-link">Competitor intelligence</a></li>
-                                            <li><a href="{{ url('/services/contract-staffing') }}" class="plm-mega__item-link">Sales Analytics</a></li>
-                                            <li><a href="{{ url('/services/permanent-staffing') }}" class="plm-mega__item-link">Customer Analytics</a></li>
-                                            <li><a href="{{ url('/services/contract-staffing') }}" class="plm-mega__item-link">Demand Planning</a></li>
-                                            <li><a href="{{ url('/services/contract-staffing') }}" class="plm-mega__item-link">Sentiment Analysis</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/data-analytics/campaign-analysis-services') }}" class="plm-mega__item-link">Campaign analysis</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/data-analytics/competitor-intelligence-services') }}" class="plm-mega__item-link">Competitor intelligence</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/data-analytics/sales-analytics-services') }}" class="plm-mega__item-link">Sales Analytics</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/data-analytics/customer-analytics-services') }}" class="plm-mega__item-link">Customer Analytics</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/data-analytics/demand-planning-services') }}" class="plm-mega__item-link">Demand Planning</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/data-analytics/sentimental-analysis-services') }}" class="plm-mega__item-link">Sentiment Analysis</a></li>
                                         </ul>
                                     </div>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">BI and Reporting</h3>
+                                        <p class="plm-mega__heading"><a href="{{ url('/data-analytics-solutions/bi-reporting') }}" class="black no-underline">BI and Reporting</a></p>
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/services/plm-implementation') }}" class="plm-mega__item-link">Data Preparation</a></li>
-                                            <li><a href="{{ url('/services/cad-migration') }}" class="plm-mega__item-link">Data Integration</a></li>
-                                            <li><a href="{{ url('/services/cad-migration') }}" class="plm-mega__item-link">Dashboards</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/bi-reporting/data-preparation-services') }}" class="plm-mega__item-link">Data Preparation</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/bi-reporting/data-integration-services') }}" class="plm-mega__item-link">Data Integration</a></li>
+                                            <li><a href="{{ url('/data-analytics-solutions/bi-reporting/dashboard-services') }}" class="plm-mega__item-link">Dashboards</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                   <div class="plm-mega__panel" id="panel-Digital" hidden>
+                                    <div class="plm-mega__group">
+                                        <p class="plm-mega__heading">Digital Twin</p>
+                                        <ul class="plm-mega__items">
+                                        <li><a href="{{ url('/digital-twin-solutions/revit-bim-model-enhancement-services') }}" class="plm-mega__item-link">Revit BIM model enhancement</a></li>
+                                        <li><a href="{{ url('/digital-twin-solutions/asset-tagging-services') }}" class="plm-mega__item-link">Asset tagging</a></li>
+                                        <li><a href="{{ url('/digital-twin-solutions/cobie-data-creation-services') }}" class="plm-mega__item-link">COBie data creation</a></li>
+                                        <li><a href="{{ url('/digital-twin-solutions/equipment-metadata-integration-services') }}" class="plm-mega__item-link">Equipment metadata integration</a></li>
+                                        <li><a href="{{ url('/digital-twin-solutions/qr-code-integration-services') }}" class="plm-mega__item-link">QR code integration</a></li>
+                                        <li><a href="{{ url('/digital-twin-solutions/facility-database-creation-services') }}" class="plm-mega__item-link">Facility database creation</a></li>
+                                        <li><a href="{{ url('/digital-twin-solutions/custom-dashboard-development-services') }}" class="plm-mega__item-link">Custom Dashboard Development </a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -252,7 +267,7 @@
                 </li>
 
                 {{-- Industries Mega --}}
-                <li class="plm-nav__item plm-nav__item--mega" role="none">
+                <li class="plm-nav__item plm-nav__item--mega" role="menuitem">
                     <button class="plm-nav__link plm-nav__link--toggle"
                             aria-haspopup="true" aria-expanded="false"
                             data-plm-mega="industries" type="button">
@@ -264,47 +279,53 @@
                     <div class="plm-mega" id="mega-industries" role="region" aria-label="Industries menu" hidden>
                         <div class="plm-mega__layout">
                             <div class="plm-mega__tags">
-                                <button class="plm-mega__tag plm-mega__tag--active" data-plm-panel="construction" type="button">Construction</button>
-                                <button class="plm-mega__tag" data-plm-panel="manufacturing" type="button">Manufacturing</button>
-                                <button class="plm-mega__tag" data-plm-panel="infrastructure" type="button">Infrastructure</button>
-                                <a href="{{ url('/industries') }}" class="plm-mega__view-all">VIEW ALL INDUSTRIES &rarr;</a>
+                                <button class="plm-mega__tag plm-mega__tag--active" data-plm-panel="aec" type="button">AEC</button>
+                                <button class="plm-mega__tag" data-plm-panel="eng" type="button">Engineering</button>
+                              <!--  <button class="plm-mega__tag" data-plm-panel="infrastructure" type="button">Infrastructure</button> 
+                                <a href="{{ url('/industries') }}" class="plm-mega__view-all">VIEW ALL INDUSTRIES &rarr;</a>  -->
                             </div>
                             <div class="plm-mega__panels">
-                                <div class="plm-mega__panel plm-mega__panel--active" id="panel-construction">
+                                <div class="plm-mega__panel plm-mega__panel--active" id="panel-aec">
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">BUILDING</h3>
+                                      <!-- <h3 class="plm-mega__heading">BUILDING & COMMERCIAL</h3> -->
                                         <ul class="plm-mega__items">
                                             <li><a href="{{ url('/industries/residential') }}" class="plm-mega__item-link">Residential</a></li>
                                             <li><a href="{{ url('/industries/commercial') }}" class="plm-mega__item-link">Commercial</a></li>
-                                            <li><a href="{{ url('/industries/industrial') }}" class="plm-mega__item-link">Industrial</a></li>
+                                            <li><a href="{{ url('/industries/educational') }}" class="plm-mega__item-link">Educational</a></li>
                                         </ul>
                                     </div>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">SPECIALTY</h3>
+                                      <!-- <h3 class="plm-mega__heading">PUBLIC &amp; INSTITUTIONAL</h3> -->
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/industries/healthcare') }}" class="plm-mega__item-link">Healthcare</a></li>
-                                            <li><a href="{{ url('/industries/education') }}" class="plm-mega__item-link">Education</a></li>
+                                            <li><a href="{{ url('/industries/health-care')}}" class="plm-mega__item-link">HealthCare</a></li>
                                             <li><a href="{{ url('/industries/retail') }}" class="plm-mega__item-link">Retail</a></li>
+                                            <li><a href="{{ url('/industries/infrastructure') }}" class="plm-mega__item-link">Infrastructure</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="plm-mega__panel" id="panel-manufacturing" hidden>
+                                <div class="plm-mega__panel" id="panel-eng" hidden>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">SECTORS</h3>
+                                     <!-- <h3 class="plm-mega__heading">AUTOMOTIVE &amp; TRANSPORTATION</h3>  -->
                                         <ul class="plm-mega__items">
                                             <li><a href="{{ url('/industries/automotive') }}" class="plm-mega__item-link">Automotive</a></li>
-                                            <li><a href="{{ url('/industries/aerospace') }}" class="plm-mega__item-link">Aerospace</a></li>
-                                            <li><a href="{{ url('/industries/consumer-goods') }}" class="plm-mega__item-link">Consumer Goods</a></li>
+                                            <li><a href="{{ url('/industries/heavy-engineering') }}" class="plm-mega__item-link">Heavy Engineering</a></li>
+                                            <li><a href="{{ url('/industries/industrial-and-heavy-equipment') }}" class="plm-mega__item-link">Industrial &amp; Heavy Equipment</a></li>
                                         </ul>
                                     </div>
-                                </div>
-                                <div class="plm-mega__panel" id="panel-infrastructure" hidden>
                                     <div class="plm-mega__group">
-                                        <h3 class="plm-mega__heading">CIVIL</h3>
+                                     <!-- <h3 class="plm-mega__heading">INDUSTRIAL &amp; MANUFACTURING</h3> -->
                                         <ul class="plm-mega__items">
-                                            <li><a href="{{ url('/industries/roads-highways') }}" class="plm-mega__item-link">Roads &amp; Highways</a></li>
-                                            <li><a href="{{ url('/industries/bridges') }}" class="plm-mega__item-link">Bridges</a></li>
-                                            <li><a href="{{ url('/industries/utilities') }}" class="plm-mega__item-link">Utilities</a></li>
+                                            <li><a href="{{ url('/industries/medical-devices') }}" class="plm-mega__item-link">Medical Devices</a></li>
+                                            <li><a href="{{ url('/industries/machinery-and-robotics') }}" class="plm-mega__item-link">Machinery &amp; Robotics</a></li>
+                                            <li><a href="{{ url('/industries/precision-manufacturing') }}" class="plm-mega__item-link">Precision Manufacturing</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="plm-mega__group">
+                                     <!-- <h3 class="plm-mega__heading">INDUSTRIAL &amp; MANUFACTURING</h3> -->
+                                        <ul class="plm-mega__items">
+                                            <li><a href="{{ url('/industries/consumer-products') }}" class="plm-mega__item-link">Consumer Products</a></li>
+                                            <li><a href="{{ url('/industries/electric-enclosure') }}" class="plm-mega__item-link">Electric Enclosure</a></li>
+                                            <li><a href="{{ url('/industries/transformer') }}" class="plm-mega__item-link">Transformer</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -330,7 +351,7 @@
         </nav>
 
         <div class="plm-header__actions">
-                        <a href="{{ url('/contact-us') }}" target="_blank" class="plm-header__cta">Get a Quote</a>
+                        <a href="{{ url('/contact') }}" target="_blank" class="plm-header__cta">Get in touch</a>
 
             <button class="plm-header__search-btn" id="plm-search-toggle"
                     aria-label="Open search" aria-expanded="false"
@@ -417,6 +438,7 @@
 
                     {{-- AEC Solutions --}}
                     <div class="plm-mobile-cat">
+                        <!--<strong class="plm-mobile-cat__toggle"><a href="{{ url('/services/bim-services') }}"style="text-decoration: none; color: inherit;">Services</a></strong>-->
                         <button class="plm-mobile-cat__toggle" data-plm-mobile-cat="m-cat-bim" type="button">
                             AEC Solutions
                             <svg class="plm-nav__chevron" width="11" height="11" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -425,32 +447,42 @@
                         </button>
                         <div class="plm-mobile-cat__list" id="m-cat-bim" hidden>
                             <strong class="plm-mobile-nav__sub-heading">Architecture</strong>
-                            <a href="{{ url('/services/architectural-bim') }}" class="plm-mobile-nav__sub-link">Architectural 3d modeling</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Architectural 2d drafting</a>
-                            <a href="{{ url('/services/mep-bim') }}" class="plm-mobile-nav__sub-link">Architectural BIM Modeling</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Revit BIM Services</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Architectural Construction Documents</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Architectural Permit Set</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Modular BIM</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">3D Rendering</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Lighting Design</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">As Built Drawings</a>
+                            <a href="{{ url('/aec-solutions/architecture/architectural-3d-modeling-services') }}" class="plm-mobile-nav__sub-link">Architectural 3d modeling</a>
+                            <a href="{{ url('/aec-solutions/architecture/architectural-2d-drafting-services') }}" class="plm-mobile-nav__sub-link">Architectural 2d drafting</a>
+                            <a href="{{ url('/aec-solutions/architecture/architectural-bim-modeling-services') }}" class="plm-mobile-nav__sub-link">Architectural BIM Modeling</a>
+                            <a href="{{ url('/aec-solutions/architecture/revit-bim-services') }}"  class="plm-mobile-nav__sub-link">Revit BIM Services</a>
+                            <a href="{{ url('/aec-solutions/architecture/architectural-construction-services') }}" class="plm-mobile-nav__sub-link">Architectural Construction Documents</a>
+                            <a href="{{ url('/aec-solutions/architecture/architectural-permit-services') }}" class="plm-mobile-nav__sub-link">Architectural Permit Set</a>
+                            <a href="{{ url('/aec-solutions/architecture/modular-bim-services') }}" class="plm-mobile-nav__sub-link">Modular BIM</a>
+                            <a href="{{ url('/aec-solutions/architecture/3d-rendering-services') }}"" class="plm-mobile-nav__sub-link">3D Rendering</a>
+                            <a href="{{ url('/aec-solutions/architecture/lighting-design-services') }}" class="plm-mobile-nav__sub-link">Lighting Design</a>
+                            <a href="{{ url('/aec-solutions/architecture/as-built-drawing-services') }}" class="plm-mobile-nav__sub-link">As Built Drawings</a>
 
                             <strong class="plm-mobile-nav__sub-heading">Structure</strong>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Structural BIM</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Precast Detailing</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Structural 3d modeling</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Structural 2d drafting</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Structural Construction Documents</a>
+                            <a href="{{ url('/aec-solutions/structural/structural-bim-services') }}" class="plm-mobile-nav__sub-link">Structural BIM</a>
+                            <a href="{{ url('/aec-solutions/structural/precast-detailing-services') }}" class="plm-mobile-nav__sub-link">Precast Detailing</a>
+                            <a href="{{ url('/aec-solutions/structural/structural-3d-modeling-services') }}" class="plm-mobile-nav__sub-link">Structural 3d modeling</a>
+                            <a href="{{ url('/aec-solutions/structural/structural-2d-drafting-services') }}" class="plm-mobile-nav__sub-link">Structural 2d drafting</a>
+                            <a href="{{ url('/aec-solutions/structural/structural-construction-documentation-services') }}" class="plm-mobile-nav__sub-link">Structural Construction Documents</a>
 
                             <strong class="plm-mobile-nav__sub-heading">MEP</strong>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">MEP BIM Modeling</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">MEP Drafting</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">MEP Coordination</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">MEP Shop drawings</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">HVAC Drafting</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Electrical Drafting</a>
-                            <a href="{{ url('/services/') }}" class="plm-mobile-nav__sub-link">Fire-fighting Shop Drawings</a>
+                            <a href="{{ url('/aec-solutions/mep/mep-bim-modeling-services') }}" class="plm-mobile-nav__sub-link">MEP BIM Modeling</a>
+                            <a href="{{ url('/aec-solutions/mep/mep-drafting-services') }}" class="plm-mobile-nav__sub-link">MEP Drafting</a>
+                            <a href="{{ url('/aec-solutions/mep/mep-coordination-services') }}" class="plm-mobile-nav__sub-link">MEP Coordination</a>
+                            <a href="{{ url('/aec-solutions/mep/mep-shop-drawing-services') }}" class="plm-mobile-nav__sub-link">MEP Shop drawings</a>
+                            <a href="{{ url('/aec-solutions/mep/hvac-drafting-services') }}" class="plm-mobile-nav__sub-link">HVAC Drafting</a>
+                            <a href="{{ url('/aec-solutions/mep/electrical-drafting-services') }}" class="plm-mobile-nav__sub-link">Electrical Drafting</a>
+                            <a href="{{ url('/aec-solutions/mep/fire-fighting-shop-drawing-services') }}" class="plm-mobile-nav__sub-link">Fire-fighting Shop Drawings</a>
+
+                             <strong class="plm-mobile-nav__sub-heading">BIM</strong>
+                            <a href="{{ url('/aec-solutions/bim/bim-modeling-services') }}" class="plm-mobile-nav__sub-link">BIM Modeling</a>
+                            <a href="{{ url('/aec-solutions/bim/bim-coordination-services') }}" class="plm-mobile-nav__sub-link">BIM Coordination</a>
+                            <a href="{{ url('/aec-solutions/bim/revit-family-creation-services') }}" class="plm-mobile-nav__sub-link">Revit Family Creation</a>
+                            <a href="{{ url('/aec-solutions/bim/shop-drawing-services') }}" class="plm-mobile-nav__sub-link">Shop Drawings</a>
+                            <a href="{{ url('/aec-solutions/bim/scan-to-bim-services') }}" class="plm-mobile-nav__sub-link">Scan to BIM</a>
+                            <a href="{{ url('/aec-solutions/bim/4d-bim-services') }}" class="plm-mobile-nav__sub-link">4D BIM</a>
+                            <a href="{{ url('/aec-solutions/bim/5d-bim-services') }}" class="plm-mobile-nav__sub-link">5D BIM</a> 
+
                         </div>
                     </div>
 
@@ -464,32 +496,32 @@
                         </button>
                         <div class="plm-mobile-cat__list" id="m-cat-engineering" hidden>
                             <strong class="plm-mobile-nav__sub-heading">Mechanical Design</strong>
-                            <a href="{{ url('/services/product-design') }}" class="plm-mobile-nav__sub-link">Product Design & Development</a>
-                            <a href="{{ url('/services/3d-modeling') }}" class="plm-mobile-nav__sub-link">CAD & Detailing</a>
-                            <a href="{{ url('/services/product-design') }}" class="plm-mobile-nav__sub-link">Manufacturing Support</a>
-                            <a href="{{ url('/services/2d-drafting') }}" class="plm-mobile-nav__sub-link">Automotive Design</a>
-                            <a href="{{ url('/services/3d-modeling') }}" class="plm-mobile-nav__sub-link">Finite Element Analysis</a>
-                            <a href="{{ url('/services/product-design') }}" class="plm-mobile-nav__sub-link">Aftermarket / Engineering Documentation</a>
-                            <a href="{{ url('/services/2d-drafting') }}" class="plm-mobile-nav__sub-link">Value Analysis / Value Engineering</a>
-                            <a href="{{ url('/services/3d-modeling') }}" class="plm-mobile-nav__sub-link">Rapid Prototyping</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/product-design-and-development-services') }}" class="plm-mobile-nav__sub-link">Product Design & Development</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/cad-drafting-and-detailing-services') }}" class="plm-mobile-nav__sub-link">CAD & Detailing</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/manufacturing-support-services') }}" class="plm-mobile-nav__sub-link">Manufacturing Support</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/automotive-design-services') }}" class="plm-mobile-nav__sub-link">Automotive Design</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/finite-element-analysis-services') }}" class="plm-mobile-nav__sub-link">Finite Element Analysis</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/engineering-documentation-services') }}" class="plm-mobile-nav__sub-link">Aftermarket / Engineering Documentation</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/value-engineering-value-analysis-services') }}" class="plm-mobile-nav__sub-link">Value Analysis / Value Engineering</a>
+                            <a href="{{ url('/engineering-solutions/mechanical-design/rapid-prototyping-services') }}" class="plm-mobile-nav__sub-link">Rapid Prototyping</a>
 
                             <strong class="plm-mobile-nav__sub-heading">Electrical Design</strong>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">Schematics</a>
-                            <a href="{{ url('/services/cfd') }}" class="plm-mobile-nav__sub-link">3d Routing</a>
-                            <a href="{{ url('/services/thermal') }}" class="plm-mobile-nav__sub-link">HMI Design</a>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">PLC Programming</a>
+                            <a href="{{ url('/engineering-solutions/electrical-design/schematics-services') }}" class="plm-mobile-nav__sub-link">Schematics</a>
+                            <a href="{{ url('/engineering-solutions/electrical-design/3d-routing-services') }}" class="plm-mobile-nav__sub-link">3d Routing</a>
+                            <a href="{{ url('/engineering-solutions/electrical-design/hmi-design-services') }}" class="plm-mobile-nav__sub-link">HMI Design</a>
+                            <a href="{{ url('/engineering-solutions/electrical-design/plc-programming-services') }}" class="plm-mobile-nav__sub-link">PLC Programming</a>
 
                             <strong class="plm-mobile-nav__sub-heading">Millwork Design</strong>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">Commercial Millwork</a>
-                            <a href="{{ url('/services/cfd') }}" class="plm-mobile-nav__sub-link">Residential Millwork</a>
-                            <a href="{{ url('/services/thermal') }}" class="plm-mobile-nav__sub-link">Hospitality Millwork</a>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">Retail & Store Fixture Millwork</a>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">Healthcare & Institutional Millwork</a>
-                            <a href="{{ url('/services/cfd') }}" class="plm-mobile-nav__sub-link">Custom Cabinetry & Casework</a>
-                            <a href="{{ url('/services/thermal') }}" class="plm-mobile-nav__sub-link">Custom Furniture Millwork</a>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">Architectural Woodwork</a>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">Interior Fit-Out Millwork</a>
-                            <a href="{{ url('/services/fea') }}" class="plm-mobile-nav__sub-link">Specialty & Custom Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/commercial-millwork-services') }}" class="plm-mobile-nav__sub-link">Commercial Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/residential-millwork-services') }}" class="plm-mobile-nav__sub-link">Residential Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/hospitality-millwork-services') }}" class="plm-mobile-nav__sub-link">Hospitality Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/retail-and-store-millwork-services') }}" class="plm-mobile-nav__sub-link">Retail & Store Fixture Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/healthcare-and-institutional-millwork-services') }}" class="plm-mobile-nav__sub-link">Healthcare & Institutional Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/custom-cabinetry-and-casework-millwork-services') }}"class="plm-mobile-nav__sub-link">Custom Cabinetry & Casework</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/custom-furniture-millwork-services') }}" class="plm-mobile-nav__sub-link">Custom Furniture Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/architectural-millwork-services') }}" class="plm-mobile-nav__sub-link">Architectural Woodwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/interior-fit-out-millwork-services') }}" class="plm-mobile-nav__sub-link">Interior Fit-Out Millwork</a>
+                            <a href="{{ url('/engineering-solutions/millwork-design/specialty-and-custom-millwork-services') }}" class="plm-mobile-nav__sub-link">Specialty & Custom Millwork</a>
                         </div>
                     </div>
 
@@ -503,21 +535,40 @@
                         </button>
                         <div class="plm-mobile-cat__list" id="m-cat-staffing" hidden>
                             <strong class="plm-mobile-nav__sub-heading">Data Analytics</strong>
-                            <a href="{{ url('/services/contract-staffing') }}" class="plm-mobile-nav__sub-link">Campaign analysis</a>
-                            <a href="{{ url('/services/permanent-staffing') }}" class="plm-mobile-nav__sub-link">Competitor intelligence</a>
-                            <a href="{{ url('/services/contract-staffing') }}" class="plm-mobile-nav__sub-link">Sales Analytics</a>
-                            <a href="{{ url('/services/permanent-staffing') }}" class="plm-mobile-nav__sub-link">Customer Analytics</a>
-                            <a href="{{ url('/services/contract-staffing') }}" class="plm-mobile-nav__sub-link">Demand Planning</a>
-                            <a href="{{ url('/services/contract-staffing') }}" class="plm-mobile-nav__sub-link">Sentiment Analysis</a>
+                            <a href="{{ url('/data-analytics-solutions/data-analytics/campaign-analysis-services') }}" class="plm-mobile-nav__sub-link">Campaign analysis</a>
+                            <a href="{{ url('/data-analytics-solutions/data-analytics/competitor-intelligence-services') }}" class="plm-mobile-nav__sub-link">Competitor intelligence</a>
+                            <a href="{{ url('/data-analytics-solutions/data-analytics/sales-analytics-services') }}" class="plm-mobile-nav__sub-link">Sales Analytics</a>
+                            <a href="{{ url('/data-analytics-solutions/data-analytics/customer-analytics-services') }}" class="plm-mobile-nav__sub-link">Customer Analytics</a>
+                            <a href="{{ url('/data-analytics-solutions/data-analytics/demand-planning-services') }}" class="plm-mobile-nav__sub-link">Demand Planning</a>
+                            <a href="{{ url('/data-analytics-solutions/data-analytics/sentimental-analysis-services') }}" class="plm-mobile-nav__sub-link">Sentiment Analysis</a>
 
                             <strong class="plm-mobile-nav__sub-heading">BI and Reporting</strong>
-                            <a href="{{ url('/services/plm-implementation') }}" class="plm-mobile-nav__sub-link">Data Preparation</a>
-                            <a href="{{ url('/services/cad-migration') }}" class="plm-mobile-nav__sub-link">Data Integration</a>
-                            <a href="{{ url('/services/cad-migration') }}" class="plm-mobile-nav__sub-link">Dashboards</a>
+                            <a href="{{ url('/data-analytics-solutions/bi-reporting/data-preparation-services') }}" class="plm-mobile-nav__sub-link">Data Preparation</a>
+                            <a href="{{ url('/data-analytics-solutions/bi-reporting/data-integration-services') }}" class="plm-mobile-nav__sub-link">Data Integration</a>
+                            <a href="{{ url('/data-analytics-solutions/bi-reporting/dashboard-services') }}" class="plm-mobile-nav__sub-link">Dashboards</a>
+                        </div>
+                    </div>
+                      {{-- Digital Twin --}}
+                    <div class="plm-mobile-cat">
+                        <button class="plm-mobile-cat__toggle" data-plm-mobile-cat="m-cat-Digital" type="button">
+                           Digital Twin
+                            <svg class="plm-nav__chevron" width="11" height="11" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                            </svg>
+                        </button>
+                        <div class="plm-mobile-cat__list" id="m-cat-Digital" hidden>
+                            <strong class="plm-mobile-nav__sub-heading">Digital Twin</strong>
+                            <a href="{{ url('/digital-twin-solutions/revit-bim-model-enhancement-services') }}" class="plm-mobile-nav__sub-link">Revit BIM model enhancement</a>
+                            <a href="{{ url('/digital-twin-solutions/asset-tagging-services') }}" class="plm-mobile-nav__sub-link">Asset tagging</a>
+                            <a href="{{ url('/digital-twin-solutions/cobie-data-creation-services') }}" class="plm-mobile-nav__sub-link">COBie data creation</a>
+                            <a href="{{ url('/digital-twin-solutions/equipment-metadata-integration-services') }}" class="plm-mobile-nav__sub-link">Equipment metadata integration</a>
+                            <a href="{{ url('/digital-twin-solutions/qr-code-integration-services') }}" class="plm-mobile-nav__sub-link">QR code integration</a>
+                            <a href="{{ url('/digital-twin-solutions/facility-database-creation-services') }}" class="plm-mobile-nav__sub-link">Facility database creation</a>
+                            <a href="{{ url('/digital-twin-solutions/custom-dashboard-development-services') }}" class="plm-mobile-nav__sub-link">Custom Dashboard Development</a>
                         </div>
                     </div>
 
-                    <a href="{{ url('/services/bim-services') }}" class="plm-mobile-nav__sub-link plm-mobile-nav__sub-link--viewall">VIEW ALL SERVICES &rarr;</a>
+                    <!--<a href="{{ url('/services/bim-services') }}" class="plm-mobile-nav__sub-link plm-mobile-nav__sub-link--viewall">VIEW ALL SERVICES &rarr;</a>-->
                 </div>
             </li>
 
@@ -534,41 +585,52 @@
                     {{-- Construction --}}
                     <div class="plm-mobile-cat">
                         <button class="plm-mobile-cat__toggle" data-plm-mobile-cat="m-cat-construction" type="button">
-                            Construction
+                            AEC
                             <svg class="plm-nav__chevron" width="11" height="11" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                             </svg>
                         </button>
                         <div class="plm-mobile-cat__list" id="m-cat-construction" hidden>
-                            <strong class="plm-mobile-nav__sub-heading">Building</strong>
+                            <!--<strong class="plm-mobile-nav__sub-heading">Building</strong>-->
                             <a href="{{ url('/industries/residential') }}" class="plm-mobile-nav__sub-link">Residential</a>
                             <a href="{{ url('/industries/commercial') }}" class="plm-mobile-nav__sub-link">Commercial</a>
-                            <a href="{{ url('/industries/industrial') }}" class="plm-mobile-nav__sub-link">Industrial</a>
+                            <a href="{{ url('/industries/educational') }}" class="plm-mobile-nav__sub-link">Educational</a>
 
-                            <strong class="plm-mobile-nav__sub-heading">Specialty</strong>
-                            <a href="{{ url('/industries/healthcare') }}" class="plm-mobile-nav__sub-link">Healthcare</a>
-                            <a href="{{ url('/industries/education') }}" class="plm-mobile-nav__sub-link">Education</a>
+                            <!--<strong class="plm-mobile-nav__sub-heading">Specialty</strong>-->
+                            <a href="{{ url('/industries/health-care')}}" class="plm-mobile-nav__sub-link">Healthcare</a>
                             <a href="{{ url('/industries/retail') }}" class="plm-mobile-nav__sub-link">Retail</a>
+                            <a href="{{ url('/industries/infrastructure') }}" class="plm-mobile-nav__sub-link">Infrastructure</a>
+
                         </div>
                     </div>
 
                     {{-- Manufacturing --}}
                     <div class="plm-mobile-cat">
                         <button class="plm-mobile-cat__toggle" data-plm-mobile-cat="m-cat-manufacturing" type="button">
-                            Manufacturing
+                            Engineering
                             <svg class="plm-nav__chevron" width="11" height="11" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                             </svg>
                         </button>
                         <div class="plm-mobile-cat__list" id="m-cat-manufacturing" hidden>
-                            <strong class="plm-mobile-nav__sub-heading">Sectors</strong>
+                            <!--<strong class="plm-mobile-nav__sub-heading">Sectors</strong>-->
                             <a href="{{ url('/industries/automotive') }}" class="plm-mobile-nav__sub-link">Automotive</a>
-                            <a href="{{ url('/industries/aerospace') }}" class="plm-mobile-nav__sub-link">Aerospace</a>
-                            <a href="{{ url('/industries/consumer-goods') }}" class="plm-mobile-nav__sub-link">Consumer Goods</a>
+                            <a href="{{ url('/industries/heavy-engineering') }}" class="plm-mobile-nav__sub-link">Heavy Engineering</a>
+                            <a href="{{ url('/industries/industrial-and-heavy-equipment') }}" class="plm-mobile-nav__sub-link">Industrial &amp; Heavy Equipment</a>
+
+                            <!--<strong class="plm-mobile-nav__sub-heading">Sectors</strong>-->
+                            <a href="{{ url('/industries/medical-devices') }}" class="plm-mobile-nav__sub-link">Medical Devices</a>
+                            <a href="{{ url('/industries/machinery-and-robotics') }}" class="plm-mobile-nav__sub-link">Machinery &amp; Robotics</a>
+                            <a href="{{ url('/industries/precision-manufacturing') }}" class="plm-mobile-nav__sub-link">Precision Manufacturing</a>
+
+                            <!--<strong class="plm-mobile-nav__sub-heading">Sectors</strong>-->
+                            <a href="{{ url('/industries/consumer-products') }}" class="plm-mobile-nav__sub-link">Consumer Products</a>
+                            <a href="{{ url('/industries/electric-enclosure') }}" class="plm-mobile-nav__sub-link">Electric Enclosure</a>
+                            <a href="{{ url('/industries/transformer') }}" class="plm-mobile-nav__sub-link">Transformer</a>
                         </div>
                     </div>
 
-                    {{-- Infrastructure --}}
+                   <!-- {{-- Infrastructure --}}
                     <div class="plm-mobile-cat">
                         <button class="plm-mobile-cat__toggle" data-plm-mobile-cat="m-cat-infrastructure" type="button">
                             Infrastructure
@@ -584,7 +646,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ url('/industries') }}" class="plm-mobile-nav__sub-link plm-mobile-nav__sub-link--viewall">VIEW ALL INDUSTRIES &rarr;</a>
+                    <a href="{{ url('/industries') }}" class="plm-mobile-nav__sub-link plm-mobile-nav__sub-link--viewall">VIEW ALL INDUSTRIES &rarr;</a>-->
                 </div>
             </li>
 
@@ -608,27 +670,17 @@
 
     const $  = (sel, ctx = document) => ctx.querySelector(sel);
     const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-    /* ══════════════════════════════════════════════════════
-       MEGA MENU — scroll-proof positioning
-       The mega panel uses position:fixed but its `top` value
-       must equal the ACTUAL bottom edge of the sticky header
-       at the time it opens (accounts for topbar hide on scroll).
-       We recalculate on every open AND on scroll while open.
-    ══════════════════════════════════════════════════════ */
     const header      = $('#plm-header');
     const topbar      = document.querySelector('.plm-topbar');
     const backdrop    = $('#plm-mega-backdrop');
     const megaToggles = $$('[data-plm-mega]');
     let   closeTimer  = null;
     let   scrollRAF   = null;
-
-    /** Returns the pixel value for mega panel `top` based on live DOM rect */
     function getMegaTop() {
         const headerRect = header ? header.getBoundingClientRect() : null;
         return headerRect ? Math.round(headerRect.bottom) : 0;
     }
 
-    /** Apply correct top to all visible mega panels */
     function syncMegaTop() {
         const top = getMegaTop() + 'px';
         $$('.plm-mega:not([hidden])').forEach(p => { p.style.top = top; });
@@ -640,7 +692,6 @@
         if (!panel) return;
         megaToggles.forEach(b => { if (b !== btn) _hideMega(b); });
         btn.setAttribute('aria-expanded', 'true');
-        /* Set correct top BEFORE showing to avoid flicker */
         panel.style.top = getMegaTop() + 'px';
         panel.hidden = false;
         backdrop.hidden = false;
@@ -663,12 +714,10 @@
         backdrop.hidden = true;
     }
 
-    /* Recalculate mega top on scroll — throttled via rAF */
     window.addEventListener('scroll', () => {
         if (scrollRAF) return;
         scrollRAF = requestAnimationFrame(() => {
             syncMegaTop();
-            /* Also update sticky shadow */
             header && header.classList.toggle('plm-header--scrolled', window.scrollY > 10);
             scrollRAF = null;
         });
@@ -711,9 +760,6 @@ $$('[data-plm-panel]').forEach(tag => {
     tag.addEventListener('click', () => activateMegaPanel(tag));
 });
 
-    /* ══════════════════════════════════════════
-       SEARCH
-    ══════════════════════════════════════════ */
     const searchToggle = $('#plm-search-toggle');
     const searchClose  = $('#plm-search-close');
     const searchBar    = $('#plm-search-bar');
@@ -732,10 +778,6 @@ $$('[data-plm-panel]').forEach(tag => {
     }
     searchToggle && searchToggle.addEventListener('click', openSearch);
     searchClose  && searchClose.addEventListener('click', closeSearch);
-
-    /* ══════════════════════════════════════════
-       MOBILE NAV
-    ══════════════════════════════════════════ */
     const hamburger     = $('#plm-hamburger');
     const mobileNav     = $('#plm-mobile-nav');
     const mobileClose   = $('#plm-mobile-close');
@@ -765,7 +807,7 @@ $$('[data-plm-panel]').forEach(tag => {
     });
 });
 
-/* ══ CATEGORY ACCORDION inside Services/Industries ══ */
+
 $$('[data-plm-mobile-cat]').forEach(btn => {
     btn.addEventListener('click', () => {
         const list = $(`#${btn.dataset.plmMobileCat}`);
