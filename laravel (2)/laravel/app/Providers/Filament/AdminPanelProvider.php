@@ -27,6 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->profile()
             ->brandLogo(asset('service-img/plm-logo.png'))
             ->brandLogoHeight('3rem')
             ->colors([

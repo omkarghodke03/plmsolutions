@@ -18,12 +18,12 @@ return [
 
     'company_name' => env(
         'INDEED_COMPANY_NAME',
-        'milestone tech'
+        'Nucleosys Technologies'
     ),
 
     'company_url' => env(
         'INDEED_COMPANY_URL',
-        'https://demo.milestonetech.net'
+        'https://coral-pigeon-247564.hostingersite.com'
     ),
 
     /*
@@ -34,7 +34,7 @@ return [
 
     'feed_url' => env(
         'INDEED_FEED_URL',
-        'https://demo.milestonetech.net/indeed/jobs.xml'
+        'https://coral-pigeon-247564.hostingersite.com/indeed/jobs.xml'
     ),
 
     /*
@@ -74,6 +74,6 @@ return [
 
     'contact_email' => env(
         'INDEED_CONTACT_EMAIL',
-        'info@milestonetech.net'
+        'sales@nucleosystech.com'
     ),
 ];

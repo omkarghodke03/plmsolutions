@@ -129,9 +129,9 @@
         <div class="row align-items-center">
             <div class="col-xl-8 col-lg-7 col-md-10">
                 <div class="abouthero-breadcrumb">
-                    <a href="/">Home</a>
+                    <a href="https://www.milestonetech.net">Home</a>
                     <span>›</span>
-                    <a href="{{ route('jobs.index') }}">Career</a>
+                    <a href="https://careers.milestonetech.net">Career</a>
                     <span>›</span>
                     <a href="#">{{ $job->title }}</a>
                 </div>
@@ -196,7 +196,7 @@
     </div>
 </section>
 
-{{-- Naveen apply.blade.php file include --}}
+
 @include('jobs.apply')
 
 @include('sections.location')

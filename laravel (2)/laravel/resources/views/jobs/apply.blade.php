@@ -1,3 +1,6 @@
+{{-- resources/views/jobs/apply.blade.php --}}
+
+<!-- Apply Job Modal -->
 <div class="modal fade" id="applyJobModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">

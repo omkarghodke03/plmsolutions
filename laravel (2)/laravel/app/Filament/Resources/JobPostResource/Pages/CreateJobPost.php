@@ -11,7 +11,6 @@ class CreateJobPost extends CreateRecord
 {
     protected static string $resource = JobPostResource::class;
 
-
     protected function afterCreate(): void
     {
         /** @var \App\Models\JobPost $job */
@@ -19,25 +18,28 @@ class CreateJobPost extends CreateRecord
 
         $platforms = $job->platforms ?? [];
 
+        /*
+        |--------------------------------------------------------------------------
+        | LinkedIn Company Page Publishing
+        |--------------------------------------------------------------------------
+        */
 
-      
-
-        if (!in_array('linkedin', $platforms)) {
+        if (!in_array('linkedin', $platforms, true)) {
             return;
         }
 
-
-
         $token = session('linkedin_token');
-        $personId = session('linkedin_sub');
 
+        $organizationId = config(
+            'services.linkedin.organization_id'
+        );
 
-        if (!$token || !$personId) {
+        if (!$token || !$organizationId) {
 
             Notification::make()
-                ->title('LinkedIn account is not connected')
+                ->title('LinkedIn Company Page is not connected')
                 ->body(
-                    'Please connect your LinkedIn account before publishing this job.'
+                    'Please connect your LinkedIn Company Page before publishing this job.'
                 )
                 ->warning()
                 ->actions([
@@ -60,7 +62,7 @@ class CreateJobPost extends CreateRecord
             $postId = $result['linkedin_post_id'] ?? null;
 
             Notification::make()
-                ->title('Job successfully posted on LinkedIn!')
+                ->title('Job successfully posted on LinkedIn Company Page!')
                 ->body(
                     $postId
                         ? "LinkedIn Post ID: {$postId}"

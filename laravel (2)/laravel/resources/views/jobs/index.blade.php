@@ -136,16 +136,16 @@
         <div class="row align-items-center">
             <div class="col-xl-8 col-lg-7 col-md-10">
                 <div class="abouthero-breadcrumb">
-                    <a href="/">Home</a>
+                    <a href="https://www.milestonetech.net">Home</a>
                     <span>›</span>
-                    <a href="#">Career</a>
+                    <a href="https://careers.milestonetech.net/">Career</a>
                    
                 </div>
                 <div class="abouthero-tag">
                 Build Your Future
                 </div>
                 <h1 class="abouthero-title">
-                    Build Your Career with Milestone PLM Solution
+                    Build Your Career with Milestone PLM Solutions
                 </h1>
                 <p class="abouthero-desc" style="font-size:16px;">
                    We believe great people build great solutions. That's why we invest in our employees through continuous learning, supportive leadership, exciting projects, and opportunities for career growth.
